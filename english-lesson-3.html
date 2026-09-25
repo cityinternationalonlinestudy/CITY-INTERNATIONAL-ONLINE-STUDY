@@ -1,0 +1,1472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tenses - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d70b8);
+            color: white;
+            padding: 55px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 750px;
+            margin: auto;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1d70b8;
+            margin: 20px 0 10px;
+        }
+
+        .objective-list,
+        .summary-list {
+            padding-left: 25px;
+        }
+
+        .objective-list li,
+        .summary-list li {
+            margin-bottom: 8px;
+        }
+
+        .example {
+            background: #eef6ff;
+            border-left: 5px solid #1d70b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .formula {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 16px;
+            margin: 15px 0;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+
+        .tense-box {
+            background: #f8fafc;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .tense-box h3 {
+            margin-top: 0;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            height: 260px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quiz-question h3 {
+            color: #123c69;
+            margin-bottom: 12px;
+        }
+
+        .quiz-option {
+            display: block;
+            padding: 9px;
+            margin: 6px 0;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .quiz-option:hover {
+            background: #eaf3ff;
+        }
+
+        .quiz-option input {
+            margin-right: 8px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .success {
+            background: #16a34a;
+            color: white;
+        }
+
+        .secondary {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            height: 18px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #16a34a;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .actions {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="school-name">
+        CITY INTERNATIONAL ONLINE SCHOOL
+    </div>
+
+    <a href="english.html" class="back-btn">
+        ← Back to English
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Tenses</h1>
+
+    <p>
+        Learn how verbs show when an action happens — in the past,
+        present, or future.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+    <!-- OBJECTIVES -->
+
+    <section class="card">
+
+        <h2>🎯 Lesson Objectives</h2>
+
+        <ul class="objective-list">
+
+            <li>Understand what a tense is.</li>
+
+            <li>Identify past, present, and future time.</li>
+
+            <li>Understand the simple present tense.</li>
+
+            <li>Understand the simple past tense.</li>
+
+            <li>Understand the simple future tense.</li>
+
+            <li>Use tenses correctly in sentences.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="card">
+
+        <h2>📖 What Is a Tense?</h2>
+
+        <p>
+            A tense is a form of a verb that helps us understand
+            when an action happens.
+        </p>
+
+        <div class="formula">
+            Tense tells us WHEN an action happens.
+        </div>
+
+        <p>
+            The three basic time periods are:
+        </p>
+
+        <ul class="summary-list">
+
+            <li><b>Past</b> — an action happened before now.</li>
+
+            <li><b>Present</b> — an action happens now or regularly.</li>
+
+            <li><b>Future</b> — an action will happen later.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- PRESENT -->
+
+    <section class="card">
+
+        <h2>🟢 1. Simple Present Tense</h2>
+
+        <p>
+            We use the simple present tense for actions that happen
+            regularly, habits, routines, and facts.
+        </p>
+
+        <div class="formula">
+            Subject + Verb
+        </div>
+
+        <div class="example">
+
+            <b>Examples:</b><br><br>
+
+            I go to school every day.<br>
+
+            She plays football.<br>
+
+            They study English.<br>
+
+            The sun rises in the east.
+
+        </div>
+
+        <h3>Important Rule</h3>
+
+        <p>
+            With <b>he, she,</b> or <b>it</b>, the verb often takes
+            <b>-s</b> or <b>-es</b>.
+        </p>
+
+        <div class="example">
+
+            He <b>plays</b> football.<br>
+
+            She <b>watches</b> television.<br>
+
+            John <b>goes</b> to school.
+
+        </div>
+
+    </section>
+
+
+    <!-- PAST -->
+
+    <section class="card">
+
+        <h2>🔵 2. Simple Past Tense</h2>
+
+        <p>
+            We use the simple past tense for actions that happened
+            and finished in the past.
+        </p>
+
+        <div class="formula">
+            Subject + Past Verb
+        </div>
+
+        <div class="example">
+
+            <b>Examples:</b><br><br>
+
+            I walked to school yesterday.<br>
+
+            She played football last week.<br>
+
+            They visited their grandmother.<br>
+
+            John watched a movie.
+
+        </div>
+
+        <h3>Regular Verbs</h3>
+
+        <p>
+            Many regular verbs form the past tense by adding
+            <b>-ed</b>.
+        </p>
+
+        <div class="example">
+
+            play → played<br>
+
+            walk → walked<br>
+
+            clean → cleaned<br>
+
+            visit → visited
+
+        </div>
+
+        <h3>Irregular Verbs</h3>
+
+        <p>
+            Some verbs change differently in the past.
+        </p>
+
+        <div class="example">
+
+            go → went<br>
+
+            eat → ate<br>
+
+            see → saw<br>
+
+            come → came
+
+        </div>
+
+    </section>
+
+
+    <!-- FUTURE -->
+
+    <section class="card">
+
+        <h2>🟣 3. Simple Future Tense</h2>
+
+        <p>
+            We use the simple future tense for actions that will
+            happen later.
+        </p>
+
+        <div class="formula">
+            Subject + will + Verb
+        </div>
+
+        <div class="example">
+
+            <b>Examples:</b><br><br>
+
+            I will study tomorrow.<br>
+
+            She will visit her grandmother.<br>
+
+            They will play football next week.<br>
+
+            We will learn English.
+
+        </div>
+
+    </section>
+
+
+    <!-- TENSE COMPARISON -->
+
+    <section class="card">
+
+        <h2>📊 Comparing the Three Basic Tenses</h2>
+
+        <div class="tense-box">
+
+            <h3>Past</h3>
+
+            <p>
+                I <b>played</b> football yesterday.
+            </p>
+
+        </div>
+
+        <div class="tense-box">
+
+            <h3>Present</h3>
+
+            <p>
+                I <b>play</b> football every Saturday.
+            </p>
+
+        </div>
+
+        <div class="tense-box">
+
+            <h3>Future</h3>
+
+            <p>
+                I <b>will play</b> football tomorrow.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- TIME WORDS -->
+
+    <section class="card">
+
+        <h2>⏰ Time Words</h2>
+
+        <p>
+            Certain words can help us identify the tense being used.
+        </p>
+
+        <div class="example">
+
+            <b>Past:</b><br>
+
+            yesterday, last week, last year, ago
+
+        </div>
+
+        <div class="example">
+
+            <b>Present:</b><br>
+
+            every day, usually, always, often, sometimes
+
+        </div>
+
+        <div class="example">
+
+            <b>Future:</b><br>
+
+            tomorrow, next week, next year, later
+
+        </div>
+
+    </section>
+
+
+    <!-- COMMON MISTAKES -->
+
+    <section class="card">
+
+        <h2>⚠️ Common Mistakes</h2>
+
+        <div class="example">
+
+            ❌ She play football.<br>
+
+            ✅ She <b>plays</b> football.
+
+        </div>
+
+        <div class="example">
+
+            ❌ Yesterday I go to school.<br>
+
+            ✅ Yesterday I <b>went</b> to school.
+
+        </div>
+
+        <div class="example">
+
+            ❌ Tomorrow I went to school.<br>
+
+            ✅ Tomorrow I <b>will go</b> to school.
+
+        </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="card">
+
+        <h2>📌 Lesson Summary</h2>
+
+        <ul class="summary-list">
+
+            <li>Tense shows when an action happens.</li>
+
+            <li>Past tense describes completed actions in the past.</li>
+
+            <li>Present tense describes current, regular, or factual actions.</li>
+
+            <li>Future tense describes actions that will happen later.</li>
+
+            <li>Some past verbs end in -ed.</li>
+
+            <li>Some verbs have irregular past forms.</li>
+
+            <li>We commonly use "will" for the simple future.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- VIDEO -->
+
+    <section class="card">
+
+        <h2>🎥 Lesson Video</h2>
+
+        <div class="video-box">
+
+            <div>
+
+                <h2>Tenses Video</h2>
+
+                <p>
+                    Your teacher's English lesson video will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card">
+
+        <h2>✏️ Practice Questions</h2>
+
+        <div class="practice-question">
+
+            <strong>1.</strong>
+
+            Change this sentence to the past tense:
+
+            <br><br>
+
+            "I play football."
+
+            <br><br>
+
+            Answer: <b>I played football.</b>
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>2.</strong>
+
+            Change this sentence to the future tense:
+
+            <br><br>
+
+            "She studies English."
+
+            <br><br>
+
+            Answer: <b>She will study English.</b>
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>3.</strong>
+
+            Complete the sentence:
+
+            <br><br>
+
+            "John ___ to school every day."
+
+            <br><br>
+
+            Answer: <b>goes</b>
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>4.</strong>
+
+            Complete the sentence:
+
+            <br><br>
+
+            "Yesterday, Mary ___ a book."
+
+            <br><br>
+
+            Answer: <b>read</b>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card">
+
+        <h2>🧠 Tenses Quiz</h2>
+
+        <p>
+            Choose the correct answer for each question.
+        </p>
+
+        <br>
+
+
+        <form id="quizForm">
+
+
+            <!-- Q1 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    1. Which sentence is in the present tense?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="a">
+
+                    I played football yesterday.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="b">
+
+                    I play football every Saturday.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="c">
+
+                    I will play football tomorrow.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="d">
+
+                    I had played football.
+
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    2. Which sentence is in the past tense?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="a">
+
+                    She walks to school.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="b">
+
+                    She will walk to school.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="c">
+
+                    She walked to school.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="d">
+
+                    She is walking to school.
+
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    3. Which word helps form the simple future tense?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="a">
+
+                    did
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="b">
+
+                    will
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="c">
+
+                    was
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="d">
+
+                    had
+
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    4. Which sentence is correct?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="a">
+
+                    She play football.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="b">
+
+                    She plays football.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="c">
+
+                    She playing football.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="d">
+
+                    She played football tomorrow.
+
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    5. Which sentence describes a future action?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="a">
+
+                    They visited the museum.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="b">
+
+                    They visit the museum every year.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="c">
+
+                    They will visit the museum tomorrow.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="d">
+
+                    They visited the museum yesterday.
+
+                </label>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="submitQuiz()">
+
+                    Submit Quiz
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn secondary"
+                    onclick="resetQuiz()">
+
+                    Reset Quiz
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div
+            id="quizResult"
+            class="quiz-result">
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="card">
+
+        <h2>📊 Lesson Progress</h2>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+        <div
+            id="progressText"
+            class="progress-text">
+
+            0% Complete
+
+        </div>
+
+    </section>
+
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+        <button
+            class="btn success"
+            onclick="markComplete()">
+
+            ✓ Mark Lesson Complete
+
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="resetLesson()">
+
+            Reset Lesson
+
+        </button>
+
+        <br>
+
+
+        <a
+            href="english.html"
+            class="btn primary">
+
+            ← Back to English
+
+        </a>
+
+
+        <a
+            href="english-lesson-4.html"
+            class="btn primary">
+
+            Next Lesson →
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © <span id="year"></span>
+        City International Online School.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+    const completedKey =
+        "cis_english_lesson3_completed";
+
+    const quizScoreKey =
+        "cis_english_lesson3_quiz_score";
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            updateProgress();
+
+            loadQuizResult();
+
+        }
+    );
+
+
+    function submitQuiz() {
+
+        const correctAnswers = {
+
+            q1: "b",
+
+            q2: "c",
+
+            q3: "b",
+
+            q4: "b",
+
+            q5: "c"
+
+        };
+
+
+        let score = 0;
+
+
+        for (
+            let question in correctAnswers
+        ) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' +
+                    question +
+                    '"]:checked'
+                );
+
+
+            if (!selected) {
+
+                alert(
+                    "Please answer all quiz questions."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                selected.value ===
+                correctAnswers[question]
+            ) {
+
+                score++;
+
+            }
+
+        }
+
+
+        const percentage =
+            Math.round(
+                (score / 5) * 100
+            );
+
+
+        localStorage.setItem(
+            quizScoreKey,
+            percentage
+        );
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        if (percentage === 100) {
+
+            result.innerHTML =
+                "🎉 Excellent! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%).";
+
+        } else if (percentage >= 60) {
+
+            result.innerHTML =
+                "👏 Good work! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%). Keep practising.";
+
+        } else {
+
+            result.innerHTML =
+                "📚 Keep learning! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%). Review the lesson and try again.";
+
+        }
+
+
+        updateProgress();
+
+    }
+
+
+    function loadQuizResult() {
+
+        const savedScore =
+            localStorage.getItem(
+                quizScoreKey
+            );
+
+
+        if (!savedScore) {
+
+            return;
+
+        }
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        result.innerHTML =
+            "Previous quiz score: " +
+            savedScore +
+            "%";
+
+    }
+
+
+    function markComplete() {
+
+        localStorage.setItem(
+            completedKey,
+            "true"
+        );
+
+
+        updateProgress();
+
+
+        alert(
+            "✓ Tenses lesson completed successfully!"
+        );
+
+    }
+
+
+    function updateProgress() {
+
+        const completed =
+            localStorage.getItem(
+                completedKey
+            ) === "true";
+
+
+        const score =
+            parseInt(
+                localStorage.getItem(
+                    quizScoreKey
+                )
+            ) || 0;
+
+
+        let progress = 0;
+
+
+        if (completed) {
+
+            progress = 100;
+
+        } else if (score > 0) {
+
+            progress = score;
+
+        }
+
+
+        document.getElementById(
+            "progressFill"
+        ).style.width =
+            progress + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            progress +
+            "% Complete";
+
+    }
+
+
+    function resetQuiz() {
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        localStorage.removeItem(
+            quizScoreKey
+        );
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display =
+            "none";
+
+
+        result.innerHTML = "";
+
+
+        updateProgress();
+
+    }
+
+
+    function resetLesson() {
+
+        const confirmReset =
+            confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+
+        if (!confirmReset) {
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            completedKey
+        );
+
+
+        localStorage.removeItem(
+            quizScoreKey
+        );
+
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        document.getElementById(
+            "quizResult"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "quizResult"
+        ).innerHTML = "";
+
+
+        updateProgress();
+
+
+        alert(
+            "Lesson progress has been reset."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

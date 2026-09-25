@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 2 - Love and Kindness | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 19px;
+            font-weight: 800;
+            color: #1d4ed8;
+        }
+
+        .school-subtitle {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #4f46e5;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ec4899, #7c3aed);
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .lesson-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 7px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            max-width: 750px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            color: #111827;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .section ul {
+            margin-left: 22px;
+            color: #475569;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .objectives {
+            background: #fdf2f8;
+            border-left: 5px solid #ec4899;
+        }
+
+        .highlight {
+            background: #f5f3ff;
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .example strong {
+            color: #7c3aed;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 230px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .video-box p {
+            color: #cbd5e1;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .quiz-question:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-question h3 {
+            color: #111827;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            background: #f8fafc;
+            padding: 11px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+
+        .option:hover {
+            background: #fdf2f8;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button,
+        .nav-button {
+            border: none;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #6d28d9;
+        }
+
+        .success {
+            background: #15803d;
+            color: white;
+        }
+
+        .danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .secondary {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .result {
+            display: none;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            height: 13px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #7c3aed;
+            transition: 0.4s;
+        }
+
+        footer {
+            background: #111827;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 13px 15px;
+            }
+
+            .school-name {
+                font-size: 14px;
+            }
+
+            .school-subtitle {
+                display: none;
+            }
+
+            .back-btn {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .hero {
+                padding: 38px 18px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 12px;
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section h2 {
+                font-size: 21px;
+            }
+
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            button,
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div>
+            <div class="school-name">
+                CITY INTERNATIONAL ONLINE SCHOOL
+            </div>
+
+            <div class="school-subtitle">
+                Religious Education
+            </div>
+        </div>
+
+        <a href="religious-education.html" class="back-btn">
+            ← Back to Religious Education
+        </a>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <span class="lesson-label">
+                Lesson 2
+            </span>
+
+            <h1>
+                ❤️ Love and Kindness
+            </h1>
+
+            <p>
+                Learn how love, kindness, respect and helping others
+                can make our families, schools and communities better.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main class="container">
+
+        <!-- OBJECTIVES -->
+        <section class="section objectives">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <p>
+                By the end of this lesson, you should be able to:
+            </p>
+
+            <ul>
+                <li>Explain the meaning of love and kindness.</li>
+                <li>Identify ways of showing kindness to others.</li>
+                <li>Explain why people should respect one another.</li>
+                <li>Give examples of helping people in need.</li>
+                <li>Show kindness at home, school and in the community.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- LOVE -->
+        <section class="section">
+
+            <h2>❤️ What Is Love?</h2>
+
+            <p>
+                Love is a strong feeling of care, concern and respect
+                for other people and for the world around us.
+            </p>
+
+            <p>
+                Religious teachings in many traditions encourage people
+                to show love through their words and actions.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Remember:</strong>
+
+                <p>
+                    Love is not only something we say. We can also show
+                    love through caring, helping, respecting and
+                    encouraging others.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- KINDNESS -->
+        <section class="section">
+
+            <h2>😊 What Is Kindness?</h2>
+
+            <p>
+                Kindness means treating people with care, respect and
+                consideration. A kind person looks for ways to help
+                others and avoid causing unnecessary harm.
+            </p>
+
+            <h3>Examples of kindness</h3>
+
+            <div class="example-grid">
+
+                <div class="example">
+                    🤝 <strong>Helping Others</strong>
+                    <p>
+                        Helping someone who needs assistance.
+                    </p>
+                </div>
+
+                <div class="example">
+                    💬 <strong>Kind Words</strong>
+                    <p>
+                        Speaking politely and encouraging others.
+                    </p>
+                </div>
+
+                <div class="example">
+                    🎒 <strong>Sharing</strong>
+                    <p>
+                        Sharing resources when appropriate.
+                    </p>
+                </div>
+
+                <div class="example">
+                    ❤️ <strong>Caring</strong>
+                    <p>
+                        Showing concern when someone is struggling.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESPECT -->
+        <section class="section">
+
+            <h2>🤝 Love and Respect</h2>
+
+            <p>
+                Respect means treating other people with dignity and
+                recognizing that every person deserves fair and
+                considerate treatment.
+            </p>
+
+            <p>
+                We can show respect by listening when someone speaks,
+                using polite language, accepting differences and
+                treating others fairly.
+            </p>
+
+            <h3>At school, respect can include:</h3>
+
+            <ul>
+                <li>Listening to teachers and classmates.</li>
+                <li>Taking care of school property.</li>
+                <li>Using polite language.</li>
+                <li>Allowing others to express their ideas.</li>
+                <li>Helping classmates who need support.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- HELPING OTHERS -->
+        <section class="section">
+
+            <h2>🌟 Helping People in Need</h2>
+
+            <p>
+                Sometimes people need support because they are sick,
+                facing difficulties, are elderly or need help with
+                everyday activities.
+            </p>
+
+            <p>
+                We can respond by helping in safe and appropriate ways,
+                sharing what we can, encouraging others and telling a
+                trusted adult when someone needs serious assistance.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Example:</strong>
+
+                <p>
+                    If a classmate falls and is hurt, a student can
+                    stay with the classmate and quickly inform the
+                    teacher or another trusted adult.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="section">
+
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div class="video-icon">
+                    ▶️
+                </div>
+
+                <h3>
+                    Love and Kindness
+                </h3>
+
+                <p>
+                    Educational video will be added here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="section">
+
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice-question">
+                <strong>1.</strong>
+                What does love mean?
+            </div>
+
+            <div class="practice-question">
+                <strong>2.</strong>
+                What is kindness?
+            </div>
+
+            <div class="practice-question">
+                <strong>3.</strong>
+                Give three examples of kind actions.
+            </div>
+
+            <div class="practice-question">
+                <strong>4.</strong>
+                How can students show respect at school?
+            </div>
+
+            <div class="practice-question">
+                <strong>5.</strong>
+                How can you help someone who needs support?
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="section">
+
+            <h2>🧠 Lesson 2 Quiz</h2>
+
+            <p>
+                Choose the best answer for each question.
+            </p>
+
+
+            <!-- Q1 -->
+            <div class="quiz-question">
+
+                <h3>
+                    1. What is love?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. Caring and showing concern for others
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. Ignoring everyone
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. Hurting people
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. Refusing to help anyone
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+            <div class="quiz-question">
+
+                <h3>
+                    2. Which action shows kindness?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Helping someone who needs assistance
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. Insulting a classmate
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. Destroying another person's property
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. Refusing to listen
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+            <div class="quiz-question">
+
+                <h3>
+                    3. Which is an example of respect?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Interrupting everyone
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Listening when someone is speaking
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Making fun of others
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Damaging school property
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+            <div class="quiz-question">
+
+                <h3>
+                    4. What should a student do if a classmate is seriously hurt?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. Ignore the classmate
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Laugh at the classmate
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    C. Tell a trusted adult
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Leave without telling anyone
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+            <div class="quiz-question">
+
+                <h3>
+                    5. Where can we show kindness?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. Only at school
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    B. Only at home
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. At home, school and in the community
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    C. Nowhere
+                </label>
+
+            </div>
+
+
+            <button
+                class="primary"
+                onclick="submitQuiz()">
+                Submit Quiz
+            </button>
+
+            <div
+                class="result"
+                id="quizResult">
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="progress-section">
+
+            <div class="progress-header">
+
+                <span>
+                    Lesson Progress
+                </span>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINISH -->
+        <section class="section">
+
+            <h2>✅ Finish Lesson</h2>
+
+            <p>
+                After studying the lesson and completing the quiz,
+                mark this lesson as complete.
+            </p>
+
+            <div class="button-row">
+
+                <button
+                    class="success"
+                    onclick="markComplete()">
+                    ✓ Mark Complete
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="resetLesson()">
+                    🔄 Reset Lesson
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <section class="section">
+
+            <div class="button-row">
+
+                <a
+                    href="religious-education-lesson-1.html"
+                    class="nav-button secondary">
+                    ← Previous Lesson
+                </a>
+
+                <a
+                    href="religious-education.html"
+                    class="nav-button secondary">
+                    Religious Education
+                </a>
+
+                <a
+                    href="religious-education-lesson-3.html"
+                    class="nav-button primary">
+                    Next Lesson →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © <span id="currentYear"></span>
+            <strong>City International Online School</strong>
+        </p>
+
+        <p>
+            Religious Education • Lesson 2
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        const completedKey =
+            "cis_religious_education_lesson2_completed";
+
+        const quizScoreKey =
+            "cis_religious_education_lesson2_quiz_score";
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                completedKey,
+                "true"
+            );
+
+            updateProgress();
+
+            alert(
+                "Lesson 2 has been marked as completed! ✓"
+            );
+        }
+
+
+        function resetLesson() {
+
+            const confirmReset = confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+            if (!confirmReset) {
+                return;
+            }
+
+            localStorage.removeItem(
+                completedKey
+            );
+
+            localStorage.removeItem(
+                quizScoreKey
+            );
+
+            document.getElementById(
+                "quizResult"
+            ).style.display = "none";
+
+            document
+                .querySelectorAll(
+                    'input[type="radio"]'
+                )
+                .forEach(function(input) {
+                    input.checked = false;
+                });
+
+            updateProgress();
+
+            alert(
+                "Lesson progress has been reset."
+            );
+        }
+
+
+        function submitQuiz() {
+
+            const answers = {
+                q1: "a",
+                q2: "a",
+                q3: "b",
+                q4: "c",
+                q5: "c"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+            for (const question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+                if (selected) {
+
+                    answered++;
+
+                    if (
+                        selected.value ===
+                        answers[question]
+                    ) {
+                        score++;
+                    }
+                }
+            }
+
+            if (answered < 5) {
+
+                alert(
+                    "Please answer all 5 questions before submitting."
+                );
+
+                return;
+            }
+
+            localStorage.setItem(
+                quizScoreKey,
+                score
+            );
+
+            const percentage =
+                Math.round((score / 5) * 100);
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+            result.style.display = "block";
+
+            if (score === 5) {
+
+                result.innerHTML =
+                    "🎉 Excellent! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%).";
+
+            } else if (score >= 3) {
+
+                result.innerHTML =
+                    "👏 Good work! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Review the lesson and try again if you want to improve.";
+
+            } else {
+
+                result.innerHTML =
+                    "📚 Keep studying! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Review the lesson and try the quiz again.";
+
+            }
+
+            updateProgress();
+
+            window.scrollTo({
+                top: result.offsetTop - 100,
+                behavior: "smooth"
+            });
+        }
+
+
+        function updateProgress() {
+
+            let progress = 0;
+
+            if (
+                localStorage.getItem(
+                    completedKey
+                ) === "true"
+            ) {
+
+                progress = 100;
+
+            } else if (
+                localStorage.getItem(
+                    quizScoreKey
+                ) !== null
+            ) {
+
+                progress = 75;
+
+            }
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "%";
+
+            document.getElementById(
+                "progressBar"
+            ).style.width =
+                progress + "%";
+        }
+
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+                updateProgress();
+            }
+        );
+
+    </script>
+
+</body>
+</html>

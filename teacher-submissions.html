@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Teacher Submissions - City International Online School
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .topbar {
+            background: #0f2a44;
+            color: white;
+            padding: 17px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .school {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .school-icon {
+            width: 45px;
+            height: 45px;
+            background: white;
+            color: #0f2a44;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .school h2 {
+            font-size: 19px;
+        }
+
+        .school p {
+            font-size: 12px;
+            opacity: .8;
+            margin-top: 3px;
+        }
+
+        .back-btn {
+            background: white;
+            color: #0f2a44;
+            text-decoration: none;
+            padding: 11px 17px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: min(1150px, 94%);
+            margin: 30px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f2a44, #1769aa);
+            color: white;
+            padding: 35px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 31px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            opacity: .9;
+            line-height: 1.6;
+        }
+
+        .teacher-badge {
+            display: inline-block;
+            background: rgba(255,255,255,.15);
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin-top: 15px;
+            font-size: 13px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 14px;
+            padding: 21px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.05);
+        }
+
+        .stat-icon {
+            font-size: 27px;
+            margin-bottom: 8px;
+        }
+
+        .stat h3 {
+            font-size: 28px;
+            color: #0f2a44;
+        }
+
+        .stat p {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .section-title {
+            margin-bottom: 17px;
+        }
+
+        .section-title h2 {
+            color: #0f2a44;
+            font-size: 24px;
+        }
+
+        .section-title p {
+            color: #667085;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .empty {
+            background: white;
+            border-radius: 16px;
+            padding: 50px 20px;
+            text-align: center;
+            color: #667085;
+        }
+
+        .empty-icon {
+            font-size: 50px;
+            margin-bottom: 12px;
+        }
+
+        .submissions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 18px;
+        }
+
+        .submission-card {
+            background: white;
+            border: 1px solid #e4e7ec;
+            border-radius: 16px;
+            padding: 22px;
+            box-shadow: 0 5px 18px rgba(0,0,0,.05);
+        }
+
+        .submission-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .subject {
+            color: #1769aa;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+
+        .submission-card h3 {
+            color: #0f2a44;
+            font-size: 20px;
+        }
+
+        .student-info {
+            background: #f8fafc;
+            border-radius: 10px;
+            padding: 14px;
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: #475467;
+            font-size: 14px;
+        }
+
+        .student-info strong {
+            color: #344054;
+        }
+
+        .status {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .status-submitted {
+            background: #fff4d6;
+            color: #946200;
+        }
+
+        .status-marked {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .answer-box {
+            border: 1px solid #e4e7ec;
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 18px;
+        }
+
+        .answer-box h4 {
+            color: #0f2a44;
+            margin-bottom: 8px;
+        }
+
+        .answer-box p {
+            color: #475467;
+            line-height: 1.7;
+            white-space: pre-wrap;
+        }
+
+        .mark-box {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .mark-box h4 {
+            color: #0f2a44;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            color: #344054;
+            margin-bottom: 7px;
+            font-size: 14px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            padding: 11px;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #1769aa;
+        }
+
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        .marks-help {
+            font-size: 12px;
+            color: #667085;
+            margin-top: 5px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            padding: 11px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .mark-btn {
+            background: #1769aa;
+            color: white;
+        }
+
+        .mark-btn:hover {
+            background: #125589;
+        }
+
+        .marked-score {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 13px;
+            border-radius: 9px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .marked-feedback {
+            background: #f8fafc;
+            border-left: 4px solid #1769aa;
+            padding: 13px;
+            color: #475467;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .notice {
+            background: #eef6ff;
+            border: 1px solid #b9dcff;
+            color: #14517e;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 22px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .security-notice {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin-bottom: 22px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #0f2a44;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            opacity: .8;
+            font-size: 13px;
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .back-btn {
+                text-align: center;
+            }
+
+            .hero {
+                padding: 25px 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .submission-top {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <div class="school">
+
+        <div class="school-icon">
+            🎓
+        </div>
+
+        <div>
+
+            <h2>
+                City International Online School
+            </h2>
+
+            <p>
+                Teacher Portal
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <a
+        href="teacher-dashboard.html"
+        class="back-btn">
+
+        ← Back to Teacher Dashboard
+
+    </a>
+
+</header>
+
+
+
+<main class="container">
+
+
+    <section class="hero">
+
+        <h1>
+            📤 Student Submissions
+        </h1>
+
+        <p>
+            View student assignment submissions,
+            mark their work and provide feedback.
+        </p>
+
+        <div
+            class="teacher-badge"
+            id="teacherBadge">
+
+            Loading teacher...
+
+        </div>
+
+    </section>
+
+
+
+    <div class="notice">
+
+        <strong>Teacher Marking:</strong>
+
+        When a student submits an assignment,
+        it will appear below. Enter the student's
+        score and feedback, then click
+        <strong>Mark Assignment</strong>.
+
+    </div>
+
+
+
+    <div class="security-notice">
+
+        🔐 <strong>Teacher Privacy:</strong>
+
+        You are viewing submissions belonging
+        only to assignments created by your
+        logged-in teacher account.
+
+    </div>
+
+
+
+    <section class="stats">
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                📤
+            </div>
+
+            <h3 id="totalSubmissions">
+                0
+            </h3>
+
+            <p>
+                Total Submissions
+            </p>
+
+        </div>
+
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <h3 id="waitingSubmissions">
+                0
+            </h3>
+
+            <p>
+                Waiting for Marking
+            </p>
+
+        </div>
+
+
+
+        <div class="stat">
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+            <h3 id="markedSubmissions">
+                0
+            </h3>
+
+            <p>
+                Marked
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <div class="section-title">
+
+        <h2>
+            Student Work
+        </h2>
+
+        <p>
+            Review and mark submitted assignments.
+        </p>
+
+    </div>
+
+
+
+    <section
+        class="submissions"
+        id="submissionList">
+
+    </section>
+
+
+
+    <div
+        class="empty"
+        id="emptyMessage"
+        style="display:none;">
+
+        <div class="empty-icon">
+            📭
+        </div>
+
+        <h2>
+            No Student Submissions
+        </h2>
+
+        <p>
+            When students submit assignments,
+            their work will appear here.
+        </p>
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+
+        © <span id="year"></span>
+
+        City International Online School.
+
+        Teacher Portal.
+
+    </p>
+
+</footer>
+
+
+
+<script>
+
+
+/* =========================================
+   STORAGE
+========================================= */
+
+
+function getSubmissions() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "cis_assignment_submissions"
+            );
+
+        if (!saved) {
+            return [];
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        console.error(
+            "Could not read submissions:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+
+function saveSubmissions(submissions) {
+
+    localStorage.setItem(
+        "cis_assignment_submissions",
+        JSON.stringify(submissions)
+    );
+
+}
+
+
+
+function getAssignments() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "cis_teacher_assignments"
+            );
+
+        if (!saved) {
+            return [];
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        console.error(
+            "Could not read assignments:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   GET CURRENT TEACHER
+========================================= */
+
+
+function getCurrentTeacher() {
+
+    const savedTeacher =
+        localStorage.getItem(
+            "cis_current_teacher"
+        );
+
+
+    if (!savedTeacher) {
+
+        alert(
+            "Teacher login information was not found. Please log in again."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return null;
+
+    }
+
+
+    try {
+
+        const teacher =
+            JSON.parse(savedTeacher);
+
+
+        if (
+            !teacher ||
+            teacher.role !== "teacher"
+        ) {
+
+            alert(
+                "Invalid teacher account. Please log in again."
+            );
+
+            window.location.href =
+                "index.html";
+
+            return null;
+
+        }
+
+
+        if (!teacher.teacherCode) {
+
+            alert(
+                "Your teacher account does not have a teacher code."
+            );
+
+            window.location.href =
+                "index.html";
+
+            return null;
+
+        }
+
+
+        return teacher;
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        alert(
+            "Teacher login information is invalid. Please log in again."
+        );
+
+
+        window.location.href =
+            "index.html";
+
+
+        return null;
+
+    }
+
+}
+
+
+/* =========================================
+   PAGE LOAD
+========================================= */
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        const teacher =
+            getCurrentTeacher();
+
+
+        if (!teacher) {
+            return;
+        }
+
+
+        const teacherBadge =
+            document.getElementById(
+                "teacherBadge"
+            );
+
+
+        teacherBadge.textContent =
+            "Teacher: " +
+            (teacher.fullName || "Teacher") +
+            " • " +
+            teacher.teacherCode;
+
+
+        loadSubmissions();
+
+    }
+);
+
+
+/* =========================================
+   LOAD SUBMISSIONS
+========================================= */
+
+
+function loadSubmissions() {
+
+    const container =
+        document.getElementById(
+            "submissionList"
+        );
+
+
+    const empty =
+        document.getElementById(
+            "emptyMessage"
+        );
+
+
+    const currentTeacher =
+        getCurrentTeacher();
+
+
+    if (!currentTeacher) {
+        return;
+    }
+
+
+    const allSubmissions =
+        getSubmissions();
+
+
+    const assignments =
+        getAssignments();
+
+
+    /*
+       FIND ONLY ASSIGNMENTS BELONGING
+       TO THE LOGGED-IN TEACHER
+    */
+
+    const teacherAssignments =
+        assignments.filter(
+            function (assignment) {
+
+                return (
+                    String(
+                        assignment.teacherCode || ""
+                    ).toUpperCase()
+                    ===
+                    String(
+                        currentTeacher.teacherCode || ""
+                    ).toUpperCase()
+                );
+
+            }
+        );
+
+
+    /*
+       GET ONLY THIS TEACHER'S
+       ASSIGNMENT IDs
+    */
+
+    const teacherAssignmentIds =
+        teacherAssignments.map(
+            function (assignment) {
+
+                return String(
+                    assignment.id
+                );
+
+            }
+        );
+
+
+    /*
+       SHOW ONLY SUBMISSIONS FOR
+       THIS TEACHER'S ASSIGNMENTS
+    */
+
+    const submissions =
+        allSubmissions.filter(
+            function (submission) {
+
+                return teacherAssignmentIds.includes(
+                    String(
+                        submission.assignmentId
+                    )
+                );
+
+            }
+        );
+
+
+    updateStatistics(
+        submissions
+    );
+
+
+    if (
+        submissions.length === 0
+    ) {
+
+        container.innerHTML = "";
+
+        empty.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    empty.style.display =
+        "none";
+
+
+    container.innerHTML =
+        "";
+
+
+    submissions
+        .slice()
+        .reverse()
+        .forEach(
+            function (submission) {
+
+
+                /*
+                   FIND THE ORIGINAL ASSIGNMENT
+                   ONLY INSIDE THIS TEACHER'S
+                   ASSIGNMENTS
+                */
+
+                const assignment =
+                    teacherAssignments.find(
+                        function (item) {
+
+                            return (
+                                String(item.id)
+                                ===
+                                String(
+                                    submission.assignmentId
+                                )
+                            );
+
+                        }
+                    );
+
+
+                if (!assignment) {
+
+                    return;
+
+                }
+
+
+                const marks =
+                    assignment.marks ||
+                    "N/A";
+
+
+                const card =
+                    document.createElement(
+                        "article"
+                    );
+
+
+                card.className =
+                    "submission-card";
+
+
+                const isMarked =
+                    submission.status ===
+                    "Marked";
+
+
+                let markingArea =
+                    "";
+
+
+                if (isMarked) {
+
+
+                    markingArea = `
+
+                        <div class="marked-score">
+
+                            ✅ Score:
+
+                            ${escapeHtml(
+                                submission.score
+                            )}
+
+                            /
+
+                            ${escapeHtml(
+                                marks
+                            )}
+
+                        </div>
+
+
+                        <div class="marked-feedback">
+
+                            <strong>
+                                Teacher Feedback:
+                            </strong>
+
+                            <br>
+
+                            ${escapeHtml(
+                                submission.feedback ||
+                                "No feedback provided."
+                            )}
+
+                        </div>
+
+
+                        <div class="buttons">
+
+                            <button
+                                type="button"
+                                class="btn mark-btn"
+                                onclick="editMark(${JSON.stringify(submission.id)})">
+
+                                ✏️ Edit Mark
+
+                            </button>
+
+                        </div>
+
+                    `;
+
+
+                } else {
+
+
+                    markingArea = `
+
+                        <div
+                            class="mark-box"
+                            id="markBox${escapeHtml(
+                                submission.id
+                            )}">
+
+                            <h4>
+                                📝 Mark This Assignment
+                            </h4>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Score
+                                </label>
+
+
+                                <input
+                                    type="number"
+                                    id="score${escapeHtml(
+                                        submission.id
+                                    )}"
+                                    min="0"
+                                    max="${escapeHtml(
+                                        marks
+                                    )}"
+                                    placeholder="Enter score">
+
+
+                                <div class="marks-help">
+
+                                    Maximum:
+                                    ${escapeHtml(
+                                        marks
+                                    )}
+                                    marks
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Teacher Feedback
+                                </label>
+
+
+                                <textarea
+                                    id="feedback${escapeHtml(
+                                        submission.id
+                                    )}"
+                                    placeholder="Write feedback for the student..."></textarea>
+
+                            </div>
+
+
+                            <div class="buttons">
+
+                                <button
+                                    type="button"
+                                    class="btn mark-btn"
+                                    onclick="markAssignment(${JSON.stringify(submission.id)})">
+
+                                    ✅ Mark Assignment
+
+                                </button>
+
+                            </div>
+
+
+                        </div>
+
+                    `;
+
+                }
+
+
+                card.innerHTML = `
+
+                    <div class="submission-top">
+
+                        <div>
+
+                            <div class="subject">
+
+                                ${escapeHtml(
+                                    submission.subject ||
+                                    "Subject"
+                                )}
+
+                            </div>
+
+
+                            <h3>
+
+                                ${escapeHtml(
+                                    submission.assignmentTitle ||
+                                    "Assignment"
+                                )}
+
+                            </h3>
+
+                        </div>
+
+
+                        <span
+                            class="status ${
+                                isMarked
+                                    ? "status-marked"
+                                    : "status-submitted"
+                            }">
+
+                            ${
+                                isMarked
+                                    ? "Marked"
+                                    : "Submitted"
+                            }
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="student-info">
+
+                        <strong>
+                            Student:
+                        </strong>
+
+                        ${escapeHtml(
+                            submission.studentName ||
+                            "Student"
+                        )}
+
+                        <br>
+
+
+                        <strong>
+                            Student Number:
+                        </strong>
+
+                        ${escapeHtml(
+                            submission.studentNumber ||
+                            "Unknown"
+                        )}
+
+                        <br>
+
+
+                        <strong>
+                            Submitted:
+                        </strong>
+
+                        ${formatDate(
+                            submission.submittedAt
+                        )}
+
+                        <br>
+
+
+                        <strong>
+                            Maximum Marks:
+                        </strong>
+
+                        ${escapeHtml(
+                            marks
+                        )}
+
+                    </div>
+
+
+                    <div class="answer-box">
+
+                        <h4>
+                            Student Answer
+                        </h4>
+
+
+                        <p>
+
+                            ${escapeHtml(
+                                submission.answer ||
+                                "No answer provided."
+                            )}
+
+                        </p>
+
+                    </div>
+
+
+                    ${markingArea}
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+        );
+
+}
+
+
+/* =========================================
+   VERIFY SUBMISSION BELONGS TO TEACHER
+========================================= */
+
+
+function getTeacherSubmission(
+    submissionId
+) {
+
+    const currentTeacher =
+        getCurrentTeacher();
+
+
+    if (!currentTeacher) {
+        return null;
+    }
+
+
+    const submissions =
+        getSubmissions();
+
+
+    const assignments =
+        getAssignments();
+
+
+    const submission =
+        submissions.find(
+            function (item) {
+
+                return (
+                    String(item.id)
+                    ===
+                    String(submissionId)
+                );
+
+            }
+        );
+
+
+    if (!submission) {
+
+        alert(
+            "Submission could not be found."
+        );
+
+        return null;
+
+    }
+
+
+    const assignment =
+        assignments.find(
+            function (item) {
+
+                return (
+                    String(item.id)
+                    ===
+                    String(
+                        submission.assignmentId
+                    )
+                );
+
+            }
+        );
+
+
+    if (!assignment) {
+
+        alert(
+            "Original assignment could not be found."
+        );
+
+        return null;
+
+    }
+
+
+    /*
+       IMPORTANT SECURITY CHECK
+
+       The assignment must belong
+       to the logged-in teacher.
+    */
+
+    if (
+        String(
+            assignment.teacherCode || ""
+        ).toUpperCase()
+        !==
+        String(
+            currentTeacher.teacherCode || ""
+        ).toUpperCase()
+    ) {
+
+        alert(
+            "You can only manage submissions for your own assignments."
+        );
+
+        return null;
+
+    }
+
+
+    return {
+        submission: submission,
+        assignment: assignment
+    };
+
+}
+
+
+/* =========================================
+   MARK ASSIGNMENT
+========================================= */
+
+
+function markAssignment(submissionId) {
+
+    const result = getTeacherSubmission(submissionId);
+
+    if (!result) {
+        return;
+    }
+
+    const submission = result.submission;
+    const assignment = result.assignment;
+    const currentTeacher = getCurrentTeacher();
+
+    if (!currentTeacher) {
+        return;
+    }
+
+    const scoreInput = document.getElementById(
+        "score" + submissionId
+    );
+
+    const feedbackInput = document.getElementById(
+        "feedback" + submissionId
+    );
+
+    if (!scoreInput || !feedbackInput) {
+        alert("The marking form could not be found.");
+        return;
+    }
+
+    const scoreText = scoreInput.value.trim();
+    const feedback = feedbackInput.value.trim();
+
+    if (scoreText === "") {
+        alert("Please enter a score.");
+        return;
+    }
+
+    const score = Number(scoreText);
+    const maximumMarks = Number(assignment.marks);
+
+    if (Number.isNaN(score)) {
+        alert("Please enter a valid score.");
+        return;
+    }
+
+    if (score < 0 || score > maximumMarks) {
+        alert(
+            "The score must be between 0 and " +
+            maximumMarks +
+            "."
+        );
+        return;
+    }
+
+    if (!feedback) {
+        alert("Please enter teacher feedback.");
+        return;
+    }
+
+    /*
+     * UPDATE THE EXISTING SUBMISSION
+     * Do NOT create a new submission.
+     */
+
+    const allSubmissions = getSubmissions();
+
+    const submissionIndex = allSubmissions.findIndex(
+        function (item) {
+            return String(item.id) === String(submissionId);
+        }
+    );
+
+    if (submissionIndex === -1) {
+        alert("The student's submission could not be found.");
+        return;
+    }
+
+    /*
+     * Make sure this submission still belongs
+     * to this teacher.
+     */
+
+    const storedSubmission =
+        allSubmissions[submissionIndex];
+
+    const storedAssignment =
+        getAssignments().find(
+            function (item) {
+                return (
+                    String(item.id) ===
+                    String(storedSubmission.assignmentId)
+                );
+            }
+        );
+
+    if (!storedAssignment) {
+        alert("The original assignment could not be found.");
+        return;
+    }
+
+    if (
+        String(storedAssignment.teacherCode || "").toUpperCase() !==
+        String(currentTeacher.teacherCode || "").toUpperCase()
+    ) {
+        alert(
+            "You can only mark submissions for your own assignments."
+        );
+        return;
+    }
+
+    /*
+     * SAVE RESULT
+     */
+
+    allSubmissions[submissionIndex] = {
+        ...storedSubmission,
+
+        score: score,
+
+        feedback: feedback,
+
+        status: "Marked",
+
+        markedAt: new Date().toISOString(),
+
+        markedByTeacherCode:
+            currentTeacher.teacherCode,
+
+        markedByTeacherName:
+            currentTeacher.fullName,
+
+        resultAvailable: true
+    };
+
+    /*
+     * SAVE EVERYTHING BACK TO LOCAL STORAGE
+     */
+
+    saveSubmissions(allSubmissions);
+
+    /*
+     * VERIFY THAT THE RESULT WAS REALLY SAVED
+     */
+
+    const verification = getSubmissions().find(
+        function (item) {
+            return (
+                String(item.id) ===
+                String(submissionId)
+            );
+        }
+    );
+
+    if (
+        !verification ||
+        verification.status !== "Marked"
+    ) {
+        alert(
+            "The result could not be saved. Please try again."
+        );
+        return;
+    }
+
+    alert(
+        "Assignment marked successfully!\n\n" +
+        "Score: " +
+        score +
+        " / " +
+        maximumMarks +
+        "\n\n" +
+        "The result has been saved for the student."
+    );
+
+    /*
+     * RELOAD THE PAGE DATA
+     */
+
+    loadSubmissions();
+}
+
+
+/* =========================================
+   EDIT MARK
+========================================= */
+
+
+function editMark(
+    submissionId
+) {
+
+
+    const result =
+        getTeacherSubmission(
+            submissionId
+        );
+
+
+    if (!result) {
+        return;
+    }
+
+
+    const submission =
+        result.submission;
+
+
+    const assignment =
+        result.assignment;
+
+
+    const newScore =
+        prompt(
+            "Enter the new score:",
+            submission.score
+        );
+
+
+    if (
+        newScore === null
+    ) {
+
+        return;
+
+    }
+
+
+    const score =
+        Number(
+            newScore
+        );
+
+
+    if (
+        Number.isNaN(score) ||
+        score < 0 ||
+        score > Number(
+            assignment.marks
+        )
+    ) {
+
+        alert(
+            "Please enter a valid score between 0 and " +
+            assignment.marks +
+            "."
+        );
+
+        return;
+
+    }
+
+
+    const newFeedback =
+        prompt(
+            "Enter teacher feedback:",
+            submission.feedback || ""
+        );
+
+
+    if (
+        newFeedback === null
+    ) {
+
+        return;
+
+    }
+
+
+    submission.score =
+        score;
+
+
+    submission.feedback =
+        newFeedback.trim();
+
+
+    submission.status =
+        "Marked";
+
+
+    submission.markedAt =
+        new Date().toISOString();
+
+
+    submission.markedByTeacherCode =
+        getCurrentTeacher().teacherCode;
+
+
+    submission.markedByTeacherName =
+        getCurrentTeacher().fullName;
+
+
+    saveSubmissions(
+        getSubmissions()
+    );
+
+
+    alert(
+        "Mark updated successfully!"
+    );
+
+
+    loadSubmissions();
+
+}
+
+
+/* =========================================
+   STATISTICS
+========================================= */
+
+
+function updateStatistics(
+    submissions
+) {
+
+
+    const total =
+        submissions.length;
+
+
+    const waiting =
+    submissions.filter(function (item) {
+
+        return (
+            String(item.status || "")
+                .toLowerCase() !== "marked"
+        );
+
+    }).length;
+
+const marked =
+    submissions.filter(function (item) {
+
+        return (
+            String(item.status || "")
+                .toLowerCase() === "marked"
+        );
+
+    }).length;
+
+
+    document.getElementById(
+        "totalSubmissions"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "waitingSubmissions"
+    ).textContent =
+        waiting;
+
+
+    document.getElementById(
+        "markedSubmissions"
+    ).textContent =
+        marked;
+
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+
+function formatDate(
+    dateString
+) {
+
+
+    if (!dateString) {
+        return "Unknown";
+    }
+
+
+    const date =
+        new Date(
+            dateString
+        );
+
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return dateString;
+
+    }
+
+
+    return date.toLocaleString();
+
+}
+
+
+/* =========================================
+   HTML SAFETY
+========================================= */
+
+
+function escapeHtml(
+    value
+) {
+
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>

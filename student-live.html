@@ -1,0 +1,774 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Student Live Class - City International Online School
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="student-live.css">
+
+</head>
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="top-header">
+
+        <div class="school-brand">
+
+            <div class="logo">
+                🎓
+            </div>
+
+            <div>
+
+                <h1>
+                    City International
+                </h1>
+
+                <p>
+                    Online School
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div
+                id="liveStatus"
+                class="live-status waiting">
+
+                <span></span>
+
+                <strong id="liveStatusText">
+                    WAITING
+                </strong>
+
+            </div>
+
+
+            <button
+                class="dashboard-button"
+                onclick="goDashboard()">
+
+                🏠 Dashboard
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-container">
+
+
+        <!-- CLASS INFORMATION -->
+
+        <section class="class-information">
+
+            <div class="class-heading">
+
+                <div>
+
+                    <span class="class-label">
+                        ONLINE LESSON
+                    </span>
+
+                    <h2 id="classTitle">
+                        Mathematics - Algebra
+                    </h2>
+
+                    <p id="teacherText">
+                        👨‍🏫 Teacher: Mr. John
+                    </p>
+
+                </div>
+
+
+                <div class="class-time">
+
+                    <span id="classTimer">
+                        00:00:00
+                    </span>
+
+                    <small>
+                        Class time
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="class-details">
+
+                <div class="detail">
+
+                    <div class="detail-icon">
+                        📚
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Subject
+                        </strong>
+
+                        <p id="subjectText">
+                            Mathematics
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Lesson
+                        </strong>
+
+                        <p id="lessonText">
+                            Algebra
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-icon">
+                        👥
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Students
+                        </strong>
+
+                        <p id="studentCount">
+                            0 students
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= JOIN AREA ================= -->
+
+        <section
+            id="joinScreen"
+            class="join-screen">
+
+            <div class="join-box">
+
+                <div class="join-icon">
+                    🎥
+                </div>
+
+                <h2>
+                    Join Live Class
+                </h2>
+
+                <p>
+                    Your teacher is ready for the lesson.
+                    Click the button below to join.
+                </p>
+
+
+                <div class="student-name-area">
+
+                    <label>
+                        Your Name
+                    </label>
+
+                    <input
+                        id="studentName"
+                        type="text"
+                        placeholder="Enter your name">
+
+                </div>
+
+
+                <button
+                    class="join-button"
+                    onclick="joinClass()">
+
+                    🎥 Join Live Class
+
+                </button>
+
+
+                <div class="permission-info">
+
+                    🔒
+                    Your browser may ask for
+                    camera and microphone permission.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= CLASS AREA ================= -->
+
+        <section
+            id="classArea"
+            class="class-layout hidden">
+
+
+            <!-- VIDEO AREA -->
+
+            <div class="video-column">
+
+
+                <!-- TEACHER VIDEO -->
+
+                <div class="teacher-video-card">
+
+                    <div class="video-header">
+
+                        <div>
+
+                            <span
+                                id="teacherLiveDot"
+                                class="live-dot">
+                            </span>
+
+                            <strong>
+                                Teacher
+                            </strong>
+
+                        </div>
+
+
+                        <span
+                            id="videoTimer">
+
+                            00:00:00
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="teacher-video">
+
+                        <video
+                            id="teacherVideo"
+                            autoplay
+                            playsinline>
+                        </video>
+
+
+                        <div
+                            id="teacherPlaceholder"
+                            class="teacher-placeholder">
+
+                            <div class="teacher-avatar">
+                                👨‍🏫
+                            </div>
+
+                            <h3>
+                                Mr. John
+                            </h3>
+
+                            <p>
+                                Teacher camera
+                            </p>
+
+                        </div>
+
+
+                        <div class="teacher-name">
+
+                            👨‍🏫
+                            Mr. John
+
+                        </div>
+
+
+                        <div class="live-label">
+
+                            <span></span>
+                            LIVE
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STUDENT CAMERA -->
+
+                <div class="student-preview">
+
+                    <div class="student-video-container">
+
+                        <video
+                            id="studentVideo"
+                            autoplay
+                            playsinline
+                            muted
+                            style="display: none;">
+                        </video>
+
+
+                        <div
+                            id="studentPlaceholder"
+                            class="student-camera-off">
+
+                            👨‍🎓
+
+                        </div>
+
+
+                        <div
+                            id="studentStatus"
+                            class="student-status">
+                            Camera Off
+                        </div>
+
+
+                        <span class="you-label">
+                            You
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONTROLS -->
+
+                <div class="controls">
+
+                    <button
+                        id="micButton"
+                        onclick="toggleMicrophone()">
+
+                        <span>
+                            🎤
+                        </span>
+
+                        <small>
+                            Mute
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        id="cameraButton"
+                        onclick="toggleCamera()">
+
+                        <span>
+                            📹
+                        </span>
+
+                        <small>
+                            Camera
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        onclick="toggleFullscreen()">
+
+                        <span>
+                            ⛶
+                        </span>
+
+                        <small>
+                            Fullscreen
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        onclick="openParticipants()">
+
+                        <span>
+                            👥
+                        </span>
+
+                        <small>
+                            People
+                        </small>
+
+                    </button>
+
+
+                    <button
+                        class="leave-button"
+                        onclick="leaveClass()">
+
+
+                        <span>
+                            ☎️
+                        </span>
+
+                        <small>
+                            Leave
+                        </small>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- NOTES -->
+
+                <div class="notes-card">
+
+                    <div class="notes-header">
+
+                        <div>
+
+                            <h3>
+                                📝 My Class Notes
+                            </h3>
+
+                            <p>
+                                Write down important points.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            onclick="saveNotes()">
+
+                            💾 Save
+
+                        </button>
+
+                    </div>
+
+
+                    <textarea
+                        id="classNotes"
+                        placeholder="Write your notes here..."></textarea>
+
+                    <div
+                        id="notesMessage"
+                        class="notes-message"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= CHAT ================= -->
+
+            <aside class="chat-section">
+
+                <div class="chat-header">
+
+                    <div>
+
+                        <h3>
+                            💬 Class Chat
+                        </h3>
+
+                        <span>
+                            Live discussion
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        onclick="clearChat()">
+
+                        🗑️
+
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="chatMessages"
+                    class="chat-messages">
+
+
+                    <div class="system-message">
+
+                        🔔
+
+                        <span>
+                            Welcome to the live class!
+                        </span>
+
+                    </div>
+
+
+                    <div class="teacher-message">
+
+                        <div class="message-avatar">
+                            👨‍🏫
+                        </div>
+
+                        <div class="message-body">
+
+                            <strong>
+                                Mr. John
+                            </strong>
+
+                            <p>
+                                Hello everyone!
+                                Welcome to today's lesson.
+                            </p>
+
+                            <small>
+                                Now
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CHAT INPUT -->
+
+                <div class="chat-input">
+
+                    <input
+                        id="chatInput"
+                        type="text"
+                        placeholder="Type a message..."
+                        onkeydown="chatKey(event)">
+
+
+                    <button
+                        onclick="sendMessage()">
+
+                        ➤
+
+                    </button>
+
+                </div>
+
+                <div class="chat-reactions" aria-label="Class reactions">
+
+                    <button type="button" onclick="sendReaction('✋')">✋ Raise hand</button>
+                    <button type="button" onclick="sendReaction('👍')">👍</button>
+                    <button type="button" onclick="sendReaction('❤️')">❤️</button>
+                    <button type="button" onclick="sendReaction('😂')">😂</button>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= PARTICIPANTS MODAL ================= -->
+
+    <div
+        id="participantsModal"
+        class="modal hidden">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h3>
+                    👥 Participants
+                </h3>
+
+                <button
+                    onclick="closeParticipants()">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+
+            <div
+                id="participantsList"
+                class="participants-list">
+
+                <div class="participant">
+
+                    <div class="participant-avatar">
+                        👨‍🏫
+                    </div>
+
+                    <div class="participant-info">
+
+                        <strong>
+                            Mr. John
+                        </strong>
+
+                        <small>
+                            Teacher
+                        </small>
+
+                    </div>
+
+                    <span>
+                        🎤
+                    </span>
+
+                </div>
+
+
+                <div class="participant">
+
+                    <div class="participant-avatar">
+                        👨‍🎓
+                    </div>
+
+                    <div class="participant-info">
+
+                        <strong id="participantStudentName">
+                            You
+                        </strong>
+
+                        <small>
+                            Student
+                        </small>
+
+                    </div>
+
+                    <span>
+                        🎤
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= LEAVE MODAL ================= -->
+
+    <div
+        id="leaveModal"
+        class="modal hidden">
+
+        <div class="leave-box">
+
+            <div class="leave-icon">
+                🚪
+            </div>
+
+            <h2>
+                Leave Live Class?
+            </h2>
+
+            <p>
+                Are you sure you want to leave this class?
+            </p>
+
+
+            <div class="leave-actions">
+
+                <button
+                    class="stay-button"
+                    onclick="closeLeaveModal()">
+
+                    Stay
+
+                </button>
+
+
+                <button
+                    class="confirm-leave"
+                    onclick="confirmLeave()">
+
+                    Leave Class
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= NOTIFICATION ================= -->
+
+    <div
+        id="notification"
+        class="notification">
+
+        <span id="notificationIcon">
+            ✓
+        </span>
+
+        <span id="notificationText">
+            Notification
+        </span>
+
+    </div>
+
+
+
+    <script src="student-live.js"></script>
+
+</body>
+
+</html>
+```

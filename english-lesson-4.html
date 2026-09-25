@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reading Comprehension - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d70b8);
+            color: white;
+            padding: 55px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 760px;
+            margin: auto;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1d70b8;
+            margin: 20px 0 10px;
+        }
+
+        .objective-list,
+        .summary-list {
+            padding-left: 25px;
+        }
+
+        .objective-list li,
+        .summary-list li {
+            margin-bottom: 8px;
+        }
+
+        .reading-passage {
+            background: #fffdf5;
+            border-left: 5px solid #f59e0b;
+            padding: 25px;
+            border-radius: 8px;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .reading-passage h3 {
+            color: #123c69;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .strategy {
+            background: #eef6ff;
+            border-left: 5px solid #1d70b8;
+            padding: 16px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .example {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 16px;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            height: 260px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quiz-question h3 {
+            color: #123c69;
+            margin-bottom: 12px;
+        }
+
+        .quiz-option {
+            display: block;
+            padding: 9px;
+            margin: 6px 0;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .quiz-option:hover {
+            background: #eaf3ff;
+        }
+
+        .quiz-option input {
+            margin-right: 8px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .success {
+            background: #16a34a;
+            color: white;
+        }
+
+        .secondary {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            height: 18px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #16a34a;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .actions {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="school-name">
+        CITY INTERNATIONAL ONLINE SCHOOL
+    </div>
+
+    <a href="english.html" class="back-btn">
+        ← Back to English
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Reading Comprehension</h1>
+
+    <p>
+        Learn how to read carefully, understand information,
+        find important details, and answer questions from a passage.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+    <!-- OBJECTIVES -->
+
+    <section class="card">
+
+        <h2>🎯 Lesson Objectives</h2>
+
+        <ul class="objective-list">
+
+            <li>Understand what reading comprehension means.</li>
+
+            <li>Identify the main idea of a passage.</li>
+
+            <li>Find important details in a text.</li>
+
+            <li>Understand the meaning of words from context.</li>
+
+            <li>Answer questions using information from a passage.</li>
+
+            <li>Make simple conclusions from what you read.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- WHAT IS READING COMPREHENSION -->
+
+    <section class="card">
+
+        <h2>📖 What Is Reading Comprehension?</h2>
+
+        <p>
+            Reading comprehension is the ability to read a text,
+            understand its meaning, remember important information,
+            and answer questions about what you have read.
+        </p>
+
+        <div class="strategy">
+
+            <strong>Remember:</strong>
+
+            Good readers do not only read the words.
+            They think about what the words mean.
+
+        </div>
+
+    </section>
+
+
+    <!-- READING STRATEGIES -->
+
+    <section class="card">
+
+        <h2>🧠 Reading Strategies</h2>
+
+        <div class="strategy">
+
+            <h3>1. Read Carefully</h3>
+
+            <p>
+                Read the passage slowly enough to understand
+                what is happening.
+            </p>
+
+        </div>
+
+
+        <div class="strategy">
+
+            <h3>2. Find the Main Idea</h3>
+
+            <p>
+                Ask yourself: "What is this passage mainly about?"
+            </p>
+
+        </div>
+
+
+        <div class="strategy">
+
+            <h3>3. Look for Details</h3>
+
+            <p>
+                Find facts, names, places, numbers, and events
+                that support the main idea.
+            </p>
+
+        </div>
+
+
+        <div class="strategy">
+
+            <h3>4. Look at the Context</h3>
+
+            <p>
+                If you do not know a word, use the words around it
+                to help you understand its meaning.
+            </p>
+
+        </div>
+
+
+        <div class="strategy">
+
+            <h3>5. Read the Question Carefully</h3>
+
+            <p>
+                Make sure you understand what the question is asking
+                before choosing an answer.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- READING PASSAGE -->
+
+    <section class="card">
+
+        <h2>📚 Reading Passage</h2>
+
+        <div class="reading-passage">
+
+            <h3>A Visit to the School Garden</h3>
+
+            <br>
+
+            <p>
+                One Saturday morning, a group of students from
+                City International Online School visited a community
+                garden near their school. Their teacher, Mr. Daniel,
+                organized the visit so that the students could learn
+                more about plants and the environment.
+            </p>
+
+            <p>
+                When they arrived, the students saw many different
+                plants growing in neat rows. Some plants were vegetables,
+                while others produced fruits. The students were surprised
+                to see how much food could be grown in a small area.
+            </p>
+
+            <p>
+                Mr. Daniel explained that plants need sunlight,
+                water, air, and suitable soil to grow well. He also
+                explained that taking care of plants helps protect
+                the environment.
+            </p>
+
+            <p>
+                The students then helped the gardeners remove weeds
+                and water the plants. They worked together and enjoyed
+                the activity. Before leaving, the students promised
+                to start a small garden at their school.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- UNDERSTANDING THE PASSAGE -->
+
+    <section class="card">
+
+        <h2>🔎 Understanding the Passage</h2>
+
+        <div class="example">
+
+            <strong>Main Idea:</strong>
+
+            <p>
+                The students visited a community garden to learn
+                about plants and caring for the environment.
+            </p>
+
+        </div>
+
+
+        <div class="example">
+
+            <strong>Important Details:</strong>
+
+            <ul class="summary-list">
+
+                <li>The visit happened on a Saturday.</li>
+
+                <li>Mr. Daniel organized the visit.</li>
+
+                <li>The students saw vegetables and fruit plants.</li>
+
+                <li>Plants need sunlight, water, air, and suitable soil.</li>
+
+                <li>The students helped remove weeds and water plants.</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card">
+
+        <h2>✏️ Practice Questions</h2>
+
+        <div class="practice-question">
+
+            <strong>1.</strong>
+
+            Why did Mr. Daniel organize the visit?
+
+            <br><br>
+
+            Answer: To help students learn about plants
+            and the environment.
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>2.</strong>
+
+            Name two things plants need to grow.
+
+            <br><br>
+
+            Answer: Sunlight and water.
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>3.</strong>
+
+            What did the students do in the garden?
+
+            <br><br>
+
+            Answer: They removed weeds and watered the plants.
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>4.</strong>
+
+            What did the students promise to do?
+
+            <br><br>
+
+            Answer: They promised to start a small garden
+            at their school.
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO -->
+
+    <section class="card">
+
+        <h2>🎥 Lesson Video</h2>
+
+        <div class="video-box">
+
+            <div>
+
+                <h2>Reading Comprehension Video</h2>
+
+                <p>
+                    Your teacher's reading lesson video will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card">
+
+        <h2>🧠 Reading Comprehension Quiz</h2>
+
+        <p>
+            Read the passage above and choose the correct answer.
+        </p>
+
+        <br>
+
+
+        <form id="quizForm">
+
+
+            <!-- Q1 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    1. When did the students visit the garden?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="a">
+
+                    Monday
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="b">
+
+                    Saturday
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="c">
+
+                    Wednesday
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="d">
+
+                    Friday
+
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    2. Who organized the visit?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="a">
+
+                    The school gardener
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="b">
+
+                    Mr. Daniel
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="c">
+
+                    The school principal
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="d">
+
+                    The students' parents
+
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    3. Which of these is needed by plants to grow?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="a">
+
+                    Television
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="b">
+
+                    Sunlight
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="c">
+
+                    Computers
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="d">
+
+                    Books
+
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    4. What did the students help the gardeners do?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="a">
+
+                    Build a classroom
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="b">
+
+                    Paint the school
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="c">
+
+                    Remove weeds and water plants
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="d">
+
+                    Cook food
+
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    5. What did the students promise to do?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="a">
+
+                    Start a small garden at school
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="b">
+
+                    Leave the school
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="c">
+
+                    Build a new classroom
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="d">
+
+                    Stop studying plants
+
+                </label>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="submitQuiz()">
+
+                    Submit Quiz
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn secondary"
+                    onclick="resetQuiz()">
+
+                    Reset Quiz
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div
+            id="quizResult"
+            class="quiz-result">
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="card">
+
+        <h2>📊 Lesson Progress</h2>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+        <div
+            id="progressText"
+            class="progress-text">
+
+            0% Complete
+
+        </div>
+
+    </section>
+
+
+    <!-- ACTIONS -->
+
+    <div class="actions">
+
+        <button
+            class="btn success"
+            onclick="markComplete()">
+
+            ✓ Mark Lesson Complete
+
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="resetLesson()">
+
+            Reset Lesson
+
+        </button>
+
+        <br>
+
+
+        <a
+            href="english.html"
+            class="btn primary">
+
+            ← Back to English
+
+        </a>
+
+
+        <a
+            href="english-lesson-5.html"
+            class="btn primary">
+
+            Next Lesson →
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © <span id="year"></span>
+        City International Online School.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+    const completedKey =
+        "cis_english_lesson4_completed";
+
+    const quizScoreKey =
+        "cis_english_lesson4_quiz_score";
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            updateProgress();
+
+            loadQuizResult();
+
+        }
+    );
+
+
+    function submitQuiz() {
+
+        const correctAnswers = {
+
+            q1: "b",
+
+            q2: "b",
+
+            q3: "b",
+
+            q4: "c",
+
+            q5: "a"
+
+        };
+
+
+        let score = 0;
+
+
+        for (
+            let question in correctAnswers
+        ) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' +
+                    question +
+                    '"]:checked'
+                );
+
+
+            if (!selected) {
+
+                alert(
+                    "Please answer all quiz questions."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                selected.value ===
+                correctAnswers[question]
+            ) {
+
+                score++;
+
+            }
+
+        }
+
+
+        const percentage =
+            Math.round(
+                (score / 5) * 100
+            );
+
+
+        localStorage.setItem(
+            quizScoreKey,
+            percentage
+        );
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        if (percentage === 100) {
+
+            result.innerHTML =
+                "🎉 Excellent! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%).";
+
+        } else if (percentage >= 60) {
+
+            result.innerHTML =
+                "👏 Good work! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%). Keep practising.";
+
+        } else {
+
+            result.innerHTML =
+                "📚 Keep learning! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%). Review the lesson and try again.";
+
+        }
+
+
+        updateProgress();
+
+    }
+
+
+    function loadQuizResult() {
+
+        const savedScore =
+            localStorage.getItem(
+                quizScoreKey
+            );
+
+
+        if (!savedScore) {
+
+            return;
+
+        }
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        result.innerHTML =
+            "Previous quiz score: " +
+            savedScore +
+            "%";
+
+    }
+
+
+    function markComplete() {
+
+        localStorage.setItem(
+            completedKey,
+            "true"
+        );
+
+
+        updateProgress();
+
+
+        alert(
+            "✓ Reading Comprehension lesson completed successfully!"
+        );
+
+    }
+
+
+    function updateProgress() {
+
+        const completed =
+            localStorage.getItem(
+                completedKey
+            ) === "true";
+
+
+        const score =
+            parseInt(
+                localStorage.getItem(
+                    quizScoreKey
+                )
+            ) || 0;
+
+
+        let progress = 0;
+
+
+        if (completed) {
+
+            progress = 100;
+
+        } else if (score > 0) {
+
+            progress = score;
+
+        }
+
+
+        document.getElementById(
+            "progressFill"
+        ).style.width =
+            progress + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            progress +
+            "% Complete";
+
+    }
+
+
+    function resetQuiz() {
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        localStorage.removeItem(
+            quizScoreKey
+        );
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display =
+            "none";
+
+
+        result.innerHTML = "";
+
+
+        updateProgress();
+
+    }
+
+
+    function resetLesson() {
+
+        const confirmReset =
+            confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+
+        if (!confirmReset) {
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            completedKey
+        );
+
+
+        localStorage.removeItem(
+            quizScoreKey
+        );
+
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        document.getElementById(
+            "quizResult"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "quizResult"
+        ).innerHTML = "";
+
+
+        updateProgress();
+
+
+        alert(
+            "Lesson progress has been reset."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

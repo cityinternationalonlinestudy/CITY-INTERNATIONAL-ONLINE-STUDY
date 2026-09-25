@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 2 - Fractions | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            border: none;
+            background: white;
+            color: #123c69;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e5eef8;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 30px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1769aa);
+            color: white;
+            padding: 40px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero small {
+            opacity: 0.85;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin: 8px 0;
+        }
+
+        .hero p {
+            max-width: 800px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1769aa;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .definition {
+            background: #eef6ff;
+            border-left: 5px solid #1769aa;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .fraction {
+            font-size: 28px;
+            font-weight: bold;
+            display: inline-flex;
+            flex-direction: column;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 1.1;
+            margin: 0 6px;
+        }
+
+        .fraction .top {
+            border-bottom: 2px solid #123c69;
+            padding: 0 8px 3px;
+        }
+
+        .fraction .bottom {
+            padding: 3px 8px 0;
+        }
+
+        .fraction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .fraction-box {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .fraction-box h3 {
+            margin-top: 0;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 280px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .play-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: #123c69;
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #123c69;
+        }
+
+        .option {
+            display: block;
+            background: white;
+            border: 1px solid #d6dee8;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #eef6ff;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #1769aa;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #125487;
+        }
+
+        .success {
+            background: #198754;
+            color: white;
+        }
+
+        .secondary {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            border-left: 5px solid #198754;
+        }
+
+        .progress-container {
+            background: #e5e7eb;
+            height: 14px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #198754;
+            transition: width 0.4s ease;
+        }
+
+        .complete-message {
+            display: none;
+            background: #ecfdf5;
+            color: #166534;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="school-name">
+        CITY INTERNATIONAL ONLINE SCHOOL
+    </div>
+
+    <button class="back-btn" onclick="goBack()">
+        ← Back to Mathematics
+    </button>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <small>MATHEMATICS • LESSON 2</small>
+
+        <h1>Fractions</h1>
+
+        <p>
+            Welcome to Lesson 2. In this lesson you will learn
+            what fractions are, how to identify their parts,
+            compare fractions and perform simple fraction operations.
+        </p>
+
+    </section>
+
+
+    <!-- OBJECTIVES -->
+
+    <section class="card">
+
+        <h2>Learning Objectives</h2>
+
+        <p>By the end of this lesson, you should be able to:</p>
+
+        <ul style="padding-left: 22px; margin-top: 10px;">
+
+            <li>Explain what a fraction is.</li>
+
+            <li>Identify the numerator and denominator.</li>
+
+            <li>Recognize proper and improper fractions.</li>
+
+            <li>Identify equivalent fractions.</li>
+
+            <li>Compare simple fractions.</li>
+
+            <li>Add fractions with the same denominator.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- WHAT IS A FRACTION -->
+
+    <section class="card">
+
+        <h2>1. What is a Fraction?</h2>
+
+        <p>
+            A fraction represents a part of a whole.
+        </p>
+
+        <div class="definition">
+
+            For example, if a pizza is divided into
+            4 equal pieces and you take 1 piece,
+            you have taken one-fourth of the pizza.
+
+            <br><br>
+
+            We write one-fourth as:
+
+            <br><br>
+
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">4</span>
+            </span>
+
+        </div>
+
+        <p>
+            The number at the top tells us how many parts
+            we have. The number at the bottom tells us
+            how many equal parts make the whole.
+        </p>
+
+    </section>
+
+
+    <!-- NUMERATOR DENOMINATOR -->
+
+    <section class="card">
+
+        <h2>2. Numerator and Denominator</h2>
+
+        <div class="fraction-box">
+
+            <span class="fraction">
+
+                <span class="top">3</span>
+
+                <span class="bottom">5</span>
+
+            </span>
+
+        </div>
+
+        <div class="example">
+
+            <strong>Numerator:</strong>
+
+            The top number is called the numerator.
+
+            <br><br>
+
+            In
+            <span class="fraction">
+                <span class="top">3</span>
+                <span class="bottom">5</span>
+            </span>
+            the numerator is <strong>3</strong>.
+
+            <br><br>
+
+            <strong>Denominator:</strong>
+
+            The bottom number is called the denominator.
+
+            <br><br>
+
+            In
+            <span class="fraction">
+                <span class="top">3</span>
+                <span class="bottom">5</span>
+            </span>
+            the denominator is <strong>5</strong>.
+
+        </div>
+
+    </section>
+
+
+    <!-- TYPES -->
+
+    <section class="card">
+
+        <h2>3. Types of Fractions</h2>
+
+        <div class="fraction-grid">
+
+            <div class="fraction-box">
+
+                <h3>Proper Fraction</h3>
+
+                <p>
+                    The numerator is smaller than
+                    the denominator.
+                </p>
+
+                <br>
+
+                <span class="fraction">
+                    <span class="top">2</span>
+                    <span class="bottom">5</span>
+                </span>
+
+            </div>
+
+
+            <div class="fraction-box">
+
+                <h3>Improper Fraction</h3>
+
+                <p>
+                    The numerator is equal to or
+                    greater than the denominator.
+                </p>
+
+                <br>
+
+                <span class="fraction">
+                    <span class="top">7</span>
+                    <span class="bottom">4</span>
+                </span>
+
+            </div>
+
+
+            <div class="fraction-box">
+
+                <h3>Mixed Number</h3>
+
+                <p>
+                    A whole number combined with
+                    a proper fraction.
+                </p>
+
+                <br>
+
+                <strong style="font-size: 24px;">
+                    2
+                    <span class="fraction">
+                        <span class="top">1</span>
+                        <span class="bottom">3</span>
+                    </span>
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EQUIVALENT FRACTIONS -->
+
+    <section class="card">
+
+        <h2>4. Equivalent Fractions</h2>
+
+        <p>
+            Equivalent fractions have different numbers
+            but represent the same value.
+        </p>
+
+        <div class="definition">
+
+            For example:
+
+            <br><br>
+
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">2</span>
+            </span>
+
+            is equivalent to
+
+            <span class="fraction">
+                <span class="top">2</span>
+                <span class="bottom">4</span>
+            </span>
+
+            and
+
+            <span class="fraction">
+                <span class="top">4</span>
+                <span class="bottom">8</span>
+            </span>
+
+        </div>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            To change
+
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">2</span>
+            </span>
+
+            into an equivalent fraction with denominator 4,
+            multiply both the numerator and denominator by 2.
+
+            <br><br>
+
+            1 × 2 = 2
+
+            <br>
+
+            2 × 2 = 4
+
+            <br><br>
+
+            Therefore:
+
+            <br>
+
+            <span class="fraction">
+                <span class="top">1</span>
+                <span class="bottom">2</span>
+            </span>
+
+            =
+
+            <span class="fraction">
+                <span class="top">2</span>
+                <span class="bottom">4</span>
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPARING -->
+
+    <section class="card">
+
+        <h2>5. Comparing Fractions</h2>
+
+        <p>
+            When fractions have the same denominator,
+            compare their numerators.
+        </p>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            Which is greater?
+
+            <br><br>
+
+            <span class="fraction">
+                <span class="top">3</span>
+                <span class="bottom">7</span>
+            </span>
+
+            or
+
+            <span class="fraction">
+                <span class="top">5</span>
+                <span class="bottom">7</span>
+            </span>
+
+            <br><br>
+
+            Since 5 is greater than 3:
+
+            <br><br>
+
+            <strong>
+                5/7 is greater than 3/7.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADDITION -->
+
+    <section class="card">
+
+        <h2>6. Adding Fractions with the Same Denominator</h2>
+
+        <p>
+            When fractions have the same denominator,
+            add the numerators and keep the denominator.
+        </p>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            <br><br>
+
+            <span class="fraction">
+                <span class="top">2</span>
+                <span class="bottom">7</span>
+            </span>
+
+            +
+
+            <span class="fraction">
+                <span class="top">3</span>
+                <span class="bottom">7</span>
+            </span>
+
+            =
+
+            <span class="fraction">
+                <span class="top">5</span>
+                <span class="bottom">7</span>
+            </span>
+
+            <br><br>
+
+            We add:
+
+            <br>
+
+            2 + 3 = 5
+
+            <br><br>
+
+            The denominator remains 7.
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO -->
+
+    <section class="card">
+
+        <h2>7. Video Lesson</h2>
+
+        <div class="video-box">
+
+            <button class="play-button" onclick="playVideo()">
+                ▶
+            </button>
+
+            <h3>Fractions Video Lesson</h3>
+
+            <p>
+                Your Mathematics video lesson will appear here.
+            </p>
+
+            <small>
+                Video connection can be added later.
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card">
+
+        <h2>8. Practice Questions</h2>
+
+        <div class="example">
+
+            <strong>Question 1:</strong>
+
+            In the fraction 3/8, what is the numerator?
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 2:</strong>
+
+            In the fraction 5/9, what is the denominator?
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 3:</strong>
+
+            Is 2/7 a proper or improper fraction?
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 4:</strong>
+
+            Which is greater: 3/8 or 6/8?
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 5:</strong>
+
+            Calculate:
+
+            <br><br>
+
+            2/5 + 1/5
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card">
+
+        <h2>9. Mini Quiz</h2>
+
+        <p>
+            Answer all five questions and then click
+            <strong>Submit Quiz</strong>.
+        </p>
+
+
+        <form id="quizForm">
+
+
+            <!-- Q1 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 1</h3>
+
+                <p>
+                    What is the numerator in 3/7?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    3
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    7
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    10
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 2</h3>
+
+                <p>
+                    What is the denominator in 5/9?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    5
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    9
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    14
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 3</h3>
+
+                <p>
+                    Which is a proper fraction?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    7/3
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    9/4
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    2/5
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 4</h3>
+
+                <p>
+                    Which fraction is greater?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    3/8
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    6/8
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    They are equal
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 5</h3>
+
+                <p>
+                    What is 2/5 + 1/5?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    3/5
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    3/10
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    2/10
+                </label>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="submitQuiz()">
+
+                    Submit Quiz
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn secondary"
+                    onclick="resetQuiz()">
+
+                    Reset Quiz
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div id="quizResult" class="result"></div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="card">
+
+        <h2>10. Lesson Progress</h2>
+
+        <p id="progressText">
+            Lesson progress: 0%
+        </p>
+
+        <div class="progress-container">
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="btn success"
+                onclick="completeLesson()">
+
+                ✓ Mark Lesson Complete
+
+            </button>
+
+
+            <button
+                class="btn primary"
+                onclick="nextLesson()">
+
+                Next Lesson →
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="completeMessage"
+            class="complete-message">
+
+            ✓ Congratulations! You have completed
+            Mathematics Lesson 2: Fractions.
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © <span id="year"></span>
+    CITY INTERNATIONAL ONLINE SCHOOL
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       CHECK LOGIN
+    ========================= */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const student =
+            localStorage.getItem("cis_current_student");
+
+        if (!student) {
+
+            alert(
+                "Please login as a student first."
+            );
+
+            window.location.href = "index.html";
+
+            return;
+        }
+
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        loadProgress();
+
+    });
+
+
+    /* =========================
+       BACK TO MATHEMATICS
+    ========================= */
+
+    function goBack() {
+
+        window.location.href =
+            "mathematics.html";
+
+    }
+
+
+    /* =========================
+       VIDEO
+    ========================= */
+
+    function playVideo() {
+
+        alert(
+            "The Fractions video lesson will be connected here."
+        );
+
+    }
+
+
+    /* =========================
+       QUIZ
+    ========================= */
+
+    function submitQuiz() {
+
+        const answers = {
+
+            q1: "a",
+            q2: "b",
+            q3: "c",
+            q4: "b",
+            q5: "a"
+
+        };
+
+
+        let score = 0;
+
+        let answered = 0;
+
+
+        for (let question in answers) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' +
+                    question +
+                    '"]:checked'
+                );
+
+
+            if (selected) {
+
+                answered++;
+
+
+                if (
+                    selected.value ===
+                    answers[question]
+                ) {
+
+                    score++;
+
+                }
+
+            }
+
+        }
+
+
+        if (answered < 5) {
+
+            alert(
+                "Please answer all 5 questions before submitting."
+            );
+
+            return;
+
+        }
+
+
+        const percentage =
+            (score / 5) * 100;
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        result.innerHTML =
+            "<strong>Quiz Result</strong><br><br>" +
+
+            "You scored <strong>" +
+            score +
+            " / 5</strong>.<br>" +
+
+            "Your score is <strong>" +
+            percentage +
+            "%</strong>.";
+
+
+        if (score === 5) {
+
+            result.innerHTML +=
+                "<br><br>Excellent work! 🎉";
+
+        } else if (score >= 3) {
+
+            result.innerHTML +=
+                "<br><br>Good work! Review the lesson and try again.";
+
+        } else {
+
+            result.innerHTML +=
+                "<br><br>Please review the lesson and try the quiz again.";
+
+        }
+
+
+        localStorage.setItem(
+            "cis_math_lesson2_quiz_score",
+            score
+        );
+
+    }
+
+
+    /* =========================
+       RESET QUIZ
+    ========================= */
+
+    function resetQuiz() {
+
+        document
+            .getElementById("quizForm")
+            .reset();
+
+
+        document
+            .getElementById("quizResult")
+            .style.display = "none";
+
+    }
+
+
+    /* =========================
+       COMPLETE LESSON
+    ========================= */
+
+    function completeLesson() {
+
+        localStorage.setItem(
+            "cis_math_lesson2_completed",
+            "true"
+        );
+
+
+        updateProgress(100);
+
+
+        document.getElementById(
+            "completeMessage"
+        ).style.display = "block";
+
+
+        alert(
+            "Lesson 2 has been marked as complete!"
+        );
+
+    }
+
+
+    /* =========================
+       LOAD PROGRESS
+    ========================= */
+
+    function loadProgress() {
+
+        const completed =
+            localStorage.getItem(
+                "cis_math_lesson2_completed"
+            );
+
+
+        if (completed === "true") {
+
+            updateProgress(100);
+
+
+            document.getElementById(
+                "completeMessage"
+            ).style.display = "block";
+
+        }
+
+    }
+
+
+    /* =========================
+       UPDATE PROGRESS
+    ========================= */
+
+    function updateProgress(value) {
+
+        document.getElementById(
+            "progressBar"
+        ).style.width =
+            value + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            "Lesson progress: " +
+            value +
+            "%";
+
+    }
+
+
+    /* =========================
+       NEXT LESSON
+    ========================= */
+
+    function nextLesson() {
+
+        alert(
+            "Lesson 3: Algebra will be added next."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

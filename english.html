@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>English - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123b6d;
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123b6d;
+            text-decoration: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e8f0fa;
+        }
+
+        .container {
+            width: min(1150px, 92%);
+            margin: 30px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123b6d, #2474b8);
+            color: white;
+            border-radius: 18px;
+            padding: 45px 30px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #123b6d;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .section {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            color: #123b6d;
+            margin-bottom: 20px;
+            font-size: 27px;
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .lesson-card {
+            border: 1px solid #dbe4ef;
+            border-radius: 13px;
+            padding: 22px;
+            background: #f9fbfd;
+            transition: 0.2s;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .lesson-number {
+            display: inline-block;
+            background: #123b6d;
+            color: white;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-card h3 {
+            color: #123b6d;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .lesson-card p {
+            color: #596579;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 18px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: #123b6d;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0d2d53;
+        }
+
+        .placeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .placeholder {
+            border: 1px dashed #b9c7d8;
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+
+        .placeholder-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .placeholder h3 {
+            color: #123b6d;
+            margin-bottom: 7px;
+        }
+
+        .progress-area {
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #16803c;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 9px;
+            font-weight: bold;
+        }
+
+        .info-box {
+            background: #eef6ff;
+            border-left: 5px solid #2474b8;
+            padding: 17px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 850px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lesson-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .placeholder-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="student-dashboard.html" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <h1>English</h1>
+
+            <p>
+                Improve your reading, writing, grammar,
+                vocabulary and communication skills.
+            </p>
+
+        </section>
+
+
+        <!-- STATS -->
+        <section class="stats">
+
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Lessons</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Assignments</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Quizzes Completed</div>
+            </div>
+
+            <div class="stat">
+                <div id="progressNumber" class="stat-number">
+                    0%
+                </div>
+                <div class="stat-label">Progress</div>
+            </div>
+
+        </section>
+
+
+        <!-- LESSONS -->
+        <section class="section">
+
+            <h2>English Lessons</h2>
+
+            <div class="lesson-grid">
+
+
+                <!-- LESSON 1 -->
+                <div class="lesson-card">
+
+                    <span class="lesson-number">
+                        Lesson 1
+                    </span>
+
+                    <h3>
+                        Parts of Speech
+                    </h3>
+
+                    <p>
+                        Learn about nouns, pronouns, verbs,
+                        adjectives, adverbs, prepositions,
+                        conjunctions and interjections.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="openLesson('Parts of Speech')"
+                    >
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 2 -->
+                <div class="lesson-card">
+
+                    <span class="lesson-number">
+                        Lesson 2
+                    </span>
+
+                    <h3>
+                        Sentence Structure
+                    </h3>
+
+                    <p>
+                        Learn how words are organized to make
+                        clear and meaningful sentences.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="openLesson('Sentence Structure')"
+                    >
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 3 -->
+                <div class="lesson-card">
+
+                    <span class="lesson-number">
+                        Lesson 3
+                    </span>
+
+                    <h3>
+                        Tenses
+                    </h3>
+
+                    <p>
+                        Learn about present, past and future
+                        tenses and how to use them correctly.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="openLesson('Tenses')"
+                    >
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 4 -->
+                <div class="lesson-card">
+
+                    <span class="lesson-number">
+                        Lesson 4
+                    </span>
+
+                    <h3>
+                        Reading Comprehension
+                    </h3>
+
+                    <p>
+                        Develop reading skills, understand
+                        passages and answer comprehension questions.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="openLesson('Reading Comprehension')"
+                    >
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 5 -->
+                <div class="lesson-card">
+
+                    <span class="lesson-number">
+                        Lesson 5
+                    </span>
+
+                    <h3>
+                        Writing Skills
+                    </h3>
+
+                    <p>
+                        Learn how to write clear paragraphs,
+                        letters, stories and other forms of writing.
+                    </p>
+
+                    <button
+                        class="btn primary"
+                        onclick="openLesson('Writing Skills')"
+                    >
+                        Start Lesson
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LEARNING MATERIALS -->
+        <section class="section">
+
+            <h2>English Learning Materials</h2>
+
+            <div class="placeholder-grid">
+
+                <div class="placeholder">
+
+                    <div class="placeholder-icon">
+                        📚
+                    </div>
+
+                    <h3>Study Notes</h3>
+
+                    <p>
+                        English notes and learning resources
+                        will appear here.
+                    </p>
+
+                </div>
+
+
+                <div class="placeholder">
+
+                    <div class="placeholder-icon">
+                        📄
+                    </div>
+
+                    <h3>PDF Materials</h3>
+
+                    <p>
+                        Downloadable English documents
+                        will appear here.
+                    </p>
+
+                </div>
+
+
+                <div class="placeholder">
+
+                    <div class="placeholder-icon">
+                        🎥
+                    </div>
+
+                    <h3>Video Lessons</h3>
+
+                    <p>
+                        English teaching videos will
+                        appear here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASSIGNMENTS -->
+        <section class="section">
+
+            <h2>English Assignments</h2>
+
+            <div class="info-box">
+
+                <strong>No assignments yet.</strong>
+
+                <p>
+                    Your English teacher will post assignments
+                    here when they are available.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZZES -->
+        <section class="section">
+
+            <h2>English Quizzes</h2>
+
+            <div class="info-box">
+
+                <strong>English quizzes will appear here.</strong>
+
+                <p>
+                    Complete each lesson quiz to test your
+                    understanding and improve your results.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LIVE CLASS -->
+        <section class="section">
+
+            <h2>English Live Class</h2>
+
+            <div class="placeholder">
+
+                <div class="placeholder-icon">
+                    🎥
+                </div>
+
+                <h3>Live English Class</h3>
+
+                <p>
+                    Your teacher's live English class
+                    will appear here.
+                </p>
+
+                <button
+                    class="btn primary"
+                    onclick="showMessage()"
+                >
+                    Join Live Class
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="section">
+
+            <h2>English Progress</h2>
+
+            <p>
+                Complete the five English lessons to
+                increase your progress.
+            </p>
+
+            <div class="progress-area">
+
+                <div class="progress-bar">
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill"
+                    ></div>
+
+                </div>
+
+                <div
+                    id="progressText"
+                    class="progress-text"
+                >
+                    0% Complete
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        function openLesson(lessonName) {
+
+            if (lessonName === "Parts of Speech") {
+                window.location.href =
+                    "english-lesson-1.html";
+                return;
+            }
+
+            if (lessonName === "Sentence Structure") {
+                window.location.href =
+                    "english-lesson-2.html";
+                return;
+            }
+
+            if (lessonName === "Tenses") {
+                window.location.href =
+                    "english-lesson-3.html";
+                return;
+            }
+
+            if (lessonName === "Reading Comprehension") {
+                window.location.href =
+                    "english-lesson-4.html";
+                return;
+            }
+
+            if (lessonName === "Writing Skills") {
+                window.location.href =
+                    "english-lesson-5.html";
+                return;
+            }
+
+            alert(
+                lessonName +
+                " lesson will be added next."
+            );
+        }
+
+
+        function updateProgress() {
+
+            let completed = 0;
+
+            for (let i = 1; i <= 5; i++) {
+
+                if (
+                    localStorage.getItem(
+                        "cis_english_lesson" +
+                        i +
+                        "_completed"
+                    ) === "true"
+                ) {
+                    completed++;
+                }
+            }
+
+
+            const percentage =
+                Math.round(
+                    (completed / 5) * 100
+                );
+
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                percentage + "%";
+
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                percentage + "% Complete";
+
+
+            document.getElementById(
+                "progressNumber"
+            ).textContent =
+                percentage + "%";
+        }
+
+
+        function showMessage() {
+
+            alert(
+                "The English live class will be available when your teacher schedules a class."
+            );
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+                updateProgress();
+            }
+        );
+
+    </script>
+
+</body>
+</html>

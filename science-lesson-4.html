@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Science Lesson 4 - Energy and Forces</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: #0f4c81;
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .back-btn {
+            background: white;
+            color: #0f4c81;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .back-btn:hover {
+            background: #eaf2f8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f4c81, #7c3aed);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .section h2 {
+            color: #0f4c81;
+            margin-bottom: 18px;
+            font-size: 28px;
+        }
+
+        .section h3 {
+            color: #155e91;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+
+        .objectives {
+            background: #eef7ff;
+            border-left: 5px solid #1976b9;
+        }
+
+        .objectives ul {
+            padding-left: 25px;
+        }
+
+        .objectives li {
+            margin-bottom: 8px;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .concept-card {
+            border: 1px solid #dbe4ee;
+            border-radius: 12px;
+            padding: 22px;
+            background: #fafcff;
+        }
+
+        .concept-icon {
+            font-size: 42px;
+            margin-bottom: 8px;
+        }
+
+        .concept-card h3 {
+            margin-top: 0;
+            color: #0f4c81;
+        }
+
+        .concept-card ul {
+            padding-left: 22px;
+            margin-top: 10px;
+        }
+
+        .info-box {
+            background: #f0fdf4;
+            border-left: 5px solid #22c55e;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+
+        .example-box {
+            background: #fff8e7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+
+        .warning-box {
+            background: #fff1f2;
+            border-left: 5px solid #ef4444;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 18px 0;
+        }
+
+        .formula-box {
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            padding: 22px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 20px;
+            margin: 20px 0;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 280px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .video-icon {
+            font-size: 65px;
+            margin-bottom: 15px;
+        }
+
+        .practice {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .practice ol {
+            padding-left: 25px;
+        }
+
+        .practice li {
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            padding: 22px;
+            margin-bottom: 18px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #1f2937;
+            font-size: 18px;
+        }
+
+        .option {
+            display: block;
+            background: white;
+            border: 1px solid #d1d5db;
+            padding: 12px 15px;
+            margin-top: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option:hover {
+            background: #eef7ff;
+            border-color: #1976b9;
+        }
+
+        .option input {
+            margin-right: 10px;
+        }
+
+        .quiz-actions {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .btn {
+            border: none;
+            padding: 13px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 700;
+            margin: 5px;
+        }
+
+        .primary {
+            background: #0f4c81;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0b3a63;
+        }
+
+        .success {
+            background: #16a34a;
+            color: white;
+        }
+
+        .success:hover {
+            background: #15803d;
+        }
+
+        .secondary {
+            background: #64748b;
+            color: white;
+        }
+
+        .secondary:hover {
+            background: #475569;
+        }
+
+        .result {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #eef7ff;
+        }
+
+        .result h3 {
+            margin-top: 0;
+            color: #0f4c81;
+        }
+
+        .progress-container {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #16a34a;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-weight: 700;
+            color: #0f4c81;
+        }
+
+        .completion-box {
+            text-align: center;
+        }
+
+        .status {
+            margin-top: 15px;
+            font-weight: 700;
+            color: #16a34a;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 14px 16px;
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .navigation .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <div class="school-name">
+            🏫 CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <button class="back-btn" onclick="goBackToScience()">
+            ← Back to Science
+        </button>
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <h1>Science Lesson 4</h1>
+
+        <p>
+            ⚡ Energy and Forces
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+
+        <!-- LEARNING OBJECTIVES -->
+
+        <section class="section objectives">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <p>
+                By the end of this lesson, you should be able to:
+            </p>
+
+            <ul>
+
+                <li>Explain what energy is.</li>
+
+                <li>Identify common forms of energy.</li>
+
+                <li>Explain how energy is used in everyday life.</li>
+
+                <li>Explain what a force is.</li>
+
+                <li>Identify pushes and pulls as forces.</li>
+
+                <li>Describe how forces can change the movement or shape of objects.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- WHAT IS ENERGY -->
+
+        <section class="section">
+
+            <h2>⚡ What Is Energy?</h2>
+
+            <p>
+                Energy is the ability to cause change or do work.
+                Everything we do requires energy.
+            </p>
+
+            <p>
+                We need energy to walk, run, think, play, cook food,
+                operate machines, and use electronic devices.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Remember:</strong>
+
+                Energy can be transferred from one object or system
+                to another and can change from one form to another.
+
+            </div>
+
+        </section>
+
+
+        <!-- FORMS OF ENERGY -->
+
+        <section class="section">
+
+            <h2>🔋 Forms of Energy</h2>
+
+            <div class="concept-grid">
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        ☀️
+                    </div>
+
+                    <h3>Light Energy</h3>
+
+                    <p>
+                        Light energy allows us to see.
+                        The Sun is a major natural source of light.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                        Sunlight, lamps, candles.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🔊
+                    </div>
+
+                    <h3>Sound Energy</h3>
+
+                    <p>
+                        Sound energy is produced when objects vibrate.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                        Speaking, musical instruments, bells.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🔥
+                    </div>
+
+                    <h3>Heat Energy</h3>
+
+                    <p>
+                        Heat energy makes objects warmer.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                        Fire, hot water, sunlight.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🔋
+                    </div>
+
+                    <h3>Electrical Energy</h3>
+
+                    <p>
+                        Electrical energy powers many devices and machines.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                        Computers, televisions, refrigerators.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🏃
+                    </div>
+
+                    <h3>Movement Energy</h3>
+
+                    <p>
+                        Moving objects have energy associated with their motion.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                        A moving bicycle, running person, moving car.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🍞
+                    </div>
+
+                    <h3>Chemical Energy</h3>
+
+                    <p>
+                        Chemical energy is stored in substances.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                        Food, fuels, and batteries.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ENERGY SOURCES -->
+
+        <section class="section">
+
+            <h2>🌞 Sources of Energy</h2>
+
+            <p>
+                Energy comes from many different sources.
+                Some sources are renewable and some are non-renewable.
+            </p>
+
+            <div class="concept-grid">
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        ☀️
+                    </div>
+
+                    <h3>Solar Energy</h3>
+
+                    <p>
+                        Energy from the Sun can provide light and heat
+                        and can be converted into electricity.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        💨
+                    </div>
+
+                    <h3>Wind Energy</h3>
+
+                    <p>
+                        Moving air can be used to turn turbines
+                        and generate electricity.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        💧
+                    </div>
+
+                    <h3>Hydroelectric Energy</h3>
+
+                    <p>
+                        Moving water can be used to generate electricity.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🪨
+                    </div>
+
+                    <h3>Fossil Fuels</h3>
+
+                    <p>
+                        Coal, oil, and natural gas are examples of
+                        fossil fuels. They are non-renewable resources.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ENERGY TRANSFER -->
+
+        <section class="section">
+
+            <h2>🔄 Energy Changes</h2>
+
+            <p>
+                Energy can change from one form into another.
+            </p>
+
+            <div class="example-box">
+
+                <strong>Example 1: Electric Bulb</strong>
+
+                <p>
+                    Electrical energy is changed mainly into light
+                    and heat energy when a bulb is switched on.
+                </p>
+
+            </div>
+
+            <div class="example-box">
+
+                <strong>Example 2: Human Body</strong>
+
+                <p>
+                    Chemical energy stored in food can be changed
+                    into movement and heat when we exercise.
+                </p>
+
+            </div>
+
+            <div class="example-box">
+
+                <strong>Example 3: Solar Panel</strong>
+
+                <p>
+                    Solar panels convert energy from sunlight into
+                    electrical energy.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- WHAT IS FORCE -->
+
+        <section class="section">
+
+            <h2>💪 What Is a Force?</h2>
+
+            <p>
+                A force is a push or a pull that can change the motion
+                or shape of an object.
+            </p>
+
+            <div class="info-box">
+
+                <strong>Simple definition:</strong>
+
+                Force = Push or Pull
+
+            </div>
+
+            <p>
+                Forces can make objects start moving, stop moving,
+                speed up, slow down, change direction, or change shape.
+            </p>
+
+        </section>
+
+
+        <!-- PUSH AND PULL -->
+
+        <section class="section">
+
+            <h2>👉 Pushes and Pulls</h2>
+
+            <div class="concept-grid">
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        👉
+                    </div>
+
+                    <h3>Push</h3>
+
+                    <p>
+                        A push moves an object away from you.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                    </p>
+
+                    <ul>
+                        <li>Pushing a door open.</li>
+                        <li>Pushing a box.</li>
+                        <li>Pushing a shopping cart.</li>
+                    </ul>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        👈
+                    </div>
+
+                    <h3>Pull</h3>
+
+                    <p>
+                        A pull moves an object toward you.
+                    </p>
+
+                    <p>
+                        <strong>Examples:</strong>
+                    </p>
+
+                    <ul>
+                        <li>Pulling a drawer.</li>
+                        <li>Pulling a rope.</li>
+                        <li>Pulling a door closed.</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EFFECTS OF FORCE -->
+
+        <section class="section">
+
+            <h2>🎯 Effects of Forces</h2>
+
+            <p>
+                A force can have several effects on an object.
+            </p>
+
+            <div class="concept-grid">
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        ▶️
+                    </div>
+
+                    <h3>Start Movement</h3>
+
+                    <p>
+                        A force can make a stationary object begin to move.
+                    </p>
+
+                    <p>
+                        Example: Kicking a stationary football.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🛑
+                    </div>
+
+                    <h3>Stop Movement</h3>
+
+                    <p>
+                        A force can stop a moving object.
+                    </p>
+
+                    <p>
+                        Example: Catching a moving ball.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        ↪️
+                    </div>
+
+                    <h3>Change Direction</h3>
+
+                    <p>
+                        A force can change the direction of movement.
+                    </p>
+
+                    <p>
+                        Example: Hitting a moving ball with a bat.
+                    </p>
+
+                </div>
+
+
+                <div class="concept-card">
+
+                    <div class="concept-icon">
+                        🧲
+                    </div>
+
+                    <h3>Change Shape</h3>
+
+                    <p>
+                        A force can change the shape of an object.
+                    </p>
+
+                    <p>
+                        Example: Squeezing a sponge.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- GRAVITY -->
+
+        <section class="section">
+
+            <h2>🌍 Gravity</h2>
+
+            <p>
+                Gravity is a force that pulls objects toward the Earth.
+            </p>
+
+            <p>
+                Gravity is why objects fall toward the ground when
+                they are dropped.
+            </p>
+
+            <div class="example-box">
+
+                <strong>Example:</strong>
+
+                <p>
+                    If you drop a ball from your hand, gravity pulls
+                    the ball toward the ground.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FRICTION -->
+
+        <section class="section">
+
+            <h2>🛞 Friction</h2>
+
+            <p>
+                Friction is a force that opposes the motion of objects
+                when two surfaces rub against each other.
+            </p>
+
+            <div class="example-box">
+
+                <strong>Example:</strong>
+
+                <p>
+                    When a bicycle moves along a road, friction between
+                    the tyres and the road helps the bicycle maintain grip.
+                </p>
+
+            </div>
+
+            <div class="warning-box">
+
+                <strong>Important:</strong>
+
+                Friction can be useful, but it can also slow moving
+                objects and cause surfaces to wear.
+
+            </div>
+
+        </section>
+
+
+        <!-- BALANCED AND UNBALANCED -->
+
+        <section class="section">
+
+            <h2>⚖️ Balanced and Unbalanced Forces</h2>
+
+            <h3>Balanced Forces</h3>
+
+            <p>
+                Balanced forces are forces that cancel each other out.
+                They do not cause a change in an object's motion.
+            </p>
+
+            <h3>Unbalanced Forces</h3>
+
+            <p>
+                Unbalanced forces can cause an object's motion to change.
+            </p>
+
+            <div class="example-box">
+
+                <strong>Example:</strong>
+
+                <p>
+                    If two people push a box with equal force in opposite
+                    directions, the forces may be balanced and the box
+                    may remain still.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+
+        <section class="section">
+
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div class="video-icon">
+                    ▶️
+                </div>
+
+                <h3 style="color:white;">
+                    Energy and Forces
+                </h3>
+
+                <p>
+                    Video lesson will be connected here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+
+        <section class="section">
+
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice">
+
+                <ol>
+
+                    <li>
+                        What is energy?
+                    </li>
+
+                    <li>
+                        Name three forms of energy.
+                    </li>
+
+                    <li>
+                        Give two examples of renewable energy sources.
+                    </li>
+
+                    <li>
+                        What is a force?
+                    </li>
+
+                    <li>
+                        Give one example of a push and one example of a pull.
+                    </li>
+
+                    <li>
+                        What force pulls objects toward the Earth?
+                    </li>
+
+                    <li>
+                        What is friction?
+                    </li>
+
+                    <li>
+                        Give one way a force can change an object.
+                    </li>
+
+                </ol>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section class="section">
+
+            <h2>📝 Lesson Quiz</h2>
+
+            <p>
+                Choose the correct answer for each question.
+            </p>
+
+
+            <!-- QUESTION 1 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    1. What is a force?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. A type of food
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. A push or pull
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. A type of plant
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. A type of weather
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 2 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    2. Which is an example of light energy?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Sunlight
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. A stone
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. Soil
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. Water
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 3 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    3. Which force pulls objects toward the Earth?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Friction
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Magnetism
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Gravity
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Sound
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    4. Which action is an example of a push?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. Pulling a drawer
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Pulling a rope
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    Pulling a suitcase
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Pushing a door open
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    5. What does friction generally do to a moving object?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. It always makes it move faster
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    B. It opposes its motion
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. It makes it invisible
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    D. It turns it into water
+                </label>
+
+            </div>
+
+
+            <div class="quiz-actions">
+
+                <button
+                    class="btn primary"
+                    onclick="checkQuiz()"
+                >
+                    Submit Quiz
+                </button>
+
+            </div>
+
+
+            <div id="quizResult" class="result">
+
+                <h3 id="scoreTitle"></h3>
+
+                <p id="scoreText"></p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+
+        <section class="section">
+
+            <h2>📊 Lesson Progress</h2>
+
+            <div class="progress-container">
+
+                <div class="progress-bar">
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill"
+                    ></div>
+
+                </div>
+
+                <div
+                    id="progressText"
+                    class="progress-text"
+                >
+                    0% Complete
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- COMPLETION -->
+
+        <section class="section completion-box">
+
+            <h2>✅ Complete This Lesson</h2>
+
+            <p>
+                After studying the lesson and completing the quiz,
+                click the button below to mark this lesson as complete.
+            </p>
+
+            <button
+                id="completeButton"
+                class="btn success"
+                onclick="markComplete()"
+            >
+                Mark Lesson Complete
+            </button>
+
+            <div
+                id="completionStatus"
+                class="status"
+            ></div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+
+        <section class="section">
+
+            <div class="navigation">
+
+                <button
+                    class="btn secondary"
+                    onclick="goBackToScience()"
+                >
+                    ← Back to Science
+                </button>
+
+                <button
+                    class="btn primary"
+                    onclick="nextLesson()"
+                >
+                    Next Lesson →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © <span id="currentYear"></span>
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </p>
+
+        <p>
+            Learn • Grow • Succeed
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        // ==============================
+        // PAGE START
+        // ==============================
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById("currentYear").textContent =
+                new Date().getFullYear();
+
+            loadProgress();
+
+        });
+
+
+        // ==============================
+        // BACK TO SCIENCE
+        // ==============================
+
+        function goBackToScience() {
+
+            window.location.href = "science.html";
+
+        }
+
+
+        // ==============================
+        // NEXT LESSON
+        // ==============================
+
+        function nextLesson() {
+
+            window.location.href = "science-lesson-5.html";
+
+        }
+
+
+        // ==============================
+        // MARK LESSON COMPLETE
+        // ==============================
+
+        function markComplete() {
+
+            localStorage.setItem(
+                "cis_science_lesson4_completed",
+                "true"
+            );
+
+            updateProgress();
+
+            const status =
+                document.getElementById("completionStatus");
+
+            status.textContent =
+                "✓ Lesson 4 has been marked as complete!";
+
+            const button =
+                document.getElementById("completeButton");
+
+            button.textContent =
+                "✓ Lesson Completed";
+
+            button.disabled = true;
+
+            button.style.opacity = "0.7";
+
+            button.style.cursor = "default";
+
+        }
+
+
+        // ==============================
+        // LOAD PROGRESS
+        // ==============================
+
+        function loadProgress() {
+
+            updateProgress();
+
+            const completed =
+                localStorage.getItem(
+                    "cis_science_lesson4_completed"
+                );
+
+            if (completed === "true") {
+
+                const status =
+                    document.getElementById(
+                        "completionStatus"
+                    );
+
+                status.textContent =
+                    "✓ You have already completed this lesson.";
+
+                const button =
+                    document.getElementById(
+                        "completeButton"
+                    );
+
+                button.textContent =
+                    "✓ Lesson Completed";
+
+                button.disabled = true;
+
+                button.style.opacity = "0.7";
+
+                button.style.cursor = "default";
+
+            }
+
+        }
+
+
+        // ==============================
+        // UPDATE PROGRESS
+        // ==============================
+
+        function updateProgress() {
+
+            const completed =
+                localStorage.getItem(
+                    "cis_science_lesson4_completed"
+                );
+
+            let progress = 0;
+
+            if (completed === "true") {
+
+                progress = 100;
+
+            }
+
+            document.getElementById(
+                "progressFill"
+            ).style.width = progress + "%";
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "% Complete";
+
+        }
+
+
+        // ==============================
+        // QUIZ
+        // ==============================
+
+        function checkQuiz() {
+
+            const answers = {
+
+                q1: "b",
+                q2: "a",
+                q3: "c",
+                q4: "d",
+                q5: "b"
+
+            };
+
+
+            let score = 0;
+
+            let answered = 0;
+
+
+            for (let question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+
+                if (selected) {
+
+                    answered++;
+
+
+                    if (
+                        selected.value ===
+                        answers[question]
+                    ) {
+
+                        score++;
+
+                    }
+
+                }
+
+            }
+
+
+            if (answered < 5) {
+
+                alert(
+                    "Please answer all 5 questions before submitting the quiz."
+                );
+
+                return;
+
+            }
+
+
+            const percentage =
+                Math.round(
+                    (score / 5) * 100
+                );
+
+
+            localStorage.setItem(
+                "cis_science_lesson4_quiz_score",
+                percentage
+            );
+
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+            const title =
+                document.getElementById(
+                    "scoreTitle"
+                );
+
+            const text =
+                document.getElementById(
+                    "scoreText"
+                );
+
+
+            title.textContent =
+                "Quiz Complete! 🎉";
+
+
+            text.textContent =
+                "You scored " +
+                score +
+                " out of 5 (" +
+                percentage +
+                "%).";
+
+
+            result.style.display =
+                "block";
+
+
+            result.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

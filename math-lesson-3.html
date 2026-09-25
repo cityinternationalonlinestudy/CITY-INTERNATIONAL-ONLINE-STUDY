@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 3 - Algebra | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            border: none;
+            background: white;
+            color: #123c69;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e5eef8;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 30px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1769aa);
+            color: white;
+            padding: 40px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero small {
+            opacity: 0.85;
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            margin: 8px 0;
+        }
+
+        .hero p {
+            max-width: 800px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1769aa;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .definition {
+            background: #eef6ff;
+            border-left: 5px solid #1769aa;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .math-expression {
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            margin: 18px 0;
+            color: #123c69;
+        }
+
+        .algebra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .algebra-box {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .algebra-box h3 {
+            margin-top: 0;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 280px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .play-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: #123c69;
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #123c69;
+        }
+
+        .option {
+            display: block;
+            background: white;
+            border: 1px solid #d6dee8;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #eef6ff;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #1769aa;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #125487;
+        }
+
+        .success {
+            background: #198754;
+            color: white;
+        }
+
+        .secondary {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            border-left: 5px solid #198754;
+        }
+
+        .progress-container {
+            background: #e5e7eb;
+            height: 14px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #198754;
+            transition: width 0.4s ease;
+        }
+
+        .complete-message {
+            display: none;
+            background: #ecfdf5;
+            color: #166534;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="school-name">
+        CITY INTERNATIONAL ONLINE SCHOOL
+    </div>
+
+    <button class="back-btn" onclick="goBack()">
+        ← Back to Mathematics
+    </button>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <small>MATHEMATICS • LESSON 3</small>
+
+        <h1>Algebra</h1>
+
+        <p>
+            Welcome to Lesson 3. In this lesson you will learn
+            about variables, constants, algebraic expressions,
+            like terms and simple equations.
+        </p>
+
+    </section>
+
+
+    <!-- OBJECTIVES -->
+
+    <section class="card">
+
+        <h2>Learning Objectives</h2>
+
+        <p>By the end of this lesson, you should be able to:</p>
+
+        <ul style="padding-left: 22px; margin-top: 10px;">
+
+            <li>Explain what algebra is.</li>
+
+            <li>Identify variables and constants.</li>
+
+            <li>Write simple algebraic expressions.</li>
+
+            <li>Identify like terms.</li>
+
+            <li>Simplify simple expressions.</li>
+
+            <li>Solve simple linear equations.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- WHAT IS ALGEBRA -->
+
+    <section class="card">
+
+        <h2>1. What is Algebra?</h2>
+
+        <p>
+            Algebra is a branch of Mathematics that uses letters
+            and symbols together with numbers to represent unknown
+            or changing quantities.
+        </p>
+
+        <div class="definition">
+
+            <strong>Example:</strong>
+
+            <div class="math-expression">
+                x + 5
+            </div>
+
+            Here, <strong>x</strong> represents a number that
+            we may not know yet.
+
+        </div>
+
+        <p>
+            Algebra helps us solve problems where an unknown value
+            needs to be found.
+        </p>
+
+    </section>
+
+
+    <!-- VARIABLES -->
+
+    <section class="card">
+
+        <h2>2. Variables</h2>
+
+        <p>
+            A variable is a letter or symbol used to represent
+            a value that can change or is unknown.
+        </p>
+
+        <div class="algebra-grid">
+
+            <div class="algebra-box">
+
+                <h3>x</h3>
+
+                <p>
+                    A common variable.
+                </p>
+
+            </div>
+
+            <div class="algebra-box">
+
+                <h3>y</h3>
+
+                <p>
+                    Another common variable.
+                </p>
+
+            </div>
+
+            <div class="algebra-box">
+
+                <h3>a</h3>
+
+                <p>
+                    Can also represent an unknown value.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            If:
+
+            <div class="math-expression">
+                x = 5
+            </div>
+
+            then the value of x is 5.
+
+        </div>
+
+    </section>
+
+
+    <!-- CONSTANTS -->
+
+    <section class="card">
+
+        <h2>3. Constants</h2>
+
+        <p>
+            A constant is a number whose value does not change.
+        </p>
+
+        <div class="example">
+
+            In the expression:
+
+            <div class="math-expression">
+                x + 7
+            </div>
+
+            <strong>x</strong> is the variable.
+
+            <br><br>
+
+            <strong>7</strong> is the constant.
+
+        </div>
+
+    </section>
+
+
+    <!-- EXPRESSIONS -->
+
+    <section class="card">
+
+        <h2>4. Algebraic Expressions</h2>
+
+        <p>
+            An algebraic expression is made using numbers,
+            variables and mathematical operations.
+        </p>
+
+        <div class="algebra-grid">
+
+            <div class="algebra-box">
+
+                <h3>x + 5</h3>
+
+                <p>
+                    Addition expression
+                </p>
+
+            </div>
+
+            <div class="algebra-box">
+
+                <h3>y - 3</h3>
+
+                <p>
+                    Subtraction expression
+                </p>
+
+            </div>
+
+            <div class="algebra-box">
+
+                <h3>2x</h3>
+
+                <p>
+                    Multiplication expression
+                </p>
+
+            </div>
+
+            <div class="algebra-box">
+
+                <h3>x ÷ 4</h3>
+
+                <p>
+                    Division expression
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- TERMS -->
+
+    <section class="card">
+
+        <h2>5. Terms</h2>
+
+        <p>
+            A term is a number, variable or product of numbers
+            and variables.
+        </p>
+
+        <div class="example">
+
+            Consider:
+
+            <div class="math-expression">
+                3x + 5
+            </div>
+
+            There are two terms:
+
+            <br><br>
+
+            <strong>3x</strong>
+
+            <br>
+
+            and
+
+            <br>
+
+            <strong>5</strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- LIKE TERMS -->
+
+    <section class="card">
+
+        <h2>6. Like Terms</h2>
+
+        <p>
+            Like terms contain the same variable raised to
+            the same power.
+        </p>
+
+        <div class="example">
+
+            <strong>Like terms:</strong>
+
+            <div class="math-expression">
+                3x and 5x
+            </div>
+
+            They can be combined.
+
+        </div>
+
+        <div class="example">
+
+            <strong>Unlike terms:</strong>
+
+            <div class="math-expression">
+                3x and 5y
+            </div>
+
+            They cannot be combined directly because
+            they have different variables.
+
+        </div>
+
+    </section>
+
+
+    <!-- SIMPLIFY -->
+
+    <section class="card">
+
+        <h2>7. Simplifying Expressions</h2>
+
+        <p>
+            To simplify an expression, combine like terms.
+        </p>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            <div class="math-expression">
+                3x + 2x
+            </div>
+
+            Add the coefficients:
+
+            <br><br>
+
+            3 + 2 = 5
+
+            <br><br>
+
+            Therefore:
+
+            <div class="math-expression">
+                3x + 2x = 5x
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EQUATIONS -->
+
+    <section class="card">
+
+        <h2>8. Simple Equations</h2>
+
+        <p>
+            An equation states that two expressions are equal.
+        </p>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            <div class="math-expression">
+                x + 3 = 8
+            </div>
+
+            We want to find x.
+
+            <br><br>
+
+            Subtract 3 from both sides:
+
+            <div class="math-expression">
+                x = 8 - 3
+            </div>
+
+            Therefore:
+
+            <div class="math-expression">
+                x = 5
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECOND EQUATION -->
+
+    <section class="card">
+
+        <h2>9. Another Equation Example</h2>
+
+        <div class="example">
+
+            Solve:
+
+            <div class="math-expression">
+                x - 4 = 10
+            </div>
+
+            Add 4 to both sides:
+
+            <div class="math-expression">
+                x = 10 + 4
+            </div>
+
+            Therefore:
+
+            <div class="math-expression">
+                x = 14
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO -->
+
+    <section class="card">
+
+        <h2>10. Video Lesson</h2>
+
+        <div class="video-box">
+
+            <button class="play-button" onclick="playVideo()">
+                ▶
+            </button>
+
+            <h3>Algebra Video Lesson</h3>
+
+            <p>
+                Your Mathematics video lesson will appear here.
+            </p>
+
+            <small>
+                Video connection can be added later.
+            </small>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card">
+
+        <h2>11. Practice Questions</h2>
+
+        <div class="example">
+
+            <strong>Question 1:</strong>
+
+            In the expression 4x + 7,
+            identify the variable.
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 2:</strong>
+
+            In 3x + 9,
+            identify the constant.
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 3:</strong>
+
+            Simplify:
+
+            <br><br>
+
+            2x + 3x
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 4:</strong>
+
+            Solve:
+
+            <br><br>
+
+            x + 5 = 12
+
+        </div>
+
+        <div class="example">
+
+            <strong>Question 5:</strong>
+
+            Solve:
+
+            <br><br>
+
+            x - 3 = 7
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card">
+
+        <h2>12. Mini Quiz</h2>
+
+        <p>
+            Answer all five questions and click
+            <strong>Submit Quiz</strong>.
+        </p>
+
+
+        <form id="quizForm">
+
+
+            <!-- QUESTION 1 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 1</h3>
+
+                <p>
+                    Which of these is a variable?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    7
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    x
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    10
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 2 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 2</h3>
+
+                <p>
+                    What is the constant in 4x + 9?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    x
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    4
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    9
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 3 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 3</h3>
+
+                <p>
+                    Simplify: 2x + 3x
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    5x
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    6x
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    5
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 4 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 4</h3>
+
+                <p>
+                    Solve: x + 5 = 12
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    x = 5
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    x = 7
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    x = 17
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+
+            <div class="quiz-question">
+
+                <h3>Question 5</h3>
+
+                <p>
+                    Solve: x - 3 = 7
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    x = 4
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    x = 7
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    x = 10
+                </label>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="submitQuiz()">
+
+                    Submit Quiz
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn secondary"
+                    onclick="resetQuiz()">
+
+                    Reset Quiz
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div id="quizResult" class="result"></div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="card">
+
+        <h2>13. Lesson Progress</h2>
+
+        <p id="progressText">
+            Lesson progress: 0%
+        </p>
+
+        <div class="progress-container">
+
+            <div
+                id="progressBar"
+                class="progress-bar">
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="btn success"
+                onclick="completeLesson()">
+
+                ✓ Mark Lesson Complete
+
+            </button>
+
+
+            <button
+                class="btn primary"
+                onclick="nextLesson()">
+
+                Next Lesson →
+
+            </button>
+
+        </div>
+
+
+        <div
+            id="completeMessage"
+            class="complete-message">
+
+            ✓ Congratulations! You have completed
+            Mathematics Lesson 3: Algebra.
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    © <span id="year"></span>
+    CITY INTERNATIONAL ONLINE SCHOOL
+
+</footer>
+
+
+<script>
+
+    /* =========================
+       CHECK STUDENT LOGIN
+    ========================= */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const student =
+            localStorage.getItem("cis_current_student");
+
+        if (!student) {
+
+            alert(
+                "Please login as a student first."
+            );
+
+            window.location.href =
+                "index.html";
+
+            return;
+        }
+
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+
+        loadProgress();
+
+    });
+
+
+    /* =========================
+       BACK BUTTON
+    ========================= */
+
+    function goBack() {
+
+        window.location.href =
+            "mathematics.html";
+
+    }
+
+
+    /* =========================
+       VIDEO
+    ========================= */
+
+    function playVideo() {
+
+        alert(
+            "The Algebra video lesson will be connected here."
+        );
+
+    }
+
+
+    /* =========================
+       QUIZ
+    ========================= */
+
+    function submitQuiz() {
+
+        const answers = {
+
+            q1: "b",
+            q2: "c",
+            q3: "a",
+            q4: "b",
+            q5: "c"
+
+        };
+
+
+        let score = 0;
+
+        let answered = 0;
+
+
+        for (let question in answers) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' +
+                    question +
+                    '"]:checked'
+                );
+
+
+            if (selected) {
+
+                answered++;
+
+
+                if (
+                    selected.value ===
+                    answers[question]
+                ) {
+
+                    score++;
+
+                }
+
+            }
+
+        }
+
+
+        if (answered < 5) {
+
+            alert(
+                "Please answer all 5 questions before submitting."
+            );
+
+            return;
+
+        }
+
+
+        const percentage =
+            (score / 5) * 100;
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display =
+            "block";
+
+
+        result.innerHTML =
+            "<strong>Quiz Result</strong><br><br>" +
+
+            "You scored <strong>" +
+            score +
+            " / 5</strong>.<br>" +
+
+            "Your score is <strong>" +
+            percentage +
+            "%</strong>.";
+
+
+        if (score === 5) {
+
+            result.innerHTML +=
+                "<br><br>Excellent work! 🎉";
+
+        } else if (score >= 3) {
+
+            result.innerHTML +=
+                "<br><br>Good work! Review the lesson and try again.";
+
+        } else {
+
+            result.innerHTML +=
+                "<br><br>Please review the lesson and try the quiz again.";
+
+        }
+
+
+        localStorage.setItem(
+            "cis_math_lesson3_quiz_score",
+            score
+        );
+
+    }
+
+
+    /* =========================
+       RESET QUIZ
+    ========================= */
+
+    function resetQuiz() {
+
+        document
+            .getElementById("quizForm")
+            .reset();
+
+
+        document
+            .getElementById("quizResult")
+            .style.display =
+            "none";
+
+    }
+
+
+    /* =========================
+       COMPLETE LESSON
+    ========================= */
+
+    function completeLesson() {
+
+        localStorage.setItem(
+            "cis_math_lesson3_completed",
+            "true"
+        );
+
+
+        updateProgress(100);
+
+
+        document.getElementById(
+            "completeMessage"
+        ).style.display =
+            "block";
+
+
+        alert(
+            "Lesson 3 has been marked as complete!"
+        );
+
+    }
+
+
+    /* =========================
+       LOAD PROGRESS
+    ========================= */
+
+    function loadProgress() {
+
+        const completed =
+            localStorage.getItem(
+                "cis_math_lesson3_completed"
+            );
+
+
+        if (completed === "true") {
+
+            updateProgress(100);
+
+
+            document.getElementById(
+                "completeMessage"
+            ).style.display =
+                "block";
+
+        }
+
+    }
+
+
+    /* =========================
+       UPDATE PROGRESS
+    ========================= */
+
+    function updateProgress(value) {
+
+        document.getElementById(
+            "progressBar"
+        ).style.width =
+            value + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            "Lesson progress: " +
+            value +
+            "%";
+
+    }
+
+
+    /* =========================
+       NEXT LESSON
+    ========================= */
+
+    function nextLesson() {
+
+        alert(
+            "Lesson 4: Geometry will be added next."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

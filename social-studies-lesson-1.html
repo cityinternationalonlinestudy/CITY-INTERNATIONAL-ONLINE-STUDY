@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Community - Social Studies</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: #0f172a;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            color: #0f172a;
+            background: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #047857, #10b981);
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .hero .lesson-label {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .card h2 {
+            color: #047857;
+            margin-bottom: 18px;
+            font-size: 27px;
+        }
+
+        .card h3 {
+            margin-top: 20px;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .card p {
+            margin-bottom: 12px;
+        }
+
+        .objectives li,
+        .list li {
+            margin-bottom: 9px;
+            margin-left: 25px;
+        }
+
+        .definition {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .example strong {
+            color: #047857;
+        }
+
+        .video-box {
+            background: #0f172a;
+            color: white;
+            min-height: 240px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-box div {
+            max-width: 500px;
+        }
+
+        .video-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 7px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            margin: 9px 0;
+            padding: 10px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #ecfdf5;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .quiz-btn,
+        .complete-btn,
+        .reset-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-top: 10px;
+        }
+
+        .quiz-btn {
+            background: #047857;
+            color: white;
+        }
+
+        .complete-btn {
+            background: #10b981;
+            color: white;
+        }
+
+        .reset-btn {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .quiz-btn:hover,
+        .complete-btn:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .progress-box {
+            margin-top: 20px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 16px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #10b981;
+            transition: width 0.4s ease;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background: #0f172a;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .nav-btn.next {
+            background: #047857;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="social-studies.html" class="back-btn">
+            ← Back to Social Studies
+        </a>
+
+    </div>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="lesson-label">
+            SOCIAL STUDIES • LESSON 1
+        </div>
+
+        <h1>Our Community</h1>
+
+        <p>
+            Learn what a community is, the people who make up a community,
+            their responsibilities, and how people work together.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <p>By the end of this lesson, you should be able to:</p>
+
+            <ul class="objectives">
+                <li>Explain what a community is.</li>
+                <li>Identify different people found in a community.</li>
+                <li>Explain the responsibilities of community members.</li>
+                <li>Describe ways people cooperate in a community.</li>
+                <li>Explain why communities are important.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- WHAT IS A COMMUNITY -->
+        <section class="card">
+
+            <h2>🏘️ What Is a Community?</h2>
+
+            <div class="definition">
+                <strong>Definition:</strong>
+                A community is a group of people who live, work, or
+                interact together in the same area and share common
+                interests, services, or responsibilities.
+            </div>
+
+            <p>
+                People in a community depend on one another in many ways.
+                They work together to make their homes, schools, roads,
+                markets, and other places safe and useful.
+            </p>
+
+            <p>
+                A community can be a village, town, city, neighborhood,
+                or another group of people who share a common place or
+                purpose.
+            </p>
+
+        </section>
+
+
+        <!-- PEOPLE IN COMMUNITY -->
+        <section class="card">
+
+            <h2>👨‍👩‍👧‍👦 People in a Community</h2>
+
+            <p>
+                Different people perform different jobs and responsibilities
+                in a community.
+            </p>
+
+            <div class="example-grid">
+
+                <div class="example">
+                    <strong>👨‍🏫 Teachers</strong>
+                    <p>
+                        Teach learners and help them develop knowledge
+                        and skills.
+                    </p>
+                </div>
+
+                <div class="example">
+                    <strong>👨‍⚕️ Health Workers</strong>
+                    <p>
+                        Provide health services and help people stay healthy.
+                    </p>
+                </div>
+
+                <div class="example">
+                    <strong>👮 Police Officers</strong>
+                    <p>
+                        Help maintain law, order, and safety.
+                    </p>
+                </div>
+
+                <div class="example">
+                    <strong>👩‍🌾 Farmers</strong>
+                    <p>
+                        Produce food and other agricultural products.
+                    </p>
+                </div>
+
+                <div class="example">
+                    <strong>👨‍💼 Leaders</strong>
+                    <p>
+                        Help guide the community and organize community
+                        activities.
+                    </p>
+                </div>
+
+                <div class="example">
+                    <strong>🧑‍🔧 Workers and Business People</strong>
+                    <p>
+                        Provide goods, services, and skills needed by
+                        other community members.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESPONSIBILITIES -->
+        <section class="card">
+
+            <h2>🤝 Responsibilities of Community Members</h2>
+
+            <p>
+                Every member of a community has responsibilities.
+                Responsible people help their community grow and remain
+                peaceful.
+            </p>
+
+            <ul class="list">
+                <li>Respecting other people.</li>
+                <li>Keeping the environment clean.</li>
+                <li>Following community rules and laws.</li>
+                <li>Helping people who need assistance.</li>
+                <li>Protecting public property.</li>
+                <li>Participating in useful community activities.</li>
+                <li>Promoting peace and cooperation.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- COOPERATION -->
+        <section class="card">
+
+            <h2>🤝 Cooperation in the Community</h2>
+
+            <p>
+                Cooperation means working together to achieve a common
+                goal.
+            </p>
+
+            <p>
+                People cooperate when they clean their neighborhood,
+                build community facilities, protect the environment,
+                help during emergencies, or organize community events.
+            </p>
+
+            <div class="definition">
+                <strong>Example:</strong>
+                If community members work together to clean a public
+                place, they are cooperating to make their community
+                cleaner and healthier.
+            </div>
+
+        </section>
+
+
+        <!-- IMPORTANCE -->
+        <section class="card">
+
+            <h2>⭐ Importance of a Community</h2>
+
+            <ul class="list">
+                <li>Provides people with support.</li>
+                <li>Provides important services.</li>
+                <li>Promotes cooperation.</li>
+                <li>Helps maintain peace and safety.</li>
+                <li>Provides opportunities for learning and work.</li>
+                <li>Helps people solve common problems.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div>
+                    <div class="video-icon">▶️</div>
+
+                    <h3 style="color:white;">
+                        Our Community
+                    </h3>
+
+                    <p>
+                        A Social Studies video lesson will be added here.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice-question">
+                <strong>1.</strong>
+                What is a community?
+            </div>
+
+            <div class="practice-question">
+                <strong>2.</strong>
+                Name three people who can be found in a community.
+            </div>
+
+            <div class="practice-question">
+                <strong>3.</strong>
+                Give two responsibilities of a community member.
+            </div>
+
+            <div class="practice-question">
+                <strong>4.</strong>
+                What does cooperation mean?
+            </div>
+
+            <div class="practice-question">
+                <strong>5.</strong>
+                Why is a community important?
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+
+            <h2>📝 Lesson Quiz</h2>
+
+            <p>
+                Choose the correct answer for each question.
+            </p>
+
+
+            <!-- QUESTION 1 -->
+            <div class="quiz-question">
+
+                <h3>1. What is a community?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. A single person
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. A group of people who live, work, or interact together
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. A type of building
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. A school subject
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 2 -->
+            <div class="quiz-question">
+
+                <h3>2. Which person helps teach learners?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Teacher
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. Farmer
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. Driver
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. Builder
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 3 -->
+            <div class="quiz-question">
+
+                <h3>3. Which is a responsibility of a community member?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Destroying public property
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Keeping the environment clean
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Breaking laws
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Fighting neighbors
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 4 -->
+            <div class="quiz-question">
+
+                <h3>4. What does cooperation mean?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. Working alone
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Refusing to help others
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    C. Working together to achieve a common goal
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Avoiding everyone
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+            <div class="quiz-question">
+
+                <h3>5. Which activity shows cooperation?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. Community members cleaning a public place together
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    B. Destroying a public facility
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. Refusing to help anyone
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    D. Throwing rubbish everywhere
+                </label>
+
+            </div>
+
+
+            <button class="quiz-btn" onclick="checkQuiz()">
+                Check Quiz
+            </button>
+
+            <button class="reset-btn" onclick="resetQuiz()">
+                Reset Quiz
+            </button>
+
+            <div id="quizResult" class="result"></div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+
+            <h2>📊 Lesson Progress</h2>
+
+            <div class="progress-box">
+
+                <div class="progress-header">
+                    <span>Our Community</span>
+                    <span id="progressText">0%</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div
+                        class="progress-fill"
+                        id="progressFill">
+                    </div>
+                </div>
+
+            </div>
+
+            <button
+                class="complete-btn"
+                onclick="markComplete()">
+
+                ✅ Mark Lesson Complete
+
+            </button>
+
+            <button
+                class="reset-btn"
+                onclick="resetLesson()">
+
+                🔄 Reset Lesson
+
+            </button>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="navigation">
+
+            <a href="social-studies.html" class="nav-btn">
+                ← Back to Social Studies
+            </a>
+
+            <a
+                href="social-studies-lesson-2.html"
+                class="nav-btn next">
+
+                Next Lesson →
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <p>
+            © 2026 City International Online School
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        const completedKey =
+            "cis_social_studies_lesson1_completed";
+
+        const scoreKey =
+            "cis_social_studies_lesson1_quiz_score";
+
+
+        function updateProgress() {
+
+            const completed =
+                localStorage.getItem(completedKey) === "true";
+
+            const progress =
+                completed ? 100 : 0;
+
+            document.getElementById("progressText").textContent =
+                progress + "%";
+
+            document.getElementById("progressFill").style.width =
+                progress + "%";
+        }
+
+
+        function checkQuiz() {
+
+            const answers = {
+                q1: "b",
+                q2: "a",
+                q3: "b",
+                q4: "c",
+                q5: "a"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+            for (let question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+                if (selected) {
+
+                    answered++;
+
+                    if (selected.value === answers[question]) {
+                        score++;
+                    }
+                }
+            }
+
+
+            const result =
+                document.getElementById("quizResult");
+
+
+            if (answered < 5) {
+
+                result.style.display = "block";
+                result.style.background = "#fef3c7";
+                result.style.color = "#92400e";
+
+                result.textContent =
+                    "Please answer all 5 questions before checking your quiz.";
+
+                return;
+            }
+
+
+            const percentage =
+                Math.round((score / 5) * 100);
+
+
+            localStorage.setItem(
+                scoreKey,
+                percentage
+            );
+
+
+            result.style.display = "block";
+
+            if (percentage >= 60) {
+
+                result.style.background = "#dcfce7";
+                result.style.color = "#166534";
+
+                result.innerHTML =
+                    "🎉 Excellent work! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%).";
+
+            } else {
+
+                result.style.background = "#fee2e2";
+                result.style.color = "#991b1b";
+
+                result.innerHTML =
+                    "You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Keep studying and try again!";
+
+            }
+
+        }
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                completedKey,
+                "true"
+            );
+
+            updateProgress();
+
+            alert(
+                "🎉 Lesson 1 completed! Your progress has been saved."
+            );
+
+        }
+
+
+        function resetLesson() {
+
+            localStorage.removeItem(
+                completedKey
+            );
+
+            localStorage.removeItem(
+                scoreKey
+            );
+
+            resetQuiz();
+
+            updateProgress();
+
+            alert(
+                "Lesson progress has been reset."
+            );
+
+        }
+
+
+        function resetQuiz() {
+
+            const options =
+                document.querySelectorAll(
+                    'input[type="radio"]'
+                );
+
+            options.forEach(function (option) {
+                option.checked = false;
+            });
+
+
+            const result =
+                document.getElementById("quizResult");
+
+            result.style.display = "none";
+            result.innerHTML = "";
+
+            localStorage.removeItem(scoreKey);
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                updateProgress();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

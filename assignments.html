@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Assignments - City International Online School
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                #f4f7fb;
+
+            color:
+                #14213d;
+        }
+
+
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        header {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #142d59,
+                    #1e4f91
+                );
+
+            color: white;
+
+            padding:
+                18px 25px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap: 20px;
+
+            position:
+                sticky;
+
+            top: 0;
+
+            z-index: 50;
+
+            box-shadow:
+                0 3px 15px
+                rgba(0,0,0,0.12);
+        }
+
+
+        .header-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+        }
+
+
+        .logo {
+
+            width: 48px;
+
+            height: 48px;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color:
+                #14325f;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 20px;
+
+            font-weight: bold;
+        }
+
+
+        .school-name {
+
+            font-size: 18px;
+
+            font-weight: bold;
+        }
+
+
+        .school-subtitle {
+
+            font-size: 12px;
+
+            opacity: 0.85;
+
+            margin-top: 3px;
+        }
+
+
+        .back-button {
+
+            border: none;
+
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+            padding:
+                11px 17px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .back-button:hover {
+
+            background:
+                rgba(255,255,255,0.25);
+        }
+
+
+        /* =====================================
+           MAIN
+        ===================================== */
+
+        main {
+
+            max-width:
+                1100px;
+
+            margin:
+                0 auto;
+
+            padding:
+                35px 20px 60px;
+        }
+
+
+        .page-heading {
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .page-heading h1 {
+
+            margin:
+                0 0 8px;
+
+            font-size:
+                30px;
+
+            color:
+                #142d59;
+        }
+
+
+        .page-heading p {
+
+            margin: 0;
+
+            color:
+                #68758a;
+
+            font-size:
+                15px;
+        }
+
+
+        /* =====================================
+           STUDENT INFO
+        ===================================== */
+
+        .student-info {
+
+            background:
+                white;
+
+            border-radius:
+                14px;
+
+            padding:
+                18px 20px;
+
+            margin-bottom:
+                25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                15px;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.06);
+
+            border:
+                1px solid #e5eaf1;
+        }
+
+
+        .info-item {
+
+            padding:
+                10px 12px;
+
+            background:
+                #f7f9fc;
+
+            border-radius:
+                9px;
+        }
+
+
+        .info-label {
+
+            display: block;
+
+            color:
+                #78869b;
+
+            font-size:
+                12px;
+
+            margin-bottom:
+                5px;
+        }
+
+
+        .info-value {
+
+            font-size:
+                15px;
+
+            font-weight:
+                bold;
+
+            color:
+                #183b6b;
+        }
+
+
+        /* =====================================
+           ASSIGNMENT LIST
+        ===================================== */
+
+        #assignmentList {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                18px;
+        }
+
+
+        .assignment-card {
+
+            background:
+                white;
+
+            border:
+                1px solid #e1e7ef;
+
+            border-radius:
+                15px;
+
+            padding:
+                22px;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.06);
+
+            transition:
+                transform 0.2s,
+                box-shadow 0.2s;
+        }
+
+
+        .assignment-card:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 25px
+                rgba(20,45,89,0.10);
+        }
+
+
+        .assignment-top {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap:
+                20px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .subject-label {
+
+            display:
+                inline-block;
+
+            background:
+                #e9f0ff;
+
+            color:
+                #2454a6;
+
+            padding:
+                6px 10px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
+
+            margin-bottom:
+                9px;
+        }
+
+
+        .assignment-card h2 {
+
+            margin:
+                0;
+
+            font-size:
+                21px;
+
+            color:
+                #142d59;
+        }
+
+
+        .status-badge {
+
+            white-space:
+                nowrap;
+
+            padding:
+                7px 11px;
+
+            border-radius:
+                20px;
+
+            font-size:
+                12px;
+
+            font-weight:
+                bold;
+
+            background:
+                #fff2cc;
+
+            color:
+                #8a6200;
+        }
+
+
+        .status-badge.submitted {
+
+            background:
+                #dff5e8;
+
+            color:
+                #18733d;
+        }
+
+
+        .assignment-details {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap:
+                10px;
+
+            margin:
+                15px 0;
+
+            padding:
+                15px;
+
+            background:
+                #f7f9fc;
+
+            border-radius:
+                10px;
+        }
+
+
+        .detail {
+
+            font-size:
+                13px;
+
+            color:
+                #69768a;
+        }
+
+
+        .detail strong {
+
+            display:
+                block;
+
+            color:
+                #263b5c;
+
+            font-size:
+                14px;
+
+            margin-top:
+                4px;
+        }
+
+
+        .assignment-instructions {
+
+            color:
+                #58677d;
+
+            line-height:
+                1.6;
+
+            font-size:
+                14px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .assignment-actions {
+
+            display:
+                flex;
+
+            gap:
+                10px;
+
+            flex-wrap:
+                wrap;
+        }
+
+
+        .btn {
+
+            border:
+                none;
+
+            padding:
+                11px 18px;
+
+            border-radius:
+                8px;
+
+            cursor:
+                pointer;
+
+            font-size:
+                14px;
+
+            font-weight:
+                bold;
+        }
+
+
+        .btn-primary {
+
+            background:
+                #1e4f91;
+
+            color:
+                white;
+        }
+
+
+        .btn-primary:hover {
+
+            background:
+                #163e75;
+        }
+
+
+        .btn-success {
+
+            background:
+                #16844a;
+
+            color:
+                white;
+        }
+
+
+        .btn-secondary {
+
+            background:
+                #e9eef5;
+
+            color:
+                #344765;
+        }
+
+
+        /* =====================================
+           EMPTY
+        ===================================== */
+
+        .empty {
+
+            background:
+                white;
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius:
+                15px;
+
+            padding:
+                55px 25px;
+
+            text-align:
+                center;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.05);
+        }
+
+
+        .empty-icon {
+
+            font-size:
+                48px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .empty h2 {
+
+            margin:
+                0 0 8px;
+
+            color:
+                #1d3557;
+        }
+
+
+        .empty p {
+
+            margin:
+                7px 0;
+
+            color:
+                #718096;
+
+            line-height:
+                1.6;
+        }
+
+
+        .class-warning {
+
+            display:
+                inline-block;
+
+            margin-top:
+                12px;
+
+            padding:
+                9px 13px;
+
+            background:
+                #fff7df;
+
+            color:
+                #765600;
+
+            border-radius:
+                8px;
+
+            font-size:
+                13px;
+        }
+
+
+        /* =====================================
+           MODAL
+        ===================================== */
+
+        .modal {
+
+            display:
+                none;
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            background:
+                rgba(8,22,43,0.62);
+
+            z-index:
+                100;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+        }
+
+
+        .modal.show {
+
+            display:
+                flex;
+        }
+
+
+        .modal-content {
+
+            background:
+                white;
+
+            width:
+                100%;
+
+            max-width:
+                720px;
+
+            max-height:
+                90vh;
+
+            overflow-y:
+                auto;
+
+            border-radius:
+                16px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.25);
+
+            position:
+                relative;
+        }
+
+
+        .modal-header {
+
+            padding:
+                20px 22px;
+
+            border-bottom:
+                1px solid #e7ebf1;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap:
+                15px;
+        }
+
+
+        .modal-header h2 {
+
+            margin:
+                0 0 5px;
+
+            color:
+                #142d59;
+        }
+
+
+        .modal-header p {
+
+            margin:
+                0;
+
+            color:
+                #758197;
+
+            font-size:
+                13px;
+        }
+
+
+        .close {
+
+            width:
+                35px;
+
+            height:
+                35px;
+
+            border:
+                none;
+
+            background:
+                #f0f3f7;
+
+            color:
+                #334155;
+
+            border-radius:
+                50%;
+
+            font-size:
+                20px;
+
+            cursor:
+                pointer;
+        }
+
+
+        .close:hover {
+
+            background:
+                #e2e7ee;
+        }
+
+
+        .modal-body {
+
+            padding:
+                22px;
+        }
+
+
+        .question-box {
+
+            background:
+                #f7f9fc;
+
+            border-left:
+                4px solid #1e4f91;
+
+            padding:
+                15px;
+
+            border-radius:
+                7px;
+
+            margin:
+                10px 0;
+
+            white-space:
+                pre-wrap;
+
+            line-height:
+                1.6;
+
+            color:
+                #34445c;
+        }
+
+
+        .instructions-box {
+
+            padding:
+                15px;
+
+            background:
+                #eef6ff;
+
+            border-radius:
+                9px;
+
+            margin-bottom:
+                20px;
+
+            line-height:
+                1.6;
+
+            color:
+                #34506e;
+        }
+
+
+        .answer-label {
+
+            display:
+                block;
+
+            margin-bottom:
+                8px;
+
+            font-weight:
+                bold;
+
+            color:
+                #263b5c;
+        }
+
+
+        textarea {
+
+            width:
+                100%;
+
+            min-height:
+                190px;
+
+            resize:
+                vertical;
+
+            border:
+                1px solid #ccd5e2;
+
+            border-radius:
+                9px;
+
+            padding:
+                13px;
+
+            font-family:
+                inherit;
+
+            font-size:
+                14px;
+
+            outline:
+                none;
+        }
+
+
+        textarea:focus {
+
+            border-color:
+                #1e4f91;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(30,79,145,0.10);
+        }
+
+
+        .modal-footer {
+
+            padding:
+                15px 22px 22px;
+
+            display:
+                flex;
+
+            justify-content:
+                flex-end;
+
+            gap:
+                10px;
+        }
+
+
+        /* =====================================
+           NOTIFICATION
+        ===================================== */
+
+        #notification {
+
+            position:
+                fixed;
+
+            right:
+                20px;
+
+            bottom:
+                20px;
+
+            z-index:
+                200;
+
+            min-width:
+                280px;
+
+            max-width:
+                400px;
+
+            padding:
+                14px 17px;
+
+            border-radius:
+                9px;
+
+            color:
+                white;
+
+            background:
+                #183b6b;
+
+            box-shadow:
+                0 8px 30px
+                rgba(0,0,0,0.18);
+
+            display:
+                none;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.4;
+        }
+
+
+        #notification.success {
+
+            background:
+                #16844a;
+        }
+
+
+        #notification.error {
+
+            background:
+                #c63c3c;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer {
+
+            text-align:
+                center;
+
+            color:
+                #7b8798;
+
+            padding:
+                25px;
+
+            font-size:
+                13px;
+        }
+
+
+        /* =====================================
+           MOBILE
+        ===================================== */
+
+        @media (max-width: 750px) {
+
+            header {
+
+                padding:
+                    14px 16px;
+            }
+
+
+            .school-name {
+
+                font-size:
+                    15px;
+            }
+
+
+            .student-info {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .assignment-details {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .assignment-top {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .page-heading h1 {
+
+                font-size:
+                    25px;
+            }
+
+        }
+
+
+        @media (max-width: 480px) {
+
+            .assignment-details {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .assignment-actions {
+
+                flex-direction:
+                    column;
+            }
+
+
+            .assignment-actions .btn {
+
+                width:
+                    100%;
+            }
+
+
+            .back-button {
+
+                padding:
+                    9px 11px;
+
+                font-size:
+                    12px;
+            }
+
+        }
+
+        .result-box {
+    margin-top: 18px;
+    padding: 16px;
+    background: #eef8f2;
+    border: 1px solid #bfe3cc;
+    border-radius: 10px;
+}
+
+.result-box h3 {
+    margin: 0 0 10px;
+    color: #18733d;
+}
+
+.result-score {
+    font-size: 20px;
+    font-weight: bold;
+    color: #142d59;
+    margin-bottom: 8px;
+}
+
+.result-percentage {
+    font-size: 15px;
+    font-weight: bold;
+    color: #18733d;
+    margin-bottom: 10px;
+}
+
+.result-feedback {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    color: #44546a;
+    line-height: 1.6;
+}
+
+.waiting-box {
+    margin-top: 18px;
+    padding: 14px;
+    background: #fff8df;
+    border: 1px solid #f0d98a;
+    border-radius: 10px;
+    color: #765600;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header>
+
+    <div class="header-left">
+
+        <div class="logo">
+            CIS
+        </div>
+
+        <div>
+
+            <div class="school-name">
+                City International Online School
+            </div>
+
+            <div class="school-subtitle">
+                Student Assignment Portal
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="back-button"
+        onclick="goBackToDashboard()">
+
+        ← Dashboard
+
+    </button>
+
+</header>
+
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<main>
+
+
+    <div class="page-heading">
+
+        <h1>
+            📝 Assignments
+        </h1>
+
+        <p>
+            View and complete assignments given
+            by your teachers.
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================
+         STUDENT INFORMATION
+    ====================================== -->
+
+    <div
+        class="student-info"
+        id="studentInformation">
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Student
+            </span>
+
+            <span
+                class="info-value"
+                id="studentName">
+
+                Student
+
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Student Number
+            </span>
+
+            <span
+                class="info-value"
+                id="studentNumber">
+
+                -
+
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Class
+            </span>
+
+            <span
+                class="info-value"
+                id="studentClass">
+
+                -
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         ASSIGNMENTS
+    ====================================== -->
+
+    <div id="assignmentList">
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                ⏳
+            </div>
+
+            <h2>
+                Loading assignments...
+            </h2>
+
+            <p>
+                Please wait.
+            </p>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================
+     ASSIGNMENT MODAL
+========================================= -->
+
+<div
+    class="modal"
+    id="assignmentModal">
+
+    <div class="modal-content">
+
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="modalTitle">
+                    Assignment
+                </h2>
+
+                <p id="modalTeacher">
+                    Teacher
+                </p>
+
+            </div>
+
+
+            <button
+                class="close"
+                onclick="closeAssignmentModal()">
+
+                ×
+
+            </button>
+
+        </div>
+
+
+
+        <div class="modal-body">
+
+            <div
+                class="instructions-box"
+                id="modalInstructions">
+
+            </div>
+
+
+            <h3>
+                Questions
+            </h3>
+
+
+            <div
+                class="question-box"
+                id="modalQuestions">
+
+            </div>
+
+
+            <div
+                id="modalAttachment"
+                style="margin-top:18px;">
+
+            </div>
+
+
+            <div
+                id="answerArea"
+                style="margin-top:22px;">
+
+                <label
+                    class="answer-label"
+                    for="studentAnswer">
+
+                    Your Answer
+
+                </label>
+
+
+                <textarea
+                    id="studentAnswer"
+                    placeholder="Write your answers here...">
+                </textarea>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeAssignmentModal()">
+
+                Close
+
+            </button>
+
+
+            <button
+                class="btn btn-success"
+                id="submitButton"
+                onclick="submitAssignment()">
+
+                Submit Assignment
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     NOTIFICATION
+========================================= -->
+
+<div id="notification"></div>
+
+
+
+<footer>
+
+    ©
+    <span id="year"></span>
+    City International Online School.
+    Student Portal.
+
+</footer>
+
+
+
+<script>
+
+/* =========================================
+   GLOBAL VARIABLES
+========================================= */
+
+let currentStudent = null;
+
+let currentAssignment = null;
+
+
+/* =========================================
+   PAGE START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        loadCurrentStudent();
+
+    }
+);
+
+
+/* =========================================
+   LOAD CURRENT STUDENT
+========================================= */
+
+function loadCurrentStudent() {
+
+    const savedStudent =
+        localStorage.getItem(
+            "cis_current_student"
+        );
+
+
+    if (!savedStudent) {
+
+        alert(
+            "Student login information was not found. Please log in again."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    try {
+
+        currentStudent =
+            JSON.parse(
+                savedStudent
+            );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Student login information is invalid. Please log in again."
+        );
+
+        localStorage.removeItem(
+            "cis_current_student"
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    showStudentInformation();
+
+    loadAssignments();
+
+}
+
+
+/* =========================================
+   SHOW STUDENT INFORMATION
+========================================= */
+
+function showStudentInformation() {
+
+    if (!currentStudent) {
+        return;
+    }
+
+
+    document.getElementById(
+        "studentName"
+    ).textContent =
+        currentStudent.fullName ||
+        currentStudent.name ||
+        "Student";
+
+
+    document.getElementById(
+        "studentNumber"
+    ).textContent =
+        currentStudent.studentNumber ||
+        "-";
+
+
+    document.getElementById(
+        "studentClass"
+    ).textContent =
+        getStudentClass() ||
+        "Not specified";
+
+}
+
+
+/* =========================================
+   NORMALIZE CLASS
+========================================= */
+
+function normalizeClass(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .trim()
+
+        .toLowerCase()
+
+        .replace(/\s+/g, " ")
+
+        .replace(/-/g, " ");
+
+}
+
+
+/* =========================================
+   GET STUDENT CLASS
+========================================= */
+
+function getStudentClass() {
+
+    if (!currentStudent) {
+
+        return "";
+
+    }
+
+
+    /*
+       studentClass is checked first because
+       this is the class selected during
+       student registration.
+    */
+
+    const possibleClasses = [
+
+        currentStudent.studentClass,
+
+        currentStudent.classLevel,
+
+        currentStudent.educationLevel,
+
+        currentStudent.level
+
+    ];
+
+
+    for (
+        let i = 0;
+        i < possibleClasses.length;
+        i++
+    ) {
+
+        const value =
+            possibleClasses[i];
+
+
+        if (
+            value !== null &&
+            value !== undefined &&
+            String(value).trim() !== ""
+        ) {
+
+            return String(value).trim();
+
+        }
+
+    }
+
+
+    return "";
+
+}
+
+
+/* =========================================
+   GET TEACHER ASSIGNMENTS
+========================================= */
+
+function getAssignments() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "cis_teacher_assignments"
+            );
+
+
+        if (!saved) {
+
+            return [];
+
+        }
+
+
+        const data =
+            JSON.parse(saved);
+
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading assignments:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   GET SUBMISSIONS
+========================================= */
+
+function getSubmissions() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "cis_assignment_submissions"
+            );
+
+
+        if (!saved) {
+
+            return [];
+
+        }
+
+
+        const data =
+            JSON.parse(saved);
+
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+
+    } catch (error) {
+
+        console.error(
+            "Error loading submissions:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE SUBMISSIONS
+========================================= */
+
+function saveSubmissions(
+    submissions
+) {
+
+    localStorage.setItem(
+
+        "cis_assignment_submissions",
+
+        JSON.stringify(
+            submissions
+        )
+
+    );
+
+}
+
+
+/* =========================================
+   LOAD ASSIGNMENTS
+========================================= */
+
+function loadAssignments() {
+
+    const container =
+        document.getElementById("assignmentList");
+
+    if (!container) {
+        return;
+    }
+
+    const allAssignments = getAssignments();
+
+    const studentClass =
+        normalizeClass(getStudentClass());
+
+    console.log("Student class:", studentClass);
+    console.log("All teacher assignments:", allAssignments);
+
+    if (allAssignments.length === 0) {
+
+        showNoAssignments(
+            "Your teacher has not published an assignment yet."
+        );
+
+        return;
+    }
+
+    const studentAssignments =
+        allAssignments.filter(function (assignment) {
+
+            const possibleClasses = [
+
+                assignment.classLevel,
+                assignment.studentClass,
+                assignment.educationLevel,
+                assignment.level,
+                assignment.targetClass,
+                assignment.className
+
+            ];
+
+            return possibleClasses.some(function (classValue) {
+
+                if (
+                    classValue === null ||
+                    classValue === undefined ||
+                    String(classValue).trim() === ""
+                ) {
+                    return false;
+                }
+
+                return (
+                    normalizeClass(classValue) ===
+                    studentClass
+                );
+
+            });
+
+        });
+
+    console.log(
+        "Assignments for this student:",
+        studentAssignments
+    );
+
+    if (studentAssignments.length === 0) {
+
+        showNoAssignments(
+            "There are assignments in the school system, but none has been published for your registered class."
+        );
+
+        return;
+    }
+
+    container.innerHTML = "";
+
+    const submissions = getSubmissions();
+
+    studentAssignments
+        .slice()
+        .reverse()
+        .forEach(function (assignment) {
+
+            /*
+             * Find this student's submission
+             */
+            const studentSubmission =
+                submissions.find(function (submission) {
+
+                    return (
+
+                        String(
+                            submission.assignmentId
+                        ) ===
+                        String(
+                            assignment.id
+                        )
+
+                        &&
+
+                        String(
+                            submission.studentNumber || ""
+                        ).trim().toLowerCase() ===
+                        String(
+                            currentStudent.studentNumber || ""
+                        ).trim().toLowerCase()
+
+                    );
+
+                });
+
+
+            /*
+             * Determine submission status
+             */
+            const alreadySubmitted =
+                !!studentSubmission;
+
+
+            const isMarked =
+                studentSubmission &&
+                String(
+                    studentSubmission.status || ""
+                ).toLowerCase() === "marked";
+
+
+            /*
+             * Assignment card
+             */
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "assignment-card";
+
+
+            /*
+             * Status
+             */
+            let statusText =
+                assignment.status ||
+                "Published";
+
+            let statusClass = "";
+
+
+            if (isMarked) {
+
+                statusText =
+                    "✓ Marked";
+
+                statusClass =
+                    "submitted";
+
+            } else if (alreadySubmitted) {
+
+                statusText =
+                    "Submitted";
+
+                statusClass =
+                    "submitted";
+
+            }
+
+
+            const instructions =
+                assignment.instructions ||
+                "Please complete this assignment and submit your answers.";
+
+
+            /*
+             * Result HTML
+             */
+            let resultHtml = "";
+
+
+            if (isMarked) {
+
+                const score =
+                    Number(
+                        studentSubmission.score
+                    );
+
+                const maximumMarks =
+                    Number(
+                        assignment.marks || 0
+                    );
+
+
+                let percentage = 0;
+
+                if (
+                    maximumMarks > 0 &&
+                    !Number.isNaN(score)
+                ) {
+
+                    percentage =
+                        Math.round(
+                            (score / maximumMarks) *
+                            100
+                        );
+
+                }
+
+
+                resultHtml = `
+
+                    <div class="result-box">
+
+                        <h3>
+                            🎉 Your Result
+                        </h3>
+
+                        <div class="result-score">
+
+                            Score:
+                            ${escapeHtml(
+                                String(score)
+                            )}
+                            /
+                            ${escapeHtml(
+                                String(maximumMarks)
+                            )}
+
+                        </div>
+
+                        <div class="result-percentage">
+
+                            Percentage:
+                            ${percentage}%
+
+                        </div>
+
+                        <div class="result-feedback">
+
+                            <strong>
+                                Teacher Feedback:
+                            </strong>
+
+                            <br>
+
+                            ${escapeHtml(
+                                studentSubmission.feedback ||
+                                "No feedback was provided."
+                            )}
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            } else if (alreadySubmitted) {
+
+                resultHtml = `
+
+                    <div class="waiting-box">
+
+                        🕐 Submitted — Waiting for teacher marking.
+
+                    </div>
+
+                `;
+
+            }
+
+
+            item.innerHTML = `
+
+                <div class="assignment-top">
+
+                    <div>
+
+                        <div class="subject-label">
+
+                            ${escapeHtml(
+                                assignment.subject ||
+                                "Subject"
+                            )}
+
+                        </div>
+
+                        <h2>
+
+                            ${escapeHtml(
+                                assignment.title ||
+                                "Assignment"
+                            )}
+
+                        </h2>
+
+                    </div>
+
+
+                    <span
+                        class="status-badge ${statusClass}">
+
+                        ${escapeHtml(
+                            statusText
+                        )}
+
+                    </span>
+
+                </div>
+
+
+                <div class="assignment-details">
+
+                    <div class="detail">
+
+                        Teacher
+
+                        <strong>
+
+                            ${escapeHtml(
+                                assignment.teacherName ||
+                                "Teacher"
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        Class
+
+                        <strong>
+
+                            ${escapeHtml(
+                                assignment.classLevel ||
+                                assignment.studentClass ||
+                                assignment.educationLevel ||
+                                getStudentClass()
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        Due Date
+
+                        <strong>
+
+                            ${escapeHtml(
+                                assignment.dueDate ||
+                                "Not specified"
+                            )}
+
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail">
+
+                        Marks
+
+                        <strong>
+
+                            ${escapeHtml(
+                                String(
+                                    assignment.marks || 0
+                                )
+                            )}
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="assignment-instructions">
+
+                    ${escapeHtml(
+                        instructions
+                    )}
+
+                </div>
+
+
+                ${assignment.attachment ? `
+                    <div style="margin-top:16px;">
+                        <a
+                            href="${escapeHtml(assignment.attachment.dataUrl)}"
+                            download="${escapeHtml(assignment.attachment.name)}"
+                            target="_blank"
+                            rel="noopener">
+                            📎 Download attachment: ${escapeHtml(assignment.attachment.name)}
+                        </a>
+                    </div>
+                ` : ""}
+
+
+                ${resultHtml}
+
+
+                <div class="assignment-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        onclick="openAssignment('${String(assignment.id)}')">
+
+                        👁️ View Assignment
+
+                    </button>
+
+
+                    ${
+                        alreadySubmitted
+
+                        ?
+
+                        `
+
+                        <button
+                            class="btn btn-secondary"
+                            disabled
+                            style="
+                                opacity:0.7;
+                                cursor:not-allowed;
+                            ">
+
+                            ✓ Already Submitted
+
+                        </button>
+
+                        `
+
+                        :
+
+                        ""
+
+                    }
+
+                </div>
+
+            `;
+
+
+            container.appendChild(item);
+
+        });
+
+}
+
+
+/* =========================================
+   NO ASSIGNMENTS
+========================================= */
+
+function showNoAssignments(
+    message
+) {
+
+    const container =
+        document.getElementById(
+            "assignmentList"
+        );
+
+
+    const registeredClass =
+        getStudentClass();
+
+
+    container.innerHTML = `
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                📚
+            </div>
+
+
+            <h2>
+                No assignments yet
+            </h2>
+
+
+            <p>
+                ${escapeHtml(message)}
+            </p>
+
+
+            <div class="class-warning">
+
+                Your registered class:
+                <strong>
+                    ${
+                        escapeHtml(
+                            registeredClass ||
+                            "Not specified"
+                        )
+                    }
+                </strong>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+/* =========================================
+   OPEN ASSIGNMENT
+========================================= */
+
+function openAssignment(
+    assignmentId
+) {
+
+    const assignments =
+        getAssignments();
+
+
+    const assignment =
+        assignments.find(
+
+            function (item) {
+
+                return String(
+                    item.id
+                ) === String(
+                    assignmentId
+                );
+
+            }
+
+        );
+
+
+    if (!assignment) {
+
+        showNotification(
+            "Assignment could not be found.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    currentAssignment =
+        assignment;
+
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        assignment.title ||
+        "Assignment";
+
+
+    document.getElementById(
+        "modalTeacher"
+    ).textContent =
+
+        "Teacher: " +
+
+        (
+            assignment.teacherName ||
+            "Teacher"
+        ) +
+
+        " • " +
+
+        (
+            assignment.subject ||
+            "Subject"
+        );
+
+
+    document.getElementById(
+        "modalInstructions"
+    ).textContent =
+
+        assignment.instructions ||
+        "Complete the questions below.";
+
+
+    document.getElementById(
+        "modalQuestions"
+    ).textContent =
+
+        assignment.questions ||
+        "No questions were provided.";
+
+
+    document.getElementById(
+        "modalAttachment"
+    ).innerHTML = assignment.attachment
+        ? `<a href="${escapeHtml(assignment.attachment.dataUrl)}" download="${escapeHtml(assignment.attachment.name)}" target="_blank" rel="noopener">📎 Open attachment: ${escapeHtml(assignment.attachment.name)}</a>`
+        : "";
+
+
+    document.getElementById(
+        "studentAnswer"
+    ).value = "";
+
+
+    const submissions =
+        getSubmissions();
+
+
+    const alreadySubmitted =
+        submissions.some(
+
+            function (submission) {
+
+                return (
+
+                    String(
+                        submission.assignmentId
+                    ) ===
+                    String(
+                        assignment.id
+                    )
+
+                    &&
+
+                    String(
+                        submission.studentNumber ||
+                        ""
+                    ).toLowerCase() ===
+                    String(
+                        currentStudent.studentNumber ||
+                        ""
+                    ).toLowerCase()
+
+                );
+
+            }
+
+        );
+
+
+    const submitButton =
+        document.getElementById(
+            "submitButton"
+        );
+
+
+    if (alreadySubmitted) {
+
+        submitButton.disabled =
+            true;
+
+        submitButton.textContent =
+            "✓ Already Submitted";
+
+        submitButton.style.opacity =
+            "0.6";
+
+        submitButton.style.cursor =
+            "not-allowed";
+
+
+        document.getElementById(
+            "studentAnswer"
+        ).disabled =
+            true;
+
+        document.getElementById(
+            "studentAnswer"
+        ).placeholder =
+            "You have already submitted this assignment.";
+
+    } else {
+
+        submitButton.disabled =
+            false;
+
+        submitButton.textContent =
+            "Submit Assignment";
+
+        submitButton.style.opacity =
+            "1";
+
+        submitButton.style.cursor =
+            "pointer";
+
+
+        document.getElementById(
+            "studentAnswer"
+        ).disabled =
+            false;
+
+        document.getElementById(
+            "studentAnswer"
+        ).placeholder =
+            "Write your answers here...";
+
+    }
+
+
+    document.getElementById(
+        "assignmentModal"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================
+   CLOSE ASSIGNMENT MODAL
+========================================= */
+
+function closeAssignmentModal() {
+
+    document.getElementById(
+        "assignmentModal"
+    ).classList.remove(
+        "show"
+    );
+
+
+    currentAssignment =
+        null;
+
+}
+
+
+/* =========================================
+   SUBMIT ASSIGNMENT
+========================================= */
+
+function submitAssignment() {
+
+    if (!currentAssignment) {
+
+        showNotification(
+            "No assignment is selected.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const answer =
+        document.getElementById(
+            "studentAnswer"
+        ).value.trim();
+
+
+    if (!answer) {
+
+        showNotification(
+            "Please write your answer before submitting.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !currentStudent ||
+        !currentStudent.studentNumber
+    ) {
+
+        showNotification(
+            "Student information was not found. Please log in again.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const submissions =
+        getSubmissions();
+
+
+    const alreadySubmitted =
+        submissions.some(
+
+            function (submission) {
+
+                return (
+
+                    String(
+                        submission.assignmentId
+                    ) ===
+                    String(
+                        currentAssignment.id
+                    )
+
+                    &&
+
+                    String(
+                        submission.studentNumber
+                    ).toLowerCase() ===
+                    String(
+                        currentStudent.studentNumber
+                    ).toLowerCase()
+
+                );
+
+            }
+
+        );
+
+
+    if (alreadySubmitted) {
+
+        showNotification(
+            "You have already submitted this assignment.",
+            "error"
+        );
+
+        return;
+
+    }
+
+
+    const newSubmission = {
+
+        id:
+            Date.now(),
+
+        assignmentId:
+            currentAssignment.id,
+
+        assignmentTitle:
+            currentAssignment.title,
+
+        subject:
+            currentAssignment.subject,
+
+        teacherCode:
+            currentAssignment.teacherCode ||
+            "",
+
+        teacherName:
+            currentAssignment.teacherName ||
+            "",
+
+        classLevel:
+            currentAssignment.classLevel ||
+            "",
+
+        studentName:
+            currentStudent.fullName ||
+            currentStudent.name ||
+            "Student",
+
+        studentNumber:
+            currentStudent.studentNumber,
+
+        answer:
+            answer,
+
+        status:
+            "Submitted",
+
+        score:
+            null,
+
+        feedback:
+            "",
+
+        submittedAt:
+            new Date().toISOString()
+
+    };
+
+
+    submissions.push(
+        newSubmission
+    );
+
+
+    saveSubmissions(
+        submissions
+    );
+
+
+    closeAssignmentModal();
+
+
+    showNotification(
+        "Assignment submitted successfully! Your teacher can now mark your work.",
+        "success"
+    );
+
+
+    loadAssignments();
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(
+    value
+) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================
+   NOTIFICATION
+========================================= */
+
+function showNotification(
+    message,
+    type
+) {
+
+    const notification =
+        document.getElementById(
+            "notification"
+        );
+
+
+    notification.textContent =
+        message;
+
+
+    notification.className =
+        "";
+
+
+    if (type) {
+
+        notification.classList.add(
+            type
+        );
+
+    }
+
+
+    notification.style.display =
+        "block";
+
+
+    setTimeout(
+
+        function () {
+
+            notification.style.display =
+                "none";
+
+        },
+
+        3500
+
+    );
+
+}
+
+
+/* =========================================
+   BACK TO DASHBOARD
+========================================= */
+
+function goBackToDashboard() {
+
+    window.location.href =
+        "student-dashboard.html";
+
+}
+
+
+/* =========================================
+   CLOSE MODAL WHEN CLICKING OUTSIDE
+========================================= */
+
+document.addEventListener(
+    "click",
+    function (event) {
+
+        const modal =
+            document.getElementById(
+                "assignmentModal"
+            );
+
+
+        if (
+            event.target === modal
+        ) {
+
+            closeAssignmentModal();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   ESCAPE KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeAssignmentModal();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

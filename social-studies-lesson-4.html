@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>East Africa - Social Studies | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e8f0f8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d6fa5);
+            color: white;
+            padding: 55px 5%;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 800px;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .card h3 {
+            color: #1d6fa5;
+            margin: 20px 0 8px;
+        }
+
+        .objectives li,
+        .practice li {
+            margin: 10px 0;
+            margin-left: 25px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f0f6fb;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #1d6fa5;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .country-card {
+            background: #fafcff;
+            border: 1px solid #dce5ee;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .country-card .flag {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .country-card h3 {
+            margin-top: 0;
+        }
+
+        .video-box {
+            background: #172033;
+            color: white;
+            min-height: 230px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .video-box div {
+            max-width: 600px;
+        }
+
+        .video-box .play {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            background: #f8fafc;
+            border: 1px solid #dfe7ef;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question label {
+            display: block;
+            padding: 7px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .question label:hover {
+            background: #eaf2f8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #dff6e7;
+            color: #176b35;
+        }
+
+        .warning {
+            background: #fff4d6;
+            color: #795b00;
+        }
+
+        .progress-section {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 22px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #1d6fa5;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0d2d4e;
+        }
+
+        .secondary {
+            background: #e7eef5;
+            color: #123c69;
+        }
+
+        .secondary:hover {
+            background: #d8e4ee;
+        }
+
+        .danger {
+            background: #b42318;
+            color: white;
+        }
+
+        .danger:hover {
+            background: #8f1c13;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+        <div class="brand">
+            🏫 CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <button class="back-btn" onclick="goToSocialStudies()">
+            ← Back to Social Studies
+        </button>
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container" style="margin: 0 auto;">
+            <h1>🌍 East Africa</h1>
+
+            <p>
+                Social Studies Lesson 4: Learn about East Africa,
+                its countries, people, physical features, resources,
+                culture and cooperation.
+            </p>
+        </div>
+    </section>
+
+
+    <main class="container">
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+            <h2>🎯 Lesson Objectives</h2>
+
+            <p>By the end of this lesson, you should be able to:</p>
+
+            <ul class="objectives">
+                <li>Explain what East Africa means.</li>
+                <li>Name countries found in East Africa.</li>
+                <li>Identify some physical features of East Africa.</li>
+                <li>Describe some economic activities in East Africa.</li>
+                <li>Explain the importance of cooperation among East African countries.</li>
+                <li>Appreciate the different cultures and communities of East Africa.</li>
+            </ul>
+        </section>
+
+
+        <!-- WHAT IS EAST AFRICA -->
+        <section class="card">
+            <h2>🌍 What Is East Africa?</h2>
+
+            <p>
+                East Africa is a region on the eastern side of the African
+                continent. It contains several countries with different
+                peoples, cultures, languages, landscapes and resources.
+            </p>
+
+            <p style="margin-top: 12px;">
+                Uganda is one of the countries located in East Africa.
+                People in the region interact through trade, education,
+                transport, tourism, culture and other activities.
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <h3>🌍 Location</h3>
+                    <p>
+                        East Africa is found in the eastern part of the
+                        African continent.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🤝 Cooperation</h3>
+                    <p>
+                        Countries in the region cooperate in areas such
+                        as trade, transport, education and development.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🌱 Resources</h3>
+                    <p>
+                        The region has farmland, lakes, rivers, forests,
+                        minerals and wildlife.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- COUNTRIES -->
+        <section class="card">
+            <h2>🗺️ Countries of East Africa</h2>
+
+            <p>
+                East Africa includes several countries. Some commonly
+                studied East African countries include:
+            </p>
+
+            <div class="country-grid">
+
+                <div class="country-card">
+                    <div class="flag">🇺🇬</div>
+                    <h3>Uganda</h3>
+                    <p>
+                        Capital city: Kampala
+                    </p>
+                </div>
+
+                <div class="country-card">
+                    <div class="flag">🇰🇪</div>
+                    <h3>Kenya</h3>
+                    <p>
+                        Capital city: Nairobi
+                    </p>
+                </div>
+
+                <div class="country-card">
+                    <div class="flag">🇹🇿</div>
+                    <h3>Tanzania</h3>
+                    <p>
+                        Capital city: Dodoma
+                    </p>
+                </div>
+
+                <div class="country-card">
+                    <div class="flag">🇷🇼</div>
+                    <h3>Rwanda</h3>
+                    <p>
+                        Capital city: Kigali
+                    </p>
+                </div>
+
+                <div class="country-card">
+                    <div class="flag">🇧🇮</div>
+                    <h3>Burundi</h3>
+                    <p>
+                        Capital city: Gitega
+                    </p>
+                </div>
+
+                <div class="country-card">
+                    <div class="flag">🇸🇸</div>
+                    <h3>South Sudan</h3>
+                    <p>
+                        Capital city: Juba
+                    </p>
+                </div>
+
+            </div>
+
+            <p style="margin-top:20px;">
+                The wider geographical idea of East Africa can include
+                additional countries depending on how the region is defined.
+            </p>
+        </section>
+
+
+        <!-- PHYSICAL FEATURES -->
+        <section class="card">
+            <h2>🏔️ Physical Features of East Africa</h2>
+
+            <p>
+                East Africa has many interesting physical features.
+                These features support human activities, wildlife and tourism.
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <h3>🏔️ Mountains</h3>
+                    <p>
+                        East Africa has important mountains including
+                        Mount Kilimanjaro, Mount Kenya and the Rwenzori Mountains.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🌊 Lakes</h3>
+                    <p>
+                        The region has large lakes such as Lake Victoria,
+                        Lake Tanganyika and Lake Turkana.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🌊 Rivers</h3>
+                    <p>
+                        Rivers provide water for people, farming, animals
+                        and other activities.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🌳 Forests</h3>
+                    <p>
+                        Forests provide homes for wildlife and important
+                        natural resources.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- PEOPLE AND CULTURE -->
+        <section class="card">
+            <h2>👨‍👩‍👧‍👦 People and Culture</h2>
+
+            <p>
+                East Africa is home to many different communities.
+                People have different languages, traditions, foods,
+                dances, music, clothing and customs.
+            </p>
+
+            <h3>🎵 Music and Dance</h3>
+
+            <p>
+                Traditional and modern music and dance are important
+                parts of East African culture.
+            </p>
+
+            <h3>🍲 Food</h3>
+
+            <p>
+                Different communities prepare different foods depending
+                on their traditions and locally available resources.
+            </p>
+
+            <h3>🤝 Respect</h3>
+
+            <p>
+                People should respect cultural differences and cooperate
+                peacefully with others.
+            </p>
+        </section>
+
+
+        <!-- ECONOMIC ACTIVITIES -->
+        <section class="card">
+            <h2>💼 Economic Activities in East Africa</h2>
+
+            <p>
+                People in East Africa participate in many activities
+                to earn a living and provide goods and services.
+            </p>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <h3>🌾 Farming</h3>
+                    <p>
+                        Agriculture provides food and raw materials
+                        for many people.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🐄 Livestock Keeping</h3>
+                    <p>
+                        People keep cattle, goats, sheep, poultry
+                        and other animals.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🛍️ Trade</h3>
+                    <p>
+                        Countries and communities exchange goods
+                        and services through trade.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>🦁 Tourism</h3>
+                    <p>
+                        Wildlife, mountains, lakes and cultural sites
+                        attract tourists.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- COOPERATION -->
+        <section class="card">
+            <h2>🤝 Cooperation in East Africa</h2>
+
+            <p>
+                East African countries can work together to improve the
+                lives of their people and support development.
+            </p>
+
+            <h3>Areas of Cooperation</h3>
+
+            <ul class="objectives">
+                <li>Trade between countries.</li>
+                <li>Transport and communication.</li>
+                <li>Education and training.</li>
+                <li>Tourism.</li>
+                <li>Environmental protection.</li>
+                <li>Peace and security.</li>
+                <li>Regional development.</li>
+            </ul>
+
+            <h3>Why Cooperation Matters</h3>
+
+            <p>
+                Cooperation allows countries to share ideas, resources,
+                skills and opportunities. It can also make it easier for
+                people and businesses to interact across borders.
+            </p>
+        </section>
+
+
+        <!-- ENVIRONMENT -->
+        <section class="card">
+            <h2>🌱 Protecting the East African Environment</h2>
+
+            <p>
+                Natural resources belong to the environment that supports
+                people and wildlife. Everyone has a role in protecting them.
+            </p>
+
+            <ul class="objectives">
+                <li>Plant and protect trees.</li>
+                <li>Protect lakes and rivers from pollution.</li>
+                <li>Protect wildlife and their habitats.</li>
+                <li>Dispose of waste properly.</li>
+                <li>Use natural resources responsibly.</li>
+                <li>Protect forests and wetlands.</li>
+            </ul>
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+                <div>
+                    <div class="play">▶️</div>
+
+                    <h3 style="color:white;">
+                        East Africa
+                    </h3>
+
+                    <p>
+                        A lesson video about East African countries,
+                        people, physical features, economic activities
+                        and cooperation will appear here.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+            <h2>✏️ Practice Questions</h2>
+
+            <ol class="practice">
+                <li>What is East Africa?</li>
+                <li>Name four countries found in East Africa.</li>
+                <li>Name two physical features found in East Africa.</li>
+                <li>Give two economic activities carried out in East Africa.</li>
+                <li>Give two reasons why East African countries cooperate.</li>
+            </ol>
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+            <h2>📝 Lesson Quiz</h2>
+
+            <p style="margin-bottom:20px;">
+                Choose the correct answer for each question.
+            </p>
+
+            <form id="quizForm">
+
+                <!-- QUESTION 1 -->
+                <div class="question">
+                    <p>1. Uganda is located in which region of Africa?</p>
+
+                    <label>
+                        <input type="radio" name="q1" value="a">
+                        A. West Africa
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="b">
+                        B. East Africa
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="c">
+                        C. North Africa
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q1" value="d">
+                        D. Southern Africa
+                    </label>
+                </div>
+
+
+                <!-- QUESTION 2 -->
+                <div class="question">
+                    <p>2. Which country is an East African country?</p>
+
+                    <label>
+                        <input type="radio" name="q2" value="a">
+                        A. Uganda
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="b">
+                        B. Brazil
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="c">
+                        C. Canada
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q2" value="d">
+                        D. Australia
+                    </label>
+                </div>
+
+
+                <!-- QUESTION 3 -->
+                <div class="question">
+                    <p>3. Which of these is a physical feature found in East Africa?</p>
+
+                    <label>
+                        <input type="radio" name="q3" value="a">
+                        A. Mount Kilimanjaro
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="b">
+                        B. A classroom
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="c">
+                        C. A shopping centre
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q3" value="d">
+                        D. A school uniform
+                    </label>
+                </div>
+
+
+                <!-- QUESTION 4 -->
+                <div class="question">
+                    <p>4. Which activity can be an important economic activity in East Africa?</p>
+
+                    <label>
+                        <input type="radio" name="q4" value="a">
+                        A. Farming
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="b">
+                        B. Destroying forests
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="c">
+                        C. Polluting rivers
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q4" value="d">
+                        D. Destroying wildlife
+                    </label>
+                </div>
+
+
+                <!-- QUESTION 5 -->
+                <div class="question">
+                    <p>5. Why is cooperation among East African countries important?</p>
+
+                    <label>
+                        <input type="radio" name="q5" value="a">
+                        A. To stop people from working together
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="b">
+                        B. To support trade, development and cooperation
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="c">
+                        C. To destroy natural resources
+                    </label>
+
+                    <label>
+                        <input type="radio" name="q5" value="d">
+                        D. To prevent communication
+                    </label>
+                </div>
+
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="submitQuiz()">
+                    Submit Quiz
+                </button>
+
+            </form>
+
+            <div id="quizResult" class="result"></div>
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+            <h2>📊 Lesson Progress</h2>
+
+            <p>
+                Complete the quiz and mark the lesson complete to record
+                your progress.
+            </p>
+
+            <div class="progress-section">
+
+                <div class="progress-bar">
+                    <div
+                        id="progressFill"
+                        class="progress-fill">
+                    </div>
+                </div>
+
+                <div
+                    id="progressText"
+                    class="progress-text">
+                    0% Complete
+                </div>
+
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="btn primary"
+                    onclick="markComplete()">
+                    ✓ Mark Lesson Complete
+                </button>
+
+                <button
+                    class="btn danger"
+                    onclick="resetLesson()">
+                    Reset Lesson
+                </button>
+
+            </div>
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <section class="card">
+
+            <div class="buttons">
+
+                <button
+                    class="btn secondary"
+                    onclick="window.location.href='social-studies-lesson-3.html'">
+                    ← Previous Lesson
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="goToSocialStudies()">
+                    🌍 Social Studies
+                </button>
+
+                <button
+                    class="btn primary"
+                    onclick="window.location.href='social-studies-lesson-5.html'">
+                    Next Lesson →
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © <span id="currentYear"></span>
+            City International Online School. All Rights Reserved.
+        </p>
+    </footer>
+
+
+    <script>
+
+        const completedKey =
+            "cis_social_studies_lesson4_completed";
+
+        const scoreKey =
+            "cis_social_studies_lesson4_quiz_score";
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById("currentYear").textContent =
+                new Date().getFullYear();
+
+            updateProgress();
+
+            const savedScore =
+                localStorage.getItem(scoreKey);
+
+            if (savedScore !== null) {
+
+                const result =
+                    document.getElementById("quizResult");
+
+                result.style.display = "block";
+                result.className = "result success";
+
+                result.textContent =
+                    "Your saved quiz score is " +
+                    savedScore +
+                    "/5.";
+            }
+
+        });
+
+
+        function submitQuiz() {
+
+            const answers = {
+                q1: "b",
+                q2: "a",
+                q3: "a",
+                q4: "a",
+                q5: "b"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+
+            for (let question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+                if (selected) {
+
+                    answered++;
+
+                    if (
+                        selected.value ===
+                        answers[question]
+                    ) {
+                        score++;
+                    }
+                }
+            }
+
+
+            const result =
+                document.getElementById("quizResult");
+
+
+            if (answered < 5) {
+
+                result.style.display = "block";
+                result.className = "result warning";
+
+                result.textContent =
+                    "Please answer all 5 questions before submitting the quiz.";
+
+                return;
+            }
+
+
+            localStorage.setItem(
+                scoreKey,
+                score
+            );
+
+
+            result.style.display = "block";
+
+
+            if (score >= 3) {
+
+                result.className =
+                    "result success";
+
+                result.textContent =
+                    "Excellent! You scored " +
+                    score +
+                    "/5. Keep learning and improving!";
+
+            } else {
+
+                result.className =
+                    "result warning";
+
+                result.textContent =
+                    "You scored " +
+                    score +
+                    "/5. Review the lesson and try again.";
+
+            }
+
+
+            updateProgress();
+        }
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                completedKey,
+                "true"
+            );
+
+            updateProgress();
+
+
+            const result =
+                document.getElementById("quizResult");
+
+            result.style.display = "block";
+            result.className = "result success";
+
+            result.textContent =
+                "✓ Lesson 4 has been marked as complete!";
+        }
+
+
+        function updateProgress() {
+
+            const completed =
+                localStorage.getItem(
+                    completedKey
+                ) === "true";
+
+
+            const score =
+                localStorage.getItem(
+                    scoreKey
+                );
+
+
+            let progress = 0;
+
+
+            if (score !== null) {
+                progress = 50;
+            }
+
+
+            if (completed) {
+                progress = 100;
+            }
+
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                progress + "%";
+
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "% Complete";
+        }
+
+
+        function resetLesson() {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to reset this lesson?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            localStorage.removeItem(
+                completedKey
+            );
+
+            localStorage.removeItem(
+                scoreKey
+            );
+
+
+            document.getElementById(
+                "quizForm"
+            ).reset();
+
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+
+            result.style.display = "none";
+
+
+            updateProgress();
+        }
+
+
+        function goToSocialStudies() {
+
+            window.location.href =
+                "social-studies.html";
+        }
+
+    </script>
+
+</body>
+</html>

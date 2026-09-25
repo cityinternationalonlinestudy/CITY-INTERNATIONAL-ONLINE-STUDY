@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Live Class - City International Online School</title>
+
+    <link rel="stylesheet" href="live-class.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="top-header">
+
+        <div class="school-name">
+            🏫 City International Online School
+        </div>
+
+        <div class="header-right">
+            <span id="connectionStatus" class="status offline">
+                ● Offline
+            </span>
+
+            <button
+                class="back-button"
+                onclick="goBack()">
+                ← Back
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- MAIN PAGE -->
+    <main class="live-class-page">
+
+        <!-- CLASS INFORMATION -->
+        <section class="class-information">
+
+            <div>
+                <h1>🎥 Live Class</h1>
+
+                <p>
+                    Join your teacher for an online lesson.
+                </p>
+            </div>
+
+            <div class="class-details">
+
+                <div class="detail-box">
+                    <span>📚</span>
+                    <strong>Subject</strong>
+                    <small id="subjectName">
+                        Live Lesson
+                    </small>
+                </div>
+
+                <div class="detail-box">
+                    <span>👨‍🏫</span>
+                    <strong>Teacher</strong>
+                    <small id="teacherName">
+                        Teacher
+                    </small>
+                </div>
+
+                <div class="detail-box">
+                    <span>⏱️</span>
+                    <strong>Duration</strong>
+                    <small id="classTimer">
+                        00:00:00
+                    </small>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO AREA -->
+        <section class="video-section">
+
+            <!-- TEACHER VIDEO -->
+            <div class="video-card teacher-video-card">
+
+                <div class="video-title">
+                    <span>👨‍🏫 Teacher</span>
+
+                    <span
+                        id="teacherStatus"
+                        class="video-status">
+                        Waiting...
+                    </span>
+                </div>
+
+                <div class="video-container">
+
+                    <video
+                        id="teacherVideo"
+                        autoplay
+                        playsinline>
+                    </video>
+
+                    <div
+                        id="teacherPlaceholder"
+                        class="video-placeholder">
+
+                        <div class="placeholder-icon">
+                            👨‍🏫
+                        </div>
+
+                        <h2>Teacher</h2>
+
+                        <p>
+                            Waiting for the teacher to start...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STUDENT VIDEO -->
+            <div class="video-card student-video-card">
+
+                <div class="video-title">
+                    <span>👨‍🎓 You</span>
+
+                    <span
+                        id="studentStatus"
+                        class="video-status">
+                        Camera Off
+                    </span>
+                </div>
+
+                <div class="video-container">
+
+                    <video
+                        id="studentVideo"
+                        autoplay
+                        muted
+                        playsinline>
+                    </video>
+
+                    <div
+                        id="studentPlaceholder"
+                        class="video-placeholder">
+
+                        <div class="placeholder-icon">
+                            👨‍🎓
+                        </div>
+
+                        <h2>You</h2>
+
+                        <p>
+                            Your camera is off.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTROLS -->
+        <section class="control-bar">
+
+            <button
+                id="micButton"
+                class="control-button"
+                onclick="toggleMicrophone()">
+
+                🎤
+                <span>Mute</span>
+
+            </button>
+
+
+            <button
+                id="cameraButton"
+                class="control-button"
+                onclick="toggleCamera()">
+
+                📹
+                <span>Camera</span>
+
+            </button>
+
+
+            <button
+                class="control-button"
+                onclick="toggleFullscreen()">
+
+                ⛶
+                <span>Fullscreen</span>
+
+            </button>
+
+
+            <button
+                class="control-button"
+                onclick="openParticipants()">
+
+                👥
+                <span>People</span>
+
+            </button>
+
+
+            <button
+                class="control-button chat-button"
+                onclick="toggleChat()">
+
+                💬
+                <span>Chat</span>
+
+            </button>
+
+
+            <button
+                class="control-button leave-button"
+                onclick="leaveClass()">
+
+                📞
+                <span>Leave</span>
+
+            </button>
+
+        </section>
+
+
+        <!-- LOWER CONTENT -->
+        <section class="class-content">
+
+            <!-- CHAT -->
+            <div
+                id="chatPanel"
+                class="panel chat-panel">
+
+                <div class="panel-header">
+
+                    <h2>💬 Class Chat</h2>
+
+                    <button
+                        onclick="toggleChat()">
+                        ✕
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="chatMessages"
+                    class="chat-messages">
+
+                    <div class="system-message">
+                        Welcome to the live class.
+                    </div>
+
+                </div>
+
+
+                <div class="chat-input-area">
+
+                    <input
+                        type="text"
+                        id="chatInput"
+                        placeholder="Type a message..."
+                        onkeydown="handleChatKey(event)">
+
+                    <button
+                        onclick="sendMessage()">
+                        Send
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- NOTES -->
+            <div class="panel notes-panel">
+
+                <div class="panel-header">
+
+                    <h2>📝 My Notes</h2>
+
+                    <button
+                        onclick="saveNotes()">
+                        Save
+                    </button>
+
+                </div>
+
+                <textarea
+                    id="notes"
+                    placeholder="Write your notes here..."></textarea>
+
+                <div
+                    id="notesMessage"
+                    class="notes-message">
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- PARTICIPANTS MODAL -->
+    <div
+        id="participantsModal"
+        class="modal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2>👥 Participants</h2>
+
+                <button
+                    onclick="closeParticipants()">
+                    ✕
+                </button>
+
+            </div>
+
+
+            <div
+                id="participantsList"
+                class="participants-list">
+
+                <div class="participant">
+                    <span>👨‍🏫</span>
+
+                    <div>
+                        <strong>Teacher</strong>
+                        <small>Host</small>
+                    </div>
+                </div>
+
+
+                <div class="participant">
+                    <span>👨‍🎓</span>
+
+                    <div>
+                        <strong>You</strong>
+                        <small>Student</small>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- LEAVE MODAL -->
+    <div
+        id="leaveModal"
+        class="modal">
+
+        <div class="modal-box leave-box">
+
+            <div class="leave-icon">
+                📞
+            </div>
+
+            <h2>Leave Live Class?</h2>
+
+            <p>
+                Are you sure you want to leave this class?
+            </p>
+
+            <div class="modal-buttons">
+
+                <button
+                    class="cancel-button"
+                    onclick="closeLeaveModal()">
+                    Cancel
+                </button>
+
+                <button
+                    class="confirm-leave-button"
+                    onclick="confirmLeave()">
+                    Leave Class
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- NOTIFICATION -->
+    <div
+        id="notification"
+        class="notification">
+    </div>
+
+
+    <script src="live-class.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 4 - Forgiveness and Peace | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 19px;
+            font-weight: 800;
+            color: #1d4ed8;
+        }
+
+        .school-subtitle {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #4f46e5;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0891b2, #2563eb);
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .lesson-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 7px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            max-width: 750px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            color: #111827;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .section h3 {
+            color: #0891b2;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .section ul {
+            margin-left: 22px;
+            color: #475569;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .objectives {
+            background: #ecfeff;
+            border-left: 5px solid #0891b2;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .value-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .value-card .icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .value-card strong {
+            color: #0891b2;
+        }
+
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 230px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .video-box p {
+            color: #cbd5e1;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .quiz-question:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-question h3 {
+            color: #111827;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            background: #f8fafc;
+            padding: 11px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+
+        .option:hover {
+            background: #ecfeff;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button,
+        .nav-button {
+            border: none;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #0891b2;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0e7490;
+        }
+
+        .success {
+            background: #15803d;
+            color: white;
+        }
+
+        .danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .secondary {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .result {
+            display: none;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            height: 13px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #0891b2;
+            transition: 0.4s;
+        }
+
+        footer {
+            background: #111827;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 13px 15px;
+            }
+
+            .school-name {
+                font-size: 14px;
+            }
+
+            .school-subtitle {
+                display: none;
+            }
+
+            .back-btn {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .hero {
+                padding: 38px 18px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 12px;
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section h2 {
+                font-size: 21px;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            button,
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div>
+            <div class="school-name">
+                CITY INTERNATIONAL ONLINE SCHOOL
+            </div>
+
+            <div class="school-subtitle">
+                Religious Education
+            </div>
+        </div>
+
+        <a href="religious-education.html" class="back-btn">
+            ← Back to Religious Education
+        </a>
+
+    </header>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <span class="lesson-label">
+                Lesson 4
+            </span>
+
+            <h1>
+                🕊️ Forgiveness and Peace
+            </h1>
+
+            <p>
+                Learn about forgiveness, peaceful relationships,
+                patience and healthy ways of solving disagreements.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main class="container">
+
+        <!-- OBJECTIVES -->
+        <section class="section objectives">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <p>
+                By the end of this lesson, you should be able to:
+            </p>
+
+            <ul>
+                <li>Explain the meaning of forgiveness.</li>
+                <li>Explain what peace means.</li>
+                <li>Identify peaceful ways of solving disagreements.</li>
+                <li>Explain why patience and listening are important.</li>
+                <li>Know when to seek help from a trusted adult.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- FORGIVENESS -->
+        <section class="section">
+
+            <h2>💚 What Is Forgiveness?</h2>
+
+            <p>
+                Forgiveness means choosing to let go of anger or
+                resentment after someone has caused harm or hurt.
+                Many religious traditions teach forgiveness as an
+                important part of healthy relationships.
+            </p>
+
+            <p>
+                Forgiveness does not mean that harmful behaviour was
+                acceptable. It also does not mean that a person must
+                remain in an unsafe situation.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Important:</strong>
+
+                <p>
+                    If someone is being hurt, threatened or bullied,
+                    they should tell a trusted adult and seek help.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PEACE -->
+        <section class="section">
+
+            <h2>🕊️ What Is Peace?</h2>
+
+            <p>
+                Peace means living and working together without
+                unnecessary violence, hostility or conflict.
+                Peace includes respect, understanding and cooperation.
+            </p>
+
+            <h3>Ways to promote peace</h3>
+
+            <div class="value-grid">
+
+                <div class="value-card">
+                    <div class="icon">👂</div>
+                    <strong>Listen</strong>
+                    <p>
+                        Give people an opportunity to explain their views.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">💬</div>
+                    <strong>Communicate</strong>
+                    <p>
+                        Use calm and respectful language.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <strong>Cooperate</strong>
+                    <p>
+                        Look for solutions that are fair and constructive.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">❤️</div>
+                    <strong>Respect</strong>
+                    <p>
+                        Treat other people with dignity.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- DISAGREEMENTS -->
+        <section class="section">
+
+            <h2>💬 Solving Disagreements Peacefully</h2>
+
+            <p>
+                People may disagree because they have different ideas,
+                feelings or interests. A disagreement does not have to
+                become a fight.
+            </p>
+
+            <h3>Try these steps:</h3>
+
+            <div class="steps">
+
+                <div class="step">
+                    <strong>1. Stay calm</strong>
+                    <p>
+                        Take a moment before responding.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>2. Listen</strong>
+                    <p>
+                        Allow the other person to explain their point
+                        of view.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>3. Speak respectfully</strong>
+                    <p>
+                        Explain your feelings without insulting or
+                        threatening anyone.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>4. Look for a solution</strong>
+                    <p>
+                        Try to find a fair and peaceful way forward.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>5. Ask for help when necessary</strong>
+                    <p>
+                        Talk to a teacher, parent or another trusted
+                        adult when the problem cannot be safely solved.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PATIENCE -->
+        <section class="section">
+
+            <h2>⏳ Patience</h2>
+
+            <p>
+                Patience means staying calm when something takes time
+                or when a situation is difficult.
+            </p>
+
+            <p>
+                Being patient can help us think clearly instead of
+                reacting angrily. It can also help us listen carefully
+                and make better decisions.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Example:</strong>
+
+                <p>
+                    If two students disagree about whose turn it is,
+                    they can remain calm, listen to each other and
+                    ask a teacher for help if necessary.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="section">
+
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div class="video-icon">
+                    ▶️
+                </div>
+
+                <h3>
+                    Forgiveness and Peace
+                </h3>
+
+                <p>
+                    Educational video will be added here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="section">
+
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice-question">
+                <strong>1.</strong>
+                What does forgiveness mean?
+            </div>
+
+            <div class="practice-question">
+                <strong>2.</strong>
+                What is peace?
+            </div>
+
+            <div class="practice-question">
+                <strong>3.</strong>
+                Give two ways of solving disagreements peacefully.
+            </div>
+
+            <div class="practice-question">
+                <strong>4.</strong>
+                Why is patience important?
+            </div>
+
+            <div class="practice-question">
+                <strong>5.</strong>
+                Who can you ask for help when a disagreement cannot
+                be safely solved?
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="section">
+
+            <h2>🧠 Lesson 4 Quiz</h2>
+
+            <p>
+                Choose the best answer for each question.
+            </p>
+
+
+            <!-- QUESTION 1 -->
+            <div class="quiz-question">
+
+                <h3>
+                    1. What does forgiveness mean?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. Choosing to let go of anger or resentment
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. Pretending nothing happened
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. Hurting the other person
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. Refusing all communication
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 2 -->
+            <div class="quiz-question">
+
+                <h3>
+                    2. Which action promotes peace?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Listening to others
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. Insulting people
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. Starting fights
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. Threatening others
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 3 -->
+            <div class="quiz-question">
+
+                <h3>
+                    3. What should you do during a disagreement?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Stay calm and listen
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Shout immediately
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Insult the other person
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Start a fight
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 4 -->
+            <div class="quiz-question">
+
+                <h3>
+                    4. What does patience mean?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. Becoming angry quickly
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Staying calm when something takes time
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    C. Refusing to listen
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Always getting your own way
+                </label>
+
+            </div>
+
+
+            <!-- QUESTION 5 -->
+            <div class="quiz-question">
+
+                <h3>
+                    5. Who can help with a serious disagreement?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. A trusted adult
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    B. Nobody
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. Someone who wants to make the problem worse
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    D. A person who encourages fighting
+                </label>
+
+            </div>
+
+
+            <button
+                class="primary"
+                onclick="submitQuiz()">
+                Submit Quiz
+            </button>
+
+
+            <div
+                class="result"
+                id="quizResult">
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="progress-section">
+
+            <div class="progress-header">
+
+                <span>
+                    Lesson Progress
+                </span>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINISH -->
+        <section class="section">
+
+            <h2>✅ Finish Lesson</h2>
+
+            <p>
+                After studying the lesson and completing the quiz,
+                mark this lesson as complete.
+            </p>
+
+            <div class="button-row">
+
+                <button
+                    class="success"
+                    onclick="markComplete()">
+                    ✓ Mark Complete
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="resetLesson()">
+                    🔄 Reset Lesson
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <section class="section">
+
+            <div class="button-row">
+
+                <a
+                    href="religious-education-lesson-3.html"
+                    class="nav-button secondary">
+                    ← Previous Lesson
+                </a>
+
+                <a
+                    href="religious-education.html"
+                    class="nav-button secondary">
+                    Religious Education
+                </a>
+
+                <a
+                    href="religious-education-lesson-5.html"
+                    class="nav-button primary">
+                    Next Lesson →
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © <span id="currentYear"></span>
+            <strong>City International Online School</strong>
+        </p>
+
+        <p>
+            Religious Education • Lesson 4
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        const completedKey =
+            "cis_religious_education_lesson4_completed";
+
+        const quizScoreKey =
+            "cis_religious_education_lesson4_quiz_score";
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                completedKey,
+                "true"
+            );
+
+            updateProgress();
+
+            alert(
+                "Lesson 4 has been marked as completed! ✓"
+            );
+        }
+
+
+        function resetLesson() {
+
+            const confirmReset = confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+            if (!confirmReset) {
+                return;
+            }
+
+            localStorage.removeItem(
+                completedKey
+            );
+
+            localStorage.removeItem(
+                quizScoreKey
+            );
+
+            document.getElementById(
+                "quizResult"
+            ).style.display = "none";
+
+            document
+                .querySelectorAll(
+                    'input[type="radio"]'
+                )
+                .forEach(function(input) {
+                    input.checked = false;
+                });
+
+            updateProgress();
+
+            alert(
+                "Lesson progress has been reset."
+            );
+        }
+
+
+        function submitQuiz() {
+
+            const answers = {
+                q1: "a",
+                q2: "a",
+                q3: "a",
+                q4: "b",
+                q5: "a"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+            for (const question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+                if (selected) {
+
+                    answered++;
+
+                    if (
+                        selected.value ===
+                        answers[question]
+                    ) {
+                        score++;
+                    }
+                }
+            }
+
+            if (answered < 5) {
+
+                alert(
+                    "Please answer all 5 questions before submitting."
+                );
+
+                return;
+            }
+
+            localStorage.setItem(
+                quizScoreKey,
+                score
+            );
+
+            const percentage =
+                Math.round((score / 5) * 100);
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+            result.style.display = "block";
+
+            if (score === 5) {
+
+                result.innerHTML =
+                    "🎉 Excellent! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%).";
+
+            } else if (score >= 3) {
+
+                result.innerHTML =
+                    "👏 Good work! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Review the lesson and try again if you want to improve.";
+
+            } else {
+
+                result.innerHTML =
+                    "📚 Keep studying! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Review the lesson and try the quiz again.";
+
+            }
+
+            updateProgress();
+
+            window.scrollTo({
+                top: result.offsetTop - 100,
+                behavior: "smooth"
+            });
+        }
+
+
+        function updateProgress() {
+
+            let progress = 0;
+
+            if (
+                localStorage.getItem(
+                    completedKey
+                ) === "true"
+            ) {
+
+                progress = 100;
+
+            } else if (
+                localStorage.getItem(
+                    quizScoreKey
+                ) !== null
+            ) {
+
+                progress = 75;
+
+            }
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "%";
+
+            document.getElementById(
+                "progressBar"
+            ).style.width =
+                progress + "%";
+        }
+
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+                updateProgress();
+            }
+        );
+
+    </script>
+
+</body>
+</html>

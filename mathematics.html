@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mathematics - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           TOP NAVIGATION
+        ========================== */
+
+        .topbar {
+            background: #102a56;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .school-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .school-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            color: #102a56;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .school-name h1 {
+            font-size: 17px;
+        }
+
+        .school-name p {
+            font-size: 11px;
+            opacity: 0.8;
+            margin-top: 3px;
+        }
+
+        .back-button {
+            background: white;
+            color: #102a56;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: #e8eef8;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            background: linear-gradient(135deg, #123b78, #1e69b6);
+            color: white;
+            padding: 50px 30px;
+        }
+
+        .hero-container {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .subject-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            line-height: 1.7;
+            opacity: 0.92;
+        }
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 35px 25px;
+        }
+
+        /* =========================
+           STATISTICS
+        ========================== */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .stat {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .stat-icon {
+            font-size: 25px;
+            margin-bottom: 10px;
+        }
+
+        .stat h3 {
+            font-size: 23px;
+            margin-bottom: 5px;
+        }
+
+        .stat p {
+            color: #788292;
+            font-size: 12px;
+        }
+
+        /* =========================
+           SECTION
+        ========================== */
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            margin-bottom: 17px;
+        }
+
+        .section-title h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .section-title p {
+            color: #778191;
+            font-size: 13px;
+        }
+
+        /* =========================
+           LESSONS
+        ========================== */
+
+        .lesson-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .lesson {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            transition: 0.2s;
+        }
+
+        .lesson:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(20,40,80,0.08);
+        }
+
+        .lesson-number {
+            width: 38px;
+            height: 38px;
+            background: #eaf2ff;
+            color: #155da8;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 13px;
+        }
+
+        .lesson h3 {
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .lesson p {
+            color: #707b8a;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .lesson-button {
+            border: none;
+            background: #165da9;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .lesson-button:hover {
+            background: #0d4885;
+        }
+
+        /* =========================
+           MATERIALS
+        ========================== */
+
+        .material-list {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .material {
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .material:last-child {
+            border-bottom: none;
+        }
+
+        .material-info {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .material-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 9px;
+            background: #f0f4fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .material-info h3 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .material-info p {
+            color: #7b8491;
+            font-size: 11px;
+        }
+
+        .download-button {
+            border: 1px solid #d8e0eb;
+            background: white;
+            color: #165da9;
+            padding: 8px 13px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .download-button:hover {
+            background: #f0f5fc;
+        }
+
+        /* =========================
+           ASSIGNMENT
+        ========================== */
+
+        .assignment {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 23px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .assignment h3 {
+            margin-bottom: 7px;
+        }
+
+        .assignment p {
+            color: #778191;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .status {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #fff4d8;
+            color: #896800;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .assignment-button {
+            border: none;
+            background: #165da9;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           QUIZ
+        ========================== */
+
+        .quiz-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 23px;
+        }
+
+        .quiz-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .quiz-card p {
+            color: #778191;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .quiz-button {
+            border: none;
+            background: #16834a;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* =========================
+           LIVE CLASS
+        ========================== */
+
+        .live-class {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .live-badge {
+            display: inline-block;
+            background: #ffe9e9;
+            color: #c62828;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .live-class h3 {
+            margin-bottom: 7px;
+        }
+
+        .live-class p {
+            color: #778191;
+            font-size: 13px;
+        }
+
+        .join-button {
+            border: none;
+            background: #16834a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* =========================
+           PROGRESS
+        ========================== */
+
+        .progress-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 23px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .progress-header strong {
+            font-size: 14px;
+        }
+
+        .progress-header span {
+            color: #165da9;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: #edf0f5;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #165da9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            text-align: center;
+            color: #7c8695;
+            font-size: 12px;
+            padding: 30px;
+        }
+
+        /* =========================
+           MODAL
+        ========================== */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            background: white;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 15px;
+            top: 12px;
+            border: none;
+            background: transparent;
+            font-size: 25px;
+            cursor: pointer;
+            color: #555;
+        }
+
+        .modal-box h2 {
+            margin-bottom: 10px;
+        }
+
+        .modal-box p {
+            color: #737d8b;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .modal-box .primary-button {
+            width: 100%;
+            margin-top: 20px;
+            border: none;
+            background: #165da9;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media (max-width: 900px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .lesson-list {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .topbar {
+                padding: 12px 17px;
+            }
+
+            .school-name h1 {
+                font-size: 14px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            .container {
+                padding: 25px 17px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .assignment,
+            .live-class {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .material {
+                align-items: flex-start;
+            }
+
+            .material button {
+                align-self: center;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         TOP BAR
+    ========================== -->
+
+    <header class="topbar">
+
+        <div class="school-name">
+
+            <div class="school-logo">
+                CIS
+            </div>
+
+            <div>
+                <h1>City International Online School</h1>
+                <p>Student Learning Platform</p>
+            </div>
+
+        </div>
+
+        <button
+            class="back-button"
+            onclick="goBackToDashboard()">
+            ← Dashboard
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <span class="subject-label">
+                📚 STUDENT SUBJECT
+            </span>
+
+            <h2>Mathematics</h2>
+
+            <p>
+                Welcome to your Mathematics classroom.
+                Study lessons, access learning materials,
+                complete assignments, take quizzes and
+                follow your academic progress.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="container">
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <h3>5</h3>
+
+                <p>
+                    Lessons
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    📝
+                </div>
+
+                <h3>0</h3>
+
+                <p>
+                    Assignments
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    🧠
+                </div>
+
+                <h3>0</h3>
+
+                <p>
+                    Quizzes Completed
+                </p>
+
+            </div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon">
+                    📊
+                </div>
+
+                <h3>0%</h3>
+
+                <p>
+                    Progress
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             LESSONS
+        ========================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>📚 Mathematics Lessons</h2>
+
+                <p>
+                    Select a lesson to begin learning.
+                </p>
+
+            </div>
+
+
+            <div class="lesson-list">
+
+
+                <div class="lesson">
+
+                    <div class="lesson-number">
+                        01
+                    </div>
+
+                    <h3>Numbers and Number Systems</h3>
+
+                    <p>
+                        Learn about numbers, place value,
+                        ordering numbers and basic number
+                        operations.
+                    </p>
+
+                    <button
+                        class="lesson-button"
+                        onclick="openLesson('Numbers and Number Systems')">
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-number">
+                        02
+                    </div>
+
+                    <h3>Fractions</h3>
+
+                    <p>
+                        Understand fractions, equivalent
+                        fractions, addition, subtraction
+                        and multiplication.
+                    </p>
+
+                    <button
+                        class="lesson-button"
+                        onclick="openLesson('Fractions')">
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-number">
+                        03
+                    </div>
+
+                    <h3>Algebra</h3>
+
+                    <p>
+                        Explore variables, expressions,
+                        equations and simple algebraic
+                        problem solving.
+                    </p>
+
+                    <button
+                        class="lesson-button"
+                        onclick="openLesson('Algebra')">
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-number">
+                        04
+                    </div>
+
+                    <h3>Geometry</h3>
+
+                    <p>
+                        Study shapes, angles, perimeter,
+                        area and geometric relationships.
+                    </p>
+
+                    <button
+                        class="lesson-button"
+                        onclick="openLesson('Geometry')">
+                        Start Lesson
+                    </button>
+
+                </div>
+
+
+                <div class="lesson">
+
+                    <div class="lesson-number">
+                        05
+                    </div>
+
+                    <h3>Problem Solving</h3>
+
+                    <p>
+                        Develop mathematical reasoning and
+                        learn how to solve real-world problems.
+                    </p>
+
+                    <button
+                        class="lesson-button"
+                        onclick="openLesson('Problem Solving')">
+                        Start Lesson
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LEARNING MATERIALS
+        ========================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>📄 Learning Materials</h2>
+
+                <p>
+                    Mathematics resources provided by your teacher.
+                </p>
+
+            </div>
+
+
+            <div class="material-list">
+
+                <div class="material">
+
+                    <div class="material-info">
+
+                        <div class="material-icon">
+                            📕
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Mathematics Notes
+                            </h3>
+
+                            <p>
+                                PDF learning notes
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="download-button"
+                        onclick="materialMessage('Mathematics Notes')">
+                        Open
+                    </button>
+
+                </div>
+
+
+                <div class="material">
+
+                    <div class="material-info">
+
+                        <div class="material-icon">
+                            📄
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Practice Questions
+                            </h3>
+
+                            <p>
+                                Mathematics practice worksheet
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="download-button"
+                        onclick="materialMessage('Practice Questions')">
+                        Open
+                    </button>
+
+                </div>
+
+
+                <div class="material">
+
+                    <div class="material-info">
+
+                        <div class="material-icon">
+                            🎥
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Mathematics Video Lesson
+                            </h3>
+
+                            <p>
+                                Teacher video learning material
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                        class="download-button"
+                        onclick="materialMessage('Mathematics Video Lesson')">
+                        Watch
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ASSIGNMENTS
+        ========================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>📝 Mathematics Assignments</h2>
+
+                <p>
+                    Complete your Mathematics homework here.
+                </p>
+
+            </div>
+
+
+            <div class="assignment">
+
+                <div>
+
+                    <h3>
+                        No Mathematics assignment yet
+                    </h3>
+
+                    <p>
+                        When your Mathematics teacher creates
+                        an assignment for your class, it will
+                        appear here.
+                    </p>
+
+                    <span class="status">
+                        Waiting for teacher
+                    </span>
+
+                </div>
+
+                <button
+                    class="assignment-button"
+                    onclick="assignmentMessage()">
+                    View Assignment
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUIZ
+        ========================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🧠 Mathematics Quiz</h2>
+
+                <p>
+                    Test your Mathematics knowledge.
+                </p>
+
+            </div>
+
+
+            <div class="quiz-card">
+
+                <h3>
+                    Mathematics Practice Quiz
+                </h3>
+
+                <p>
+                    Your teacher will publish quizzes here.
+                    Once a quiz is available, you will be able
+                    to answer the questions and receive your score.
+                </p>
+
+                <button
+                    class="quiz-button"
+                    onclick="quizMessage()">
+                    Start Quiz
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LIVE CLASS
+        ========================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>🎥 Mathematics Live Class</h2>
+
+                <p>
+                    Join your Mathematics teacher online.
+                </p>
+
+            </div>
+
+
+            <div class="live-class">
+
+                <div>
+
+                    <span class="live-badge">
+                        ● LIVE CLASS
+                    </span>
+
+                    <h3>
+                        No Mathematics class scheduled
+                    </h3>
+
+                    <p>
+                        Your teacher's next live Mathematics
+                        lesson will appear here.
+                    </p>
+
+                </div>
+
+                <button
+                    class="join-button"
+                    onclick="liveClassMessage()">
+                    Join Class
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROGRESS
+        ========================== -->
+
+        <section class="section">
+
+            <div class="section-title">
+
+                <h2>📊 Mathematics Progress</h2>
+
+                <p>
+                    Track your learning progress.
+                </p>
+
+            </div>
+
+
+            <div class="progress-card">
+
+                <div class="progress-header">
+
+                    <strong>
+                        Course Progress
+                    </strong>
+
+                    <span>
+                        0%
+                    </span>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div class="progress-fill"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         MODAL
+    ========================== -->
+
+    <div class="modal" id="messageModal">
+
+        <div class="modal-box">
+
+            <button
+                class="modal-close"
+                onclick="closeMessage()">
+                ×
+            </button>
+
+            <h2 id="modalTitle">
+                Mathematics
+            </h2>
+
+            <p id="modalMessage">
+                This feature will be connected soon.
+            </p>
+
+            <button
+                class="primary-button"
+                onclick="closeMessage()">
+                OK
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        © <span id="year"></span>
+        City International Online School.
+        All rights reserved.
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /*
+         * Check that the student is logged in.
+         */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const student =
+                localStorage.getItem("cis_current_student");
+
+            if (!student) {
+
+                window.location.href = "index.html";
+
+                return;
+
+            }
+
+            document.getElementById("year")
+                .textContent = new Date().getFullYear();
+
+        });
+
+
+        /*
+         * Return to dashboard
+         */
+
+        function goBackToDashboard() {
+
+            window.location.href =
+                "student-dashboard.html";
+
+        }
+
+
+        /*
+         * Open lesson
+         */
+
+        function openLesson(lessonName) {
+
+    if (lessonName === "Numbers and Number Systems") {
+        window.location.href = "math-lesson-1.html";
+        return;
+    }
+
+    if (lessonName === "Fractions") {
+        window.location.href = "math-lesson-2.html";
+        return;
+    }
+
+    if (lessonName === "Algebra") {
+        window.location.href = "math-lesson-3.html";
+        return;
+    }
+
+    if (lessonName === "Geometry") {
+        window.location.href = "math-lesson-4.html";
+        return;
+    }
+
+    if (lessonName === "Problem Solving") {
+        window.location.href = "math-lesson-5.html";
+        return;
+    }
+
+    alert(
+        lessonName +
+        " lesson will be added next."
+    );
+}
+
+        /*
+         * Materials
+         */
+
+        function materialMessage(materialName) {
+
+            document.getElementById("modalTitle")
+                .textContent = materialName;
+
+            document.getElementById("modalMessage")
+                .textContent =
+                "This learning material will be uploaded and connected by the Mathematics teacher.";
+
+            document.getElementById("messageModal")
+                .classList.add("show");
+
+        }
+
+
+        /*
+         * Assignment
+         */
+
+        function assignmentMessage() {
+
+            document.getElementById("modalTitle")
+                .textContent =
+                "Mathematics Assignment";
+
+            document.getElementById("modalMessage")
+                .textContent =
+                "No Mathematics assignment has been published yet. When your teacher assigns work, you will be able to open it, submit your answer and receive marks and feedback.";
+
+            document.getElementById("messageModal")
+                .classList.add("show");
+
+        }
+
+
+        /*
+         * Quiz
+         */
+
+        function quizMessage() {
+
+            document.getElementById("modalTitle")
+                .textContent =
+                "Mathematics Quiz";
+
+            document.getElementById("modalMessage")
+                .textContent =
+                "No quiz has been published yet. Your Mathematics teacher will be able to create quizzes for you.";
+
+            document.getElementById("messageModal")
+                .classList.add("show");
+
+        }
+
+
+        /*
+         * Live class
+         */
+
+        function liveClassMessage() {
+
+            document.getElementById("modalTitle")
+                .textContent =
+                "Mathematics Live Class";
+
+            document.getElementById("modalMessage")
+                .textContent =
+                "There is no Mathematics live class scheduled yet. Later, this button will connect students to their teacher's live classroom.";
+
+            document.getElementById("messageModal")
+                .classList.add("show");
+
+        }
+
+
+        /*
+         * Close modal
+         */
+
+        function closeMessage() {
+
+            document.getElementById("messageModal")
+                .classList.remove("show");
+
+        }
+
+
+        /*
+         * Close modal by clicking outside it
+         */
+
+        document.getElementById("messageModal")
+            .addEventListener("click", function (event) {
+
+                if (event.target === this) {
+
+                    closeMessage();
+
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
