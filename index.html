@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>City International Online School</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= NAVIGATION ================= -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+        <a href="#" class="logo">
+            <img class="logo-image" alt="School logo" style="display: none;">
+            <span class="logo-icon">🎓</span>
+            <span>
+                <strong>CITY INTERNATIONAL</strong>
+                <small>ONLINE SCHOOL</small>
+            </span>
+        </a>
+
+        <button class="menu-button" onclick="toggleMobileMenu()">
+            ☰
+        </button>
+
+        <nav id="navMenu">
+
+            <a href="#home" onclick="closeMobileMenu()">Home</a>
+
+            <a href="#subjects" onclick="closeMobileMenu()">Subjects</a>
+
+            <a href="#how" onclick="closeMobileMenu()">How It Works</a>
+
+            <a href="#about" onclick="closeMobileMenu()">About</a>
+
+            <button class="nav-login" onclick="openLogin('student')">
+                Student Login
+            </button>
+
+            <button class="nav-register" onclick="openRegister()">
+                Register
+            </button>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="container hero-content">
+
+        <div class="hero-text">
+
+            <span class="badge">
+                🌍 Quality Education Beyound Boundaries.
+            </span>
+
+            <h1>
+                Welcome to
+                <span>City International Online School</span>
+            </h1>
+
+            <p>
+                A modern online learning platform where students can
+                learn, complete assignments, attend live classes and
+                achieve their academic goals.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button
+                    class="btn primary"
+                    onclick="openRegister()">
+                    Get Started
+                </button>
+
+                <button
+                    class="btn secondary"
+                    onclick="openLogin('student')">
+                    Student Login
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-card-icon">📚</div>
+
+            <h3>Learn. Grow. Succeed.</h3>
+
+            <p>
+                Quality Education Beyound Boundaries.
+            </p>
+
+            <div class="hero-card-items">
+                <div>✓ Qualified Teachers</div>
+                <div>✓ Live Classes</div>
+                <div>✓ Online Assignments</div>
+                <div>✓ Student Progress</div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= STATS ================= -->
+
+<section class="stats">
+
+    <div class="container stats-grid">
+
+        <div class="stat">
+            <strong>6+</strong>
+            <span>Subjects</span>
+        </div>
+
+        <div class="stat">
+            <strong>24/7</strong>
+            <span>Learning Access</span>
+        </div>
+
+        <div class="stat">
+            <strong>100%</strong>
+            <span>Online Learning</span>
+        </div>
+
+        <div class="stat">
+            <strong>🌍</strong>
+            <span>Learn Anywhere</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SUBJECTS ================= -->
+
+<section id="subjects" class="section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                OUR PROGRAMS
+            </span>
+
+            <h2>
+                Learn Your Favourite Subjects
+            </h2>
+
+            <p>
+                Explore our subjects and develop the knowledge
+                and skills you need for success.
+            </p>
+
+        </div>
+
+
+        <div class="subjects-grid">
+
+            <div class="subject-card"
+                 onclick="showSubjectMessage('Mathematics')">
+
+                <div class="subject-icon math">📐</div>
+
+                <h3>Mathematics</h3>
+
+                <p>
+                    Numbers, algebra, geometry and problem solving.
+                </p>
+
+                <span>Explore →</span>
+
+            </div>
+
+
+            <div class="subject-card"
+                 onclick="showSubjectMessage('Science')">
+
+                <div class="subject-icon science">🔬</div>
+
+                <h3>Science</h3>
+
+                <p>
+                    Discover the world through science and experiments.
+                </p>
+
+                <span>Explore →</span>
+
+            </div>
+
+
+            <div class="subject-card"
+                 onclick="showSubjectMessage('English')">
+
+                <div class="subject-icon english">📖</div>
+
+                <h3>English</h3>
+
+                <p>
+                    Improve reading, writing, grammar and communication.
+                </p>
+
+                <span>Explore →</span>
+
+            </div>
+
+
+            <div class="subject-card"
+                 onclick="showSubjectMessage('Social Studies')">
+
+                <div class="subject-icon social">🌍</div>
+
+                <h3>Social Studies</h3>
+
+                <p>
+                    Learn about society, geography, history and culture.
+                </p>
+
+                <span>Explore →</span>
+
+            </div>
+
+
+            <div class="subject-card"
+                 onclick="showSubjectMessage('Religious Education')">
+
+                <div class="subject-icon religious">📚</div>
+
+                <h3>Religious Education</h3>
+
+                <p>
+                    Learn values, faith, character and responsibility.
+                </p>
+
+                <span>Explore →</span>
+
+            </div>
+
+
+            <div class="subject-card"
+                 onclick="showSubjectMessage('Live Classes')">
+
+                <div class="subject-icon live">🎥</div>
+
+                <h3>Live Classes</h3>
+
+                <p>
+                    Join interactive online lessons with teachers.
+                </p>
+
+                <span>Explore →</span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section id="how" class="section light-section">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <span class="section-label">
+                HOW IT WORKS
+            </span>
+
+            <h2>
+                Start Learning in 4 Simple Steps
+            </h2>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Register</h3>
+                <p>Create your student account.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Get Your Number</h3>
+                <p>Receive your unique student number.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Login</h3>
+                <p>Enter your student number and password.</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">4</div>
+                <h3>Start Learning</h3>
+                <p>Access your student dashboard.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LIVE CLASSES ================= -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="live-preview">
+
+            <div>
+
+                <span class="live-badge">
+                    🔴 LIVE LEARNING
+                </span>
+
+                <h2>
+                    Interactive Live Classes
+                </h2>
+
+                <p>
+                    Learn directly from teachers through interactive
+                    online classrooms.
+                </p>
+
+                <button
+                    class="btn primary"
+                    onclick="openLogin('student')">
+                    Join as Student
+                </button>
+
+            </div>
+
+
+            <div class="live-screen">
+
+                <div class="video-placeholder">
+                    🎥
+                    <span>Live Classroom</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="section light-section">
+
+    <div class="container about-grid">
+
+        <div>
+
+            <span class="section-label">
+                ABOUT OUR SCHOOL
+            </span>
+
+            <h2>
+                Education for the Future
+            </h2>
+
+            <p>
+                City International Online School is designed to
+                provide students with accessible, flexible and
+                engaging online education.
+            </p>
+
+            <p>
+                Students can learn from home, access learning
+                materials, complete assignments and communicate
+                with their teachers.
+            </p>
+
+        </div>
+
+
+        <div class="about-box">
+
+            <div>🎓</div>
+
+            <h3>
+                CITY INTERNATIONAL
+            </h3>
+
+            <p>
+                ONLINE SCHOOL
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section class="cta">
+
+    <div class="container">
+
+        <h2>
+            Ready to Start Learning?
+        </h2>
+
+        <p>
+            Create your student account today.
+        </p>
+
+        <button
+            class="btn white"
+            onclick="openRegister()">
+            Register Now
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="container footer-content">
+
+        <div>
+            <h3>🎓 CITY INTERNATIONAL ONLINE SCHOOL</h3>
+            <p>
+                Quality Education Beyound Boundaries.
+            </p>
+        </div>
+
+        <div>
+            <h3>📞 For More Information</h3>
+            <p>
+                <a href="mailto:cityintrnationalonlinestudy@gmail.com">cityintrnationalonlinesch@gmail.com</a><br>
+                <a href="mailto:doctorkalanzi@gmail.com">doctorkalanzi@gmail.com</a><br>
+                <a href="https://wa.me/256795645073" target="_blank" rel="noreferrer">WhatsApp: 0795645073</a>
+            </p>
+        </div>
+
+        <div class="footer-links">
+
+            <button onclick="openLogin('student')">
+                Student Login
+            </button>
+
+            <button onclick="openLogin('teacher')">
+                Teacher Login
+            </button>
+
+            <button onclick="openLogin('admin')">
+                Administrator
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © <span id="currentYear"></span>
+        City International Online School. All rights reserved.
+    </div>
+
+</footer>
+
+
+<!-- ================= LOGIN MODAL ================= -->
+
+<div id="loginModal" class="modal">
+
+    <div class="modal-box">
+
+        <button
+            class="modal-close"
+            onclick="closeModal('loginModal')">
+            ×
+        </button>
+
+        <div class="modal-header">
+
+            <div class="modal-icon">🔐</div>
+
+            <h2 id="loginTitle">
+                Student Login
+            </h2>
+
+            <p id="loginDescription">
+                Login using your student number and password.
+            </p>
+
+        </div>
+
+
+        <form onsubmit="handleLogin(event)">
+
+            <label id="loginNumberLabel">
+                Student Number
+            </label>
+
+            <input
+                type="text"
+                id="loginNumber"
+                placeholder="CIS-STU-2026-XXXXX"
+                required
+            >
+
+
+            <label>
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="btn primary full">
+                Login
+            </button>
+
+
+            <button
+                type="button"
+                class="forgot-button"
+                onclick="showForgotPassword(event)">
+                Forgot password?
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= REGISTER MODAL ================= -->
+
+<div id="registerModal" class="modal">
+
+    <div class="modal-box large">
+
+        <button
+            class="modal-close"
+            onclick="closeModal('registerModal')">
+            ×
+        </button>
+
+        <div class="modal-header">
+
+            <div class="modal-icon">📝</div>
+
+            <h2>Create Account</h2>
+
+            <p>
+                Join City International Online School.
+            </p>
+
+        </div>
+
+
+        <div class="role-buttons">
+
+            <button
+                type="button"
+                id="studentRoleButton"
+                class="role-button active"
+                onclick="selectRegisterRole('student')">
+                🎓 Student
+            </button>
+
+            <button
+                type="button"
+                id="teacherRoleButton"
+                class="role-button"
+                onclick="selectRegisterRole('teacher')">
+                👨‍🏫 Teacher
+            </button>
+
+        </div>
+
+
+        <form id="registerForm"
+              onsubmit="handleRegister(event)">
+
+            <input
+                type="hidden"
+                id="registerRole"
+                value="student"
+            >
+
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="registerFullName"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label>Email Address</label>
+
+            <input
+                type="email"
+                id="registerEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="registerPhone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="registerPassword"
+                placeholder="Create a password"
+                required
+            >
+
+
+            <!-- STUDENT FIELDS -->
+
+            <div id="studentRegisterFields">
+
+                <label>Education Level</label>
+
+                <select id="educationLevel" required>
+
+                    <option value="">
+                        Select Education Level
+                    </option>
+
+                    <option value="Primary">
+                        Primary
+                    </option>
+
+                    <option value="Secondary">
+                        Secondary
+                    </option>
+
+                </select>
+
+
+                <label>Class</label>
+
+                <select id="studentClass" required>
+
+                    <option value="">
+                        Select Class
+                    </option>
+
+                </select>
+
+
+                <label>Parent / Guardian Name</label>
+
+                <input
+                    type="text"
+                    id="guardianName"
+                    placeholder="Enter parent or guardian name"
+                    required
+                >
+
+                <label>School Name</label>
+
+                <input
+                    type="text"
+                    id="schoolName"
+                    placeholder="Enter the school name"
+                    required
+                >
+
+            </div>
+
+
+            <!-- TEACHER FIELDS -->
+
+            <div
+                id="teacherRegisterFields"
+                style="display:none;">
+
+                <label>Teaching Subject</label>
+
+                <select id="teachingSubject">
+
+                    <option value="">
+                        Select Subject
+                    </option>
+
+                    <option>Mathematics</option>
+                    <option>Science</option>
+                    <option>English</option>
+                    <option>Social Studies</option>
+                    <option>Religious Education</option>
+
+                </select>
+
+
+                <label>Teaching Level</label>
+
+                <select id="teachingLevel">
+
+                    <option value="">
+                        Select Level
+                    </option>
+
+                    <option>Primary</option>
+                    <option>Secondary</option>
+
+                </select>
+
+
+                <label>Qualification</label>
+
+                <input
+                    type="text"
+                    id="qualification"
+                    placeholder="Enter your qualification"
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn primary full">
+                Create Account
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= NOTIFICATION ================= -->
+
+<div id="notification" class="notification"></div>
+
+
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

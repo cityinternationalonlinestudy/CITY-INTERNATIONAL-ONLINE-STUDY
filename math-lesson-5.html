@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 5 - Problem Solving | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e8eef7;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d65a6);
+            color: white;
+            padding: 45px 35px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-number {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 18px;
+            font-size: 25px;
+        }
+
+        .card h3 {
+            color: #1d65a6;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .objectives li {
+            margin-bottom: 8px;
+            margin-left: 22px;
+        }
+
+        .definition {
+            background: #eef6ff;
+            border-left: 5px solid #1d65a6;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .step-box {
+            background: #f8fafc;
+            border: 1px solid #dce5ef;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #123c69;
+            color: white;
+            width: 34px;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            border-radius: 50%;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+
+        .operation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .operation {
+            background: #f8fafc;
+            border: 1px solid #dce5ef;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .operation-symbol {
+            font-size: 42px;
+            font-weight: bold;
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .formula {
+            background: #fff8e6;
+            border-left: 5px solid #e0a800;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-weight: bold;
+        }
+
+        .example {
+            background: #f1f8f4;
+            border-left: 5px solid #2e8b57;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example strong {
+            color: #17633a;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border: 1px solid #dce5ef;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid #dce5ef;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            padding: 9px;
+            margin: 6px 0;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #eaf2fb;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 280px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            background: #dfe7ef;
+            border-radius: 20px;
+            height: 22px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #1d65a6;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #123c69;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0d2e50;
+        }
+
+        .secondary {
+            background: #e8eef7;
+            color: #123c69;
+        }
+
+        .secondary:hover {
+            background: #d8e2ef;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #eef6ff;
+            border-left: 5px solid #1d65a6;
+        }
+
+        .success-message {
+            background: #f1f8f4;
+            border-left: 5px solid #2e8b57;
+            padding: 18px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .next-box {
+            text-align: center;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 30px 22px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="mathematics.html" class="back-btn">
+            ← Back to Mathematics
+        </a>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="lesson-number">
+                MATHEMATICS • LESSON 5
+            </div>
+
+            <h1>Problem Solving</h1>
+
+            <p>
+                Learn how to understand mathematical problems,
+                choose the correct operation, solve step by step,
+                and check your answer.
+            </p>
+
+        </section>
+
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <ul class="objectives">
+
+                <li>Understand what a mathematical word problem is.</li>
+
+                <li>Identify important information in a problem.</li>
+
+                <li>Choose the correct mathematical operation.</li>
+
+                <li>Solve one-step problems.</li>
+
+                <li>Solve multi-step problems.</li>
+
+                <li>Check whether an answer makes sense.</li>
+
+                <li>Explain how a problem was solved.</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- WHAT IS PROBLEM SOLVING -->
+        <section class="card">
+
+            <h2>🧠 What is Problem Solving?</h2>
+
+            <div class="definition">
+
+                <strong>Problem solving</strong> means using mathematical
+                knowledge and logical thinking to find an answer to a problem.
+
+            </div>
+
+            <p>
+                Many mathematical problems are written as stories.
+                These are called <strong>word problems</strong>.
+            </p>
+
+            <p style="margin-top: 12px;">
+                To solve a word problem, we need to understand what the
+                question is asking before choosing an operation.
+            </p>
+
+        </section>
+
+
+        <!-- FOUR OPERATIONS -->
+        <section class="card">
+
+            <h2>➕➖✖️➗ The Four Basic Operations</h2>
+
+            <div class="operation-grid">
+
+                <div class="operation">
+
+                    <div class="operation-symbol">+</div>
+
+                    <h3>Addition</h3>
+
+                    <p>
+                        Used when quantities are combined or increased.
+                    </p>
+
+                </div>
+
+
+                <div class="operation">
+
+                    <div class="operation-symbol">−</div>
+
+                    <h3>Subtraction</h3>
+
+                    <p>
+                        Used when finding the difference or taking away.
+                    </p>
+
+                </div>
+
+
+                <div class="operation">
+
+                    <div class="operation-symbol">×</div>
+
+                    <h3>Multiplication</h3>
+
+                    <p>
+                        Used when equal groups are combined.
+                    </p>
+
+                </div>
+
+
+                <div class="operation">
+
+                    <div class="operation-symbol">÷</div>
+
+                    <h3>Division</h3>
+
+                    <p>
+                        Used when sharing or grouping equally.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STEPS -->
+        <section class="card">
+
+            <h2>🪜 Steps for Solving a Problem</h2>
+
+            <div class="step-box">
+
+                <h3>
+                    <span class="step-number">1</span>
+                    Read the Problem
+                </h3>
+
+                <p>
+                    Read the problem carefully. Make sure you understand
+                    what is happening.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <h3>
+                    <span class="step-number">2</span>
+                    Find the Important Information
+                </h3>
+
+                <p>
+                    Look for the numbers and information that are needed
+                    to solve the problem.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <h3>
+                    <span class="step-number">3</span>
+                    Identify the Question
+                </h3>
+
+                <p>
+                    Ask yourself: <strong>What do I need to find?</strong>
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <h3>
+                    <span class="step-number">4</span>
+                    Choose an Operation
+                </h3>
+
+                <p>
+                    Decide whether you need addition, subtraction,
+                    multiplication or division.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <h3>
+                    <span class="step-number">5</span>
+                    Calculate
+                </h3>
+
+                <p>
+                    Do the mathematical calculation carefully.
+                </p>
+
+            </div>
+
+
+            <div class="step-box">
+
+                <h3>
+                    <span class="step-number">6</span>
+                    Check Your Answer
+                </h3>
+
+                <p>
+                    Think about whether your answer makes sense.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- KEYWORDS -->
+        <section class="card">
+
+            <h2>🔑 Helpful Mathematical Words</h2>
+
+            <h3>Addition Words</h3>
+
+            <div class="formula">
+                altogether • total • combined • more • in all
+            </div>
+
+
+            <h3>Subtraction Words</h3>
+
+            <div class="formula">
+                difference • left • fewer • take away • how many more
+            </div>
+
+
+            <h3>Multiplication Words</h3>
+
+            <div class="formula">
+                groups of • times • each • repeated
+            </div>
+
+
+            <h3>Division Words</h3>
+
+            <div class="formula">
+                share equally • each group • divided • per
+            </div>
+
+        </section>
+
+
+        <!-- EXAMPLE 1 -->
+        <section class="card">
+
+            <h2>📘 Worked Example 1 — Addition</h2>
+
+            <div class="example">
+
+                <p>
+                    Sarah has 25 books. Her teacher gives her
+                    18 more books.
+                </p>
+
+                <p style="margin-top: 12px;">
+                    How many books does Sarah have altogether?
+                </p>
+
+                <br>
+
+                <p>
+                    We are combining two quantities, so we use
+                    <strong>addition</strong>.
+                </p>
+
+                <p>
+                    25 + 18 = 43
+                </p>
+
+                <p>
+                    <strong>Answer: Sarah has 43 books.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXAMPLE 2 -->
+        <section class="card">
+
+            <h2>📘 Worked Example 2 — Subtraction</h2>
+
+            <div class="example">
+
+                <p>
+                    A school has 80 computers. If 25 computers
+                    are being used in the laboratory, how many
+                    computers are not being used?
+                </p>
+
+                <br>
+
+                <p>
+                    We are finding what remains, so we use
+                    <strong>subtraction</strong>.
+                </p>
+
+                <p>
+                    80 − 25 = 55
+                </p>
+
+                <p>
+                    <strong>
+                        Answer: 55 computers are not being used.
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXAMPLE 3 -->
+        <section class="card">
+
+            <h2>📘 Worked Example 3 — Multiplication</h2>
+
+            <div class="example">
+
+                <p>
+                    A teacher gives 6 students 4 pencils each.
+                    How many pencils are needed?
+                </p>
+
+                <br>
+
+                <p>
+                    There are equal groups, so we use
+                    <strong>multiplication</strong>.
+                </p>
+
+                <p>
+                    6 × 4 = 24
+                </p>
+
+                <p>
+                    <strong>
+                        Answer: 24 pencils are needed.
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXAMPLE 4 -->
+        <section class="card">
+
+            <h2>📘 Worked Example 4 — Division</h2>
+
+            <div class="example">
+
+                <p>
+                    A teacher has 30 books and wants to share them
+                    equally among 5 students.
+                </p>
+
+                <br>
+
+                <p>
+                    We are sharing equally, so we use
+                    <strong>division</strong>.
+                </p>
+
+                <p>
+                    30 ÷ 5 = 6
+                </p>
+
+                <p>
+                    <strong>
+                        Answer: Each student receives 6 books.
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- MULTI STEP -->
+        <section class="card">
+
+            <h2>🧩 Multi-Step Problems</h2>
+
+            <p>
+                Some problems require more than one operation.
+                These are called <strong>multi-step problems</strong>.
+            </p>
+
+
+            <div class="example">
+
+                <p>
+                    A school buys 5 boxes of pencils.
+                    Each box contains 12 pencils.
+                    The school gives 15 pencils to students.
+                    How many pencils remain?
+                </p>
+
+                <br>
+
+                <p>
+                    <strong>Step 1:</strong>
+                    Find the total number of pencils.
+                </p>
+
+                <p>
+                    5 × 12 = 60
+                </p>
+
+                <br>
+
+                <p>
+                    <strong>Step 2:</strong>
+                    Subtract the pencils given to students.
+                </p>
+
+                <p>
+                    60 − 15 = 45
+                </p>
+
+                <br>
+
+                <p>
+                    <strong>Answer: 45 pencils remain.</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+
+            <h2>🎥 Problem Solving Video Lesson</h2>
+
+            <div class="video-box">
+
+                <div>
+
+                    <div class="video-icon">▶️</div>
+
+                    <h3 style="color:white;">
+                        Mathematics Problem Solving
+                    </h3>
+
+                    <p>
+                        Your teacher's Problem Solving video lesson
+                        can be added here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+
+            <h2>✏️ Practice Questions</h2>
+
+
+            <div class="practice-question">
+
+                <strong>1.</strong>
+
+                Mary has 35 pencils and buys 20 more.
+                How many pencils does she have altogether?
+
+            </div>
+
+
+            <div class="practice-question">
+
+                <strong>2.</strong>
+
+                A farmer has 90 chickens and sells 35.
+                How many chickens remain?
+
+            </div>
+
+
+            <div class="practice-question">
+
+                <strong>3.</strong>
+
+                There are 7 boxes with 8 books in each box.
+                How many books are there altogether?
+
+            </div>
+
+
+            <div class="practice-question">
+
+                <strong>4.</strong>
+
+                A teacher has 48 exercise books and shares them
+                equally among 6 students.
+                How many books does each student receive?
+
+            </div>
+
+
+            <div class="practice-question">
+
+                <strong>5.</strong>
+
+                A shop has 4 boxes with 10 bottles in each box.
+                The shop sells 15 bottles.
+                How many bottles remain?
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+
+            <h2>📝 Problem Solving Quiz</h2>
+
+            <form id="quizForm">
+
+
+                <!-- QUESTION 1 -->
+                <div class="quiz-question">
+
+                    <p>
+                        1. John has 24 oranges and buys 16 more.
+                        How many oranges does he have?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        30
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        40
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        42
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        48
+                    </label>
+
+                </div>
+
+
+                <!-- QUESTION 2 -->
+                <div class="quiz-question">
+
+                    <p>
+                        2. A class has 60 students.
+                        18 students are absent.
+                        How many students are present?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        32
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        40
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        42
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        48
+                    </label>
+
+                </div>
+
+
+                <!-- QUESTION 3 -->
+                <div class="quiz-question">
+
+                    <p>
+                        3. There are 6 bags with 7 apples in each bag.
+                        How many apples are there?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        36
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        40
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        42
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        49
+                    </label>
+
+                </div>
+
+
+                <!-- QUESTION 4 -->
+                <div class="quiz-question">
+
+                    <p>
+                        4. 45 books are shared equally among 5 students.
+                        How many books does each student receive?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        5
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        7
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        8
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        9
+                    </label>
+
+                </div>
+
+
+                <!-- QUESTION 5 -->
+                <div class="quiz-question">
+
+                    <p>
+                        5. A shop has 3 boxes with 12 books in each box.
+                        It sells 10 books.
+                        How many books remain?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        24
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        26
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        30
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        36
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary"
+                    onclick="submitQuiz()">
+
+                    Submit Quiz
+
+                </button>
+
+            </form>
+
+
+            <div
+                class="result"
+                id="quizResult">
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+
+            <h2>📊 Lesson Progress</h2>
+
+            <p
+                class="progress-text"
+                id="progressText">
+
+                0% Complete
+
+            </p>
+
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    class="primary"
+                    onclick="markComplete()">
+
+                    ✓ Mark Lesson Complete
+
+                </button>
+
+
+                <button
+                    class="secondary"
+                    onclick="resetLesson()">
+
+                    Reset Lesson
+
+                </button>
+
+            </div>
+
+
+            <div
+                class="success-message"
+                id="completeMessage">
+
+                🎉 Congratulations!
+                You have completed Mathematics Lesson 5:
+                <strong>Problem Solving</strong>.
+
+            </div>
+
+        </section>
+
+
+        <!-- COURSE COMPLETE -->
+        <section class="card next-box">
+
+            <h2>🏆 Mathematics Course</h2>
+
+            <p>
+                You have reached the end of the five Mathematics lessons.
+            </p>
+
+            <br>
+
+            <p>
+                Complete your quiz and mark this lesson complete.
+            </p>
+
+            <br>
+
+            <button
+                class="secondary"
+                onclick="backToMathematics()">
+
+                ← Return to Mathematics
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <p>
+            © <span id="year"></span>
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            loadProgress();
+
+        });
+
+
+        function submitQuiz() {
+
+            const answers = {
+
+                q1: "b",
+                q2: "c",
+                q3: "c",
+                q4: "d",
+                q5: "b"
+
+            };
+
+
+            let score = 0;
+
+
+            for (let question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+
+                if (
+                    selected &&
+                    selected.value === answers[question]
+                ) {
+
+                    score++;
+
+                }
+
+            }
+
+
+            const percentage =
+                Math.round((score / 5) * 100);
+
+
+            localStorage.setItem(
+                "cis_math_lesson5_quiz_score",
+                score
+            );
+
+
+            const result =
+                document.getElementById("quizResult");
+
+
+            result.style.display = "block";
+
+
+            result.innerHTML =
+                "<h3>Quiz Result</h3>" +
+
+                "<p>You scored <strong>" +
+                score +
+                " out of 5</strong>.</p>" +
+
+                "<p>Your score is <strong>" +
+                percentage +
+                "%</strong>.</p>";
+
+
+            if (percentage === 100) {
+
+                result.innerHTML +=
+                    "<p>🎉 Excellent! Perfect score!</p>";
+
+            }
+
+            else if (percentage >= 60) {
+
+                result.innerHTML +=
+                    "<p>👏 Good work! Keep practising problem solving.</p>";
+
+            }
+
+            else {
+
+                result.innerHTML +=
+                    "<p>📚 Keep studying and try the quiz again.</p>";
+
+            }
+
+
+            updateProgress();
+
+        }
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                "cis_math_lesson5_completed",
+                "true"
+            );
+
+
+            updateProgress();
+
+
+            document.getElementById(
+                "completeMessage"
+            ).style.display = "block";
+
+
+            alert(
+                "Lesson 5 - Problem Solving has been marked as complete! ✓"
+            );
+
+        }
+
+
+        function updateProgress() {
+
+            const completed =
+                localStorage.getItem(
+                    "cis_math_lesson5_completed"
+                ) === "true";
+
+
+            const quizScore =
+                localStorage.getItem(
+                    "cis_math_lesson5_quiz_score"
+                );
+
+
+            let progress = 0;
+
+
+            if (quizScore !== null) {
+
+                progress = 50;
+
+            }
+
+
+            if (completed) {
+
+                progress = 100;
+
+            }
+
+
+            document.getElementById(
+                "progressBar"
+            ).style.width =
+                progress + "%";
+
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "% Complete";
+
+
+            if (completed) {
+
+                document.getElementById(
+                    "completeMessage"
+                ).style.display = "block";
+
+            }
+
+        }
+
+
+        function loadProgress() {
+
+            updateProgress();
+
+        }
+
+
+        function resetLesson() {
+
+            localStorage.removeItem(
+                "cis_math_lesson5_completed"
+            );
+
+
+            localStorage.removeItem(
+                "cis_math_lesson5_quiz_score"
+            );
+
+
+            document.getElementById(
+                "quizForm"
+            ).reset();
+
+
+            document.getElementById(
+                "quizResult"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "completeMessage"
+            ).style.display = "none";
+
+
+            updateProgress();
+
+
+            alert(
+                "Lesson 5 progress has been reset."
+            );
+
+        }
+
+
+        function backToMathematics() {
+
+            window.location.href =
+                "mathematics.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

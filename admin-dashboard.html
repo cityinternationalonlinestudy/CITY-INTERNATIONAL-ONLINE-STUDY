@@ -1,0 +1,2950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administrator Dashboard - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+
+        .sidebar {
+            width: 260px;
+            background: #12395b;
+            color: white;
+            padding: 25px 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+
+        .school-logo {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .school-logo .icon {
+            font-size: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 52px;
+        }
+
+        .school-logo .brand-image {
+            width: 52px;
+            height: 52px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.12);
+        }
+
+        .school-logo h2 {
+            font-size: 18px;
+            margin-top: 8px;
+        }
+
+        .school-logo p {
+            font-size: 12px;
+            opacity: 0.75;
+            margin-top: 5px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.55;
+            margin: 25px 12px 10px;
+        }
+
+        .menu-button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: white;
+            text-align: left;
+            padding: 13px 14px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .menu-button:hover,
+        .menu-button.active {
+            background: rgba(255,255,255,0.14);
+        }
+
+        .logout-button {
+            color: #ffd1d1;
+        }
+
+        /* MAIN */
+
+        .main {
+            margin-left: 260px;
+            width: calc(100% - 260px);
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: white;
+            padding: 18px 30px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topbar h1 {
+            font-size: 22px;
+        }
+
+        .admin-badge {
+            background: #eef2ff;
+            color: #3730a3;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .notification-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            margin-left: 6px;
+            padding: 0 5px;
+            border-radius: 10px;
+            background: #dc2626;
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .notification-count:empty {
+            display: none;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .welcome {
+            background: linear-gradient(135deg, #12395b, #1d5f91);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            opacity: 0.9;
+        }
+
+        /* STATS */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 12px;
+            padding: 22px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .stat-icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #12395b;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* SECTIONS */
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .section-header h2 {
+            font-size: 20px;
+            color: #12395b;
+        }
+
+        .section-header p {
+            color: #6b7280;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* TABLE */
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        th,
+        td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: bold;
+        }
+
+        td {
+            color: #374151;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .status-pending {
+            background: #fff7ed;
+            color: #c2410c;
+        }
+
+        .status-approved {
+            background: #ecfdf5;
+            color: #047857;
+        }
+
+        .status-disapproved {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+
+        .status-student {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        /* BUTTONS */
+
+        .btn {
+            border: none;
+            border-radius: 7px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 2px;
+        }
+
+        .btn-approve {
+            background: #16a34a;
+            color: white;
+        }
+
+        .btn-disapprove {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #991b1b;
+            color: white;
+        }
+
+        .btn-info {
+            background: #2563eb;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.88;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 35px;
+            color: #6b7280;
+        }
+
+        /* SETTINGS */
+
+        .settings-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .settings-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .settings-card h3 {
+            color: #12395b;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .settings-card > p {
+            color: #6b7280;
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 18px;
+        }
+
+        .setting-field {
+            margin-bottom: 15px;
+        }
+
+        .setting-field:last-child {
+            margin-bottom: 0;
+        }
+
+        .setting-field label {
+            display: block;
+            color: #374151;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .setting-field input {
+            width: 100%;
+            border: 1px solid #d1d5db;
+            border-radius: 7px;
+            padding: 10px 11px;
+            font: inherit;
+            color: #374151;
+            background: white;
+        }
+
+        .setting-field input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .setting-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 11px 0;
+            border-bottom: 1px solid #f1f5f9;
+            color: #374151;
+            font-size: 13px;
+        }
+
+        .setting-toggle:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .setting-toggle input {
+            width: 18px;
+            height: 18px;
+            accent-color: #2563eb;
+            flex-shrink: 0;
+        }
+
+        .settings-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .settings-message {
+            color: #047857;
+            font-size: 13px;
+            font-weight: bold;
+            min-height: 18px;
+            margin-top: 10px;
+        }
+
+        .help-request-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .help-request {
+            border: 1px solid #e5e7eb;
+            border-left: 4px solid #2563eb;
+            border-radius: 10px;
+            padding: 16px;
+            background: #fbfdff;
+        }
+
+        .help-request.unread {
+            border-left-color: #dc2626;
+            background: #fffafa;
+        }
+
+        .help-request-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 7px;
+        }
+
+        .help-request-header h3 {
+            color: #12395b;
+            font-size: 15px;
+        }
+
+        .help-request-meta,
+        .help-request-time {
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+        .help-request-message {
+            color: #374151;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .help-request-reply {
+            margin-top: 14px;
+            padding: 12px;
+            border-radius: 8px;
+            background: #eff6ff;
+            color: #1e3a5f;
+            font-size: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .help-request-reply strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .help-request-actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-delete-small {
+            background: #b91c1c;
+            color: white;
+        }
+
+        /* QUICK CARDS */
+
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .quick-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .quick-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .quick-card .icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .quick-card h3 {
+            margin-bottom: 5px;
+        }
+
+        .quick-card p {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        .mobile-header {
+            display: none;
+            background: #12395b;
+            color: white;
+            padding: 15px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-menu {
+            border: none;
+            background: transparent;
+            color: white;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .settings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.3s;
+                z-index: 100;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .mobile-header {
+                display: flex;
+            }
+
+            .topbar {
+                position: static;
+                padding: 15px;
+            }
+
+            .topbar h1 {
+                font-size: 18px;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="school-logo">
+            <img id="adminSchoolLogoImage" class="brand-image" alt="School logo" style="display: none;">
+            <div id="adminSchoolLogoIcon" class="icon">🏫</div>
+
+            <h2 id="adminSchoolNameDisplay">CITY INTERNATIONAL</h2>
+
+            <p>ONLINE SCHOOL</p>
+        </div>
+
+        <div class="menu-title">
+            Main
+        </div>
+
+        <button
+            class="menu-button active"
+            onclick="showSection('dashboard', this)">
+            🏠 Dashboard
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('teachers', this)">
+            👨‍🏫 Teachers
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('students', this)">
+            👨‍🎓 Students
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('classes', this)">
+            📚 Classes
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('assignments', this)">
+            📝 Assignments
+        </button>
+
+        <div class="menu-title">
+            Management
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="showSection('payments', this)">
+            💳 Payments
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('study-time', this)">
+            ⏱️ Study Time
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('performance', this)">
+            📊 Performance
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('notifications', this)">
+            🔔 Notifications <span id="adminNotificationCount" class="notification-count"></span>
+        </button>
+
+        <div class="menu-title">
+            Account
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="showSection('settings', this)">
+            ⚙️ Settings
+        </button>
+
+        <button
+            class="menu-button logout-button"
+            onclick="adminLogout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="mobile-header">
+            <strong>🏫 CITY INTERNATIONAL</strong>
+
+            <button
+                class="mobile-menu"
+                onclick="toggleSidebar()">
+                ☰
+            </button>
+        </div>
+
+
+        <div class="topbar">
+
+            <h1>Administrator Dashboard</h1>
+
+            <div class="admin-badge">
+                👑 Administrator
+            </div>
+
+        </div>
+
+
+        <div class="content">
+
+
+            <!-- DASHBOARD -->
+
+            <section
+                id="dashboard"
+                class="section active">
+
+                <div class="welcome">
+
+                    <h2>Welcome, Administrator 👋</h2>
+
+                    <p>
+                        Manage teachers, students, classes,
+                        assignments and school activities
+                        from one place.
+                    </p>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👨‍🏫</div>
+
+                        <div
+                            class="stat-number"
+                            id="teacherCount">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Total Teachers
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+
+                        <div
+                            class="stat-number"
+                            id="pendingTeacherCount">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Pending Teachers
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👨‍🎓</div>
+
+                        <div
+                            class="stat-number"
+                            id="studentCount">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Total Students
+                        </div>
+                    </div>
+
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+
+                        <div
+                            class="stat-number"
+                            id="assignmentCount">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            Assignments
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Quick Management</h2>
+
+                            <p>
+                                Quickly access important
+                                administrator functions.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-grid">
+
+                        <div
+                            class="quick-card"
+                            onclick="showSectionById('teachers')">
+
+                            <div class="icon">👨‍🏫</div>
+
+                            <h3>Manage Teachers</h3>
+
+                            <p>
+                                Review teacher applications
+                                and approve teachers.
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="quick-card"
+                            onclick="showSectionById('students')">
+
+                            <div class="icon">👨‍🎓</div>
+
+                            <h3>Manage Students</h3>
+
+                            <p>
+                                View registered students
+                                and their information.
+                            </p>
+
+                        </div>
+
+
+                        <div
+                            class="quick-card"
+                            onclick="showSectionById('assignments')">
+
+                            <div class="icon">📝</div>
+
+                            <h3>Assignments</h3>
+
+                            <p>
+                                Monitor school assignments
+                                created by teachers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- TEACHERS -->
+
+            <section
+                id="teachers"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>👨‍🏫 Teacher Management</h2>
+
+                            <p>
+                                Review and manage teacher
+                                applications.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="table-container"
+                        id="teachersTable">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STUDENTS -->
+
+            <section
+                id="students"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>👨‍🎓 Student Management</h2>
+
+                            <p>
+                                View registered students.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="table-container"
+                        id="studentsTable">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CLASSES -->
+
+            <section
+                id="classes"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>📚 Classes</h2>
+
+                            <p>
+                                School classes and levels.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="quick-grid">
+
+                        <div class="quick-card">
+                            <div class="icon">🏫</div>
+                            <h3>Primary 1–7</h3>
+                            <p>Primary school classes.</p>
+                        </div>
+
+                        <div class="quick-card">
+                            <div class="icon">🎓</div>
+                            <h3>Senior 1–6</h3>
+                            <p>Secondary school classes.</p>
+                        </div>
+
+                        <div class="quick-card">
+                            <div class="icon">👨‍🏫</div>
+                            <h3>Teachers</h3>
+                            <p>Teacher class management.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ASSIGNMENTS -->
+
+            <section
+                id="assignments"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>📝 Assignments</h2>
+
+                            <p>
+                                Monitor assignments created
+                                by teachers.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="table-container"
+                        id="assignmentsTable">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PAYMENTS -->
+
+            <section
+                id="payments"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div>
+                            <h2>💳 Student Payments</h2>
+                            <p>Review payment requests and approve learning hours.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="table-container"
+                        id="paymentsTable">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STUDY TIME -->
+
+            <section
+                id="study-time"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="empty">
+                        ⏱️ Student study-time management
+                        will be connected later.
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PERFORMANCE -->
+
+            <section
+                id="performance"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div>
+                            <h2>📊 Student Performance</h2>
+                            <p>Track the average marks and assessment progress for every student.</p>
+                        </div>
+                    </div>
+
+                    <div class="table-container" id="performanceTable"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <section
+                id="notifications"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div>
+                            <h2>🔔 Administrator Notifications</h2>
+                            <p>Problems and help requests submitted by students and teachers.</p>
+                        </div>
+                    </div>
+
+                    <div id="helpRequestsList" class="help-request-list">
+                        <div class="empty">No help requests yet.</div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SETTINGS -->
+
+            <section
+                id="settings"
+                class="section">
+
+                <div class="section-card">
+
+                    <div class="section-header">
+                        <div>
+                            <h2>⚙️ All Settings</h2>
+                            <p>Manage the school portal, payment timing, notifications, and administrator details.</p>
+                        </div>
+                    </div>
+
+                    <form id="settingsForm" onsubmit="saveAdminSettings(event)">
+                        <div class="settings-grid">
+                            <div class="settings-card">
+                                <h3>🏫 Portal Settings</h3>
+                                <p>Update the basic information shown across the administrator portal.</p>
+
+                                <div class="setting-field">
+                                    <label for="settingSchoolName">School name</label>
+                                    <input id="settingSchoolName" type="text" required>
+                                </div>
+
+                                <div class="setting-field">
+                                    <label for="settingSchoolIcon">School icon / emoji</label>
+                                    <input id="settingSchoolIcon" type="text" maxlength="4" placeholder="🏫">
+                                </div>
+
+                                <div class="setting-field">
+                                    <label for="settingSchoolLogo">School logo image URL</label>
+                                    <input id="settingSchoolLogo" type="url" placeholder="https://example.com/logo.png">
+                                </div>
+
+                                <div class="setting-field">
+                                    <label for="settingSupportEmail">Support email</label>
+                                    <input id="settingSupportEmail" type="email" required>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>💳 Payment &amp; Study Time</h3>
+                                <p>Control the payment reminder shown before a student's approved hours expire.</p>
+
+                                <div class="setting-field">
+                                    <label for="settingWarningMinutes">Expiry warning time (minutes)</label>
+                                    <input id="settingWarningMinutes" type="number" min="1" max="1440" required>
+                                </div>
+
+                                <div class="setting-field">
+                                    <label for="settingDefaultHours">Suggested package hours</label>
+                                    <input id="settingDefaultHours" type="number" min="1" max="1000" required>
+                                </div>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>🔔 Notifications &amp; Access</h3>
+                                <p>Choose how the portal behaves while you manage the school.</p>
+
+                                <label class="setting-toggle">
+                                    <span>Enable payment expiry warnings</span>
+                                    <input id="settingPaymentWarnings" type="checkbox">
+                                </label>
+
+                                <label class="setting-toggle">
+                                    <span>Allow new student registrations</span>
+                                    <input id="settingStudentRegistration" type="checkbox">
+                                </label>
+
+                                <label class="setting-toggle">
+                                    <span>Put portal in maintenance mode</span>
+                                    <input id="settingMaintenance" type="checkbox">
+                                </label>
+                            </div>
+
+                            <div class="settings-card">
+                                <h3>👑 Administrator Account</h3>
+                                <p>Keep the administrator contact information up to date.</p>
+
+                                <div class="setting-field">
+                                    <label for="settingAdminName">Administrator name</label>
+                                    <input id="settingAdminName" type="text" required>
+                                </div>
+
+                                <div class="setting-field">
+                                    <label for="settingAdminEmail">Administrator email</label>
+                                    <input id="settingAdminEmail" type="email" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="settings-actions">
+                            <button class="btn btn-info" type="submit">Save all settings</button>
+                            <button class="btn" type="button" onclick="resetAdminSettings()">Reset defaults</button>
+                            <button class="btn btn-disapprove" type="button" onclick="clearExpiredPayments()">Clear expired payments</button>
+                        </div>
+
+                        <div id="settingsMessage" class="settings-message" aria-live="polite"></div>
+                    </form>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+    /* ==============================
+       STORAGE
+    ============================== */
+
+    function getRegistrations() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    "cis_registrations"
+                );
+
+            if (!saved) {
+                return [];
+            }
+
+            const data =
+                JSON.parse(saved);
+
+            return Array.isArray(data)
+                ? data
+                : [];
+
+        } catch (error) {
+
+            console.error(error);
+
+            return [];
+        }
+    }
+
+
+    function saveRegistrations(data) {
+
+        localStorage.setItem(
+            "cis_registrations",
+            JSON.stringify(data)
+        );
+    }
+
+
+    function getAssignments() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    "cis_teacher_assignments"
+                );
+
+            if (!saved) {
+                return [];
+            }
+
+            const data =
+                JSON.parse(saved);
+
+            return Array.isArray(data)
+                ? data
+                : [];
+
+        } catch (error) {
+
+            console.error(error);
+
+            return [];
+        }
+    }
+
+
+    function getSubmissions() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    "cis_assignment_submissions"
+                );
+
+            if (!saved) {
+                return [];
+            }
+
+            const data =
+                JSON.parse(saved);
+
+            return Array.isArray(data)
+                ? data
+                : [];
+
+        } catch (error) {
+
+            console.error(error);
+
+            return [];
+        }
+    }
+
+
+    /* ==============================
+       NAVIGATION
+    ============================== */
+
+    function showSection(sectionId, button) {
+
+        const sections =
+            document.querySelectorAll(".section");
+
+        sections.forEach(function(section) {
+
+            section.classList.remove("active");
+
+        });
+
+
+        const selected =
+            document.getElementById(sectionId);
+
+        if (selected) {
+            selected.classList.add("active");
+        }
+
+
+        const buttons =
+            document.querySelectorAll(
+                ".menu-button"
+            );
+
+        buttons.forEach(function(item) {
+
+            item.classList.remove("active");
+
+        });
+
+
+        if (button) {
+            button.classList.add("active");
+        }
+
+        if (sectionId === "notifications") {
+            markHelpRequestsRead();
+        }
+
+
+        loadSectionData();
+
+        closeSidebarOnMobile();
+    }
+
+
+    function showSectionById(sectionId) {
+
+        const buttons =
+            document.querySelectorAll(
+                ".menu-button"
+            );
+
+        let matchingButton = null;
+
+        buttons.forEach(function(button) {
+
+            const text =
+                button.textContent.toLowerCase();
+
+            if (
+                (sectionId === "teachers" &&
+                    text.includes("teachers")) ||
+
+                (sectionId === "students" &&
+                    text.includes("students")) ||
+
+                (sectionId === "assignments" &&
+                    text.includes("assignments"))
+            ) {
+
+                matchingButton = button;
+
+            }
+
+        });
+
+
+        showSection(
+            sectionId,
+            matchingButton
+        );
+    }
+
+
+    /* ==============================
+       DASHBOARD STATISTICS
+    ============================== */
+
+    function updateStatistics() {
+
+        const registrations =
+            getRegistrations();
+
+        const teachers =
+            registrations.filter(function(user) {
+
+                return user.role === "teacher";
+
+            });
+
+
+        const students =
+            registrations.filter(function(user) {
+
+                return user.role === "student";
+
+            });
+
+
+        const pendingTeachers =
+            teachers.filter(function(teacher) {
+
+                return teacher.status === "pending";
+
+            });
+
+
+        const assignments =
+            getAssignments();
+
+
+        document.getElementById(
+            "teacherCount"
+        ).textContent = teachers.length;
+
+
+        document.getElementById(
+            "pendingTeacherCount"
+        ).textContent =
+            pendingTeachers.length;
+
+
+        document.getElementById(
+            "studentCount"
+        ).textContent =
+            students.length;
+
+
+        document.getElementById(
+            "assignmentCount"
+        ).textContent =
+            assignments.length;
+    }
+
+
+    /* ==============================
+       TEACHER TABLE
+    ============================== */
+
+    function loadTeachers() {
+
+        const registrations =
+            getRegistrations();
+
+
+        const teachers =
+            registrations.filter(function(user) {
+
+                return user.role === "teacher";
+
+            });
+
+
+        const container =
+            document.getElementById(
+                "teachersTable"
+            );
+
+
+        if (teachers.length === 0) {
+
+            container.innerHTML =
+                '<div class="empty">' +
+                'No teacher applications yet.' +
+                '</div>';
+
+            return;
+        }
+
+
+        let html = `
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Name</th>
+                        <th>Application No.</th>
+                        <th>Subject</th>
+                        <th>Level</th>
+                        <th>Qualification</th>
+                        <th>Status</th>
+                        <th>Teacher Code</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+        `;
+
+
+        teachers.forEach(function(teacher) {
+
+            let statusClass =
+                "status-pending";
+
+
+            if (teacher.status === "approved") {
+                statusClass =
+                    "status-approved";
+            }
+
+
+            if (teacher.status === "disapproved") {
+                statusClass =
+                    "status-disapproved";
+            }
+
+
+            let actionButtons = "";
+
+
+            if (teacher.status === "pending") {
+
+                actionButtons = `
+                    <button
+                        class="btn btn-approve"
+                        onclick="approveTeacher(${teacher.id})">
+                        ✅ Approve
+                    </button>
+
+                    <button
+                        class="btn btn-disapprove"
+                        onclick="disapproveTeacher(${teacher.id})">
+                        ❌ Disapprove
+                    </button>
+                `;
+
+            } else if (
+                teacher.status === "approved"
+            ) {
+
+                actionButtons = `
+                    <span
+                        style="color:#047857;font-weight:bold;">
+                        Approved
+                    </span>
+                `;
+
+            } else {
+
+                actionButtons = `
+                    <button
+                        class="btn btn-approve"
+                        onclick="approveTeacher(${teacher.id})">
+                        🔄 Approve
+                    </button>
+                `;
+            }
+
+            actionButtons += `
+                <button
+                    class="btn btn-delete"
+                    onclick="deleteAccount(${teacher.id}, 'teacher')">
+                    🗑️ Delete
+                </button>
+            `;
+
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(
+                                teacher.fullName || "Teacher"
+                            )}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            teacher.applicationNumber || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            teacher.teachingSubject || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            teacher.teachingLevel || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            teacher.qualification || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        <span
+                            class="status ${statusClass}">
+                            ${escapeHtml(
+                                teacher.status || "pending"
+                            )}
+                        </span>
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${
+                                teacher.teacherCode
+                                || "Not assigned"
+                            }
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${actionButtons}
+                    </td>
+
+                </tr>
+            `;
+        });
+
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+
+        container.innerHTML = html;
+    }
+
+
+    /* ==============================
+       APPROVE TEACHER
+    ============================== */
+
+    function approveTeacher(id) {
+
+        const registrations =
+            getRegistrations();
+
+
+        const teacher =
+            registrations.find(function(user) {
+
+                return user.id === id &&
+                       user.role === "teacher";
+
+            });
+
+
+        if (!teacher) {
+
+            alert(
+                "Teacher application could not be found."
+            );
+
+            return;
+        }
+
+
+        if (teacher.status === "approved") {
+
+            alert(
+                "This teacher is already approved."
+            );
+
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                "Approve " +
+                teacher.fullName +
+                " as a teacher?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        const teacherCode =
+            generateTeacherCode();
+
+
+        teacher.status = "approved";
+
+        teacher.teacherCode =
+            teacherCode;
+
+        teacher.approvedAt =
+            new Date().toISOString();
+
+
+        saveRegistrations(
+            registrations
+        );
+
+
+        alert(
+            "Teacher approved successfully!\n\n" +
+            "Teacher Code: " +
+            teacherCode
+        );
+
+
+        loadSectionData();
+    }
+
+
+    /* ==============================
+       DISAPPROVE TEACHER
+    ============================== */
+
+    function disapproveTeacher(id) {
+
+        const registrations =
+            getRegistrations();
+
+
+        const teacher =
+            registrations.find(function(user) {
+
+                return user.id === id &&
+                       user.role === "teacher";
+
+            });
+
+
+        if (!teacher) {
+            return;
+        }
+
+
+        const confirmed =
+            confirm(
+                "Disapprove " +
+                teacher.fullName +
+                "?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        teacher.status =
+            "disapproved";
+
+
+        teacher.teacherCode =
+            null;
+
+
+        teacher.disapprovedAt =
+            new Date().toISOString();
+
+
+        saveRegistrations(
+            registrations
+        );
+
+
+        alert(
+            "Teacher application disapproved."
+        );
+
+
+        loadSectionData();
+    }
+
+
+    /* ==============================
+       DELETE ACCOUNT
+    ============================== */
+
+    function deleteAccount(id, role) {
+
+        const registrations =
+            getRegistrations();
+
+        const account =
+            registrations.find(function(user) {
+
+                return user.id === id &&
+                       user.role === role;
+
+            });
+
+        if (!account) {
+            alert("The account could not be found.");
+            return;
+        }
+
+        const accountType =
+            role === "teacher" ? "teacher" : "student";
+
+        const confirmed =
+            confirm(
+                "Delete the " +
+                accountType +
+                " account for " +
+                (account.fullName || "this user") +
+                "? This cannot be undone."
+            );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const remainingRegistrations =
+            registrations.filter(function(user) {
+
+                return !(user.id === id && user.role === role);
+
+            });
+
+        saveRegistrations(remainingRegistrations);
+        loadSectionData();
+
+        alert(
+            (account.fullName || "User") +
+            "'s account was deleted."
+        );
+    }
+
+
+    /* ==============================
+       TEACHER CODE
+    ============================== */
+
+    function generateTeacherCode() {
+
+        let code;
+
+        const registrations =
+            getRegistrations();
+
+
+        do {
+
+            const number =
+                Math.floor(
+                    10000 +
+                    Math.random() * 90000
+                );
+
+            code =
+                "CIS-TCH-" +
+                number;
+
+        } while (
+            registrations.some(function(user) {
+
+                return user.teacherCode === code;
+
+            })
+        );
+
+
+        return code;
+    }
+
+
+    /* ==============================
+       STUDENT TABLE
+    ============================== */
+
+    function loadStudents() {
+
+        const registrations =
+            getRegistrations();
+
+
+        const students =
+            registrations.filter(function(user) {
+
+                return user.role === "student";
+
+            });
+
+
+        const container =
+            document.getElementById(
+                "studentsTable"
+            );
+
+
+        if (students.length === 0) {
+
+            container.innerHTML =
+                '<div class="empty">' +
+                'No registered students yet.' +
+                '</div>';
+
+            return;
+        }
+
+
+        let html = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Student Number</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Level</th>
+                        <th>Class</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+        `;
+
+
+        students.forEach(function(student) {
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(
+                                student.studentNumber || "-"
+                            )}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            student.fullName || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            student.email || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            student.educationLevel || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            student.classLevel || "-"
+                        )}
+                    </td>
+
+                    <td>
+
+                        <span class="status status-student">
+                            ${escapeHtml(
+                                student.status || "registered"
+                            )}
+                        </span>
+
+                    </td>
+
+                    <td>
+                        <button
+                            class="btn btn-delete"
+                            onclick="deleteAccount(${student.id}, 'student')">
+                            🗑️ Delete
+                        </button>
+                    </td>
+
+                </tr>
+            `;
+        });
+
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+
+        container.innerHTML = html;
+    }
+
+
+    /* ==============================
+       ASSIGNMENTS
+    ============================== */
+
+    function loadAssignments() {
+
+        const assignments =
+            getAssignments();
+
+
+        const container =
+            document.getElementById(
+                "assignmentsTable"
+            );
+
+
+        if (assignments.length === 0) {
+
+            container.innerHTML =
+                '<div class="empty">' +
+                'No teacher assignments yet.' +
+                '</div>';
+
+            return;
+        }
+
+
+        let html = `
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>Subject</th>
+                        <th>Assignment</th>
+                        <th>Class</th>
+                        <th>Marks</th>
+                        <th>Teacher</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+        `;
+
+
+        assignments.forEach(function(assignment) {
+
+            html += `
+
+                <tr>
+
+                    <td>
+                        ${escapeHtml(
+                            assignment.subject || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        <strong>
+                            ${escapeHtml(
+                                assignment.title || "-"
+                            )}
+                        </strong>
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            assignment.classLevel || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            String(
+                                assignment.marks || 0
+                            )
+                        )}
+                    </td>
+
+                    <td>
+                        ${escapeHtml(
+                            assignment.teacherName || "-"
+                        )}
+                    </td>
+
+                    <td>
+                        <span
+                            class="status status-approved">
+                            ${escapeHtml(
+                                assignment.status || "Published"
+                            )}
+                        </span>
+                    </td>
+
+                </tr>
+            `;
+        });
+
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+
+        container.innerHTML = html;
+    }
+
+
+    /* ==============================
+       PAYMENTS
+    ============================== */
+
+    function getPayments() {
+
+        try {
+            const data = JSON.parse(
+                localStorage.getItem("cis_payments") || "[]"
+            );
+
+            return Array.isArray(data) ? data : [];
+        } catch (error) {
+            return [];
+        }
+    }
+
+
+    function loadPayments() {
+
+        const payments = getPayments();
+        const container = document.getElementById("paymentsTable");
+
+        if (!payments.length) {
+            container.innerHTML =
+                '<div class="empty">No student payment requests yet.</div>';
+            return;
+        }
+
+        let html = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Student Number</th>
+                        <th>Hours</th>
+                        <th>Requested</th>
+                        <th>Status</th>
+                        <th>Countdown</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        payments.forEach(function (payment) {
+
+            const isExpired =
+                payment.status === "approved" &&
+                new Date(payment.expiresAt) <= new Date();
+
+            if (isExpired) {
+                payment.status = "expired";
+            }
+
+            const statusClass =
+                payment.status === "approved"
+                    ? "status-approved"
+                    : payment.status === "expired"
+                        ? "status-disapproved"
+                        : "status-pending";
+
+            const action = payment.status === "pending"
+                ? `<button class="btn btn-approve" onclick="approvePayment(${payment.id})">✅ Approve</button>`
+                : payment.expiresAt
+                    ? escapeHtml(new Date(payment.expiresAt).toLocaleString())
+                    : "-";
+
+            const countdown = payment.status === "approved"
+                ? `<span id="paymentCountdown-${payment.id}" data-expires="${escapeHtml(payment.expiresAt)}">${formatPaymentCountdown(payment.expiresAt)}</span>`
+                : payment.status === "pending"
+                    ? "Awaiting approval"
+                    : "Expired";
+
+            html += `
+                <tr>
+                    <td>${escapeHtml(payment.studentName || "Student")}</td>
+                    <td>${escapeHtml(payment.studentNumber || "-")}</td>
+                    <td>${escapeHtml(String(payment.hours || 0))}</td>
+                    <td>${escapeHtml(new Date(payment.requestedAt).toLocaleString())}</td>
+                    <td><span class="status ${statusClass}">${escapeHtml(payment.status)}</span></td>
+                    <td>${countdown}</td>
+                    <td>${action}</td>
+                </tr>
+            `;
+        });
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+        localStorage.setItem("cis_payments", JSON.stringify(payments));
+        container.innerHTML = html;
+    }
+
+
+    function getStudentPerformance() {
+
+        const registrations = getRegistrations().filter(function (student) {
+            return student.role === "student";
+        });
+
+        const assignmentSubmissions = getSubmissions();
+        const assignments = getAssignments();
+
+        const students = registrations.map(function (student) {
+            const studentNumber = String(student.studentNumber || "").trim().toLowerCase();
+            const email = String(student.email || "").trim().toLowerCase();
+
+            return {
+                id: student.id,
+                fullName: student.fullName || "Student",
+                studentNumber: student.studentNumber || "-",
+                email: student.email || "-",
+                level: student.educationLevel || student.classLevel || "-",
+                assignments: 0,
+                totalScore: 0,
+                totalMarks: 0,
+                studentKey: studentNumber || email || String(student.id)
+            };
+        });
+
+        assignmentSubmissions.forEach(function (submission) {
+
+            if (String(submission.status || "").toLowerCase() !== "marked") {
+                return;
+            }
+
+            const submissionStudent = String(submission.studentNumber || "").trim().toLowerCase();
+            const submissionEmail = String(submission.studentEmail || "").trim().toLowerCase();
+
+            const studentMatch = students.find(function (student) {
+                return student.studentKey === submissionStudent || student.email.toLowerCase() === submissionEmail;
+            });
+
+            if (!studentMatch) {
+                return;
+            }
+
+            const assignment = assignments.find(function (item) {
+                return String(item.id) === String(submission.assignmentId);
+            });
+
+            const maxMarks = Number(assignment && assignment.marks ? assignment.marks : submission.maxMarks || 100);
+            const score = Number(submission.score || 0);
+            const percentage = maxMarks > 0 ? (score / maxMarks) * 100 : 0;
+
+            studentMatch.assignments += 1;
+            studentMatch.totalScore += Number.isFinite(percentage) ? percentage : 0;
+            studentMatch.totalMarks += maxMarks;
+        });
+
+        return students
+            .map(function (student) {
+                const average = student.assignments > 0 ? Math.round(student.totalScore / student.assignments) : 0;
+
+                return {
+                    id: student.id,
+                    fullName: student.fullName,
+                    studentNumber: student.studentNumber,
+                    email: student.email,
+                    level: student.level,
+                    average: average,
+                    assignments: student.assignments,
+                    status: average >= 80 ? "Excellent" : average >= 60 ? "Good" : average >= 40 ? "Fair" : student.assignments ? "Needs Support" : "No results"
+                };
+            })
+            .sort(function (first, second) {
+                return second.average - first.average || second.assignments - first.assignments;
+            });
+    }
+
+
+    function loadPerformance() {
+
+        const container = document.getElementById("performanceTable");
+
+        if (!container) {
+            return;
+        }
+
+        const performance = getStudentPerformance();
+
+        if (!performance.length) {
+            container.innerHTML = '<div class="empty">No student performance records yet.</div>';
+            return;
+        }
+
+        let html = `
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student</th>
+                        <th>Student Number</th>
+                        <th>Level</th>
+                        <th>Assignments</th>
+                        <th>Average</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+        `;
+
+        performance.forEach(function (student) {
+            html += `
+                <tr>
+                    <td><strong>${escapeHtml(student.fullName)}</strong><br><small>${escapeHtml(student.email)}</small></td>
+                    <td>${escapeHtml(student.studentNumber)}</td>
+                    <td>${escapeHtml(student.level)}</td>
+                    <td>${escapeHtml(String(student.assignments))}</td>
+                    <td>${escapeHtml(String(student.average) + "%")}</td>
+                    <td><span class="status ${student.average >= 80 ? "status-approved" : student.average >= 60 ? "status-student" : student.average >= 40 ? "status-pending" : "status-disapproved"}">${escapeHtml(student.status)}</span></td>
+                </tr>
+            `;
+        });
+
+        html += `
+                </tbody>
+            </table>
+        `;
+
+        container.innerHTML = html;
+    }
+
+
+    function formatPaymentCountdown(expiresAt) {
+
+        const remainingSeconds = Math.max(
+            0,
+            Math.floor((new Date(expiresAt) - new Date()) / 1000)
+        );
+
+        const hours = Math.floor(remainingSeconds / 3600);
+        const minutes = Math.floor((remainingSeconds % 3600) / 60);
+        const seconds = remainingSeconds % 60;
+
+        return String(hours).padStart(2, "0") + ":" +
+            String(minutes).padStart(2, "0") + ":" +
+            String(seconds).padStart(2, "0");
+    }
+
+
+    function updatePaymentCountdowns() {
+
+        const countdowns = document.querySelectorAll(
+            "[id^='paymentCountdown-']"
+        );
+        let hasExpiredPayment = false;
+
+        countdowns.forEach(function (countdown) {
+
+            const expiresAt = countdown.dataset.expires;
+            const remaining = new Date(expiresAt) - new Date();
+
+            if (remaining <= 0) {
+                countdown.textContent = "Expired";
+                hasExpiredPayment = true;
+            } else {
+                countdown.textContent = formatPaymentCountdown(expiresAt);
+            }
+        });
+
+        if (hasExpiredPayment) {
+            loadPayments();
+
+            loadHelpRequests();
+        }
+    }
+
+
+    function approvePayment(id) {
+
+        const payments = getPayments();
+        const payment = payments.find(function (item) {
+            return item.id === id;
+        });
+
+        if (!payment || payment.status !== "pending") {
+            alert("This payment request is no longer pending.");
+            return;
+        }
+
+        const confirmed = confirm(
+            "Approve " + payment.hours + " hour(s) for " +
+            (payment.studentName || "this student") + "?"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        const approvedAt = new Date();
+        const expiresAt = new Date(
+            approvedAt.getTime() + Number(payment.hours) * 60 * 60 * 1000
+        );
+
+        payment.status = "approved";
+        payment.approvedAt = approvedAt.toISOString();
+        payment.expiresAt = expiresAt.toISOString();
+
+        localStorage.setItem("cis_payments", JSON.stringify(payments));
+        loadPayments();
+        alert("Payment approved until " + expiresAt.toLocaleString() + ".");
+    }
+
+
+    /* ==============================
+       HELP REQUESTS
+    ============================== */
+
+    function getHelpRequests() {
+
+        try {
+
+            const saved = localStorage.getItem("cis_help_requests");
+            const data = saved ? JSON.parse(saved) : [];
+
+            return Array.isArray(data) ? data : [];
+
+        } catch (error) {
+
+            console.error(error);
+            return [];
+        }
+    }
+
+
+    function saveHelpRequests(requests) {
+        localStorage.setItem("cis_help_requests", JSON.stringify(requests));
+    }
+
+
+    function loadHelpRequests() {
+
+        const requests = getHelpRequests().sort(function(first, second) {
+            return new Date(second.createdAt) - new Date(first.createdAt);
+        });
+
+        const container = document.getElementById("helpRequestsList");
+        const count = document.getElementById("adminNotificationCount");
+
+        if (!container || !count) {
+            return;
+        }
+
+        const unreadCount = requests.filter(function(request) {
+            return !request.read;
+        }).length;
+
+        count.textContent = unreadCount ? String(unreadCount) : "";
+
+        if (!requests.length) {
+            container.innerHTML = '<div class="empty">No help requests yet.</div>';
+            return;
+        }
+
+        container.innerHTML = requests.map(function(request) {
+            const createdAt = new Date(request.createdAt).toLocaleString();
+            const statusClass = request.read ? "" : " unread";
+
+            return `
+                <article class="help-request${statusClass}">
+                    <div class="help-request-header">
+                        <div>
+                            <h3>${escapeHtml(request.subject || "Help request")}</h3>
+                            <div class="help-request-meta">${escapeHtml(request.senderName || "User")} (${escapeHtml(request.role || "user")})</div>
+                        </div>
+                        <span class="help-request-time">${escapeHtml(createdAt)}</span>
+                    </div>
+                    <div class="help-request-message">${escapeHtml(request.message || "")}</div>
+                    ${request.reply ? `<div class="help-request-reply"><strong>Administrator feedback</strong>${escapeHtml(request.reply)}</div>` : ""}
+                    <div class="help-request-actions">
+                        <button class="btn btn-info" type="button" onclick="replyToHelpRequest(${Number(request.id)})">${request.reply ? "Update reply" : "Reply"}</button>
+                        <button class="btn btn-delete-small" type="button" onclick="deleteHelpRequest(${Number(request.id)})">Delete</button>
+                    </div>
+                </article>
+            `;
+        }).join("");
+    }
+
+
+    function deleteHelpRequest(requestId) {
+
+        const confirmed = confirm("Delete this notification permanently?");
+
+        if (!confirmed) {
+            return;
+        }
+
+        const requests = getHelpRequests();
+        const filtered = requests.filter(function(request) {
+            return Number(request.id) !== Number(requestId);
+        });
+
+        saveHelpRequests(filtered);
+        loadHelpRequests();
+    }
+
+
+    function replyToHelpRequest(requestId) {
+
+        const requests = getHelpRequests();
+        const request = requests.find(function(item) {
+            return Number(item.id) === Number(requestId);
+        });
+
+        if (!request) {
+            return;
+        }
+
+        const reply = prompt(
+            "Write feedback for " + (request.senderName || "this user") + ":",
+            request.reply || ""
+        );
+
+        if (reply === null || !reply.trim()) {
+            return;
+        }
+
+        request.reply = reply.trim();
+        request.repliedAt = new Date().toISOString();
+        request.replyRead = false;
+        saveHelpRequests(requests);
+        loadHelpRequests();
+    }
+
+
+    function markHelpRequestsRead() {
+
+        const requests = getHelpRequests();
+        let changed = false;
+
+        requests.forEach(function(request) {
+            if (!request.read) {
+                request.read = true;
+                changed = true;
+            }
+        });
+
+        if (changed) {
+            saveHelpRequests(requests);
+        }
+
+        loadHelpRequests();
+    }
+
+
+    /* ==============================
+       ADMIN SETTINGS
+    ============================== */
+
+    function getSchoolLogoSvg() {
+        const svg = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">
+                <defs>
+                    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#0b3d8d"/>
+                        <stop offset="100%" stop-color="#0d2e6f"/>
+                    </linearGradient>
+                    <linearGradient id="g2" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#f2c94c"/>
+                        <stop offset="100%" stop-color="#d9a81d"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="350" cy="350" r="305" fill="url(#g1)" stroke="#e33a3a" stroke-width="16"/>
+                <circle cx="350" cy="350" r="270" fill="none" stroke="#f6d65d" stroke-width="12"/>
+                <circle cx="350" cy="350" r="150" fill="#f4f8ff" stroke="#1a3f8c" stroke-width="10"/>
+                <path d="M270 350c23 40 63 66 110 66s87-26 110-66c-16 25-40 46-69 59-22 10-46 15-71 15s-49-5-71-15c-29-13-53-34-69-59Z" fill="#f6d65d" opacity="0.35"/>
+                <path d="M350 220a120 120 0 0 1 0 240 120 120 0 0 1 0-240Z" fill="none" stroke="#0e2e61" stroke-width="7"/>
+                <path d="M230 350h240M350 230v240" stroke="#0e2e61" stroke-width="7"/>
+                <circle cx="350" cy="350" r="64" fill="#fdfdfd" stroke="#0e2e61" stroke-width="6"/>
+                <path d="M350 278c15 0 30 12 38 29 9 19 9 40-1 57-8 14-24 25-37 25-14 0-29-11-37-25-10-17-10-38-1-57 8-17 23-29 38-29Z" fill="#fff" stroke="#0e2e61" stroke-width="6"/>
+                <path d="M257 450h186l-21 90H278l-21-90Z" fill="#f5d76b" stroke="#d4a82a" stroke-width="8"/>
+                <path d="M245 470h210l-32 54H277l-32-54Z" fill="#1e5bb5" stroke="#f9d35f" stroke-width="7"/>
+                <path d="M270 510h160l-30 68H300l-30-68Z" fill="#f6d65d" stroke="#d4a82a" stroke-width="8"/>
+                <path d="M255 260c18-20 44-32 95-32s77 12 95 32l-15 34c-20-18-42-26-80-26s-60 8-80 26l-15-34Z" fill="#f7d967" opacity="0.9"/>
+                <path d="M235 250c29 19 54 26 103 30-23 15-38 38-43 68-28-12-56-34-76-68 8-11 16-22 16-30Z" fill="#f6d65d" opacity="0.8"/>
+                <path d="M465 250c-29 19-54 26-103 30 23 15 38 38 43 68 28-12 56-34 76-68-8-11-16-22-16-30Z" fill="#f6d65d" opacity="0.8"/>
+                <path d="M110 520c25-55 63-82 117-92-5 18-10 38-11 58-19 24-33 47-38 80l-68-46Z" fill="#f6d65d"/>
+                <path d="M590 520c-25-55-63-82-117-92 5 18 10 38 11 58 19 24 33 47 38 80l68-46Z" fill="#f6d65d"/>
+                <path d="M200 575c26-57 57-92 109-110l-14 121H200Z" fill="#f6d65d"/>
+                <path d="M500 575c-26-57-57-92-109-110l14 121h95Z" fill="#f6d65d"/>
+                <g fill="#0b3d8d" font-family="Arial, sans-serif" font-weight="700" letter-spacing="4">
+                    <text x="350" y="155" text-anchor="middle" font-size="42">CITY INTERNATIONAL</text>
+                    <text x="350" y="545" text-anchor="middle" font-size="40">ONLINE SCHOOL</text>
+                </g>
+                <g fill="#f6d65d" font-family="Arial, sans-serif" font-weight="700">
+                    <path d="M160 258h380l-18 30H178l-18-30Z" fill="#d9242b"/>
+                    <text x="350" y="287" text-anchor="middle" font-size="26" fill="#fff">Quality Education Beyond Borders</text>
+                </g>
+            </svg>
+        `;
+        return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+    }
+
+    const defaultAdminSettings = {
+        schoolName: "City International Online School",
+        schoolIcon: "🏫",
+        schoolLogo: getSchoolLogoSvg(),
+        supportEmail: "cityintrnationalonlinesch@gmail.com",
+        warningMinutes: 30,
+        defaultHours: 10,
+        paymentWarnings: true,
+        studentRegistration: true,
+        maintenance: false,
+        adminName: "Administrator",
+        adminEmail: "admin@cityinternationalschool.com"
+    };
+
+
+    function getAdminSettings() {
+
+        try {
+
+            const saved = localStorage.getItem("cis_admin_settings");
+            const data = saved ? JSON.parse(saved) : {};
+
+            return Object.assign({}, defaultAdminSettings, data);
+
+        } catch (error) {
+
+            console.error(error);
+            return Object.assign({}, defaultAdminSettings);
+        }
+    }
+
+
+    function applyAdminBranding() {
+
+        const settings = getAdminSettings();
+        const schoolName = (settings.schoolName || "City International Online School").trim();
+        const schoolIcon = settings.schoolIcon || "🏫";
+        const schoolLogo = settings.schoolLogo || "";
+
+        const title = document.getElementById("adminSchoolNameDisplay");
+        if (title) {
+            title.textContent = schoolName.toUpperCase();
+        }
+
+        const logoImage = document.getElementById("adminSchoolLogoImage");
+        const logoIcon = document.getElementById("adminSchoolLogoIcon");
+
+        if (logoImage) {
+            if (schoolLogo) {
+                logoImage.src = schoolLogo;
+                logoImage.style.display = "block";
+            } else {
+                logoImage.style.display = "none";
+                logoImage.removeAttribute("src");
+            }
+        }
+
+        if (logoIcon) {
+            logoIcon.textContent = schoolLogo ? "" : schoolIcon;
+            logoIcon.style.display = schoolLogo ? "none" : "flex";
+        }
+    }
+
+
+    function loadAdminSettings() {
+
+        const settings = getAdminSettings();
+
+        document.getElementById("settingSchoolName").value = settings.schoolName;
+        document.getElementById("settingSchoolIcon").value = settings.schoolIcon || "🏫";
+        document.getElementById("settingSchoolLogo").value = settings.schoolLogo || "";
+        document.getElementById("settingSupportEmail").value = settings.supportEmail;
+        document.getElementById("settingWarningMinutes").value = settings.warningMinutes;
+        document.getElementById("settingDefaultHours").value = settings.defaultHours;
+        document.getElementById("settingPaymentWarnings").checked = settings.paymentWarnings;
+        document.getElementById("settingStudentRegistration").checked = settings.studentRegistration;
+        document.getElementById("settingMaintenance").checked = settings.maintenance;
+        document.getElementById("settingAdminName").value = settings.adminName;
+        document.getElementById("settingAdminEmail").value = settings.adminEmail;
+
+        applyAdminBranding();
+    }
+
+
+    function saveAdminSettings(event) {
+
+        event.preventDefault();
+
+        const settings = {
+            schoolName: document.getElementById("settingSchoolName").value.trim(),
+            schoolIcon: document.getElementById("settingSchoolIcon").value.trim() || "🏫",
+            schoolLogo: document.getElementById("settingSchoolLogo").value.trim(),
+            supportEmail: document.getElementById("settingSupportEmail").value.trim(),
+            warningMinutes: Number(document.getElementById("settingWarningMinutes").value),
+            defaultHours: Number(document.getElementById("settingDefaultHours").value),
+            paymentWarnings: document.getElementById("settingPaymentWarnings").checked,
+            studentRegistration: document.getElementById("settingStudentRegistration").checked,
+            maintenance: document.getElementById("settingMaintenance").checked,
+            adminName: document.getElementById("settingAdminName").value.trim(),
+            adminEmail: document.getElementById("settingAdminEmail").value.trim()
+        };
+
+        localStorage.setItem("cis_admin_settings", JSON.stringify(settings));
+
+        const message = document.getElementById("settingsMessage");
+        message.textContent = "Settings saved successfully.";
+
+        setTimeout(function() {
+            message.textContent = "";
+        }, 3000);
+    }
+
+
+    function resetAdminSettings() {
+
+        if (!confirm("Reset all administrator settings to their defaults?")) {
+            return;
+        }
+
+        localStorage.setItem(
+            "cis_admin_settings",
+            JSON.stringify(defaultAdminSettings)
+        );
+
+        loadAdminSettings();
+        document.getElementById("settingsMessage").textContent = "Default settings restored.";
+    }
+
+
+    function clearExpiredPayments() {
+
+        if (!confirm("Remove expired payment records from the admin list?")) {
+            return;
+        }
+
+        const activePayments = getPayments().filter(function(payment) {
+            return payment.status !== "expired";
+        });
+
+        localStorage.setItem("cis_payments", JSON.stringify(activePayments));
+        loadPayments();
+        document.getElementById("settingsMessage").textContent = "Expired payments cleared.";
+    }
+
+
+    /* ==============================
+       LOAD EVERYTHING
+    ============================== */
+
+    function loadSectionData() {
+
+        updateStatistics();
+
+        loadTeachers();
+
+        loadStudents();
+
+        loadAssignments();
+
+        loadPayments();
+
+        loadPerformance();
+
+        loadAdminSettings();
+    }
+
+
+    /* ==============================
+       MOBILE SIDEBAR
+    ============================== */
+
+    function toggleSidebar() {
+
+        const sidebar =
+            document.getElementById(
+                "sidebar"
+            );
+
+        sidebar.classList.toggle("open");
+    }
+
+
+    function closeSidebarOnMobile() {
+
+        if (
+            window.innerWidth <= 700
+        ) {
+
+            const sidebar =
+                document.getElementById(
+                    "sidebar"
+                );
+
+            sidebar.classList.remove(
+                "open"
+            );
+        }
+    }
+
+
+    /* ==============================
+       LOGOUT
+    ============================== */
+
+    function adminLogout() {
+
+        const confirmed =
+            confirm(
+                "Do you want to log out?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        localStorage.removeItem(
+            "cis_current_admin"
+        );
+
+
+        window.location.href =
+            "index.html";
+    }
+
+
+    /* ==============================
+       SECURITY DISPLAY HELPER
+    ============================== */
+
+    function escapeHtml(value) {
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+
+    /* ==============================
+       START
+    ============================== */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            loadSectionData();
+
+            setInterval(function() {
+                updatePaymentCountdowns();
+                loadHelpRequests();
+            }, 1000);
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Writing Skills - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d70b8);
+            color: white;
+            padding: 55px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 780px;
+            margin: auto;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.07);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1d70b8;
+            margin: 20px 0 10px;
+        }
+
+        .objective-list,
+        .summary-list {
+            padding-left: 25px;
+        }
+
+        .objective-list li,
+        .summary-list li {
+            margin-bottom: 8px;
+        }
+
+        .writing-box {
+            background: #eef6ff;
+            border-left: 5px solid #1d70b8;
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 7px;
+        }
+
+        .example {
+            background: #f0fdf4;
+            border-left: 5px solid #16a34a;
+            padding: 16px;
+            margin: 15px 0;
+            border-radius: 7px;
+        }
+
+        .warning {
+            background: #fff7ed;
+            border-left: 5px solid #f97316;
+            padding: 16px;
+            margin: 15px 0;
+            border-radius: 7px;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            height: 260px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .quiz-question h3 {
+            color: #123c69;
+            margin-bottom: 12px;
+        }
+
+        .quiz-option {
+            display: block;
+            padding: 9px;
+            margin: 6px 0;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .quiz-option:hover {
+            background: #eaf3ff;
+        }
+
+        .quiz-option input {
+            margin-right: 8px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .success {
+            background: #16a34a;
+            color: white;
+        }
+
+        .secondary {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .quiz-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            height: 18px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #16a34a;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .actions {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="school-name">
+        CITY INTERNATIONAL ONLINE SCHOOL
+    </div>
+
+    <a href="english.html" class="back-btn">
+        ← Back to English
+    </a>
+
+</header>
+
+
+<section class="hero">
+
+    <h1>Writing Skills</h1>
+
+    <p>
+        Learn how to organize ideas, write clear sentences,
+        build paragraphs, and communicate effectively through writing.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+    <!-- OBJECTIVES -->
+
+    <section class="card">
+
+        <h2>🎯 Lesson Objectives</h2>
+
+        <ul class="objective-list">
+
+            <li>Understand the importance of good writing.</li>
+
+            <li>Write clear and complete sentences.</li>
+
+            <li>Organize ideas into paragraphs.</li>
+
+            <li>Use correct capitalization and punctuation.</li>
+
+            <li>Use linking words to connect ideas.</li>
+
+            <li>Write a short descriptive paragraph.</li>
+
+            <li>Edit and improve your own writing.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="card">
+
+        <h2>📖 What Are Writing Skills?</h2>
+
+        <p>
+            Writing skills are the skills we use to communicate
+            our thoughts, ideas, information, and feelings through
+            written words.
+        </p>
+
+        <div class="writing-box">
+
+            <strong>Good writing should be:</strong>
+
+            <ul class="summary-list">
+
+                <li>Clear</li>
+
+                <li>Organized</li>
+
+                <li>Correct</li>
+
+                <li>Interesting</li>
+
+                <li>Easy to understand</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- SENTENCES -->
+
+    <section class="card">
+
+        <h2>✏️ 1. Write Complete Sentences</h2>
+
+        <p>
+            A good piece of writing begins with complete sentences.
+            Each sentence should express a complete thought.
+        </p>
+
+        <div class="example">
+
+            ❌ Because I was tired.
+
+            <br><br>
+
+            This is not a complete sentence.
+
+        </div>
+
+        <div class="example">
+
+            ✅ I went to bed early because I was tired.
+
+        </div>
+
+    </section>
+
+
+    <!-- PARAGRAPHS -->
+
+    <section class="card">
+
+        <h2>📝 2. Writing a Paragraph</h2>
+
+        <p>
+            A paragraph is a group of related sentences about
+            one main idea.
+        </p>
+
+        <h3>Parts of a Paragraph</h3>
+
+        <div class="writing-box">
+
+            <strong>Topic Sentence</strong>
+
+            <p>
+                Introduces the main idea.
+            </p>
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>Supporting Sentences</strong>
+
+            <p>
+                Give details, examples, and explanations.
+            </p>
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>Closing Sentence</strong>
+
+            <p>
+                Brings the paragraph to a suitable ending.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXAMPLE PARAGRAPH -->
+
+    <section class="card">
+
+        <h2>🌱 Example Paragraph</h2>
+
+        <div class="example">
+
+            <p>
+                <b>My School Garden</b>
+            </p>
+
+            <br>
+
+            <p>
+                Our school garden is a beautiful place where students
+                can learn about plants. We grow vegetables such as
+                tomatoes, onions, and carrots. Students help to water
+                the plants and remove weeds. The garden also teaches
+                us to care for our environment. I enjoy spending time
+                in our school garden because it is both useful and fun.
+            </p>
+
+        </div>
+
+        <p>
+            Notice that every sentence in the paragraph is connected
+            to the main topic: <b>the school garden.</b>
+        </p>
+
+    </section>
+
+
+    <!-- LINKING WORDS -->
+
+    <section class="card">
+
+        <h2>🔗 3. Linking Words</h2>
+
+        <p>
+            Linking words help connect ideas and make writing easier
+            to follow.
+        </p>
+
+        <div class="writing-box">
+
+            <strong>Adding ideas:</strong>
+
+            <br><br>
+
+            and, also, furthermore, in addition
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>Showing contrast:</strong>
+
+            <br><br>
+
+            but, however, although
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>Showing reason:</strong>
+
+            <br><br>
+
+            because, since
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>Showing result:</strong>
+
+            <br><br>
+
+            therefore, so, as a result
+
+        </div>
+
+    </section>
+
+
+    <!-- CAPITALIZATION -->
+
+    <section class="card">
+
+        <h2>🔠 4. Capitalization and Punctuation</h2>
+
+        <p>
+            Correct capitalization and punctuation make writing
+            clear and easy to read.
+        </p>
+
+        <div class="example">
+
+            ❌ my name is john. i live in kampala
+
+            <br><br>
+
+            ✅ My name is John. I live in Kampala.
+
+        </div>
+
+        <p>
+            Remember to capitalize names of people, places,
+            countries, cities, and the beginning of sentences.
+        </p>
+
+    </section>
+
+
+    <!-- DESCRIPTION -->
+
+    <section class="card">
+
+        <h2>🎨 5. Descriptive Writing</h2>
+
+        <p>
+            Descriptive writing uses words that help the reader
+            imagine a person, place, object, or event.
+        </p>
+
+        <div class="example">
+
+            <strong>Example:</strong>
+
+            <br><br>
+
+            The garden was bright and beautiful. Tall green plants
+            stood beside colorful flowers. The fresh smell of flowers
+            filled the warm morning air.
+
+        </div>
+
+        <p>
+            Descriptive words make writing more interesting.
+        </p>
+
+    </section>
+
+
+    <!-- EDITING -->
+
+    <section class="card">
+
+        <h2>🔍 6. Editing Your Writing</h2>
+
+        <p>
+            Always read your writing again after you finish.
+            Look for mistakes and improve your ideas.
+        </p>
+
+        <div class="writing-box">
+
+            <strong>Editing Checklist:</strong>
+
+            <ul class="summary-list">
+
+                <li>Did I use complete sentences?</li>
+
+                <li>Did I start sentences with capital letters?</li>
+
+                <li>Did I use the correct punctuation?</li>
+
+                <li>Are my ideas organized?</li>
+
+                <li>Did I spell words correctly?</li>
+
+                <li>Does my paragraph stay on one main topic?</li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- WRITING PROCESS -->
+
+    <section class="card">
+
+        <h2>🔄 The Writing Process</h2>
+
+        <div class="writing-box">
+
+            <strong>1. Plan</strong>
+
+            <p>
+                Think about your topic and ideas.
+            </p>
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>2. Draft</strong>
+
+            <p>
+                Write your first version.
+            </p>
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>3. Revise</strong>
+
+            <p>
+                Improve your ideas and organization.
+            </p>
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>4. Edit</strong>
+
+            <p>
+                Correct grammar, spelling, capitalization,
+                and punctuation.
+            </p>
+
+        </div>
+
+        <div class="writing-box">
+
+            <strong>5. Publish</strong>
+
+            <p>
+                Prepare your final version.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="card">
+
+        <h2>📌 Lesson Summary</h2>
+
+        <ul class="summary-list">
+
+            <li>Good writing communicates ideas clearly.</li>
+
+            <li>Use complete sentences.</li>
+
+            <li>A paragraph should focus on one main idea.</li>
+
+            <li>Use supporting details to explain your ideas.</li>
+
+            <li>Use linking words to connect ideas.</li>
+
+            <li>Use correct capitalization and punctuation.</li>
+
+            <li>Edit your writing before submitting it.</li>
+
+            <li>Follow the writing process: plan, draft, revise, edit, publish.</li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- VIDEO -->
+
+    <section class="card">
+
+        <h2>🎥 Lesson Video</h2>
+
+        <div class="video-box">
+
+            <div>
+
+                <h2>Writing Skills Video</h2>
+
+                <p>
+                    Your teacher's writing lesson video will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card">
+
+        <h2>✏️ Practice Questions</h2>
+
+        <div class="practice-question">
+
+            <strong>1.</strong>
+
+            What is a paragraph?
+
+            <br><br>
+
+            Answer: A group of related sentences about one main idea.
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>2.</strong>
+
+            What should you do before writing?
+
+            <br><br>
+
+            Answer: Plan your ideas.
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>3.</strong>
+
+            Give one linking word.
+
+            <br><br>
+
+            Answer: and, but, because, however, so, etc.
+
+        </div>
+
+
+        <div class="practice-question">
+
+            <strong>4.</strong>
+
+            Why should you edit your writing?
+
+            <br><br>
+
+            Answer: To find and correct mistakes and improve your writing.
+
+        </div>
+
+    </section>
+
+
+    <!-- VIDEO -->
+
+    <section class="card">
+
+        <h2>🎥 Writing Demonstration</h2>
+
+        <div class="video-box">
+
+            <div>
+
+                <h2>Writing Demonstration</h2>
+
+                <p>
+                    A teacher demonstration video can be added here later.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUIZ -->
+
+    <section class="card">
+
+        <h2>🧠 Writing Skills Quiz</h2>
+
+        <p>
+            Choose the correct answer for each question.
+        </p>
+
+        <br>
+
+
+        <form id="quizForm">
+
+
+            <!-- Q1 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    1. What is a paragraph?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="a">
+
+                    A single word
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="b">
+
+                    A group of related sentences about one main idea
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="c">
+
+                    A punctuation mark
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q1"
+                        value="d">
+
+                    A single letter
+
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    2. What should you do before writing?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="a">
+
+                    Plan your ideas
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="b">
+
+                    Delete everything
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="c">
+
+                    Stop writing
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q2"
+                        value="d">
+
+                    Ignore the topic
+
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    3. Which word can connect two ideas?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="a">
+
+                    Because
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="b">
+
+                    Table
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="c">
+
+                    Blue
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q3"
+                        value="d">
+
+                    Quickly
+
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    4. Which sentence is written correctly?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="a">
+
+                    my name is John.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="b">
+
+                    My name is john.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="c">
+
+                    My name is John.
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q4"
+                        value="d">
+
+                    my Name is john.
+
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+
+            <div class="quiz-question">
+
+                <h3>
+                    5. What should you do after writing your first draft?
+                </h3>
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="a">
+
+                    Never read it again
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="b">
+
+                    Edit and improve it
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="c">
+
+                    Delete it immediately
+
+                </label>
+
+
+                <label class="quiz-option">
+
+                    <input
+                        type="radio"
+                        name="q5"
+                        value="d">
+
+                    Stop learning
+
+                </label>
+
+            </div>
+
+
+            <div class="actions">
+
+                <button
+                    type="button"
+                    class="btn primary"
+                    onclick="submitQuiz()">
+
+                    Submit Quiz
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="btn secondary"
+                    onclick="resetQuiz()">
+
+                    Reset Quiz
+
+                </button>
+
+            </div>
+
+        </form>
+
+
+        <div
+            id="quizResult"
+            class="quiz-result">
+        </div>
+
+    </section>
+
+
+    <!-- PROGRESS -->
+
+    <section class="card">
+
+        <h2>📊 Lesson Progress</h2>
+
+        <div class="progress-bar">
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
+        </div>
+
+        <div
+            id="progressText"
+            class="progress-text">
+
+            0% Complete
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL ACTIONS -->
+
+    <div class="actions">
+
+        <button
+            class="btn success"
+            onclick="markComplete()">
+
+            ✓ Mark Lesson Complete
+
+        </button>
+
+
+        <button
+            class="btn secondary"
+            onclick="resetLesson()">
+
+            Reset Lesson
+
+        </button>
+
+        <br>
+
+
+        <a
+            href="english.html"
+            class="btn primary">
+
+            ← Back to English
+
+        </a>
+
+        <a
+            href="english.html"
+            class="btn primary">
+
+            Finish English Course ✓
+
+        </a>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © <span id="year"></span>
+        City International Online School.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+<script>
+
+    const completedKey =
+        "cis_english_lesson5_completed";
+
+    const quizScoreKey =
+        "cis_english_lesson5_quiz_score";
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            updateProgress();
+
+            loadQuizResult();
+
+        }
+    );
+
+
+    function submitQuiz() {
+
+        const correctAnswers = {
+
+            q1: "b",
+
+            q2: "a",
+
+            q3: "a",
+
+            q4: "c",
+
+            q5: "b"
+
+        };
+
+
+        let score = 0;
+
+
+        for (
+            let question in correctAnswers
+        ) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' +
+                    question +
+                    '"]:checked'
+                );
+
+
+            if (!selected) {
+
+                alert(
+                    "Please answer all quiz questions."
+                );
+
+                return;
+
+            }
+
+
+            if (
+                selected.value ===
+                correctAnswers[question]
+            ) {
+
+                score++;
+
+            }
+
+        }
+
+
+        const percentage =
+            Math.round(
+                (score / 5) * 100
+            );
+
+
+        localStorage.setItem(
+            quizScoreKey,
+            percentage
+        );
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        if (percentage === 100) {
+
+            result.innerHTML =
+                "🎉 Excellent! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%).";
+
+        } else if (percentage >= 60) {
+
+            result.innerHTML =
+                "👏 Good work! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%). Keep practising.";
+
+        } else {
+
+            result.innerHTML =
+                "📚 Keep learning! You scored " +
+                score +
+                "/5 (" +
+                percentage +
+                "%). Review the lesson and try again.";
+
+        }
+
+
+        updateProgress();
+
+    }
+
+
+    function loadQuizResult() {
+
+        const savedScore =
+            localStorage.getItem(
+                quizScoreKey
+            );
+
+
+        if (!savedScore) {
+
+            return;
+
+        }
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "block";
+
+
+        result.innerHTML =
+            "Previous quiz score: " +
+            savedScore +
+            "%";
+
+    }
+
+
+    function markComplete() {
+
+        localStorage.setItem(
+            completedKey,
+            "true"
+        );
+
+
+        updateProgress();
+
+
+        alert(
+            "✓ Writing Skills lesson completed successfully!"
+        );
+
+    }
+
+
+    function updateProgress() {
+
+        const completed =
+            localStorage.getItem(
+                completedKey
+            ) === "true";
+
+
+        const score =
+            parseInt(
+                localStorage.getItem(
+                    quizScoreKey
+                )
+            ) || 0;
+
+
+        let progress = 0;
+
+
+        if (completed) {
+
+            progress = 100;
+
+        } else if (score > 0) {
+
+            progress = score;
+
+        }
+
+
+        document.getElementById(
+            "progressFill"
+        ).style.width =
+            progress + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            progress +
+            "% Complete";
+
+    }
+
+
+    function resetQuiz() {
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        localStorage.removeItem(
+            quizScoreKey
+        );
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display =
+            "none";
+
+
+        result.innerHTML = "";
+
+
+        updateProgress();
+
+    }
+
+
+    function resetLesson() {
+
+        const confirmReset =
+            confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+
+        if (!confirmReset) {
+
+            return;
+
+        }
+
+
+        localStorage.removeItem(
+            completedKey
+        );
+
+
+        localStorage.removeItem(
+            quizScoreKey
+        );
+
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        document.getElementById(
+            "quizResult"
+        ).style.display =
+            "none";
+
+
+        document.getElementById(
+            "quizResult"
+        ).innerHTML = "";
+
+
+        updateProgress();
+
+
+        alert(
+            "Lesson progress has been reset."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

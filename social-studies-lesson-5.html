@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Environment and Resources - Social Studies | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 16px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+        }
+
+        .brand {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e8f0f8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d6fa5);
+            color: white;
+            padding: 55px 5%;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            max-width: 850px;
+            font-size: 18px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .card h3 {
+            color: #1d6fa5;
+            margin: 20px 0 8px;
+        }
+
+        .objectives li,
+        .practice li {
+            margin: 10px 0;
+            margin-left: 25px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .info-box {
+            background: #f0f6fb;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #1d6fa5;
+        }
+
+        .info-box h3 {
+            margin-top: 0;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .resource-card {
+            background: #fafcff;
+            border: 1px solid #dce5ee;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .resource-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .video-box {
+            background: #172033;
+            color: white;
+            min-height: 230px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .video-box div {
+            max-width: 600px;
+        }
+
+        .video-box .play {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            background: #f8fafc;
+            border: 1px solid #dfe7ef;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+
+        .question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .question label {
+            display: block;
+            padding: 7px;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .question label:hover {
+            background: #eaf2f8;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .success {
+            background: #dff6e7;
+            color: #176b35;
+        }
+
+        .warning {
+            background: #fff4d6;
+            color: #795b00;
+        }
+
+        .progress-section {
+            margin-top: 20px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 22px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #1d6fa5;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0d2d4e;
+        }
+
+        .secondary {
+            background: #e7eef5;
+            color: #123c69;
+        }
+
+        .secondary:hover {
+            background: #d8e4ee;
+        }
+
+        .danger {
+            background: #b42318;
+            color: white;
+        }
+
+        .danger:hover {
+            background: #8f1c13;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <div class="brand">
+        🏫 CITY INTERNATIONAL ONLINE SCHOOL
+    </div>
+
+    <button class="back-btn" onclick="goToSocialStudies()">
+        ← Back to Social Studies
+    </button>
+</header>
+
+
+<section class="hero">
+    <div class="container" style="margin: 0 auto;">
+        <h1>🌱 Environment and Resources</h1>
+
+        <p>
+            Social Studies Lesson 5: Learn about the environment,
+            natural resources, their importance, environmental problems
+            and ways of protecting our environment.
+        </p>
+    </div>
+</section>
+
+
+<main class="container">
+
+    <!-- OBJECTIVES -->
+    <section class="card">
+        <h2>🎯 Lesson Objectives</h2>
+
+        <p>By the end of this lesson, you should be able to:</p>
+
+        <ul class="objectives">
+            <li>Explain the meaning of environment.</li>
+            <li>Identify natural and human-made resources.</li>
+            <li>Explain why resources are important.</li>
+            <li>Identify some environmental problems.</li>
+            <li>Explain ways of conserving natural resources.</li>
+            <li>Describe how people can protect their communities.</li>
+        </ul>
+    </section>
+
+
+    <!-- ENVIRONMENT -->
+    <section class="card">
+        <h2>🌍 What Is the Environment?</h2>
+
+        <p>
+            The environment is everything around us that affects
+            living things. It includes natural things such as air,
+            water, soil, plants, animals, rivers, lakes and forests.
+        </p>
+
+        <p style="margin-top:12px;">
+            The environment also includes things made or changed by
+            people, such as buildings, roads, schools and bridges.
+        </p>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+                <h3>🌳 Living Things</h3>
+                <p>
+                    Plants, animals and people are living things
+                    found in the environment.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <h3>💧 Water</h3>
+                <p>
+                    Water is important for drinking, farming,
+                    cleaning and other activities.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <h3>🌬️ Air</h3>
+                <p>
+                    Living things need clean air to survive.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <h3>🌱 Soil</h3>
+                <p>
+                    Soil supports plants and is important for farming.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- NATURAL RESOURCES -->
+    <section class="card">
+        <h2>🌿 Natural Resources</h2>
+
+        <p>
+            Natural resources are useful things that come from nature.
+            People depend on them for food, shelter, energy and other needs.
+        </p>
+
+        <div class="resource-grid">
+
+            <div class="resource-card">
+                <div class="resource-icon">💧</div>
+                <h3>Water</h3>
+                <p>
+                    Used for drinking, farming, cooking,
+                    cleaning and many other activities.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">🌳</div>
+                <h3>Forests</h3>
+                <p>
+                    Provide habitats for animals and useful
+                    materials while helping the environment.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">🌱</div>
+                <h3>Soil</h3>
+                <p>
+                    Supports plant growth and agricultural activities.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">🐟</div>
+                <h3>Wildlife</h3>
+                <p>
+                    Animals are important to ecosystems and tourism.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">☀️</div>
+                <h3>Sunlight</h3>
+                <p>
+                    Provides energy that supports life and can also
+                    be used to produce solar power.
+                </p>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-icon">⛏️</div>
+                <h3>Minerals</h3>
+                <p>
+                    Minerals found in the ground can be useful
+                    for different industries and activities.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- IMPORTANCE -->
+    <section class="card">
+        <h2>⭐ Importance of Natural Resources</h2>
+
+        <p>
+            Natural resources are important because people and other
+            living things depend on them.
+        </p>
+
+        <ul class="objectives">
+            <li>They provide food.</li>
+            <li>They provide water.</li>
+            <li>They provide materials for building.</li>
+            <li>They support farming.</li>
+            <li>They provide habitats for wildlife.</li>
+            <li>They support tourism.</li>
+            <li>They can provide sources of energy.</li>
+            <li>They support people's livelihoods.</li>
+        </ul>
+    </section>
+
+
+    <!-- ENVIRONMENTAL PROBLEMS -->
+    <section class="card">
+        <h2>⚠️ Environmental Problems</h2>
+
+        <p>
+            The environment can be damaged when people use resources
+            carelessly or pollute the surroundings.
+        </p>
+
+        <div class="info-grid">
+
+            <div class="info-box">
+                <h3>🗑️ Poor Waste Disposal</h3>
+                <p>
+                    Throwing rubbish in inappropriate places can
+                    pollute land and water.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <h3>🌳 Deforestation</h3>
+                <p>
+                    Cutting down too many trees can damage forests
+                    and wildlife habitats.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <h3>💧 Water Pollution</h3>
+                <p>
+                    Waste and harmful substances can make water unsafe.
+                </p>
+            </div>
+
+            <div class="info-box">
+                <h3>🌫️ Air Pollution</h3>
+                <p>
+                    Smoke and other harmful substances can reduce
+                    air quality.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONSERVATION -->
+    <section class="card">
+        <h2>♻️ Conservation of the Environment</h2>
+
+        <p>
+            Conservation means protecting and using natural resources
+            carefully so that they remain available for the future.
+        </p>
+
+        <h3>Ways to Protect the Environment</h3>
+
+        <ul class="objectives">
+            <li>Plant and protect trees.</li>
+            <li>Keep water sources clean.</li>
+            <li>Dispose of waste properly.</li>
+            <li>Reduce unnecessary pollution.</li>
+            <li>Protect wildlife and their habitats.</li>
+            <li>Use water carefully.</li>
+            <li>Reuse useful materials when possible.</li>
+            <li>Keep schools and communities clean.</li>
+        </ul>
+
+        <h3>🌱 Our Responsibility</h3>
+
+        <p>
+            Children and adults can all help protect the environment.
+            Small actions such as planting trees, keeping surroundings
+            clean and avoiding pollution can make a difference.
+        </p>
+    </section>
+
+
+    <!-- VIDEO -->
+    <section class="card">
+        <h2>🎥 Lesson Video</h2>
+
+        <div class="video-box">
+            <div>
+                <div class="play">▶️</div>
+
+                <h3 style="color:white;">
+                    Environment and Resources
+                </h3>
+
+                <p>
+                    A lesson video about natural resources,
+                    environmental problems and conservation
+                    will appear here.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- PRACTICE -->
+    <section class="card">
+        <h2>✏️ Practice Questions</h2>
+
+        <ol class="practice">
+            <li>What is the environment?</li>
+            <li>What are natural resources?</li>
+            <li>Name three natural resources.</li>
+            <li>Give two environmental problems.</li>
+            <li>Give three ways of protecting the environment.</li>
+        </ol>
+    </section>
+
+
+    <!-- QUIZ -->
+    <section class="card">
+        <h2>📝 Lesson Quiz</h2>
+
+        <p style="margin-bottom:20px;">
+            Choose the correct answer for each question.
+        </p>
+
+        <form id="quizForm">
+
+            <div class="question">
+                <p>1. What is the environment?</p>
+
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    A. Only buildings
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    B. Only animals
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    C. Everything around us that affects living things
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="d">
+                    D. Only roads
+                </label>
+            </div>
+
+
+            <div class="question">
+                <p>2. Which of these is a natural resource?</p>
+
+                <label>
+                    <input type="radio" name="q2" value="a">
+                    A. Water
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="b">
+                    B. Plastic chair
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="c">
+                    C. School desk
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="d">
+                    D. Computer
+                </label>
+            </div>
+
+
+            <div class="question">
+                <p>3. Which activity helps protect the environment?</p>
+
+                <label>
+                    <input type="radio" name="q3" value="a">
+                    A. Throwing rubbish into rivers
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="b">
+                    B. Cutting down every tree
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="c">
+                    C. Planting and protecting trees
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="d">
+                    D. Burning rubbish everywhere
+                </label>
+            </div>
+
+
+            <div class="question">
+                <p>4. What can happen when water is polluted?</p>
+
+                <label>
+                    <input type="radio" name="q4" value="a">
+                    A. It becomes unsafe for some uses
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="b">
+                    B. It becomes cleaner
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="c">
+                    It becomes a forest
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="d">
+                    D. Nothing can happen
+                </label>
+            </div>
+
+
+            <div class="question">
+                <p>5. Why should natural resources be conserved?</p>
+
+                <label>
+                    <input type="radio" name="q5" value="a">
+                    A. So they can be wasted
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="b">
+                    B. So they remain useful for present and future generations
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="c">
+                    C. So forests can be destroyed
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="d">
+                    D. So water can be polluted
+                </label>
+            </div>
+
+
+            <button
+                type="button"
+                class="btn primary"
+                onclick="submitQuiz()">
+                Submit Quiz
+            </button>
+
+        </form>
+
+        <div id="quizResult" class="result"></div>
+    </section>
+
+
+    <!-- PROGRESS -->
+    <section class="card">
+        <h2>📊 Lesson Progress</h2>
+
+        <p>
+            Complete the quiz and mark the lesson complete to record
+            your progress.
+        </p>
+
+        <div class="progress-section">
+
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+
+            <div id="progressText" class="progress-text">
+                0% Complete
+            </div>
+
+        </div>
+
+        <div class="buttons">
+
+            <button
+                class="btn primary"
+                onclick="markComplete()">
+                ✓ Mark Lesson Complete
+            </button>
+
+            <button
+                class="btn danger"
+                onclick="resetLesson()">
+                Reset Lesson
+            </button>
+
+        </div>
+    </section>
+
+
+    <!-- NAVIGATION -->
+    <section class="card">
+
+        <div class="buttons">
+
+            <button
+                class="btn secondary"
+                onclick="window.location.href='social-studies-lesson-4.html'">
+                ← Previous Lesson
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="goToSocialStudies()">
+                🌍 Social Studies
+            </button>
+
+            <button
+                class="btn primary"
+                onclick="finishCourse()">
+                ✓ Finish Social Studies Course
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+    <p>
+        © <span id="currentYear"></span>
+        City International Online School. All Rights Reserved.
+    </p>
+</footer>
+
+
+<script>
+
+    const completedKey =
+        "cis_social_studies_lesson5_completed";
+
+    const scoreKey =
+        "cis_social_studies_lesson5_quiz_score";
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        updateProgress();
+
+        const savedScore =
+            localStorage.getItem(scoreKey);
+
+        if (savedScore !== null) {
+
+            const result =
+                document.getElementById("quizResult");
+
+            result.style.display = "block";
+            result.className = "result success";
+
+            result.textContent =
+                "Your saved quiz score is " +
+                savedScore +
+                "/5.";
+        }
+
+    });
+
+
+    function submitQuiz() {
+
+        const answers = {
+            q1: "c",
+            q2: "a",
+            q3: "c",
+            q4: "a",
+            q5: "b"
+        };
+
+        let score = 0;
+        let answered = 0;
+
+
+        for (let question in answers) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' +
+                    question +
+                    '"]:checked'
+                );
+
+            if (selected) {
+
+                answered++;
+
+                if (
+                    selected.value ===
+                    answers[question]
+                ) {
+                    score++;
+                }
+            }
+        }
+
+
+        const result =
+            document.getElementById("quizResult");
+
+
+        if (answered < 5) {
+
+            result.style.display = "block";
+            result.className = "result warning";
+
+            result.textContent =
+                "Please answer all 5 questions before submitting the quiz.";
+
+            return;
+        }
+
+
+        localStorage.setItem(
+            scoreKey,
+            score
+        );
+
+
+        result.style.display = "block";
+
+
+        if (score >= 3) {
+
+            result.className =
+                "result success";
+
+            result.textContent =
+                "Excellent! You scored " +
+                score +
+                "/5. Keep learning and improving!";
+
+        } else {
+
+            result.className =
+                "result warning";
+
+            result.textContent =
+                "You scored " +
+                score +
+                "/5. Review the lesson and try again.";
+
+        }
+
+
+        updateProgress();
+    }
+
+
+    function markComplete() {
+
+        localStorage.setItem(
+            completedKey,
+            "true"
+        );
+
+        updateProgress();
+
+
+        const result =
+            document.getElementById("quizResult");
+
+        result.style.display = "block";
+        result.className = "result success";
+
+        result.textContent =
+            "✓ Lesson 5 has been marked as complete! You have finished all Social Studies lessons.";
+    }
+
+
+    function updateProgress() {
+
+        const completed =
+            localStorage.getItem(
+                completedKey
+            ) === "true";
+
+
+        const score =
+            localStorage.getItem(
+                scoreKey
+            );
+
+
+        let progress = 0;
+
+
+        if (score !== null) {
+            progress = 50;
+        }
+
+
+        if (completed) {
+            progress = 100;
+        }
+
+
+        document.getElementById(
+            "progressFill"
+        ).style.width =
+            progress + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            progress + "% Complete";
+    }
+
+
+    function resetLesson() {
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        localStorage.removeItem(
+            completedKey
+        );
+
+        localStorage.removeItem(
+            scoreKey
+        );
+
+
+        document.getElementById(
+            "quizForm"
+        ).reset();
+
+
+        const result =
+            document.getElementById(
+                "quizResult"
+            );
+
+
+        result.style.display = "none";
+
+
+        updateProgress();
+    }
+
+
+    function goToSocialStudies() {
+
+        window.location.href =
+            "social-studies.html";
+    }
+
+
+    function finishCourse() {
+
+        alert(
+            "🎉 Congratulations! You have reached the end of the Social Studies course."
+        );
+
+        window.location.href =
+            "social-studies.html";
+    }
+
+</script>
+
+</body>
+</html>

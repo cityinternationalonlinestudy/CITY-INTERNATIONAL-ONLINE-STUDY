@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Teacher Live Classroom - City International Online School
+    </title>
+
+    <link rel="stylesheet" href="teacher-live.css">
+</head>
+
+<body>
+
+<div class="teacher-live-page">
+
+    <!-- HEADER -->
+    <header class="top-header">
+
+        <div class="school-name">
+
+            <div class="school-logo">
+                🎓
+            </div>
+
+            <span>
+                City International Online School
+            </span>
+
+        </div>
+
+        <div class="header-right">
+
+            <span class="teacher-name">
+                👨‍🏫 Teacher Classroom
+            </span>
+
+            <span
+                id="connectionStatus"
+                class="connection-status"
+                data-connected="false"
+            >
+                Waiting for class
+            </span>
+
+            <button
+                type="button"
+                class="back-button"
+                onclick="window.location.href='../index.html'"
+            >
+                ← Dashboard
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="teacher-live-container">
+
+        <!-- CLASS INFORMATION -->
+        <section class="class-information">
+
+            <h1>
+                🎓 Teacher Live Classroom
+            </h1>
+
+            <p>
+                Teach your students live using your camera,
+                microphone and computer screen.
+            </p>
+
+            <div class="class-details">
+
+                <div class="detail-box">
+                    <span>Subject</span>
+                    <strong id="liveSubjectName">Mathematics</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>Teacher</span>
+                    <strong>Teacher</strong>
+                </div>
+
+                <div class="detail-box">
+                    <span>Class Status</span>
+                    <strong id="classStatus">
+                        Class not started
+                    </strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LIVE ROOM -->
+        <section class="live-room">
+
+
+            <!-- VIDEO AREA -->
+            <div class="video-section">
+
+                <div class="video-section-title">
+                    🎥 Live Teaching Room
+                </div>
+
+
+                <div class="video-grid">
+
+
+                    <!-- TEACHER VIDEO -->
+                    <div class="video-container">
+
+                        <video
+                            id="teacherVideo"
+                            autoplay
+                            muted
+                            playsinline
+                        ></video>
+
+                        <div
+                            id="teacherPlaceholder"
+                            class="video-placeholder"
+                        >
+
+                            <div class="icon">
+                                🎥
+                            </div>
+
+                            <h3>
+                                Teacher Camera
+                            </h3>
+
+                            <p>
+                                Your camera will appear here.
+                            </p>
+
+                        </div>
+
+                        <div class="video-label">
+                            👨‍🏫 You — Teacher
+                        </div>
+
+                        <div class="live-badge">
+                            LIVE
+                        </div>
+
+                    </div>
+
+
+                    <!-- SCREEN SHARE -->
+                    <div class="video-container">
+
+                        <video
+                            id="screenVideo"
+                            autoplay
+                            muted
+                            playsinline
+                        ></video>
+
+                        <div
+                            id="screenPlaceholder"
+                            class="video-placeholder"
+                        >
+
+                            <div class="icon">
+                                🖥️
+                            </div>
+
+                            <h3>
+                                Screen Sharing
+                            </h3>
+
+                            <p>
+                                Click "Share Screen" to show
+                                your computer to your students.
+                            </p>
+
+                        </div>
+
+                        <div class="video-label">
+                            🖥️ Teacher Screen
+                        </div>
+
+                        <div
+                            id="screenBadge"
+                            class="screen-badge"
+                        >
+                            SCREEN
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONTROLS -->
+                <div class="control-bar">
+
+
+                    <button
+                        id="startButton"
+                        type="button"
+                        class="control-button start-button"
+                    >
+                        ▶ Start Class
+                    </button>
+
+
+                    <button
+                        id="endButton"
+                        type="button"
+                        class="control-button end-button"
+                        disabled
+                    >
+                        ⏹ End Class
+                    </button>
+
+
+                    <button
+                        id="micButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        🎤 Mute
+                    </button>
+
+
+                    <button
+                        id="cameraButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        📹 Camera
+                    </button>
+
+
+                    <!-- NEW SCREEN SHARE BUTTON -->
+                    <button
+                        id="shareScreenButton"
+                        type="button"
+                        class="control-button share-screen-button"
+                    >
+                        🖥️ Share Screen
+                    </button>
+
+
+                    <button
+                        id="fullscreenButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        ⛶ Fullscreen
+                    </button>
+
+
+                    <button
+                        id="studentsButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        👥 Students
+                    </button>
+
+
+                    <button
+                        id="chatButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        💬 Chat
+                    </button>
+
+
+                    <button
+                        id="notesButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        📝 Notes
+                    </button>
+
+
+                    <button
+                        id="leaveButton"
+                        type="button"
+                        class="control-button"
+                    >
+                        🚪 Leave
+                    </button>
+
+                </div>
+
+
+                <!-- STATUS -->
+                <div class="status-row">
+
+                    <div
+                        id="classTimer"
+                        class="class-timer"
+                    >
+                        00:00:00
+                    </div>
+
+                    <div
+                        id="teacherStatus"
+                        class="class-status"
+                    >
+                        Camera not started
+                    </div>
+
+                    <div
+                        id="screenStatus"
+                        class="screen-status"
+                    >
+                        🖥️ Screen not shared
+                    </div>
+
+                </div>
+
+
+                <!-- TEACHING TIP -->
+                <div class="teaching-tip">
+
+                    <strong>
+                        💡 Teaching Tip
+                    </strong>
+
+                    <span>
+                        Use <b>Share Screen</b> when you want
+                        students to watch you demonstrate
+                        something on your computer.
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- SIDEBAR -->
+            <aside class="class-sidebar">
+
+
+                <!-- STUDENTS -->
+                <div class="sidebar-card">
+
+                    <h2>
+                        👥 Students
+                    </h2>
+
+                    <div
+                        id="studentList"
+                        class="student-list"
+                    >
+
+                        <div class="student-item">
+
+                            <div class="student-info">
+
+                                <div class="student-avatar">
+                                    ?
+                                </div>
+
+                                <div>
+
+                                    <div class="student-name">
+                                        Waiting for students
+                                    </div>
+
+                                    <div class="student-status">
+                                        No students connected
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CHAT -->
+                <div
+                    id="chatPanel"
+                    class="sidebar-card chat-panel"
+                >
+
+                    <h2>
+                        💬 Class Chat
+                    </h2>
+
+                    <div
+                        id="chatMessages"
+                        class="chat-messages"
+                    >
+
+                        <div class="chat-message">
+
+                            <strong>
+                                System
+                            </strong>
+
+                            <span>
+                                Welcome to the class chat.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chat-input-area">
+
+                        <input
+                            id="chatInput"
+                            class="chat-input"
+                            type="text"
+                            placeholder="Write a message..."
+                            autocomplete="off"
+                        >
+
+                        <button
+                            id="sendChatButton"
+                            type="button"
+                            class="chat-send-button"
+                            title="Send message"
+                        >
+                            ➤
+                        </button>
+
+                    </div>
+
+                        <div class="chat-reactions" aria-label="Class reactions">
+                            <button type="button" onclick="sendLiveReaction('✋')">✋ Raise hand</button>
+                            <button type="button" onclick="sendLiveReaction('👍')">👍</button>
+                            <button type="button" onclick="sendLiveReaction('❤️')">❤️</button>
+                            <button type="button" onclick="sendLiveReaction('😂')">😂</button>
+                        </div>
+
+                </div>
+
+
+                <!-- NOTES -->
+                <div class="sidebar-card">
+
+                    <h2>
+                        📝 Teacher Notes
+                    </h2>
+
+                    <textarea
+                        id="notes"
+                        class="notes-area"
+                        placeholder="Write your lesson notes here..."
+                    ></textarea>
+
+                    <button
+                        id="saveNotesButton"
+                        type="button"
+                        class="save-button"
+                    >
+                        💾 Save Notes
+                    </button>
+
+                    <p
+                        id="notesMessage"
+                        class="notes-message"
+                    ></p>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- STUDENTS MODAL -->
+<div
+    id="studentsModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <h2>
+            👥 Students in Class
+        </h2>
+
+        <p>
+            Students who join your live classroom
+            will appear here.
+        </p>
+
+        <div
+            id="modalStudentList"
+            class="student-list"
+        >
+
+            <div class="student-item">
+
+                <div class="student-info">
+
+                    <div class="student-avatar">
+                        ?
+                    </div>
+
+                    <div>
+
+                        <div class="student-name">
+                            Waiting for students
+                        </div>
+
+                        <div class="student-status">
+                            No students connected
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-buttons">
+
+            <button
+                type="button"
+                class="modal-button modal-cancel"
+                data-close-modal="studentsModal"
+            >
+                Close
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- END CLASS MODAL -->
+<div
+    id="endClassModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <h2>
+            ⏹ End Live Class?
+        </h2>
+
+        <p>
+            Are you sure you want to end this live class?
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                id="cancelEndButton"
+                type="button"
+                class="modal-button modal-cancel"
+            >
+                Cancel
+            </button>
+
+            <button
+                id="confirmEndButton"
+                type="button"
+                class="modal-button modal-confirm"
+            >
+                End Class
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- NOTIFICATION -->
+<div
+    id="notification"
+    class="notification"
+></div>
+
+
+    <script>
+        const liveParams = new URLSearchParams(window.location.search);
+        const liveSubject = liveParams.get("subject");
+        const liveSubjectName = document.getElementById("liveSubjectName");
+
+        if (liveSubject && liveSubjectName) {
+            liveSubjectName.textContent = liveSubject;
+        }
+    </script>
+
+    <script src="teacher-live.js"></script>
+
+</body>
+
+</html>

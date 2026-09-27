@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>English Lesson 1 - Parts of Speech</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: #123b6d;
+            color: white;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123b6d;
+            text-decoration: none;
+            padding: 10px 17px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: min(1050px, 92%);
+            margin: 30px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123b6d, #2474b8);
+            color: white;
+            padding: 45px 30px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            color: #123b6d;
+            margin-bottom: 15px;
+            font-size: 27px;
+        }
+
+        .card h3 {
+            color: #2474b8;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            margin-bottom: 12px;
+        }
+
+        .card ul,
+        .card ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .definition {
+            background: #eef6ff;
+            border-left: 5px solid #2474b8;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .speech-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .speech-box {
+            background: #f8fafc;
+            border: 1px solid #dbe4ef;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .speech-box h3 {
+            margin-top: 0;
+        }
+
+        .example {
+            background: #f1f7ff;
+            border-left: 4px solid #123b6d;
+            padding: 13px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .video-box {
+            min-height: 250px;
+            background: #111827;
+            color: white;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .video-icon {
+            font-size: 55px;
+            margin-bottom: 12px;
+        }
+
+        .question {
+            background: #f8fafc;
+            border: 1px solid #dbe4ef;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid #dbe4ef;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .option {
+            display: block;
+            padding: 8px;
+            margin: 5px 0;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        .option:hover {
+            background: #eaf2fb;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            margin-right: 7px;
+            margin-top: 8px;
+        }
+
+        .primary {
+            background: #123b6d;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0d2d53;
+        }
+
+        .success {
+            background: #16803c;
+            color: white;
+        }
+
+        .success:hover {
+            background: #116630;
+        }
+
+        .secondary {
+            background: #e8eef5;
+            color: #123b6d;
+        }
+
+        .result {
+            display: none;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 18px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 12px;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: #16803c;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .footer-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 750px) {
+            .speech-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 94%;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="english.html" class="back-btn">
+            ← Back to English
+        </a>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <h1>English Lesson 1</h1>
+
+            <p>
+                Parts of Speech
+            </p>
+
+        </section>
+
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+
+            <h2>Learning Objectives</h2>
+
+            <p>
+                By the end of this lesson, you should be able to:
+            </p>
+
+            <ul>
+                <li>Explain what parts of speech are.</li>
+                <li>Identify common parts of speech.</li>
+                <li>Recognize nouns and pronouns.</li>
+                <li>Identify verbs and adjectives.</li>
+                <li>Identify adverbs, prepositions and conjunctions.</li>
+                <li>Use different parts of speech correctly in sentences.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+        <section class="card">
+
+            <h2>1. What Are Parts of Speech?</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                Parts of speech are groups of words classified according
+                to the work they do in a sentence.
+
+            </div>
+
+            <p>
+                Every word in a sentence has a job. Some words name people,
+                places or things. Some show actions. Others describe things
+                or connect words together.
+            </p>
+
+            <p>
+                Learning parts of speech helps us understand and write
+                correct English sentences.
+            </p>
+
+        </section>
+
+
+        <!-- NOUN -->
+        <section class="card">
+
+            <h2>2. Noun</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                A noun is a word that names a person, place, animal,
+                thing or idea.
+
+            </div>
+
+            <h3>Examples</h3>
+
+            <ul>
+                <li>Teacher</li>
+                <li>Uganda</li>
+                <li>School</li>
+                <li>Book</li>
+                <li>Dog</li>
+                <li>Happiness</li>
+            </ul>
+
+            <div class="example">
+                <strong>Sentence:</strong>
+                The <strong>teacher</strong> opened the <strong>book</strong>.
+            </div>
+
+        </section>
+
+
+        <!-- PRONOUN -->
+        <section class="card">
+
+            <h2>3. Pronoun</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                A pronoun is a word used instead of a noun.
+
+            </div>
+
+            <h3>Common Pronouns</h3>
+
+            <ul>
+                <li>I</li>
+                <li>You</li>
+                <li>He</li>
+                <li>She</li>
+                <li>It</li>
+                <li>We</li>
+                <li>They</li>
+            </ul>
+
+            <div class="example">
+                <strong>Example:</strong>
+                Sarah is a student. <strong>She</strong> studies English.
+            </div>
+
+            <p>
+                The word <strong>she</strong> replaces the noun
+                <strong>Sarah</strong>.
+            </p>
+
+        </section>
+
+
+        <!-- VERB -->
+        <section class="card">
+
+            <h2>4. Verb</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                A verb is a word that shows an action or a state of being.
+
+            </div>
+
+            <h3>Action Verbs</h3>
+
+            <ul>
+                <li>Run</li>
+                <li>Jump</li>
+                <li>Write</li>
+                <li>Read</li>
+                <li>Eat</li>
+                <li>Sing</li>
+            </ul>
+
+            <h3>Examples</h3>
+
+            <div class="example">
+                The children <strong>play</strong> football.
+            </div>
+
+            <div class="example">
+                Mary <strong>reads</strong> a book.
+            </div>
+
+        </section>
+
+
+        <!-- ADJECTIVE -->
+        <section class="card">
+
+            <h2>5. Adjective</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                An adjective is a word that describes a noun or pronoun.
+
+            </div>
+
+            <h3>Examples</h3>
+
+            <ul>
+                <li>Big</li>
+                <li>Small</li>
+                <li>Beautiful</li>
+                <li>Red</li>
+                <li>Fast</li>
+                <li>Happy</li>
+            </ul>
+
+            <div class="example">
+                The girl has a <strong>beautiful</strong> dress.
+            </div>
+
+            <div class="example">
+                He drives a <strong>fast</strong> car.
+            </div>
+
+        </section>
+
+
+        <!-- ADVERB -->
+        <section class="card">
+
+            <h2>6. Adverb</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                An adverb is a word that describes a verb, adjective
+                or another adverb.
+
+            </div>
+
+            <h3>Examples</h3>
+
+            <ul>
+                <li>Quickly</li>
+                <li>Slowly</li>
+                <li>Carefully</li>
+                <li>Loudly</li>
+                <li>Yesterday</li>
+                <li>Very</li>
+            </ul>
+
+            <div class="example">
+                The boy ran <strong>quickly</strong>.
+            </div>
+
+            <div class="example">
+                She speaks <strong>slowly</strong>.
+            </div>
+
+        </section>
+
+
+        <!-- PREPOSITION -->
+        <section class="card">
+
+            <h2>7. Preposition</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                A preposition is a word that shows the relationship
+                between words, often showing place, time or direction.
+
+            </div>
+
+            <h3>Examples</h3>
+
+            <ul>
+                <li>In</li>
+                <li>On</li>
+                <li>Under</li>
+                <li>Behind</li>
+                <li>Near</li>
+                <li>Between</li>
+            </ul>
+
+            <div class="example">
+                The book is <strong>on</strong> the table.
+            </div>
+
+            <div class="example">
+                The cat is <strong>under</strong> the chair.
+            </div>
+
+        </section>
+
+
+        <!-- CONJUNCTION -->
+        <section class="card">
+
+            <h2>8. Conjunction</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                A conjunction is a word that joins words,
+                phrases or sentences.
+
+            </div>
+
+            <h3>Common Conjunctions</h3>
+
+            <ul>
+                <li>And</li>
+                <li>But</li>
+                <li>Or</li>
+                <li>Because</li>
+                <li>So</li>
+            </ul>
+
+            <div class="example">
+                John <strong>and</strong> Mary are friends.
+            </div>
+
+            <div class="example">
+                I wanted to play, <strong>but</strong> it was raining.
+            </div>
+
+        </section>
+
+
+        <!-- INTERJECTION -->
+        <section class="card">
+
+            <h2>9. Interjection</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+
+                An interjection is a word or short expression that
+                expresses a strong feeling or emotion.
+
+            </div>
+
+            <h3>Examples</h3>
+
+            <ul>
+                <li>Wow!</li>
+                <li>Oh!</li>
+                <li>Hurrah!</li>
+                <li>Ouch!</li>
+                <li>Hurray!</li>
+            </ul>
+
+            <div class="example">
+                <strong>Wow!</strong> That is a beautiful picture.
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="card">
+
+            <h2>10. Parts of Speech Summary</h2>
+
+            <div class="speech-grid">
+
+                <div class="speech-box">
+                    <h3>Noun</h3>
+                    <p>Names a person, place, thing or idea.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Pronoun</h3>
+                    <p>Replaces a noun.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Verb</h3>
+                    <p>Shows an action or state of being.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Adjective</h3>
+                    <p>Describes a noun or pronoun.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Adverb</h3>
+                    <p>Describes a verb, adjective or another adverb.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Preposition</h3>
+                    <p>Shows a relationship between words.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Conjunction</h3>
+                    <p>Joins words, phrases or sentences.</p>
+                </div>
+
+                <div class="speech-box">
+                    <h3>Interjection</h3>
+                    <p>Expresses strong feeling or emotion.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+
+            <h2>11. Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div class="video-icon">▶️</div>
+
+                <h3 style="color:white;">
+                    Parts of Speech Video
+                </h3>
+
+                <p>
+                    Your English Lesson 1 video will appear here.
+                </p>
+
+                <p>
+                    A real teaching video can be connected later.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+
+            <h2>12. Practice Questions</h2>
+
+            <div class="question">
+
+                <strong>1. Identify the noun:</strong>
+
+                <p>
+                    The teacher opened the door.
+                </p>
+
+            </div>
+
+            <div class="question">
+
+                <strong>2. Identify the verb:</strong>
+
+                <p>
+                    The children played football.
+                </p>
+
+            </div>
+
+            <div class="question">
+
+                <strong>3. Identify the adjective:</strong>
+
+                <p>
+                    She wore a beautiful dress.
+                </p>
+
+            </div>
+
+            <div class="question">
+
+                <strong>4. Identify the pronoun:</strong>
+
+                <p>
+                    David is my friend. He is kind.
+                </p>
+
+            </div>
+
+            <div class="question">
+
+                <strong>5. Identify the preposition:</strong>
+
+                <p>
+                    The book is on the table.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+
+            <h2>13. English Quiz</h2>
+
+            <p>
+                Answer all five questions and submit your quiz.
+            </p>
+
+
+            <!-- Q1 -->
+            <div class="quiz-question">
+
+                <p>
+                    1. Which word is a noun?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. Run
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. Beautiful
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. Teacher
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. Quickly
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+            <div class="quiz-question">
+
+                <p>
+                    2. Which word is a verb?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Jump
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. Happy
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. School
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. Slowly
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+            <div class="quiz-question">
+
+                <p>
+                    3. Which word describes a noun?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Adjective
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Pronoun
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Conjunction
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Preposition
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+            <div class="quiz-question">
+
+                <p>
+                    4. Which word is a pronoun?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. They
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Book
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    C. Run
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Beautiful
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+            <div class="quiz-question">
+
+                <p>
+                    5. Which word joins words or sentences?
+                </p>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. Noun
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    B. Conjunction
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. Adjective
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    D. Verb
+                </label>
+
+            </div>
+
+
+            <button
+                class="btn primary"
+                onclick="submitQuiz()"
+            >
+                Submit Quiz
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="resetQuiz()"
+            >
+                Reset Quiz
+            </button>
+
+
+            <div
+                id="quizResult"
+                class="result"
+            ></div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+
+            <h2>14. Lesson Progress</h2>
+
+            <p>
+                Complete the lesson and quiz to track your progress.
+            </p>
+
+            <div class="progress-bar">
+
+                <div
+                    id="progressFill"
+                    class="progress-fill"
+                ></div>
+
+            </div>
+
+            <div
+                id="progressText"
+                class="progress-text"
+            >
+                0% Complete
+            </div>
+
+
+            <button
+                id="completeBtn"
+                class="btn success"
+                onclick="markComplete()"
+            >
+                ✓ Mark Lesson Complete
+            </button>
+
+            <button
+                class="btn secondary"
+                onclick="resetLesson()"
+            >
+                Reset Lesson
+            </button>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="footer-actions">
+
+            <a
+                href="english.html"
+                class="btn secondary"
+            >
+                ← Back to English
+            </a>
+
+            <button
+                class="btn primary"
+                onclick="nextLesson()"
+            >
+                Next Lesson →
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const lessonCompleteKey =
+            "cis_english_lesson1_completed";
+
+        const quizScoreKey =
+            "cis_english_lesson1_quiz_score";
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+                updateProgress();
+            }
+        );
+
+
+        function submitQuiz() {
+
+            const correctAnswers = {
+                q1: "c",
+                q2: "a",
+                q3: "a",
+                q4: "a",
+                q5: "b"
+            };
+
+
+            let score = 0;
+            let answered = 0;
+
+
+            for (let question in correctAnswers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+
+                if (selected) {
+
+                    answered++;
+
+
+                    if (
+                        selected.value ===
+                        correctAnswers[question]
+                    ) {
+                        score++;
+                    }
+
+                }
+
+            }
+
+
+            if (answered < 5) {
+
+                showResult(
+                    "Please answer all 5 questions before submitting the quiz.",
+                    false
+                );
+
+                return;
+            }
+
+
+            const percentage =
+                Math.round(
+                    (score / 5) * 100
+                );
+
+
+            localStorage.setItem(
+                quizScoreKey,
+                percentage
+            );
+
+
+            showResult(
+                "Your score is " +
+                score +
+                " / 5 (" +
+                percentage +
+                "%).",
+                true
+            );
+
+
+            updateProgress();
+
+        }
+
+
+        function showResult(message, success) {
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+
+            result.style.display =
+                "block";
+
+            result.textContent =
+                message;
+
+
+            if (success) {
+
+                result.style.background =
+                    "#e8f7ed";
+
+                result.style.color =
+                    "#116630";
+
+                result.style.border =
+                    "1px solid #a9dfba";
+
+            } else {
+
+                result.style.background =
+                    "#fff3cd";
+
+                result.style.color =
+                    "#856404";
+
+                result.style.border =
+                    "1px solid #ffe69c";
+
+            }
+
+        }
+
+
+        function resetQuiz() {
+
+            document
+                .querySelectorAll(
+                    'input[type="radio"]'
+                )
+                .forEach(function (input) {
+
+                    input.checked = false;
+
+                });
+
+
+            localStorage.removeItem(
+                quizScoreKey
+            );
+
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+
+            result.style.display =
+                "none";
+
+            result.textContent =
+                "";
+
+
+            updateProgress();
+
+        }
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                lessonCompleteKey,
+                "true"
+            );
+
+
+            updateProgress();
+
+
+            const button =
+                document.getElementById(
+                    "completeBtn"
+                );
+
+
+            button.textContent =
+                "✓ Lesson Completed";
+
+
+            button.style.background =
+                "#0f6b32";
+
+
+            alert(
+                "Congratulations! English Lesson 1 is complete."
+            );
+
+        }
+
+
+        function resetLesson() {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to reset this lesson?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            localStorage.removeItem(
+                lessonCompleteKey
+            );
+
+            localStorage.removeItem(
+                quizScoreKey
+            );
+
+
+            resetQuiz();
+
+
+            const button =
+                document.getElementById(
+                    "completeBtn"
+                );
+
+
+            button.textContent =
+                "✓ Mark Lesson Complete";
+
+
+            button.style.background =
+                "";
+
+
+            updateProgress();
+
+        }
+
+
+        function updateProgress() {
+
+            let progress = 0;
+
+
+            const completed =
+                localStorage.getItem(
+                    lessonCompleteKey
+                ) === "true";
+
+
+            const score =
+                localStorage.getItem(
+                    quizScoreKey
+                );
+
+
+            if (completed) {
+                progress += 50;
+            }
+
+
+            if (score !== null) {
+                progress += 50;
+            }
+
+
+            document.getElementById(
+                "progressFill"
+            ).style.width =
+                progress + "%";
+
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "% Complete";
+
+
+            if (completed) {
+
+                const button =
+                    document.getElementById(
+                        "completeBtn"
+                    );
+
+
+                button.textContent =
+                    "✓ Lesson Completed";
+
+
+                button.style.background =
+                    "#0f6b32";
+
+            }
+
+        }
+
+
+        function nextLesson() {
+
+            window.location.href =
+                "english-lesson-2.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Dashboard - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 250px;
+            height: 100vh;
+            background: #102a56;
+            color: white;
+            padding: 25px 18px;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .school-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .school-logo .logo-icon {
+            width: 65px;
+            height: 65px;
+            background: white;
+            color: #102a56;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .school-logo h2 {
+            font-size: 17px;
+            margin-top: 12px;
+        }
+
+        .school-logo p {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .student-mini-profile {
+            background: rgba(255,255,255,0.08);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .student-mini-profile strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .student-mini-profile span {
+            font-size: 12px;
+            color: #dce7f7;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 7px;
+        }
+
+        .sidebar-menu button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: white;
+            text-align: left;
+            padding: 12px 14px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .sidebar-menu button:hover,
+        .sidebar-menu button.active {
+            background: #1d4f91;
+        }
+
+        .logout-button {
+            margin-top: 25px;
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background: transparent;
+            color: white;
+            border-radius: 9px;
+            cursor: pointer;
+        }
+
+        .logout-button:hover {
+            background: #c0392b;
+            border-color: #c0392b;
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main {
+            margin-left: 250px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            background: white;
+            min-height: 75px;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #e4e9f0;
+        }
+
+        .topbar-left h1 {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .topbar-left p {
+            color: #6d7787;
+            font-size: 13px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification-button {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid #e0e5ec;
+            background: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .student-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #1d5ca8;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .student-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        /* =========================
+           WELCOME
+        ========================= */
+
+        .welcome-card {
+            background: linear-gradient(135deg, #123b78, #1f67b3);
+            color: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .welcome-card h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-card p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .student-number-box {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 18px 22px;
+            min-width: 220px;
+        }
+
+        .student-number-box small {
+            display: block;
+            margin-bottom: 7px;
+            opacity: 0.8;
+        }
+
+        .student-number-box strong {
+            font-size: 15px;
+        }
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5eaf1;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(20,40,80,0.04);
+        }
+
+        .stat-icon {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .stat-card h3 {
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            color: #768092;
+            font-size: 13px;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 17px;
+        }
+
+        .section-header h2 {
+            font-size: 21px;
+        }
+
+        .section-header p {
+            color: #7a8493;
+            font-size: 13px;
+        }
+
+        /* =========================
+           SUBJECTS
+        ========================= */
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .subject-card {
+            background: white;
+            border: 1px solid #e4e9f0;
+            border-radius: 16px;
+            padding: 22px;
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(20,40,80,0.04);
+        }
+
+        .subject-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20,40,80,0.08);
+        }
+
+        .subject-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 13px;
+            background: #eaf2ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            margin-bottom: 15px;
+        }
+
+        .subject-card h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .subject-card p {
+            color: #737d8d;
+            font-size: 13px;
+            line-height: 1.6;
+            min-height: 42px;
+            margin-bottom: 17px;
+        }
+
+        .subject-info {
+            display: flex;
+            justify-content: space-between;
+            color: #7a8493;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .open-subject {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            background: #165ca8;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .open-subject:hover {
+            background: #0e4787;
+        }
+
+        /* =========================
+           ASSIGNMENTS
+        ========================= */
+
+        .assignment-card {
+            background: white;
+            border: 1px solid #e4e9f0;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .assignment-left h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .assignment-left p {
+            font-size: 12px;
+            color: #7b8492;
+        }
+
+        .assignment-status {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            background: #fff4d6;
+            color: #916b00;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           LIVE CLASS
+        ========================= */
+
+        .live-class-card {
+            background: white;
+            border: 1px solid #e4e9f0;
+            border-radius: 16px;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .live-class-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .live-class-info p {
+            color: #737d8d;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .live-badge {
+            display: inline-block;
+            background: #ffe8e8;
+            color: #c62828;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .join-class {
+            border: none;
+            background: #16834a;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .join-class:hover {
+            background: #106738;
+        }
+
+        /* =========================
+           STUDY TIME
+        ========================= */
+
+        .study-card {
+            background: white;
+            border: 1px solid #e4e9f0;
+            border-radius: 16px;
+            padding: 22px;
+        }
+
+        .study-progress {
+            width: 100%;
+            height: 12px;
+            background: #edf0f5;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .study-progress-bar {
+            width: 68%;
+            height: 100%;
+            background: #1a63aa;
+        }
+
+        .study-details {
+            display: flex;
+            justify-content: space-between;
+            color: #707b8c;
+            font-size: 13px;
+        }
+
+        /* =========================
+           NOTIFICATION
+        ========================= */
+
+        .notification-box {
+            background: white;
+            border: 1px solid #e4e9f0;
+            border-radius: 14px;
+            padding: 20px;
+        }
+
+        .notification-item {
+            padding: 14px 0;
+            border-bottom: 1px solid #edf0f4;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-item strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .notification-item span {
+            color: #7b8492;
+            font-size: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            color: #344054;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            padding: 11px 12px;
+            font: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .primary-button {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 16px;
+            background: #1d5ca8;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .primary-button:hover {
+            background: #164b8a;
+        }
+
+        .notification-status {
+            min-height: 18px;
+            margin-top: 10px;
+            color: #047857;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 25px 30px;
+            text-align: center;
+            color: #7d8795;
+            font-size: 12px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        .mobile-menu {
+            display: none;
+            border: none;
+            background: #102a56;
+            color: white;
+            padding: 10px 14px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1100px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .subjects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 800px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.3s;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .topbar {
+                padding: 12px 18px;
+            }
+
+            .topbar-left h1 {
+                font-size: 18px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .welcome-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .student-number-box {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid,
+            .subjects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .topbar-right .student-avatar {
+                display: none;
+            }
+
+            .assignment-card,
+            .live-class-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .welcome-card h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="school-logo">
+            <div class="logo-icon">CIS</div>
+            <h2>City International</h2>
+            <p>Online School</p>
+        </div>
+
+        <div class="student-mini-profile">
+            <strong id="sideStudentName">Student</strong>
+            <span id="sideStudentNumber">Student Number</span>
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li>
+                <button class="active" onclick="scrollToSection('dashboardSection')">
+                    🏠 Dashboard
+                </button>
+            </li>
+
+            <li>
+                <button data-payment-required onclick="scrollToSection('subjectsSection')">
+                    📚 My Subjects
+                </button>
+            </li>
+
+            <li>
+    <button data-payment-required onclick="window.location.href='assignments.html'">
+        📚 Assignments
+    </button>
+
+</li>
+            <li>
+    <button data-payment-required onclick="window.location.href='results.html'">
+        📊 Results
+    </button>
+</li>
+
+            <li>
+                <button data-payment-required onclick="scrollToSection('liveClassesSection')">
+                    🎥 Live Classes
+                </button>
+            </li>
+
+            <li>
+                <button data-payment-required onclick="scrollToSection('studyTimeSection')">
+                    ⏱️ Study Time
+                </button>
+            </li>
+
+            <li>
+                <button onclick="scrollToSection('notificationsSection')">
+                    🔔 Notifications
+                </button>
+            </li>
+
+            <li>
+                <button onclick="scrollToSection('helpSection')">
+                    🆘 Help &amp; Support
+                </button>
+            </li>
+
+            <li>
+                <button onclick="scrollToSection('paymentSection')">
+                    💳 Payment
+                </button>
+            </li>
+
+            <li>
+                <button onclick="showProfileMessage()">
+                    👤 My Profile
+                </button>
+            </li>
+
+        </ul>
+
+        <button class="logout-button" onclick="logoutStudent()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+                <button class="mobile-menu" onclick="toggleSidebar()">
+                    ☰
+                </button>
+
+                <h1>Student Dashboard</h1>
+                <p>Welcome to City International Online School</p>
+            </div>
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification-button"
+                    onclick="scrollToSection('notificationsSection')">
+                    🔔
+                </button>
+
+                <div
+                    class="student-avatar"
+                    id="studentAvatar"
+                    title="Upload profile photo"
+                    onclick="openProfilePhotoPicker()">
+                    ST
+                </div>
+
+                <input
+                    type="file"
+                    id="studentPhotoInput"
+                    accept="image/*"
+                    hidden
+                    onchange="saveStudentPhoto(event)">
+
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+
+            <section id="dashboardSection">
+
+                <div class="welcome-card">
+
+                    <div>
+                        <h2>
+                            Welcome, <span id="studentName">Student</span>! 👋
+                        </h2>
+
+                        <p>
+                            Continue your learning journey and keep making
+                            progress every day.
+                        </p>
+                    </div>
+
+                    <div class="student-number-box">
+
+                        <small>Your Student Number</small>
+
+                        <strong id="topStudentNumber">
+                            CIS-STU-2026-XXXXX
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <h3>5</h3>
+                        <p>My Subjects</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <h3>0</h3>
+                        <p>Pending Assignments</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📊</div>
+                        <h3>--</h3>
+                        <p>Average Score</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <h3 id="studentStudyHours">0h</h3>
+                        <p>Study Hours</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PAYMENT
+            ========================== -->
+
+            <section class="section" id="paymentSection">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>💳 Learning Time Payment</h2>
+                        <p>Request access hours and wait for administrator approval.</p>
+                    </div>
+
+                </div>
+
+                <div class="subject-card">
+
+                    <div id="paymentStatus">
+                        No payment request has been submitted.
+                    </div>
+
+                    <form onsubmit="submitPaymentRequest(event)" style="margin-top:18px;">
+
+                        <label for="paymentHours">Hours to purchase</label>
+
+                        <input
+                            id="paymentHours"
+                            type="number"
+                            min="1"
+                            max="720"
+                            required
+                            style="display:block;width:100%;max-width:260px;padding:11px;margin:8px 0 12px;border:1px solid #d7deea;border-radius:8px;">
+
+                        <button class="open-subject" type="submit">
+                            Submit Payment Request
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SUBJECTS
+            ========================== -->
+
+            <section class="section" id="subjectsSection" data-payment-required>
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>📚 My Subjects</h2>
+                        <p>Your current learning subjects</p>
+                    </div>
+
+                </div>
+
+
+                <div class="subjects-grid">
+
+                    <!-- MATHEMATICS -->
+
+                    <div class="subject-card">
+
+                        <div class="subject-icon">
+                            ➗
+                        </div>
+
+                        <h3>Mathematics</h3>
+
+                        <p>
+                            Numbers, algebra, geometry, problem solving
+                            and mathematical reasoning.
+                        </p>
+
+                        <div class="subject-info">
+                            <span>📖 Lessons</span>
+                            <span>0</span>
+                        </div>
+
+                        <button
+                            class="open-subject"
+                            onclick="openSubject('Mathematics')">
+                            Open Subject
+                        </button>
+
+                    </div>
+
+
+                    <!-- SCIENCE -->
+
+                    <div class="subject-card">
+
+                        <div class="subject-icon">
+                            🔬
+                        </div>
+
+                        <h3>Science</h3>
+
+                        <p>
+                            Explore living things, matter, energy,
+                            environment and the world around us.
+                        </p>
+
+                        <div class="subject-info">
+                            <span>📖 Lessons</span>
+                            <span>0</span>
+                        </div>
+
+                        <button
+                            class="open-subject"
+                            onclick="openSubject('Science')">
+                            Open Subject
+                        </button>
+
+                    </div>
+
+
+                    <!-- ENGLISH -->
+
+                    <div class="subject-card">
+
+                        <div class="subject-icon">
+                            📖
+                        </div>
+
+                        <h3>English</h3>
+
+                        <p>
+                            Improve reading, writing, grammar,
+                            vocabulary and communication skills.
+                        </p>
+
+                        <div class="subject-info">
+                            <span>📖 Lessons</span>
+                            <span>0</span>
+                        </div>
+
+                        <button
+                            class="open-subject"
+                            onclick="openSubject('English')">
+                            Open Subject
+                        </button>
+
+                    </div>
+
+
+                    <!-- SOCIAL STUDIES -->
+
+                    <div class="subject-card">
+
+                        <div class="subject-icon">
+                            🌍
+                        </div>
+
+                        <h3>Social Studies</h3>
+
+                        <p>
+                            Learn about society, history, geography,
+                            citizenship and our world.
+                        </p>
+
+                        <div class="subject-info">
+                            <span>📖 Lessons</span>
+                            <span>0</span>
+                        </div>
+
+                        <button
+                            class="open-subject"
+                            onclick="openSubject('Social Studies')">
+                            Open Subject
+                        </button>
+
+                    </div>
+
+
+                    <!-- RELIGIOUS EDUCATION -->
+
+                    <div class="subject-card">
+
+                        <div class="subject-icon">
+                            🕌
+                        </div>
+
+                        <h3>Religious Education</h3>
+
+                        <p>
+                            Explore faith, values, moral education
+                            and responsible living.
+                        </p>
+
+                        <div class="subject-info">
+                            <span>📖 Lessons</span>
+                            <span>0</span>
+                        </div>
+
+                        <button
+                            class="open-subject"
+                            onclick="openSubject('Religious Education')">
+                            Open Subject
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ASSIGNMENTS
+            ========================== -->
+
+            <section class="section" id="assignmentsSection" data-payment-required>
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>📝 Assignments</h2>
+                        <p>Your latest school work</p>
+                    </div>
+
+                </div>
+
+                <div class="assignment-card">
+
+                    <div class="assignment-left">
+
+                        <h3>No assignments yet</h3>
+
+                        <p>
+                            When your teacher gives you an assignment,
+                            it will appear here.
+                        </p>
+
+                    </div>
+
+                    <span class="assignment-status">
+                        Waiting
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 RESULTS
+            ========================== -->
+
+            <section class="section" id="resultsSection" data-payment-required>
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>📊 Results & Performance</h2>
+                        <p>Track your academic progress</p>
+                    </div>
+
+                </div>
+
+                <div class="assignment-card">
+
+                    <div class="assignment-left">
+
+                        <h3>No results available yet</h3>
+
+                        <p>
+                            Your results will appear here after your
+                            teacher marks your assignments and assessments.
+                        </p>
+
+                    </div>
+
+                    <span class="assignment-status">
+                        No Results
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 LIVE CLASSES
+            ========================== -->
+
+            <section class="section" id="liveClassesSection" data-payment-required>
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>🎥 Live Classes</h2>
+                        <p>Join your online lessons</p>
+                    </div>
+
+                </div>
+
+                <div class="live-class-card">
+
+                    <div class="live-class-info">
+
+                        <span class="live-badge">
+                            ● LIVE CLASSES
+                        </span>
+
+                        <h3>No live class scheduled</h3>
+
+                        <p>
+                            When a teacher schedules a live class,
+                            the subject, teacher and class time will
+                            appear here.
+                        </p>
+
+                        <label for="liveSubjectSelect">
+                            Choose subject
+                        </label>
+
+                        <select id="liveSubjectSelect">
+                            <option value="English">English</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Science">Science</option>
+                            <option value="Social Studies">Social Studies</option>
+                            <option value="Religious Education">Religious Education</option>
+                        </select>
+
+                    </div>
+
+                    <button
+                        class="join-class"
+                        onclick="joinLiveClass()">
+                        Join Class
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 STUDY TIME
+            ========================== -->
+
+            <section class="section" id="studyTimeSection" data-payment-required>
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>⏱️ Study Time</h2>
+                        <p>Your available learning time</p>
+                    </div>
+
+                </div>
+
+                <div class="study-card">
+
+                    <h3>Study Hours Package</h3>
+
+                    <p style="margin-top:8px; color:#737d8d; font-size:13px;">
+                        Approved payment time available for your account.
+                    </p>
+
+                    <div class="study-progress">
+
+                        <div
+                            class="study-progress-bar"
+                            id="studyProgressBar"></div>
+
+                    </div>
+
+                    <div class="study-details">
+
+                        <span id="studyHoursUsed">Used: 0 hours</span>
+
+                        <span id="studyHoursAvailable">Available: 0 hours</span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 NOTIFICATIONS
+            ========================== -->
+
+            <section class="section" id="notificationsSection">
+
+                <div class="section-header">
+
+                    <div>
+                        <h2>🔔 Notifications</h2>
+                        <p>Important school updates</p>
+                    </div>
+
+                </div>
+
+                <div class="notification-box">
+
+                    <div class="notification-item">
+
+                        <strong>
+                            Welcome to City International Online School
+                        </strong>
+
+                        <span>
+                            Your student dashboard has been created successfully.
+                        </span>
+
+                    </div>
+
+                    <div class="notification-item">
+
+                        <strong>
+                            No new notifications
+                        </strong>
+
+                        <span>
+                            New announcements from your teachers will appear here.
+                        </span>
+
+                    </div>
+
+                    <div id="studentHelpFeedback"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 HELP & SUPPORT
+            ========================== -->
+
+            <section class="section" id="helpSection">
+
+                <div class="section-header">
+                    <div>
+                        <h2>🆘 Help &amp; Support</h2>
+                        <p>Tell the administrator about a problem or ask for help.</p>
+                    </div>
+                </div>
+
+                <div class="notification-box">
+                    <form onsubmit="submitHelpRequest(event, 'student')">
+                        <div class="form-group">
+                            <label for="studentHelpSubject">Subject</label>
+                            <input id="studentHelpSubject" type="text" placeholder="What do you need help with?" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentHelpMessage">Problem or message</label>
+                            <textarea id="studentHelpMessage" placeholder="Describe your problem clearly..." required></textarea>
+                        </div>
+
+                        <button class="primary-button" type="submit">Send to administrator</button>
+                        <p id="studentHelpMessageStatus" class="notification-status" aria-live="polite"></p>
+                    </form>
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+            © <span id="currentYear"></span>
+            City International Online School.
+            All rights reserved.
+        </footer>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const savedStudent =
+                localStorage.getItem("cis_current_student");
+
+            /*
+             * If no student is logged in,
+             * return to the login page.
+             */
+
+            if (!savedStudent) {
+
+                window.location.href = "index.html";
+
+                return;
+            }
+
+
+            try {
+
+                const student =
+                    JSON.parse(savedStudent);
+
+
+                /*
+                 * Student name
+                 */
+
+                const studentName =
+                    student.fullName || "Student";
+
+                document.getElementById("studentName").textContent =
+                    studentName;
+
+                document.getElementById("sideStudentName").textContent =
+                    studentName;
+
+
+                /*
+                 * Student number
+                 */
+
+                const studentNumber =
+                    student.studentNumber || "";
+
+                document.getElementById("sideStudentNumber").textContent =
+                    studentNumber;
+
+                document.getElementById("topStudentNumber").textContent =
+                    studentNumber;
+
+
+                /*
+                 * Create initials for avatar
+                 */
+
+                const names =
+                    studentName.trim().split(" ");
+
+                let initials = "";
+
+                if (names.length >= 2) {
+
+                    initials =
+                        names[0].charAt(0) +
+                        names[names.length - 1].charAt(0);
+
+                } else {
+
+                    initials =
+                        studentName.substring(0, 2);
+
+                }
+
+                renderStudentAvatar(student, initials);
+
+
+                /*
+                 * Current year
+                 */
+
+                document.getElementById("currentYear")
+                    .textContent = new Date().getFullYear();
+
+                loadPaymentStatus(student);
+
+                loadStudentHelpFeedback(student);
+
+                enforcePaymentAccess(student);
+
+                setInterval(function () {
+                    loadPaymentStatus(student);
+                    loadStudentHelpFeedback(student);
+                    enforcePaymentAccess(student);
+                }, 60000);
+
+            } catch (error) {
+
+                console.error("Student data error:", error);
+
+                localStorage.removeItem("cis_current_student");
+
+                window.location.href = "index.html";
+            }
+
+        });
+
+
+        /*
+         * Open a subject
+         */
+
+       function openSubject(subjectName) {
+
+    const student = JSON.parse(
+        localStorage.getItem("cis_current_student") || "null"
+    );
+
+    if (!student || !requirePaymentApproval(student)) {
+        return;
+    }
+
+    if (subjectName === "Mathematics") {
+        window.location.href = "mathematics.html";
+        return;
+    }
+
+    if (subjectName === "Science") {
+        window.location.href = "science.html";
+        return;
+    }
+
+    if (subjectName === "English") {
+        window.location.href = "english.html";
+        return;
+    }
+
+    if (subjectName === "Social Studies") {
+        window.location.href = "social-studies.html";
+        return;
+    }
+
+    if (subjectName === "Religious Education") {
+        window.location.href = "religious-education.html";
+        return;
+    }
+
+    alert(
+        subjectName +
+        " subject page will be added next."
+    );
+}
+
+
+        /*
+         * Scroll to dashboard section
+         */
+
+        function scrollToSection(sectionId) {
+
+            if (
+                sectionId !== "dashboardSection" &&
+                sectionId !== "paymentSection" &&
+                sectionId !== "notificationsSection" &&
+                sectionId !== "helpSection"
+            ) {
+
+                const student = JSON.parse(
+                    localStorage.getItem("cis_current_student") || "null"
+                );
+
+                if (!student || !requirePaymentApproval(student)) {
+                    return;
+                }
+            }
+
+            const section =
+                document.getElementById(sectionId);
+
+            if (section) {
+
+                section.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }
+
+            /*
+             * Close mobile sidebar
+             */
+
+            const sidebar =
+                document.getElementById("sidebar");
+
+            sidebar.classList.remove("open");
+
+        }
+
+
+        /*
+         * Mobile sidebar
+         */
+
+        function toggleSidebar() {
+
+            const sidebar =
+                document.getElementById("sidebar");
+
+            sidebar.classList.toggle("open");
+
+        }
+
+
+        /*
+         * Logout
+         */
+
+        function logoutStudent() {
+
+            const confirmLogout =
+                confirm("Are you sure you want to logout?");
+
+            if (!confirmLogout) {
+                return;
+            }
+
+            localStorage.removeItem("cis_current_student");
+
+            window.location.href = "index.html";
+
+        }
+
+
+        /*
+         * Profile
+         */
+
+        function openProfilePhotoPicker() {
+
+            document.getElementById("studentPhotoInput").click();
+        }
+
+
+        function showProfileMessage() {
+
+            openProfilePhotoPicker();
+        }
+
+
+        function getStudentPayments() {
+
+            try {
+                const payments = JSON.parse(
+                    localStorage.getItem("cis_payments") || "[]"
+                );
+
+                return Array.isArray(payments) ? payments : [];
+            } catch (error) {
+                return [];
+            }
+        }
+
+
+        function hasActivePayment(student) {
+
+            return getStudentPayments().some(function (payment) {
+                return payment.studentId === student.id &&
+                    payment.status === "approved" &&
+                    payment.expiresAt &&
+                    new Date(payment.expiresAt) > new Date();
+            });
+        }
+
+
+        let studentPaymentWasActive = null;
+
+
+        function enforcePaymentAccess(student) {
+
+            const hasAccess = hasActivePayment(student);
+
+            if (studentPaymentWasActive === true && !hasAccess) {
+
+                const dashboardSection =
+                    document.getElementById("dashboardSection");
+
+                if (dashboardSection) {
+                    dashboardSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+
+                alert(
+                    "Your payment time has expired. You have been returned to the student dashboard."
+                );
+            }
+
+            studentPaymentWasActive = hasAccess;
+
+            document.querySelectorAll("[data-payment-required]")
+                .forEach(function (element) {
+                    if (element.tagName === "BUTTON") {
+                        element.disabled = !hasAccess;
+                        element.style.opacity = hasAccess ? "1" : "0.5";
+                    } else {
+                        element.style.display = hasAccess ? "" : "none";
+                    }
+                });
+        }
+
+
+        function requirePaymentApproval(student) {
+
+            if (hasActivePayment(student)) {
+                return true;
+            }
+
+            alert("Admin payment approval is required before you can access this area.");
+            scrollToSection("paymentSection");
+            return false;
+        }
+
+
+        function submitPaymentRequest(event) {
+
+            event.preventDefault();
+
+            const student = JSON.parse(
+                localStorage.getItem("cis_current_student") || "null"
+            );
+            const hours = Number(document.getElementById("paymentHours").value);
+
+            if (!student || !hours || hours < 1) {
+                alert("Enter the number of hours you want to purchase.");
+                return;
+            }
+
+            const payments = getStudentPayments();
+            const existingPending = payments.some(function (payment) {
+                return payment.studentId === student.id && payment.status === "pending";
+            });
+
+            if (existingPending) {
+                alert("You already have a payment request waiting for approval.");
+                return;
+            }
+
+            payments.push({
+                id: Date.now(),
+                studentId: student.id,
+                studentName: student.fullName,
+                studentNumber: student.studentNumber,
+                hours: hours,
+                status: "pending",
+                requestedAt: new Date().toISOString()
+            });
+
+            localStorage.setItem("cis_payments", JSON.stringify(payments));
+            document.getElementById("paymentHours").value = "";
+            loadPaymentStatus(student);
+            alert("Payment request submitted. An administrator must approve it.");
+        }
+
+
+        function loadPaymentStatus(student) {
+
+            const statusElement = document.getElementById("paymentStatus");
+
+            if (!statusElement) {
+                return;
+            }
+
+            const payments = getStudentPayments();
+            const payment = payments
+                .filter(function (item) {
+                    return item.studentId === student.id;
+                })
+                .sort(function (first, second) {
+                    return new Date(second.requestedAt || 0) - new Date(first.requestedAt || 0);
+                })[0];
+
+            updateStudyHours(payment);
+
+            if (!payment) {
+                statusElement.textContent = "No payment request has been submitted.";
+                return;
+            }
+
+            if (payment.status === "pending") {
+                statusElement.textContent = "Payment request pending administrator approval for " + payment.hours + " hour(s).";
+                return;
+            }
+
+            if (payment.status === "approved") {
+                const remainingHours = (new Date(payment.expiresAt) - new Date()) / 3600000;
+
+                if (remainingHours <= 0) {
+                    payment.status = "expired";
+                    localStorage.setItem("cis_payments", JSON.stringify(payments));
+                    statusElement.textContent = "Your paid learning time has expired. Please submit a new payment request.";
+                } else if (remainingHours <= 1) {
+                    statusElement.textContent = "Warning: your paid learning time expires in " + Math.ceil(remainingHours * 60) + " minute(s).";
+                } else {
+                    statusElement.textContent = "Payment approved. You have about " + Math.ceil(remainingHours) + " hour(s) remaining.";
+                }
+                return;
+            }
+
+            statusElement.textContent = "Your paid learning time has expired. Please submit a new payment request.";
+        }
+
+
+        function updateStudyHours(payment) {
+
+            const totalHours = payment && Number(payment.hours) > 0
+                ? Number(payment.hours)
+                : 0;
+
+            let availableHours = 0;
+
+            if (payment && payment.status === "approved") {
+                availableHours = Math.max(
+                    0,
+                    (new Date(payment.expiresAt) - new Date()) / 3600000
+                );
+            }
+
+            const usedHours = Math.max(0, totalHours - availableHours);
+            const displayedAvailableHours = Math.ceil(availableHours);
+            const displayedUsedHours = Math.floor(usedHours);
+            const progress = totalHours
+                ? Math.min(100, (usedHours / totalHours) * 100)
+                : 0;
+
+            document.getElementById("studentStudyHours").textContent =
+                displayedAvailableHours + "h";
+
+            document.getElementById("studyHoursUsed").textContent =
+                "Used: " + displayedUsedHours + " hours";
+
+            document.getElementById("studyHoursAvailable").textContent =
+                "Available: " + displayedAvailableHours + " hours";
+
+            document.getElementById("studyProgressBar").style.width =
+                progress + "%";
+        }
+
+
+        function saveStudentPhoto(event) {
+
+            const file = event.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+                alert("Please select an image file.");
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function () {
+
+                const savedStudent =
+                    localStorage.getItem("cis_current_student");
+
+                if (!savedStudent) {
+                    return;
+                }
+
+                const student = JSON.parse(savedStudent);
+                student.profilePhoto = reader.result;
+
+                localStorage.setItem(
+                    "cis_current_student",
+                    JSON.stringify(student)
+                );
+
+                updateRegistrationPhoto(student);
+                renderStudentAvatar(student);
+            };
+
+            reader.readAsDataURL(file);
+            event.target.value = "";
+        }
+
+
+        function updateRegistrationPhoto(student) {
+
+            const registrations = JSON.parse(
+                localStorage.getItem("cis_registrations") || "[]"
+            );
+
+            const account = registrations.find(function (user) {
+                return user.id === student.id && user.role === "student";
+            });
+
+            if (account) {
+                account.profilePhoto = student.profilePhoto;
+                localStorage.setItem(
+                    "cis_registrations",
+                    JSON.stringify(registrations)
+                );
+            }
+        }
+
+
+        function renderStudentAvatar(student, initials) {
+
+            const avatar = document.getElementById("studentAvatar");
+            const name = student.fullName || "Student";
+            const nameParts = name.trim().split(" ");
+
+            if (!initials) {
+                initials = nameParts.length >= 2
+                    ? nameParts[0].charAt(0) + nameParts[nameParts.length - 1].charAt(0)
+                    : name.substring(0, 2);
+            }
+
+            if (student.profilePhoto) {
+                avatar.innerHTML = "<img src=\"" + student.profilePhoto + "\" alt=\"Profile photo\">";
+            } else {
+                avatar.textContent = initials.toUpperCase();
+            }
+        }
+
+
+        /*
+         * Coming soon message
+         */
+
+        function showComingSoon(feature) {
+
+            alert(
+                feature +
+                " will be connected when we build the teacher and live-class system."
+            );
+
+        }
+
+        function openAssignments() {
+
+    const student = JSON.parse(
+        localStorage.getItem("cis_current_student") || "null"
+    );
+
+    if (student && requirePaymentApproval(student)) {
+        window.location.href = "assignments.html";
+    }
+}
+
+
+        function joinLiveClass() {
+
+            const student = JSON.parse(
+                localStorage.getItem("cis_current_student") || "null"
+            );
+
+            if (!student || !requirePaymentApproval(student)) {
+                return;
+            }
+
+            const subject =
+                document.getElementById("liveSubjectSelect").value;
+
+            const room =
+                subject
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/^-|-$/g, "") +
+                "-primary-6";
+
+            window.location.href =
+                "student-live.html?subject=" +
+                encodeURIComponent(subject) +
+                "&room=" +
+                encodeURIComponent(room);
+        }
+
+
+        function submitHelpRequest(event, role) {
+
+            event.preventDefault();
+
+            const student = JSON.parse(
+                localStorage.getItem("cis_current_student") || "null"
+            );
+
+            const requests = JSON.parse(
+                localStorage.getItem("cis_help_requests") || "[]"
+            );
+
+            requests.push({
+                id: Date.now(),
+                role: role,
+                senderName: student && student.fullName ? student.fullName : "Student",
+                senderId: student && (student.id || student.studentNumber) ? (student.id || student.studentNumber) : "",
+                subject: document.getElementById("studentHelpSubject").value.trim(),
+                message: document.getElementById("studentHelpMessage").value.trim(),
+                createdAt: new Date().toISOString(),
+                read: false
+            });
+
+            localStorage.setItem("cis_help_requests", JSON.stringify(requests));
+            document.getElementById("studentHelpSubject").value = "";
+            document.getElementById("studentHelpMessage").value = "";
+            document.getElementById("studentHelpMessageStatus").textContent = "Your message was sent to the administrator.";
+        }
+
+
+        function loadStudentHelpFeedback(student) {
+
+            const container = document.getElementById("studentHelpFeedback");
+            const requests = JSON.parse(
+                localStorage.getItem("cis_help_requests") || "[]"
+            );
+
+            const studentId = student.id || student.studentNumber || "";
+            const feedback = requests.filter(function(request) {
+                return request.role === "student" &&
+                    request.reply &&
+                    (String(request.senderId || "") === String(studentId) ||
+                        request.senderName === student.fullName);
+            });
+
+            if (!feedback.length) {
+                return;
+            }
+
+            container.innerHTML = feedback.map(function(request) {
+                return `
+                    <div class="notification-item">
+                        <strong>Administrator feedback: ${escapeHtml(request.subject || "Help request")}</strong>
+                        <span>${escapeHtml(request.reply)}</span>
+                    </div>
+                `;
+            }).join("");
+        }
+
+
+        function escapeHtml(value) {
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+    </script>
+
+</body>
+</html>

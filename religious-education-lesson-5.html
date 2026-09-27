@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 5 - Responsibility and Service | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 19px;
+            font-weight: 800;
+            color: #1d4ed8;
+        }
+
+        .school-subtitle {
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .back-btn {
+            text-decoration: none;
+            background: #4f46e5;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #7c3aed, #2563eb);
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .hero-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .lesson-label {
+            display: inline-block;
+            background: rgba(255,255,255,0.18);
+            padding: 7px 14px;
+            border-radius: 20px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            max-width: 750px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            color: #111827;
+            margin-bottom: 15px;
+            font-size: 25px;
+        }
+
+        .section h3 {
+            color: #7c3aed;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .section p {
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .section ul {
+            margin-left: 22px;
+            color: #475569;
+        }
+
+        .section li {
+            margin-bottom: 8px;
+        }
+
+        .objectives {
+            background: #f5f3ff;
+            border-left: 5px solid #7c3aed;
+        }
+
+        .highlight {
+            background: #eff6ff;
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .value-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+        }
+
+        .value-card .icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .value-card strong {
+            color: #7c3aed;
+        }
+
+        .steps {
+            margin-top: 15px;
+        }
+
+        .step {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 18px;
+            margin-bottom: 12px;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 230px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .video-box p {
+            color: #cbd5e1;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .quiz-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .quiz-question:last-child {
+            border-bottom: none;
+        }
+
+        .quiz-question h3 {
+            color: #111827;
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            background: #f8fafc;
+            padding: 11px 14px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            border: 1px solid #e2e8f0;
+        }
+
+        .option:hover {
+            background: #f5f3ff;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button,
+        .nav-button {
+            border: none;
+            cursor: pointer;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #6d28d9;
+        }
+
+        .success {
+            background: #15803d;
+            color: white;
+        }
+
+        .danger {
+            background: #dc2626;
+            color: white;
+        }
+
+        .secondary {
+            background: #e2e8f0;
+            color: #334155;
+        }
+
+        .result {
+            display: none;
+            background: #ecfdf5;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 18px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-weight: 700;
+        }
+
+        .progress-section {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .progress-track {
+            height: 13px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: #7c3aed;
+            transition: 0.4s;
+        }
+
+        footer {
+            background: #111827;
+            color: #cbd5e1;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        footer strong {
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 13px 15px;
+            }
+
+            .school-name {
+                font-size: 14px;
+            }
+
+            .school-subtitle {
+                display: none;
+            }
+
+            .back-btn {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .hero {
+                padding: 38px 18px;
+            }
+
+            .hero h1 {
+                font-size: 29px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .container {
+                padding: 0 12px;
+                margin-top: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .section h2 {
+                font-size: 21px;
+            }
+
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-row {
+                flex-direction: column;
+            }
+
+            button,
+            .nav-button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div>
+            <div class="school-name">
+                CITY INTERNATIONAL ONLINE SCHOOL
+            </div>
+
+            <div class="school-subtitle">
+                Religious Education
+            </div>
+        </div>
+
+        <a href="religious-education.html" class="back-btn">
+            ← Back to Religious Education
+        </a>
+
+    </header>
+
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <span class="lesson-label">
+                Lesson 5
+            </span>
+
+            <h1>
+                🤝 Responsibility and Service
+            </h1>
+
+            <p>
+                Learn how responsibility, helpfulness and service can
+                make our families, schools and communities stronger.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <main class="container">
+
+        <section class="section objectives">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <p>
+                By the end of this lesson, you should be able to:
+            </p>
+
+            <ul>
+                <li>Explain what responsibility means.</li>
+                <li>Identify responsibilities at home and at school.</li>
+                <li>Explain the meaning of service.</li>
+                <li>Give examples of helping other people.</li>
+                <li>Explain why responsible behaviour is important.</li>
+            </ul>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>📚 What Is Responsibility?</h2>
+
+            <p>
+                Responsibility means being willing to do what you are
+                expected to do and accepting the results of your actions.
+            </p>
+
+            <p>
+                Responsible people try to complete their duties,
+                keep promises and take care of things that have been
+                placed in their care.
+            </p>
+
+            <div class="highlight">
+
+                <strong>Example:</strong>
+
+                <p>
+                    A responsible student completes schoolwork,
+                    follows school rules, respects others and takes
+                    care of school property.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>🏠 Responsibility at Home and School</h2>
+
+            <div class="value-grid">
+
+                <div class="value-card">
+
+                    <div class="icon">🏠</div>
+
+                    <strong>At Home</strong>
+
+                    <p>
+                        Helping with suitable household tasks,
+                        keeping your room tidy and caring for belongings.
+                    </p>
+
+                </div>
+
+                <div class="value-card">
+
+                    <div class="icon">🏫</div>
+
+                    <strong>At School</strong>
+
+                    <p>
+                        Completing assignments, attending lessons,
+                        respecting teachers and caring for school property.
+                    </p>
+
+                </div>
+
+                <div class="value-card">
+
+                    <div class="icon">🌳</div>
+
+                    <strong>In the Community</strong>
+
+                    <p>
+                        Keeping the environment clean and treating
+                        neighbours with respect.
+                    </p>
+
+                </div>
+
+                <div class="value-card">
+
+                    <div class="icon">👥</div>
+
+                    <strong>With Others</strong>
+
+                    <p>
+                        Keeping promises, being honest and helping
+                        people when appropriate.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>❤️ What Is Service?</h2>
+
+            <p>
+                Service means helping other people or contributing to
+                the community without expecting something in return.
+            </p>
+
+            <h3>Examples of service include:</h3>
+
+            <ul>
+                <li>Helping an elderly person with a safe task.</li>
+                <li>Helping a classmate understand schoolwork.</li>
+                <li>Keeping shared places clean.</li>
+                <li>Sharing appropriate resources with someone in need.</li>
+                <li>Taking part in useful community activities.</li>
+                <li>Helping family members with suitable tasks.</li>
+            </ul>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>🌟 Good Service Requires Good Character</h2>
+
+            <p>
+                Service is most meaningful when it is done with care,
+                respect and good intentions.
+            </p>
+
+            <div class="value-grid">
+
+                <div class="value-card">
+                    <div class="icon">💙</div>
+                    <strong>Kindness</strong>
+                    <p>
+                        Treat people with care and consideration.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">🤝</div>
+                    <strong>Cooperation</strong>
+                    <p>
+                        Work together to achieve useful goals.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">⏰</div>
+                    <strong>Commitment</strong>
+                    <p>
+                        Do your responsibilities consistently.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="icon">🙏</div>
+                    <strong>Respect</strong>
+                    <p>
+                        Value other people's dignity and rights.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>🧭 Making Responsible Choices</h2>
+
+            <p>
+                Before making an important choice, think about how your
+                actions may affect yourself and other people.
+            </p>
+
+            <div class="steps">
+
+                <div class="step">
+                    <strong>1. Think</strong>
+                    <p>
+                        Ask yourself what you are about to do.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>2. Consider the consequences</strong>
+                    <p>
+                        Think about what might happen because of your choice.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>3. Choose what is right</strong>
+                    <p>
+                        Choose an action that is safe, respectful and responsible.
+                    </p>
+                </div>
+
+                <div class="step">
+                    <strong>4. Take responsibility</strong>
+                    <p>
+                        If you make a mistake, admit it and try to correct it.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div class="video-icon">
+                    ▶️
+                </div>
+
+                <h3>
+                    Responsibility and Service
+                </h3>
+
+                <p>
+                    Educational video will be added here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice-question">
+                <strong>1.</strong>
+                What does responsibility mean?
+            </div>
+
+            <div class="practice-question">
+                <strong>2.</strong>
+                Give two responsibilities of a student.
+            </div>
+
+            <div class="practice-question">
+                <strong>3.</strong>
+                What is service?
+            </div>
+
+            <div class="practice-question">
+                <strong>4.</strong>
+                Give two examples of service.
+            </div>
+
+            <div class="practice-question">
+                <strong>5.</strong>
+                Why is it important to take responsibility for your actions?
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>🧠 Lesson 5 Quiz</h2>
+
+            <p>
+                Choose the best answer for each question.
+            </p>
+
+
+            <div class="quiz-question">
+
+                <h3>
+                    1. What does responsibility mean?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. Doing what you are expected to do
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. Avoiding every duty
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. Blaming others for everything
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. Ignoring rules
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>
+                    2. Which is an example of responsibility at school?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Damaging school property
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. Completing assignments
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. Refusing to learn
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. Disrespecting teachers
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>
+                    3. What does service mean?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Helping others or contributing to the community
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Refusing to help anyone
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Making other people work for you
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Avoiding the community
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>
+                    4. What should you do after making a mistake?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. Blame someone else
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Hide it forever
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    C. Admit it and try to correct it
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Repeat the mistake
+                </label>
+
+            </div>
+
+
+            <div class="quiz-question">
+
+                <h3>
+                    5. Which quality is important when serving others?
+                </h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. Kindness
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    B. Dishonesty
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. Laziness
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    D. Disrespect
+                </label>
+
+            </div>
+
+
+            <button
+                class="primary"
+                onclick="submitQuiz()">
+                Submit Quiz
+            </button>
+
+            <div
+                class="result"
+                id="quizResult">
+            </div>
+
+        </section>
+
+
+        <section class="progress-section">
+
+            <div class="progress-header">
+
+                <span>
+                    Lesson Progress
+                </span>
+
+                <span id="progressText">
+                    0%
+                </span>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <h2>🏆 Finish Lesson</h2>
+
+            <p>
+                Complete the lesson and quiz, then mark this lesson
+                as complete.
+            </p>
+
+            <div class="button-row">
+
+                <button
+                    class="success"
+                    onclick="markComplete()">
+                    ✓ Mark Complete
+                </button>
+
+                <button
+                    class="danger"
+                    onclick="resetLesson()">
+                    🔄 Reset Lesson
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section class="section">
+
+            <div class="button-row">
+
+                <a
+                    href="religious-education-lesson-4.html"
+                    class="nav-button secondary">
+                    ← Previous Lesson
+                </a>
+
+                <a
+                    href="religious-education.html"
+                    class="nav-button primary">
+                    Finish Religious Education Course
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © <span id="currentYear"></span>
+            <strong>City International Online School</strong>
+        </p>
+
+        <p>
+            Religious Education • Lesson 5
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        const completedKey =
+            "cis_religious_education_lesson5_completed";
+
+        const quizScoreKey =
+            "cis_religious_education_lesson5_quiz_score";
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                completedKey,
+                "true"
+            );
+
+            updateProgress();
+
+            alert(
+                "Lesson 5 has been marked as completed! ✓"
+            );
+        }
+
+
+        function resetLesson() {
+
+            const confirmReset = confirm(
+                "Are you sure you want to reset this lesson?"
+            );
+
+            if (!confirmReset) {
+                return;
+            }
+
+            localStorage.removeItem(
+                completedKey
+            );
+
+            localStorage.removeItem(
+                quizScoreKey
+            );
+
+            document.getElementById(
+                "quizResult"
+            ).style.display = "none";
+
+            document
+                .querySelectorAll(
+                    'input[type="radio"]'
+                )
+                .forEach(function(input) {
+                    input.checked = false;
+                });
+
+            updateProgress();
+
+            alert(
+                "Lesson progress has been reset."
+            );
+        }
+
+
+        function submitQuiz() {
+
+            const answers = {
+                q1: "a",
+                q2: "b",
+                q3: "a",
+                q4: "c",
+                q5: "a"
+            };
+
+            let score = 0;
+            let answered = 0;
+
+            for (const question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+                if (selected) {
+
+                    answered++;
+
+                    if (
+                        selected.value ===
+                        answers[question]
+                    ) {
+                        score++;
+                    }
+                }
+            }
+
+            if (answered < 5) {
+
+                alert(
+                    "Please answer all 5 questions before submitting."
+                );
+
+                return;
+            }
+
+            localStorage.setItem(
+                quizScoreKey,
+                score
+            );
+
+            const percentage =
+                Math.round((score / 5) * 100);
+
+            const result =
+                document.getElementById(
+                    "quizResult"
+                );
+
+            result.style.display = "block";
+
+            if (score === 5) {
+
+                result.innerHTML =
+                    "🎉 Excellent! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%).";
+
+            } else if (score >= 3) {
+
+                result.innerHTML =
+                    "👏 Good work! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Review the lesson and try again if you want to improve.";
+
+            } else {
+
+                result.innerHTML =
+                    "📚 Keep studying! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Review the lesson and try the quiz again.";
+
+            }
+
+            updateProgress();
+
+            window.scrollTo({
+                top: result.offsetTop - 100,
+                behavior: "smooth"
+            });
+        }
+
+
+        function updateProgress() {
+
+            let progress = 0;
+
+            if (
+                localStorage.getItem(
+                    completedKey
+                ) === "true"
+            ) {
+
+                progress = 100;
+
+            } else if (
+                localStorage.getItem(
+                    quizScoreKey
+                ) !== null
+            ) {
+
+                progress = 75;
+
+            }
+
+            document.getElementById(
+                "progressText"
+            ).textContent =
+                progress + "%";
+
+            document.getElementById(
+                "progressBar"
+            ).style.width =
+                progress + "%";
+        }
+
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+                updateProgress();
+            }
+        );
+
+    </script>
+
+</body>
+</html>

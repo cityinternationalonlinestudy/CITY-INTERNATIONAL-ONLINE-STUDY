@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        My Results - City International Online School
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #14213d;
+        }
+
+        header {
+            background:
+                linear-gradient(
+                    135deg,
+                    #142d59,
+                    #1e4f91
+                );
+
+            color: white;
+            padding: 18px 25px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+
+            position: sticky;
+            top: 0;
+            z-index: 50;
+
+            box-shadow:
+                0 3px 15px
+                rgba(0,0,0,0.12);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+
+            background: white;
+            color: #14325f;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .school-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .school-subtitle {
+            font-size: 12px;
+            opacity: 0.85;
+            margin-top: 3px;
+        }
+
+        .back-button {
+            border: none;
+
+            background:
+                rgba(255,255,255,0.15);
+
+            color: white;
+
+            padding:
+                11px 17px;
+
+            border-radius: 9px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background:
+                rgba(255,255,255,0.25);
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 35px 20px 60px;
+        }
+
+        .page-heading {
+            margin-bottom: 25px;
+        }
+
+        .page-heading h1 {
+            margin: 0 0 8px;
+
+            font-size: 30px;
+            color: #142d59;
+        }
+
+        .page-heading p {
+            margin: 0;
+
+            color: #68758a;
+            font-size: 15px;
+        }
+
+        /* STUDENT INFORMATION */
+
+        .student-info {
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 18px 20px;
+
+            margin-bottom: 25px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.06);
+
+            border:
+                1px solid #e5eaf1;
+        }
+
+        .info-item {
+            padding: 10px 12px;
+
+            background: #f7f9fc;
+
+            border-radius: 9px;
+        }
+
+        .info-label {
+            display: block;
+
+            color: #78869b;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 15px;
+
+            font-weight: bold;
+
+            color: #183b6b;
+        }
+
+        /* SUMMARY */
+
+        .summary {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: white;
+
+            border:
+                1px solid #e1e7ef;
+
+            border-radius: 14px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.06);
+        }
+
+        .summary-icon {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .summary-label {
+            color: #78869b;
+            font-size: 13px;
+        }
+
+        .summary-value {
+            font-size: 25px;
+            font-weight: bold;
+
+            color: #142d59;
+
+            margin-top: 5px;
+        }
+
+        /* RESULTS */
+
+        #resultsList {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .result-card {
+            background: white;
+
+            border:
+                1px solid #e1e7ef;
+
+            border-radius: 15px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.06);
+        }
+
+        .result-top {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap: 20px;
+
+            margin-bottom: 15px;
+        }
+
+        .subject-label {
+            display: inline-block;
+
+            background: #e9f0ff;
+
+            color: #2454a6;
+
+            padding: 6px 10px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 9px;
+        }
+
+        .result-card h2 {
+            margin: 0;
+
+            font-size: 21px;
+
+            color: #142d59;
+        }
+
+        .marked-badge {
+            white-space: nowrap;
+
+            padding:
+                7px 11px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            background: #dff5e8;
+
+            color: #18733d;
+        }
+
+        .score-box {
+            background:
+                #eef8f2;
+
+            border:
+                1px solid #bfe3cc;
+
+            border-radius: 12px;
+
+            padding: 18px;
+
+            margin:
+                15px 0;
+        }
+
+        .score {
+            font-size: 28px;
+
+            font-weight: bold;
+
+            color: #142d59;
+        }
+
+        .percentage {
+            margin-top: 5px;
+
+            color: #18733d;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+        .result-details {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            padding: 15px;
+
+            background: #f7f9fc;
+
+            border-radius: 10px;
+        }
+
+        .detail {
+            font-size: 13px;
+
+            color: #69768a;
+        }
+
+        .detail strong {
+            display: block;
+
+            color: #263b5c;
+
+            font-size: 14px;
+
+            margin-top: 4px;
+        }
+
+        .feedback-box {
+            margin-top: 15px;
+
+            padding: 15px;
+
+            background: #eef6ff;
+
+            border-radius: 10px;
+
+            color: #34506e;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+        }
+
+        .feedback-title {
+            font-weight: bold;
+
+            color: #142d59;
+
+            margin-bottom: 5px;
+        }
+
+        /* EMPTY */
+
+        .empty {
+            background: white;
+
+            border:
+                1px solid #e2e8f0;
+
+            border-radius: 15px;
+
+            padding: 55px 25px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 18px
+                rgba(20,45,89,0.05);
+        }
+
+        .empty-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .empty h2 {
+            margin: 0 0 8px;
+
+            color: #1d3557;
+        }
+
+        .empty p {
+            margin: 7px 0;
+
+            color: #718096;
+
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+
+            color: #7b8798;
+
+            padding: 25px;
+
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            header {
+                padding: 14px 16px;
+            }
+
+            .school-name {
+                font-size: 15px;
+            }
+
+            .student-info {
+                grid-template-columns: 1fr;
+            }
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+            .result-details {
+                grid-template-columns: 1fr;
+            }
+
+            .result-top {
+                flex-direction: column;
+            }
+
+            .page-heading h1 {
+                font-size: 25px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+
+            .back-button {
+                padding:
+                    9px 11px;
+
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-left">
+
+        <div class="logo">
+            CIS
+        </div>
+
+        <div>
+
+            <div class="school-name">
+                City International Online School
+            </div>
+
+            <div class="school-subtitle">
+                Student Results Portal
+            </div>
+
+        </div>
+
+    </div>
+
+    <button
+        class="back-button"
+        onclick="goBackToDashboard()">
+
+        ← Dashboard
+
+    </button>
+
+</header>
+
+
+<main>
+
+    <div class="page-heading">
+
+        <h1>
+            📊 My Results
+        </h1>
+
+        <p>
+            View your marked assignments,
+            scores and teacher feedback.
+        </p>
+
+    </div>
+
+
+    <!-- STUDENT INFORMATION -->
+
+    <div class="student-info">
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Student
+            </span>
+
+            <span
+                class="info-value"
+                id="studentName">
+
+                Student
+
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Student Number
+            </span>
+
+            <span
+                class="info-value"
+                id="studentNumber">
+
+                -
+
+            </span>
+
+        </div>
+
+
+        <div class="info-item">
+
+            <span class="info-label">
+                Class
+            </span>
+
+            <span
+                class="info-value"
+                id="studentClass">
+
+                -
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📝
+            </div>
+
+            <div class="summary-label">
+                Marked Assignments
+            </div>
+
+            <div
+                class="summary-value"
+                id="markedCount">
+
+                0
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                🎯
+            </div>
+
+            <div class="summary-label">
+                Average Percentage
+            </div>
+
+            <div
+                class="summary-value"
+                id="averagePercentage">
+
+                0%
+
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-icon">
+                📚
+            </div>
+
+            <div class="summary-label">
+                Subjects
+            </div>
+
+            <div
+                class="summary-value"
+                id="subjectCount">
+
+                0
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RESULTS -->
+
+    <div id="resultsList">
+
+        <div class="empty">
+
+            <div class="empty-icon">
+                ⏳
+            </div>
+
+            <h2>
+                Loading results...
+            </h2>
+
+            <p>
+                Please wait.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+    ©
+    <span id="year"></span>
+    City International Online School.
+    Student Portal.
+
+</footer>
+
+
+<script>
+
+let currentStudent = null;
+
+
+/* =========================================
+   PAGE START
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        document.getElementById(
+            "year"
+        ).textContent =
+            new Date().getFullYear();
+
+        loadCurrentStudent();
+
+    }
+);
+
+
+/* =========================================
+   LOAD CURRENT STUDENT
+========================================= */
+
+function loadCurrentStudent() {
+
+    const savedStudent =
+        localStorage.getItem(
+            "cis_current_student"
+        );
+
+    if (!savedStudent) {
+
+        alert(
+            "Student login information was not found. Please log in again."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+    try {
+
+        currentStudent =
+            JSON.parse(
+                savedStudent
+            );
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "Student information is invalid. Please log in again."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+    showStudentInformation();
+
+    loadResults();
+
+}
+
+
+/* =========================================
+   STUDENT INFORMATION
+========================================= */
+
+function showStudentInformation() {
+
+    document.getElementById(
+        "studentName"
+    ).textContent =
+        currentStudent.fullName ||
+        currentStudent.name ||
+        "Student";
+
+    document.getElementById(
+        "studentNumber"
+    ).textContent =
+        currentStudent.studentNumber ||
+        "-";
+
+    document.getElementById(
+        "studentClass"
+    ).textContent =
+        getStudentClass() ||
+        "Not specified";
+
+}
+
+
+/* =========================================
+   STUDENT CLASS
+========================================= */
+
+function getStudentClass() {
+
+    if (!currentStudent) {
+        return "";
+    }
+
+    const possibleClasses = [
+
+        currentStudent.studentClass,
+
+        currentStudent.classLevel,
+
+        currentStudent.educationLevel,
+
+        currentStudent.level
+
+    ];
+
+    for (
+        let i = 0;
+        i < possibleClasses.length;
+        i++
+    ) {
+
+        if (
+            possibleClasses[i] !== null &&
+            possibleClasses[i] !== undefined &&
+            String(
+                possibleClasses[i]
+            ).trim() !== ""
+        ) {
+
+            return String(
+                possibleClasses[i]
+            ).trim();
+
+        }
+
+    }
+
+    return "";
+
+}
+
+
+/* =========================================
+   GET SUBMISSIONS
+========================================= */
+
+function getSubmissions() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "cis_assignment_submissions"
+            );
+
+        if (!saved) {
+            return [];
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        console.error(
+            "Error loading results:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   GET ASSIGNMENTS
+========================================= */
+
+function getAssignments() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "cis_teacher_assignments"
+            );
+
+        if (!saved) {
+            return [];
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        console.error(
+            "Error loading assignments:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================
+   LOAD RESULTS
+========================================= */
+
+function loadResults() {
+
+    const container =
+        document.getElementById(
+            "resultsList"
+        );
+
+    const submissions =
+        getSubmissions();
+
+    const assignments =
+        getAssignments();
+
+
+    /*
+       Only this student's submissions
+       that have been marked.
+    */
+
+    const studentResults =
+        submissions.filter(
+
+            function (submission) {
+
+                const sameStudent =
+
+                    String(
+                        submission.studentNumber ||
+                        ""
+                    ).trim().toLowerCase()
+
+                    ===
+
+                    String(
+                        currentStudent.studentNumber ||
+                        ""
+                    ).trim().toLowerCase();
+
+
+                const marked =
+
+                    String(
+                        submission.status ||
+                        ""
+                    ).toLowerCase()
+
+                    ===
+
+                    "marked";
+
+
+                return (
+                    sameStudent &&
+                    marked
+                );
+
+            }
+
+        );
+
+
+    console.log(
+        "Student results:",
+        studentResults
+    );
+
+
+    /*
+       Statistics
+    */
+
+    document.getElementById(
+        "markedCount"
+    ).textContent =
+        studentResults.length;
+
+
+    let totalPercentage = 0;
+
+    const subjects = [];
+
+
+    studentResults.forEach(
+
+        function (submission) {
+
+            const assignment =
+                assignments.find(
+
+                    function (item) {
+
+                        return (
+                            String(item.id) ===
+                            String(
+                                submission.assignmentId
+                            )
+                        );
+
+                    }
+
+                );
+
+
+            if (assignment) {
+
+                const score =
+                    Number(
+                        submission.score
+                    );
+
+                const maximum =
+                    Number(
+                        assignment.marks || 0
+                    );
+
+
+                if (
+                    maximum > 0 &&
+                    !Number.isNaN(score)
+                ) {
+
+                    totalPercentage +=
+                        (
+                            score /
+                            maximum
+                        ) * 100;
+
+                }
+
+
+                const subject =
+                    assignment.subject ||
+                    submission.subject ||
+                    "Unknown";
+
+
+                if (
+                    !subjects.includes(
+                        subject
+                    )
+                ) {
+
+                    subjects.push(
+                        subject
+                    );
+
+                }
+
+            }
+
+        }
+
+    );
+
+
+    const average =
+
+        studentResults.length > 0
+
+            ?
+
+            Math.round(
+                totalPercentage /
+                studentResults.length
+            )
+
+            :
+
+            0;
+
+
+    document.getElementById(
+        "averagePercentage"
+    ).textContent =
+        average + "%";
+
+
+    document.getElementById(
+        "subjectCount"
+    ).textContent =
+        subjects.length;
+
+
+    /*
+       No results
+    */
+
+    if (
+        studentResults.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📊
+                </div>
+
+                <h2>
+                    No results yet
+                </h2>
+
+                <p>
+                    Your marked assignments and
+                    results will appear here.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    /*
+       Display results
+    */
+
+    container.innerHTML = "";
+
+
+    studentResults
+        .slice()
+        .reverse()
+        .forEach(
+
+            function (submission) {
+
+                const assignment =
+                    assignments.find(
+
+                        function (item) {
+
+                            return (
+                                String(item.id) ===
+                                String(
+                                    submission.assignmentId
+                                )
+                            );
+
+                        }
+
+                    );
+
+
+                const assignmentMarks =
+                    assignment
+                        ? Number(
+                            assignment.marks || 0
+                        )
+                        : Number(
+                            submission.maxMarks || 0
+                        );
+
+
+                const score =
+                    Number(
+                        submission.score || 0
+                    );
+
+
+                let percentage = 0;
+
+
+                if (
+                    assignmentMarks > 0
+                ) {
+
+                    percentage =
+                        Math.round(
+                            (
+                                score /
+                                assignmentMarks
+                            ) * 100
+                        );
+
+                }
+
+
+                const card =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                card.className =
+                    "result-card";
+
+
+                card.innerHTML = `
+
+                    <div class="result-top">
+
+                        <div>
+
+                            <div class="subject-label">
+
+                                ${escapeHtml(
+                                    assignment
+                                        ? assignment.subject
+                                        : submission.subject ||
+                                          "Subject"
+                                )}
+
+                            </div>
+
+
+                            <h2>
+
+                                ${escapeHtml(
+                                    assignment
+                                        ? assignment.title
+                                        : submission.assignmentTitle ||
+                                          "Assignment"
+                                )}
+
+                            </h2>
+
+                        </div>
+
+
+                        <span class="marked-badge">
+
+                            ✓ Marked
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="score-box">
+
+                        <div class="score">
+
+                            ${escapeHtml(
+                                String(score)
+                            )}
+
+                            /
+
+                            ${escapeHtml(
+                                String(
+                                    assignmentMarks
+                                )
+                            )}
+
+                        </div>
+
+
+                        <div class="percentage">
+
+                            ${percentage}%
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="result-details">
+
+                        <div class="detail">
+
+                            Teacher
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    assignment
+                                        ? assignment.teacherName
+                                        : submission.teacherName ||
+                                          "Teacher"
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            Subject
+
+                            <strong>
+
+                                ${escapeHtml(
+                                    assignment
+                                        ? assignment.subject
+                                        : submission.subject ||
+                                          "Subject"
+                                )}
+
+                            </strong>
+
+                        </div>
+
+
+                        <div class="detail">
+
+                            Marked Date
+
+                            <strong>
+
+                                ${formatDate(
+                                    submission.markedAt
+                                )}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="feedback-box">
+
+                        <div class="feedback-title">
+
+                            💬 Teacher Feedback
+
+                        </div>
+
+                        ${escapeHtml(
+                            submission.feedback ||
+                            "No feedback was provided."
+                        )}
+
+                    </div>
+
+                `;
+
+
+                container.appendChild(
+                    card
+                );
+
+            }
+
+        );
+
+}
+
+
+/* =========================================
+   FORMAT DATE
+========================================= */
+
+function formatDate(value) {
+
+    if (!value) {
+        return "Not specified";
+    }
+
+    const date =
+        new Date(value);
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return "Not specified";
+
+    }
+
+    return date.toLocaleDateString(
+        undefined,
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================
+   BACK TO DASHBOARD
+========================================= */
+
+function goBackToDashboard() {
+
+    window.location.href =
+        "student-dashboard.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

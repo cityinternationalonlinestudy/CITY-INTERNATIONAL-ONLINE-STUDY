@@ -1,0 +1,2950 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teacher Dashboard - City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 255px;
+            height: 100vh;
+            background: #0f2a44;
+            color: white;
+            padding: 22px 15px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .school-logo {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .logo-circle {
+            width: 55px;
+            height: 55px;
+            background: white;
+            color: #0f2a44;
+            border-radius: 50%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .school-logo h2 {
+            font-size: 17px;
+            margin-top: 10px;
+        }
+
+        .school-logo p {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .teacher-profile {
+            padding: 20px 8px;
+            text-align: center;
+        }
+
+        .teacher-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #1769aa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            font-size: 27px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .teacher-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .teacher-profile h3 {
+            font-size: 15px;
+            margin-top: 10px;
+        }
+
+        .teacher-profile p {
+            font-size: 11px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            padding: 15px 10px 8px;
+        }
+
+        .menu-button {
+            width: 100%;
+            border: none;
+            background: transparent;
+            color: white;
+            text-align: left;
+            padding: 12px 13px;
+            border-radius: 8px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .menu-button:hover,
+        .menu-button.active {
+            background: #1769aa;
+        }
+
+        .logout-button {
+            margin-top: 20px;
+            background: #b42318;
+        }
+
+        .logout-button:hover {
+            background: #912018;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 255px;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .topbar h1 {
+            font-size: 22px;
+            color: #0f2a44;
+        }
+
+        .teacher-code {
+            background: #eef6ff;
+            color: #1769aa;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        .welcome {
+            background: linear-gradient(135deg, #0f2a44, #1769aa);
+            color: white;
+            border-radius: 17px;
+            padding: 30px;
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 29px;
+            margin-bottom: 8px;
+        }
+
+        .welcome p {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .stat-icon {
+            font-size: 27px;
+            margin-bottom: 10px;
+        }
+
+        .stat-card h3 {
+            font-size: 28px;
+            color: #0f2a44;
+        }
+
+        .stat-card p {
+            color: #667085;
+            margin-top: 4px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            border: 1px solid #e5e7eb;
+            padding: 24px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        .card-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 15px;
+        }
+
+        .card-title h2 {
+            color: #0f2a44;
+            font-size: 21px;
+        }
+
+        .card-title p {
+            color: #667085;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 42, 68, 0.4);
+            display: none;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 24px;
+            z-index: 300;
+            overflow-y: auto;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(760px, 100%);
+            max-height: calc(100vh - 48px);
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            box-shadow: 0 18px 50px rgba(15, 42, 68, 0.18);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 22px 24px 18px;
+            border-bottom: 1px solid #eef2f6;
+            background: linear-gradient(180deg, #f9fbff 0%, #ffffff 100%);
+            flex-shrink: 0;
+        }
+
+        .modal-header h2 {
+            color: #0f2a44;
+            font-size: 24px;
+            margin-bottom: 6px;
+        }
+
+        .modal-header p {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .close-button {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #f3f4f6;
+            color: #475467;
+            font-size: 30px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            padding: 0;
+        }
+
+        .close-button:hover {
+            background: #e4e7ec;
+            color: #0f2a44;
+            transform: rotate(90deg);
+        }
+
+        #assignmentForm {
+            padding: 22px 24px 24px;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        /* =========================
+           FORMS
+        ========================= */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #344054;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            border: 1px solid #d0d5dd;
+            border-radius: 8px;
+            padding: 12px 13px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #1769aa;
+            box-shadow: 0 0 0 3px rgba(23,105,170,0.1);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 17px;
+            cursor: pointer;
+            font-weight: bold;
+            font-family: inherit;
+        }
+
+        .primary {
+            background: #1769aa;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #125589;
+        }
+
+        .dark {
+            background: #0f2a44;
+            color: white;
+        }
+
+        .danger {
+            background: #b42318;
+            color: white;
+        }
+
+        .secondary {
+            background: #eef2f6;
+            color: #344054;
+        }
+
+        /* =========================
+           ASSIGNMENTS
+        ========================= */
+
+        .assignment-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .assignment-item {
+            border: 1px solid #e4e7ec;
+            border-radius: 12px;
+            padding: 18px;
+        }
+
+        .assignment-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .assignment-subject {
+            color: #1769aa;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .assignment-item h3 {
+            color: #0f2a44;
+            margin: 6px 0;
+        }
+
+        .assignment-meta {
+            color: #667085;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .assignment-actions {
+            margin-top: 18px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .assignment-actions .btn {
+            min-width: 150px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        th,
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #eaecf0;
+            text-align: left;
+            font-size: 13px;
+        }
+
+        th {
+            background: #f8fafc;
+            color: #344054;
+        }
+
+        td {
+            color: #475467;
+        }
+
+        /* =========================
+           NOTIFICATIONS
+        ========================= */
+
+        .notification {
+            padding: 13px 16px;
+            border-radius: 9px;
+            margin-bottom: 10px;
+            background: #eff8ff;
+            color: #175cd3;
+            font-size: 14px;
+        }
+
+        .notification.success {
+            background: #ecfdf3;
+            color: #027a48;
+        }
+
+        .notification.warning {
+            background: #fffaeb;
+            color: #b54708;
+        }
+            .help-support-form {
+                max-width: 720px;
+            }
+            .help-support-form textarea {
+                min-height: 140px;
+            }
+            .help-support-status {
+                min-height: 18px;
+                margin-top: 10px;
+                color: #047857;
+                font-size: 13px;
+                font-weight: bold;
+            }
+
+        /* =========================
+           EMPTY
+        ========================= */
+
+        .empty {
+            text-align: center;
+            padding: 35px 20px;
+            color: #667085;
+        }
+
+        .empty-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        .mobile-menu {
+            display: none;
+            background: #0f2a44;
+            color: white;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 7px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.25s;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 0 15px;
+            }
+
+            .topbar h1 {
+                font-size: 17px;
+            }
+
+            .teacher-code {
+                display: none;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .welcome {
+                padding: 22px;
+            }
+
+            .welcome h2 {
+                font-size: 24px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .assignment-header {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="school-logo">
+
+            <div class="logo-circle">
+                🎓
+            </div>
+
+            <h2>City International</h2>
+
+            <p>Online School</p>
+
+        </div>
+
+
+        <div class="teacher-profile">
+
+            <div
+                class="teacher-avatar"
+                id="teacherAvatar"
+                title="Upload profile photo"
+                onclick="openTeacherPhotoPicker()">
+                👨‍🏫
+            </div>
+
+            <input
+                type="file"
+                id="teacherPhotoInput"
+                accept="image/*"
+                hidden
+                onchange="saveTeacherPhoto(event)">
+
+            <h3 id="sidebarTeacherName">
+                Teacher
+            </h3>
+
+            <p id="sidebarTeacherSubject">
+                Teacher Portal
+            </p>
+
+        </div>
+
+
+        <div class="menu-title">
+            Main Menu
+        </div>
+
+        <button
+            class="menu-button active"
+            onclick="showSection('dashboard', this)">
+            🏠 Dashboard
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('assignments', this)">
+            📝 Assignments
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('students', this)">
+            👥 Students
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('classes', this)">
+            📚 My Classes
+        </button>
+
+       <button
+    class="menu-button"
+    onclick="window.location.href='teacher-submissions.html'">
+    📤 Submissions
+</button>
+
+        <button
+            class="menu-button"
+            onclick="showSection('notifications', this)">
+            🔔 Notifications
+        </button>
+            <button
+                class="menu-button"
+                onclick="showSection('help', this)">
+                🆘 Help &amp; Support
+            </button>
+
+
+        <div class="menu-title">
+            Account
+        </div>
+
+        <button
+            class="menu-button"
+            onclick="showSection('profile', this)">
+            👤 My Profile
+        </button>
+
+        <button
+            class="menu-button logout-button"
+            onclick="teacherLogout()">
+            🚪 Logout
+        </button>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                onclick="toggleSidebar()">
+                ☰
+            </button>
+
+            <h1 id="pageTitle">
+                Teacher Dashboard
+            </h1>
+
+            <div class="teacher-code">
+                Teacher Code:
+                <span id="teacherCode">
+                    CIS-TCH-48291
+                </span>
+            </div>
+
+        </header>
+
+
+        <div class="content">
+
+
+            <!-- =========================
+                 DASHBOARD
+            ========================= -->
+
+            <section
+                id="dashboard"
+                class="page-section active">
+
+                <div class="welcome">
+
+                    <h2>
+                        Welcome, <span id="welcomeTeacher">
+                            Teacher
+                        </span> 👋
+                    </h2>
+
+                    <p>
+                        Manage your classes, create assignments,
+                        review student work and monitor learning
+                        activities from your teacher dashboard.
+                    </p>
+
+                </div>
+
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <h3 id="studentCount">0</h3>
+                        <p>My Students</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📝</div>
+                        <h3 id="assignmentCount">0</h3>
+                        <p>Assignments</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📤</div>
+                        <h3 id="submissionCount">0</h3>
+                        <p>Submissions</p>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon">📚</div>
+                        <h3 id="classCount">0</h3>
+                        <p>Classes</p>
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>Quick Actions</h2>
+                            <p>
+                                Frequently used teacher tools.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="assignment-actions">
+
+                        <button
+                            class="btn primary"
+                            onclick="openCreateAssignment()">
+                            ➕ Create Assignment
+                        </button>
+
+                        <button
+                            class="btn dark"
+                            onclick="showSectionById('assignments')">
+                            📝 Manage Assignments
+                        </button>
+
+                        <button
+                            class="btn secondary"
+                            onclick="showSectionById('students')">
+                            👥 View Students
+                        </button>
+
+                        <button
+                            class="btn primary"
+                            onclick="startTeacherLiveClass()">
+                            Start Live Class
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>Teacher Information</h2>
+                            <p>
+                                Your current teaching information.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="assignment-meta">
+
+                        <strong>Name:</strong>
+                        <span id="dashboardTeacherName">
+                            Teacher
+                        </span>
+                        <br>
+
+                        <strong>Teacher Code:</strong>
+                        <span id="dashboardTeacherCode">
+                            CIS-TCH-48291
+                        </span>
+                        <br>
+
+                        <strong>Subject:</strong>
+                        <span id="dashboardTeacherSubject">
+                            General Teacher
+                        </span>
+                        <br>
+
+                        <strong>Status:</strong>
+                        <span class="badge">
+                            Approved
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+                <!-- =========================
+                     HELP & SUPPORT
+                ========================= -->
+                <section
+                    id="help"
+                    class="page-section">
+                    <div class="card">
+                        <div class="card-title">
+                            <div>
+                                <h2>🆘 Help &amp; Support</h2>
+                                <p>Tell the administrator about a problem or ask for help.</p>
+                            </div>
+                        </div>
+                        <form class="help-support-form" onsubmit="submitHelpRequest(event, 'teacher')">
+                            <div class="form-group">
+                                <label for="teacherHelpSubject">Subject</label>
+                                <input id="teacherHelpSubject" type="text" placeholder="What do you need help with?" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="teacherHelpMessage">Problem or message</label>
+                                <textarea id="teacherHelpMessage" placeholder="Describe your problem clearly..." required></textarea>
+                            </div>
+                            <button class="btn primary" type="submit">Send to administrator</button>
+                            <p id="teacherHelpMessageStatus" class="help-support-status" aria-live="polite"></p>
+                        </form>
+                    </div>
+                </section>
+
+
+            <!-- =========================
+                 ASSIGNMENTS
+            ========================= -->
+
+            <section
+                id="assignments"
+                class="page-section">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>Assignments</h2>
+                            <p>
+                                Create and manage student assignments.
+                            </p>
+                        </div>
+
+                        <button
+                            class="btn primary"
+                            onclick="openCreateAssignment()">
+                            ➕ New Assignment
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        id="assignmentList"
+                        class="assignment-list">
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 STUDENTS
+            ========================= -->
+
+            <section
+                id="students"
+                class="page-section">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>My Students</h2>
+                            <p>
+                                Students connected to your classes.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+                                    <th>Student Number</th>
+                                    <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Level</th>
+                                    <th>Status</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody id="studentsTable">
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CLASSES
+            ========================= -->
+
+            <section
+                id="classes"
+                class="page-section">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>My Classes</h2>
+                            <p>
+                                Classes and subjects assigned to you.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="assignment-list">
+
+                        <div class="assignment-item">
+
+                            <div class="assignment-header">
+
+                                <div>
+
+                                    <div class="assignment-subject">
+                                        Subject
+                                    </div>
+
+                                    <h3 id="classSubject">
+                                        General Subject
+                                    </h3>
+
+                                    <div class="assignment-meta">
+                                        Class: Primary Level
+                                        <br>
+                                        Students: Connected students
+                                    </div>
+
+                                </div>
+
+                                <span class="badge">
+                                    Active
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SUBMISSIONS
+            ========================= -->
+
+            <section
+                id="submissions"
+                class="page-section">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>Student Submissions</h2>
+                            <p>
+                                Review and mark submitted assignments.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div id="submissionsList">
+
+                        <div class="empty">
+
+                            <div class="empty-icon">
+                                📤
+                            </div>
+
+                            <h3>
+                                No submissions yet
+                            </h3>
+
+                            <p>
+                                Student submissions will appear here
+                                when students submit their work.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 NOTIFICATIONS
+            ========================= -->
+
+            <section
+                id="notifications"
+                class="page-section">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>Notifications</h2>
+                            <p>
+                                Important teacher notifications.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="notification success">
+                        ✅ Your teacher account is approved.
+                    </div>
+
+                    <div class="notification">
+                        📚 You can now create assignments for your students.
+                    </div>
+
+                    <div class="notification warning">
+                        ⚠️ Remember to check student submissions regularly.
+                    </div>
+
+                    <div id="teacherHelpFeedback"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PROFILE
+            ========================= -->
+
+            <section
+                id="profile"
+                class="page-section">
+
+                <div class="card">
+
+                    <div class="card-title">
+
+                        <div>
+                            <h2>My Profile</h2>
+                            <p>
+                                Your teacher account information.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label>
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileName"
+                                value="Teacher"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Teacher Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileCode"
+                                value="CIS-TCH-48291"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Subject
+                            </label>
+
+                            <input
+                                type="text"
+                                id="profileSubject"
+                                value="General Subject"
+                                readonly>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>
+                                Account Status
+                            </label>
+
+                            <input
+                                type="text"
+                                value="Approved"
+                                readonly>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         CREATE ASSIGNMENT MODAL
+    ========================= -->
+
+    <div
+        id="assignmentModal"
+        class="modal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Create New Assignment</h2>
+                    <p>
+                        Publish an assignment for your students.
+                    </p>
+                </div>
+
+                <button
+                    class="close-button"
+                    onclick="closeAssignmentModal()">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form
+                id="assignmentForm"
+                onsubmit="createAssignment(event)">
+
+                <div class="form-group">
+
+                    <label for="assignmentSubject">
+                        Subject
+                    </label>
+
+                    <select
+                        id="assignmentSubject"
+                        required>
+
+                        <option value="">
+                            Select subject
+                        </option>
+
+                        <option value="Mathematics">
+                            Mathematics
+                        </option>
+
+                        <option value="Science">
+                            Science
+                        </option>
+
+                        <option value="English">
+                            English
+                        </option>
+
+                        <option value="Social Studies">
+                            Social Studies
+                        </option>
+
+                        <option value="Religious Education">
+                            Religious Education
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="assignmentTitle">
+                        Assignment Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="assignmentTitle"
+                        placeholder="Example: Fractions Practice"
+                        required>
+
+                </div>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="assignmentClass">
+                            Class / Level
+                        </label>
+
+                        <select
+                            id="assignmentClass"
+                            required>
+
+                            <option value="">
+                                Select class
+                            </option>
+
+                            <option value="Primary 1">
+                                Primary 1
+                            </option>
+
+                            <option value="Primary 2">
+                                Primary 2
+                            </option>
+
+                            <option value="Primary 3">
+                                Primary 3
+                            </option>
+
+                            <option value="Primary 4">
+                                Primary 4
+                            </option>
+
+                            <option value="Primary 5">
+                                Primary 5
+                            </option>
+
+                            <option value="Primary 6">
+                                Primary 6
+                            </option>
+
+                            <option value="Primary 7">
+                                Primary 7
+                            </option>
+
+                            <option value="Senior 1">
+                                Senior 1
+                            </option>
+
+                            <option value="Senior 2">
+                                Senior 2
+                            </option>
+
+                            <option value="Senior 3">
+                                Senior 3
+                            </option>
+
+                            <option value="Senior 4">
+                                Senior 4
+                            </option>
+
+                            <option value="Senior 5">
+                                Senior 5
+                            </option>
+
+                            <option value="Senior 6">
+                                Senior 6
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="assignmentMarks">
+                            Total Marks
+                        </label>
+
+                        <input
+                            type="number"
+                            id="assignmentMarks"
+                            min="1"
+                            max="1000"
+                            placeholder="20"
+                            required>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="assignmentDue">
+                        Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="assignmentDue"
+                        required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="assignmentInstructions">
+                        Instructions
+                    </label>
+
+                    <textarea
+                        id="assignmentInstructions"
+                        placeholder="Write instructions for your students..."
+                        required></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="assignmentQuestions">
+                        Questions / Tasks
+                    </label>
+
+                    <textarea
+                        id="assignmentQuestions"
+                        placeholder="Write the questions here. You can put each question on a new line."
+                        required></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="assignmentAttachment">
+                        Attachment (PDF or other file, optional)
+                    </label>
+
+                    <input
+                        type="file"
+                        id="assignmentAttachment"
+                        accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.jpg,.jpeg,.png">
+
+                    <small>
+                        Maximum file size: 10 MB.
+                    </small>
+
+                </div>
+
+
+                <div class="assignment-actions">
+
+                    <button
+                        type="button"
+                        class="btn secondary"
+                        onclick="closeAssignmentModal()">
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn primary">
+                        📢 Publish Assignment
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =========================
+           TEACHER DATA
+        ========================= */
+
+        let teacher = {
+            id: null,
+            fullName: "Teacher",
+            teacherCode: "CIS-TCH-48291",
+            subject: "General Subject",
+            profilePhoto: ""
+        };
+
+
+        /* =========================
+           LOAD TEACHER
+        ========================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                loadTeacher();
+
+                loadTeacherHelpFeedback();
+
+                loadAssignments();
+
+                loadStudents();
+
+                updateStatistics();
+
+                setInterval(loadTeacherHelpFeedback, 5000);
+
+            }
+        );
+
+
+        function loadTeacher() {
+
+            /*
+             * If a future teacher-login system saves
+             * cis_current_teacher, this page will use it.
+             */
+
+            const savedTeacher =
+                localStorage.getItem(
+                    "cis_current_teacher"
+                );
+
+            if (savedTeacher) {
+
+                try {
+
+                    const data =
+                        JSON.parse(savedTeacher);
+
+                    teacher = {
+                        id: data.id,
+                        fullName:
+                            data.fullName ||
+                            "Teacher",
+
+                        teacherCode:
+                            data.teacherCode ||
+                            "CIS-TCH-48291",
+
+                        subject:
+                            data.teachingSubject ||
+                            data.subject ||
+                            "General Subject",
+
+                        profilePhoto:
+                            data.profilePhoto || ""
+                    };
+
+                } catch (error) {
+
+                    console.error(
+                        "Teacher data error:",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            document.getElementById(
+                "welcomeTeacher"
+            ).textContent =
+                teacher.fullName;
+
+
+            document.getElementById(
+                "sidebarTeacherName"
+            ).textContent =
+                teacher.fullName;
+
+
+            document.getElementById(
+                "sidebarTeacherSubject"
+            ).textContent =
+                teacher.subject;
+
+
+            document.getElementById(
+                "teacherCode"
+            ).textContent =
+                teacher.teacherCode;
+
+
+            document.getElementById(
+                "dashboardTeacherName"
+            ).textContent =
+                teacher.fullName;
+
+
+            document.getElementById(
+                "dashboardTeacherCode"
+            ).textContent =
+                teacher.teacherCode;
+
+
+            document.getElementById(
+                "dashboardTeacherSubject"
+            ).textContent =
+                teacher.subject;
+
+
+            document.getElementById(
+                "classSubject"
+            ).textContent =
+                teacher.subject;
+
+
+            document.getElementById(
+                "profileName"
+            ).value =
+                teacher.fullName;
+
+
+            document.getElementById(
+                "profileCode"
+            ).value =
+                teacher.teacherCode;
+
+
+            document.getElementById(
+                "profileSubject"
+            ).value =
+                teacher.subject;
+
+            renderTeacherAvatar();
+
+        }
+
+
+        function startTeacherLiveClass() {
+
+            const subject =
+                (teacher && teacher.subject) ||
+                document.getElementById("dashboardTeacherSubject").textContent ||
+                "General Subject";
+
+            const room =
+                subject
+                    .toLowerCase()
+                    .replace(/[^a-z0-9]+/g, "-")
+                    .replace(/^-|-$/g, "") +
+                "-primary-6";
+
+            window.location.href =
+                "teacher-live.html?subject=" +
+                encodeURIComponent(subject) +
+                "&room=" +
+                encodeURIComponent(room);
+
+        }
+
+
+        function openTeacherPhotoPicker() {
+
+            document.getElementById("teacherPhotoInput").click();
+        }
+
+
+        function saveTeacherPhoto(event) {
+
+            const file = event.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+            if (!file.type.startsWith("image/")) {
+                alert("Please select an image file.");
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function () {
+
+                teacher.profilePhoto = reader.result;
+
+                localStorage.setItem(
+                    "cis_current_teacher",
+                    JSON.stringify(teacher)
+                );
+
+                const registrations = JSON.parse(
+                    localStorage.getItem("cis_registrations") || "[]"
+                );
+
+                const account = registrations.find(function (user) {
+                    return user.id === teacher.id && user.role === "teacher";
+                });
+
+                if (account) {
+                    account.profilePhoto = teacher.profilePhoto;
+                    localStorage.setItem(
+                        "cis_registrations",
+                        JSON.stringify(registrations)
+                    );
+                }
+
+                renderTeacherAvatar();
+            };
+
+            reader.readAsDataURL(file);
+            event.target.value = "";
+        }
+
+
+        function renderTeacherAvatar() {
+
+            const avatar = document.getElementById("teacherAvatar");
+
+            if (teacher.profilePhoto) {
+                avatar.innerHTML = "<img src=\"" + teacher.profilePhoto + "\" alt=\"Profile photo\">";
+            } else {
+                avatar.textContent = "👨‍🏫";
+            }
+        }
+
+
+        /* =========================
+           SECTION NAVIGATION
+        ========================= */
+
+        function showSection(
+            sectionId,
+            button
+        ) {
+
+            const sections =
+                document.querySelectorAll(
+                    ".page-section"
+                );
+
+            sections.forEach(
+                function (section) {
+
+                    section.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            const selected =
+                document.getElementById(
+                    sectionId
+                );
+
+            if (selected) {
+
+                selected.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const buttons =
+                document.querySelectorAll(
+                    ".menu-button"
+                );
+
+            buttons.forEach(
+                function (item) {
+
+                    item.classList.remove(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            if (button) {
+
+                button.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            const titles = {
+                dashboard:
+                    "Teacher Dashboard",
+
+                assignments:
+                    "Assignments",
+
+                students:
+                    "My Students",
+
+                classes:
+                    "My Classes",
+
+                submissions:
+                    "Student Submissions",
+
+                notifications:
+                    "Notifications",
+
+                help:
+                    "Help & Support",
+
+                profile:
+                    "My Profile"
+            };
+
+
+            document.getElementById(
+                "pageTitle"
+            ).textContent =
+                titles[sectionId] ||
+                "Teacher Dashboard";
+
+
+            document.getElementById(
+                "sidebar"
+            ).classList.remove("open");
+
+        }
+
+
+        function showSectionById(
+            sectionId
+        ) {
+
+            const buttons =
+                document.querySelectorAll(
+                    ".menu-button"
+                );
+
+            let matchingButton = null;
+
+            buttons.forEach(
+                function (button) {
+
+                    const text =
+                        button.textContent
+                            .toLowerCase();
+
+                    if (
+                        (sectionId === "assignments" &&
+                            text.includes("assignments")) ||
+
+                        (sectionId === "students" &&
+                            text.includes("students"))
+                    ) {
+
+                        matchingButton = button;
+
+                    }
+
+                }
+            );
+
+
+            showSection(
+                sectionId,
+                matchingButton
+            );
+
+        }
+
+
+        /* =========================
+           MOBILE SIDEBAR
+        ========================= */
+
+        function toggleSidebar() {
+
+            document.getElementById(
+                "sidebar"
+            ).classList.toggle("open");
+
+        }
+
+
+        /* =========================
+           ASSIGNMENT STORAGE
+        ========================= */
+
+        function getTeacherAssignments() {
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        "cis_teacher_assignments"
+                    );
+
+                if (!saved) {
+                    return [];
+                }
+
+                const data =
+                    JSON.parse(saved);
+
+                return Array.isArray(data)
+                    ? data
+                    : [];
+
+            } catch (error) {
+
+                console.error(error);
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveTeacherAssignments(
+            assignments
+        ) {
+
+            localStorage.setItem(
+                "cis_teacher_assignments",
+                JSON.stringify(assignments)
+            );
+
+        }
+
+
+        /* =========================
+           CREATE ASSIGNMENT MODAL
+        ========================= */
+
+        function openCreateAssignment() {
+
+            document.getElementById(
+                "assignmentModal"
+            ).classList.add("show");
+
+        }
+
+
+        function closeAssignmentModal() {
+
+            document.getElementById(
+                "assignmentModal"
+            ).classList.remove("show");
+
+        }
+
+
+        function readAssignmentFile(file) {
+
+            return new Promise(function (resolve, reject) {
+
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                    resolve({
+                        name: file.name,
+                        type: file.type || "application/octet-stream",
+                        size: file.size,
+                        dataUrl: reader.result
+                    });
+                };
+
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+
+        /* =========================
+           CREATE ASSIGNMENT
+        ========================= */
+
+        async function createAssignment(event) {
+
+    event.preventDefault();
+
+    try {
+
+        /* =========================
+           GET FORM VALUES
+        ========================= */
+
+        const subject =
+            document.getElementById("assignmentSubject").value.trim();
+
+        const title =
+            document.getElementById("assignmentTitle").value.trim();
+
+        const classLevel =
+            document.getElementById("assignmentClass").value.trim();
+
+        const marks =
+            document.getElementById("assignmentMarks").value;
+
+        const dueDate =
+            document.getElementById("assignmentDue").value;
+
+        const instructions =
+            document.getElementById("assignmentInstructions").value.trim();
+
+        const questions =
+            document.getElementById("assignmentQuestions").value.trim();
+
+        const attachmentFile =
+            document.getElementById("assignmentAttachment").files[0];
+
+
+        /* =========================
+           VALIDATION
+        ========================= */
+
+        if (
+            !subject ||
+            !title ||
+            !classLevel ||
+            !marks ||
+            !dueDate ||
+            !instructions ||
+            !questions
+        ) {
+
+            alert("Please complete all assignment fields.");
+
+            return;
+        }
+
+        if (attachmentFile && attachmentFile.size > 10 * 1024 * 1024) {
+            alert("The attachment must be 10 MB or smaller.");
+            return;
+        }
+
+
+        /* =========================
+           CHECK TEACHER
+        ========================= */
+
+        if (
+            !teacher ||
+            !teacher.teacherCode
+        ) {
+
+            alert(
+                "Teacher information was not found. Please log in again."
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           GET ALL EXISTING ASSIGNMENTS
+        ========================= */
+
+        const assignments =
+            getTeacherAssignments();
+
+
+        /* =========================
+           CREATE NEW ASSIGNMENT
+        ========================= */
+
+        const attachment = attachmentFile
+            ? await readAssignmentFile(attachmentFile)
+            : null;
+
+        const newAssignment = {
+
+            id: Date.now(),
+
+            subject: subject,
+
+            title: title,
+
+            classLevel: classLevel,
+
+            marks: Number(marks),
+
+            dueDate: dueDate,
+
+            instructions: instructions,
+
+            questions: questions,
+
+            attachment: attachment,
+
+            teacherName:
+                teacher.fullName,
+
+            teacherCode:
+                teacher.teacherCode,
+
+            status: "Published",
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        /* =========================
+           ADD TO COMPLETE LIST
+        ========================= */
+
+        assignments.push(newAssignment);
+
+
+        /* =========================
+           SAVE
+        ========================= */
+
+        saveTeacherAssignments(
+            assignments
+        );
+
+
+        /* =========================
+           VERIFY SAVE
+        ========================= */
+
+        const savedAssignments =
+            getTeacherAssignments();
+
+
+        const savedAssignment =
+            savedAssignments.find(
+                function (assignment) {
+
+                    return String(assignment.id) ===
+                        String(newAssignment.id);
+
+                }
+            );
+
+
+        if (!savedAssignment) {
+
+            alert(
+                "The assignment could not be saved. Please try again."
+            );
+
+            console.error(
+                "Assignment save failed.",
+                savedAssignments
+            );
+
+            return;
+        }
+
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        document.getElementById(
+            "assignmentForm"
+        ).reset();
+
+
+        closeAssignmentModal();
+
+
+        loadAssignments();
+
+        updateStatistics();
+
+
+        alert(
+            "Assignment published successfully!"
+        );
+
+
+        showSectionById(
+            "assignments"
+        );
+
+
+        console.log(
+            "Assignment saved successfully:",
+            savedAssignment
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "CREATE ASSIGNMENT ERROR:",
+            error
+        );
+
+        alert(
+            "Something went wrong while saving the assignment. Check the browser console for details."
+        );
+
+    }
+
+}
+
+
+        /* =========================
+           DISPLAY ASSIGNMENTS
+        ========================= */
+
+        function loadAssignments() {
+
+            const container =
+                document.getElementById(
+                    "assignmentList"
+                );
+
+
+            if (!container) {
+                return;
+            }
+
+
+            const allAssignments = getTeacherAssignments();
+
+const assignments = allAssignments.filter(function (assignment) {
+    return assignment.teacherCode === teacher.teacherCode;
+});
+
+
+            if (assignments.length === 0) {
+
+                container.innerHTML = `
+
+                    <div class="empty">
+
+                        <div class="empty-icon">
+                            📝
+                        </div>
+
+                        <h3>
+                            No assignments yet
+                        </h3>
+
+                        <p>
+                            Click "New Assignment" to create
+                            your first assignment.
+                        </p>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            container.innerHTML = "";
+
+
+            assignments
+                .slice()
+                .reverse()
+                .forEach(
+                    function (assignment) {
+
+                        const item =
+                            document.createElement(
+                                "div"
+                            );
+
+                        item.className =
+                            "assignment-item";
+
+
+                        item.innerHTML = `
+
+                            <div class="assignment-header">
+
+                                <div>
+
+                                    <div class="assignment-subject">
+                                        ${escapeHtml(assignment.subject)}
+                                    </div>
+
+                                    <h3>
+                                        ${escapeHtml(assignment.title)}
+                                    </h3>
+
+                                    <div class="assignment-meta">
+
+                                        Class:
+                                        <strong>
+                                            ${escapeHtml(assignment.classLevel)}
+                                        </strong>
+
+                                        <br>
+
+                                        Due:
+                                        <strong>
+                                            ${escapeHtml(assignment.dueDate)}
+                                        </strong>
+
+                                        <br>
+
+                                        Marks:
+                                        <strong>
+                                            ${assignment.marks}
+                                        </strong>
+
+                                    </div>
+
+                                </div>
+
+                                <span class="badge">
+                                    ${escapeHtml(assignment.status)}
+                                </span>
+
+                            </div>
+
+
+                            <div class="assignment-actions">
+
+                                <button
+                                    class="btn dark"
+                                    onclick="viewTeacherAssignment(${assignment.id})">
+                                    👁️ View
+                                </button>
+
+                                <button
+                                    class="btn danger"
+                                    onclick="deleteAssignment(${assignment.id})">
+                                    🗑️ Delete
+                                </button>
+
+                            </div>
+
+                        `;
+
+
+                        container.appendChild(
+                            item
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =========================
+           VIEW ASSIGNMENT
+        ========================= */
+
+        function viewTeacherAssignment(
+            id
+        ) {
+
+            const allAssignments = getTeacherAssignments();
+
+const assignments = allAssignments.filter(function (item) {
+    return item.teacherCode === teacher.teacherCode;
+});
+
+const assignment =
+    assignments.find(
+        function (item) {
+            return item.id === id;
+        }
+    );
+
+
+            if (!assignment) {
+
+                alert(
+                    "Assignment not found."
+                );
+
+                return;
+
+            }
+
+
+            alert(
+
+                "SUBJECT: " +
+                assignment.subject +
+
+                "\n\nTITLE: " +
+                assignment.title +
+
+                "\n\nCLASS: " +
+                assignment.classLevel +
+
+                "\n\nDUE DATE: " +
+                assignment.dueDate +
+
+                "\n\nMARKS: " +
+                assignment.marks +
+
+                "\n\nINSTRUCTIONS:\n" +
+                assignment.instructions +
+
+                "\n\nQUESTIONS:\n" +
+                assignment.questions
+
+            );
+
+        }
+
+
+        /* =========================
+           DELETE ASSIGNMENT
+        ========================= */
+
+        function deleteAssignment(
+            id
+        ) {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to delete this assignment?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            let assignments =
+    getTeacherAssignments();
+
+const assignmentToDelete =
+    assignments.find(function (assignment) {
+        return assignment.id === id;
+    });
+
+if (
+    !assignmentToDelete ||
+    assignmentToDelete.teacherCode !== teacher.teacherCode
+) {
+    alert("You can only delete your own assignments.");
+    return;
+}
+
+assignments =
+    assignments.filter(
+        function (assignment) {
+
+            return (
+                assignment.id !== id ||
+                assignment.teacherCode !== teacher.teacherCode
+            );
+
+        }
+    );
+
+
+            saveTeacherAssignments(
+                assignments
+            );
+
+
+            loadAssignments();
+
+            updateStatistics();
+
+
+            alert(
+                "Assignment deleted."
+            );
+
+        }
+
+
+        /* =========================
+           STUDENTS
+        ========================= */
+
+        function loadStudents() {
+
+            const table =
+                document.getElementById(
+                    "studentsTable"
+                );
+
+
+            if (!table) {
+                return;
+            }
+
+
+            let students = [];
+
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        "cis_registrations"
+                    );
+
+
+                if (saved) {
+
+                    const data =
+                        JSON.parse(saved);
+
+
+                    if (Array.isArray(data)) {
+
+                        students =
+                            data.filter(
+                                function (student) {
+
+                                    return (
+                                        student.role ===
+                                        "student"
+                                    );
+
+                                }
+                            );
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+
+            if (students.length === 0) {
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="5"
+                            style="text-align:center; padding:30px;">
+
+                            No registered students found.
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+                document.getElementById(
+                    "studentCount"
+                ).textContent = "0";
+
+                return;
+
+            }
+
+
+            table.innerHTML = "";
+
+
+            students.forEach(
+                function (student) {
+
+                    const row =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    row.innerHTML = `
+
+                        <td>
+                            ${escapeHtml(
+                                student.studentNumber ||
+                                "Not assigned"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                student.fullName ||
+                                "Student"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                student.classLevel ||
+                                "Not assigned"
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                student.educationLevel ||
+                                "Not assigned"
+                            )}
+                        </td>
+
+                        <td>
+                            <span class="badge">
+                                ${escapeHtml(
+                                    student.status ||
+                                    "Registered"
+                                )}
+                            </span>
+                        </td>
+
+                    `;
+
+
+                    table.appendChild(
+                        row
+                    );
+
+                }
+            );
+
+
+            document.getElementById(
+                "studentCount"
+            ).textContent =
+                students.length;
+
+        }
+
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        function updateStatistics() {
+
+            const assignments =
+                getTeacherAssignments();
+
+
+            document.getElementById(
+                "assignmentCount"
+            ).textContent =
+                assignments.length;
+
+
+            document.getElementById(
+                "submissionCount"
+            ).textContent =
+                "0";
+
+
+            document.getElementById(
+                "classCount"
+            ).textContent =
+                "1";
+
+
+            try {
+
+                const saved =
+                    localStorage.getItem(
+                        "cis_registrations"
+                    );
+
+
+                if (saved) {
+
+                    const data =
+                        JSON.parse(saved);
+
+
+                    if (Array.isArray(data)) {
+
+                        const students =
+                            data.filter(
+                                function (item) {
+
+                                    return (
+                                        item.role ===
+                                        "student"
+                                    );
+
+                                }
+                            );
+
+
+                        document.getElementById(
+                            "studentCount"
+                        ).textContent =
+                            students.length;
+
+                    }
+
+                }
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+        }
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        function teacherLogout() {
+
+            const confirmed =
+                confirm(
+                    "Do you want to log out?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            localStorage.removeItem(
+                "cis_current_teacher"
+            );
+
+
+            window.location.href =
+                "index.html";
+
+        }
+
+
+        function submitHelpRequest(event, role) {
+
+            event.preventDefault();
+
+            const requests = JSON.parse(
+                localStorage.getItem("cis_help_requests") || "[]"
+            );
+
+            requests.push({
+                id: Date.now(),
+                role: role,
+                senderName: teacher.fullName || "Teacher",
+                senderId: teacher.id || teacher.teacherCode || "",
+                subject: document.getElementById("teacherHelpSubject").value.trim(),
+                message: document.getElementById("teacherHelpMessage").value.trim(),
+                createdAt: new Date().toISOString(),
+                read: false
+            });
+
+            localStorage.setItem("cis_help_requests", JSON.stringify(requests));
+            document.getElementById("teacherHelpSubject").value = "";
+            document.getElementById("teacherHelpMessage").value = "";
+            document.getElementById("teacherHelpMessageStatus").textContent = "Your message was sent to the administrator.";
+        }
+
+
+        function loadTeacherHelpFeedback() {
+
+            const container = document.getElementById("teacherHelpFeedback");
+            const requests = JSON.parse(
+                localStorage.getItem("cis_help_requests") || "[]"
+            );
+
+            const teacherId = teacher.id || teacher.teacherCode || "";
+            const feedback = requests.filter(function(request) {
+                return request.role === "teacher" &&
+                    request.reply &&
+                    (String(request.senderId || "") === String(teacherId) ||
+                        request.senderName === teacher.fullName);
+            });
+
+            if (!feedback.length) {
+                return;
+            }
+
+            container.innerHTML = feedback.map(function(request) {
+                return `
+                    <div class="notification success">
+                        <strong>Administrator feedback: ${escapeHtml(request.subject || "Help request")}</strong>
+                        <div>${escapeHtml(request.reply)}</div>
+                    </div>
+                `;
+            }).join("");
+        }
+
+
+        /* =========================
+           HTML SAFETY
+        ========================= */
+
+        function escapeHtml(
+            value
+        ) {
+
+            if (value === null ||
+                value === undefined) {
+
+                return "";
+
+            }
+
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        /* =========================
+           MODAL CLOSE
+        ========================= */
+
+        document.getElementById(
+            "assignmentModal"
+        ).addEventListener(
+            "click",
+            function (event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeAssignmentModal();
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

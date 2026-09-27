@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 1 - Numbers and Number Systems | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            border: none;
+            background: white;
+            color: #123c69;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e5eef8;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: 30px auto 60px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1769aa);
+            color: white;
+            padding: 40px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero small {
+            opacity: 0.85;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            margin: 8px 0;
+            font-size: 34px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            opacity: 0.95;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 22px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1769aa;
+            margin: 20px 0 8px;
+        }
+
+        .objectives {
+            padding-left: 22px;
+        }
+
+        .objectives li {
+            margin-bottom: 8px;
+        }
+
+        .definition {
+            background: #eef6ff;
+            border-left: 5px solid #1769aa;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 18px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .example strong {
+            color: #123c69;
+        }
+
+        .numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 18px;
+        }
+
+        .number-box {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 18px;
+            border-radius: 10px;
+        }
+
+        .number-box h3 {
+            margin-top: 0;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 280px;
+            border-radius: 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .play-button {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: none;
+            background: white;
+            color: #123c69;
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid #dbe3ec;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            color: #123c69;
+        }
+
+        .option {
+            display: block;
+            background: white;
+            border: 1px solid #d6dee8;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #eef6ff;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .primary {
+            background: #1769aa;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #125487;
+        }
+
+        .success {
+            background: #198754;
+            color: white;
+        }
+
+        .secondary {
+            background: #e5e7eb;
+            color: #111827;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #ecfdf5;
+            border-left: 5px solid #198754;
+        }
+
+        .progress-container {
+            background: #e5e7eb;
+            height: 14px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #198754;
+            transition: width 0.4s ease;
+        }
+
+        .complete-message {
+            display: none;
+            background: #ecfdf5;
+            color: #166534;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #64748b;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 25px;
+            }
+
+            .hero h1 {
+                font-size: 27px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <button class="back-btn" onclick="goBack()">
+            ← Back to Mathematics
+        </button>
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <small>MATHEMATICS • LESSON 1</small>
+
+            <h1>Numbers and Number Systems</h1>
+
+            <p>
+                Welcome to your first Mathematics lesson.
+                In this lesson, you will learn about different types
+                of numbers and how they are used in Mathematics.
+            </p>
+        </section>
+
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+
+            <h2>Learning Objectives</h2>
+
+            <p>By the end of this lesson, you should be able to:</p>
+
+            <ul class="objectives">
+                <li>Explain what a number is.</li>
+                <li>Identify natural numbers.</li>
+                <li>Identify whole numbers.</li>
+                <li>Identify integers.</li>
+                <li>Distinguish between positive and negative numbers.</li>
+                <li>Use numbers correctly in simple examples.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- INTRODUCTION -->
+        <section class="card">
+
+            <h2>1. What is a Number?</h2>
+
+            <p>
+                A number is a mathematical object used to count,
+                measure, identify or describe quantities.
+            </p>
+
+            <div class="definition">
+                <strong>Example:</strong>
+                If there are 5 books on a table, the number
+                <strong>5</strong> tells us how many books there are.
+            </div>
+
+            <p>
+                We use numbers every day. We use them when counting
+                money, telling time, measuring distance, recording marks
+                and many other activities.
+            </p>
+
+        </section>
+
+
+        <!-- NATURAL NUMBERS -->
+        <section class="card">
+
+            <h2>2. Natural Numbers</h2>
+
+            <p>
+                Natural numbers are the numbers we commonly use for
+                counting.
+            </p>
+
+            <div class="definition">
+                <strong>Natural numbers:</strong>
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, ...
+            </div>
+
+            <p>
+                They continue forever.
+            </p>
+
+            <div class="example">
+                <strong>Example:</strong><br><br>
+
+                There are 4 students in a classroom.<br>
+                The number <strong>4</strong> is a natural number.
+            </div>
+
+        </section>
+
+
+        <!-- WHOLE NUMBERS -->
+        <section class="card">
+
+            <h2>3. Whole Numbers</h2>
+
+            <p>
+                Whole numbers include zero and all the positive counting
+                numbers.
+            </p>
+
+            <div class="definition">
+                <strong>Whole numbers:</strong>
+                0, 1, 2, 3, 4, 5, 6, 7, 8, ...
+            </div>
+
+            <div class="example">
+                <strong>Example:</strong><br><br>
+
+                If there are no students in an empty classroom,
+                we can represent this using <strong>0</strong>.
+            </div>
+
+        </section>
+
+
+        <!-- INTEGERS -->
+        <section class="card">
+
+            <h2>4. Integers</h2>
+
+            <p>
+                Integers include positive numbers, negative numbers
+                and zero.
+            </p>
+
+            <div class="definition">
+                <strong>Integers:</strong><br><br>
+
+                ..., -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, ...
+            </div>
+
+            <p>
+                Negative numbers are useful when describing situations
+                such as temperatures below zero, debts or positions
+                below a reference point.
+            </p>
+
+            <div class="example">
+                <strong>Example:</strong><br><br>
+
+                A temperature of <strong>-3°C</strong> is a negative
+                integer.<br><br>
+
+                A temperature of <strong>5°C</strong> is a positive
+                integer.
+            </div>
+
+        </section>
+
+
+        <!-- COMPARISON -->
+        <section class="card">
+
+            <h2>5. Types of Numbers</h2>
+
+            <div class="numbers-grid">
+
+                <div class="number-box">
+                    <h3>Natural Numbers</h3>
+                    <p>1, 2, 3, 4, 5, ...</p>
+                </div>
+
+                <div class="number-box">
+                    <h3>Whole Numbers</h3>
+                    <p>0, 1, 2, 3, 4, ...</p>
+                </div>
+
+                <div class="number-box">
+                    <h3>Integers</h3>
+                    <p>..., -2, -1, 0, 1, 2, ...</p>
+                </div>
+
+                <div class="number-box">
+                    <h3>Negative Numbers</h3>
+                    <p>-1, -2, -3, -4, ...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- NUMBER LINE -->
+        <section class="card">
+
+            <h2>6. Understanding a Number Line</h2>
+
+            <p>
+                A number line helps us see the position and order
+                of numbers.
+            </p>
+
+            <div class="definition" style="text-align:center; font-size:20px;">
+                ← -5 &nbsp; -4 &nbsp; -3 &nbsp; -2 &nbsp; -1 &nbsp;
+                <strong>0</strong> &nbsp; 1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5 →
+            </div>
+
+            <p>
+                Numbers become larger as we move to the right.
+                Numbers become smaller as we move to the left.
+            </p>
+
+            <div class="example">
+                <strong>Example:</strong><br><br>
+
+                5 is greater than 2.<br>
+                -2 is greater than -5.
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+
+            <h2>7. Video Lesson</h2>
+
+            <div class="video-box">
+
+                <button class="play-button" onclick="playVideo()">
+                    ▶
+                </button>
+
+                <h3>Numbers and Number Systems</h3>
+
+                <p>
+                    Your Mathematics video lesson will appear here.
+                </p>
+
+                <small>
+                    Video connection can be added later.
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+
+            <h2>8. Practice Questions</h2>
+
+            <div class="example">
+                <strong>Question 1:</strong>
+                Write the first five natural numbers.
+            </div>
+
+            <div class="example">
+                <strong>Question 2:</strong>
+                Which whole number represents nothing?
+            </div>
+
+            <div class="example">
+                <strong>Question 3:</strong>
+                Is -7 a positive or negative number?
+            </div>
+
+            <div class="example">
+                <strong>Question 4:</strong>
+                Which number is greater: 3 or 8?
+            </div>
+
+            <p>
+                Try answering these questions before taking the quiz.
+            </p>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+
+            <h2>9. Mini Quiz</h2>
+
+            <p>
+                Answer all five questions, then click
+                <strong>Submit Quiz</strong>.
+            </p>
+
+            <form id="quizForm">
+
+                <div class="quiz-question">
+                    <h3>Question 1</h3>
+
+                    <p>Which of these is a natural number?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        -3
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        5
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        -8
+                    </label>
+                </div>
+
+
+                <div class="quiz-question">
+                    <h3>Question 2</h3>
+
+                    <p>Which number is a whole number?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        0
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        -4
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        -9
+                    </label>
+                </div>
+
+
+                <div class="quiz-question">
+                    <h3>Question 3</h3>
+
+                    <p>Which number is an integer?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        -6
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        2.5
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        1/2
+                    </label>
+                </div>
+
+
+                <div class="quiz-question">
+                    <h3>Question 4</h3>
+
+                    <p>Which number is greater?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        3
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        8
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        1
+                    </label>
+                </div>
+
+
+                <div class="quiz-question">
+                    <h3>Question 5</h3>
+
+                    <p>Which number is negative?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        7
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        0
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        -4
+                    </label>
+                </div>
+
+
+                <div class="buttons">
+                    <button type="button" class="btn primary" onclick="submitQuiz()">
+                        Submit Quiz
+                    </button>
+
+                    <button type="button" class="btn secondary" onclick="resetQuiz()">
+                        Reset Quiz
+                    </button>
+                </div>
+
+            </form>
+
+
+            <div id="quizResult" class="result"></div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+
+            <h2>10. Lesson Progress</h2>
+
+            <p id="progressText">
+                Lesson progress: 0%
+            </p>
+
+            <div class="progress-container">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <div class="buttons">
+
+                <button
+                    class="btn success"
+                    onclick="completeLesson()">
+                    ✓ Mark Lesson Complete
+                </button>
+
+                <button
+                    class="btn primary"
+                    onclick="nextLesson()">
+                    Next Lesson →
+                </button>
+
+            </div>
+
+            <div id="completeMessage" class="complete-message">
+                ✓ Congratulations! You have completed Lesson 1.
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        © <span id="year"></span> CITY INTERNATIONAL ONLINE SCHOOL
+    </footer>
+
+
+<script>
+
+    /* =========================
+       CHECK STUDENT LOGIN
+    ========================= */
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const student = localStorage.getItem("cis_current_student");
+
+        if (!student) {
+
+            alert("Please login as a student first.");
+
+            window.location.href = "index.html";
+
+            return;
+        }
+
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+
+        loadProgress();
+    });
+
+
+    /* =========================
+       BACK BUTTON
+    ========================= */
+
+    function goBack() {
+
+        window.location.href = "mathematics.html";
+
+    }
+
+
+    /* =========================
+       VIDEO BUTTON
+    ========================= */
+
+    function playVideo() {
+
+        alert(
+            "The Mathematics video lesson will be connected here."
+        );
+
+    }
+
+
+    /* =========================
+       QUIZ
+    ========================= */
+
+    function submitQuiz() {
+
+        const answers = {
+
+            q1: "b",
+            q2: "a",
+            q3: "a",
+            q4: "b",
+            q5: "c"
+
+        };
+
+        let score = 0;
+
+        let answered = 0;
+
+        for (let question in answers) {
+
+            const selected =
+                document.querySelector(
+                    'input[name="' + question + '"]:checked'
+                );
+
+            if (selected) {
+
+                answered++;
+
+                if (selected.value === answers[question]) {
+
+                    score++;
+
+                }
+
+            }
+
+        }
+
+
+        if (answered < 5) {
+
+            alert(
+                "Please answer all 5 questions before submitting."
+            );
+
+            return;
+
+        }
+
+
+        const percentage = (score / 5) * 100;
+
+        const result =
+            document.getElementById("quizResult");
+
+
+        result.style.display = "block";
+
+
+        result.innerHTML =
+            "<strong>Quiz Result</strong><br><br>" +
+            "You scored <strong>" +
+            score +
+            " / 5</strong>.<br>" +
+            "Your score is <strong>" +
+            percentage +
+            "%</strong>.";
+
+
+        if (score === 5) {
+
+            result.innerHTML +=
+                "<br><br>Excellent work! 🎉";
+
+        } else if (score >= 3) {
+
+            result.innerHTML +=
+                "<br><br>Good work! Review the lesson and try again.";
+
+        } else {
+
+            result.innerHTML +=
+                "<br><br>Please review the lesson and try the quiz again.";
+
+        }
+
+
+        localStorage.setItem(
+            "cis_math_lesson1_quiz_score",
+            score
+        );
+
+    }
+
+
+    /* =========================
+       RESET QUIZ
+    ========================= */
+
+    function resetQuiz() {
+
+        document.getElementById("quizForm").reset();
+
+        document.getElementById("quizResult").style.display =
+            "none";
+
+    }
+
+
+    /* =========================
+       COMPLETE LESSON
+    ========================= */
+
+    function completeLesson() {
+
+        localStorage.setItem(
+            "cis_math_lesson1_completed",
+            "true"
+        );
+
+
+        updateProgress(100);
+
+
+        document.getElementById(
+            "completeMessage"
+        ).style.display = "block";
+
+
+        alert(
+            "Lesson 1 has been marked as complete!"
+        );
+
+    }
+
+
+    /* =========================
+       LOAD PROGRESS
+    ========================= */
+
+    function loadProgress() {
+
+        const completed =
+            localStorage.getItem(
+                "cis_math_lesson1_completed"
+            );
+
+
+        if (completed === "true") {
+
+            updateProgress(100);
+
+            document.getElementById(
+                "completeMessage"
+            ).style.display = "block";
+
+        }
+
+    }
+
+
+    /* =========================
+       UPDATE PROGRESS
+    ========================= */
+
+    function updateProgress(value) {
+
+        document.getElementById(
+            "progressBar"
+        ).style.width = value + "%";
+
+
+        document.getElementById(
+            "progressText"
+        ).textContent =
+            "Lesson progress: " + value + "%";
+
+    }
+
+
+    /* =========================
+       NEXT LESSON
+    ========================= */
+
+    function nextLesson() {
+
+        alert(
+            "Lesson 2: Fractions will be added next."
+        );
+
+    }
+
+</script>
+
+</body>
+</html>

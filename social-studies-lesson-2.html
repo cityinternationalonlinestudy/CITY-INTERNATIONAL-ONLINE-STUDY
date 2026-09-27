@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Family and Society - Social Studies</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: #0f172a;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            color: #0f172a;
+            background: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #047857, #10b981);
+            color: white;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .lesson-label {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+        }
+
+        .card h2 {
+            color: #047857;
+            margin-bottom: 18px;
+            font-size: 27px;
+        }
+
+        .card h3 {
+            color: #0f172a;
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            margin-bottom: 12px;
+        }
+
+        .objectives li,
+        .list li {
+            margin-bottom: 9px;
+            margin-left: 25px;
+        }
+
+        .definition {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .example {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .example strong {
+            color: #047857;
+        }
+
+        .video-box {
+            background: #0f172a;
+            color: white;
+            min-height: 240px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 7px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            margin: 9px 0;
+            padding: 10px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #ecfdf5;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .quiz-btn,
+        .complete-btn,
+        .reset-btn {
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-top: 10px;
+        }
+
+        .quiz-btn {
+            background: #047857;
+            color: white;
+        }
+
+        .complete-btn {
+            background: #10b981;
+            color: white;
+        }
+
+        .reset-btn {
+            background: #e5e7eb;
+            color: #1f2937;
+        }
+
+        .quiz-btn:hover,
+        .complete-btn:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .progress-box {
+            margin-top: 20px;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 16px;
+            background: #e5e7eb;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: #10b981;
+            transition: width 0.4s ease;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            background: #0f172a;
+            color: white;
+            padding: 13px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .nav-btn.next {
+            background: #047857;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .example-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 22px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            .nav-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="social-studies.html" class="back-btn">
+            ← Back to Social Studies
+        </a>
+
+    </div>
+
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <div class="lesson-label">
+            SOCIAL STUDIES • LESSON 2
+        </div>
+
+        <h1>Family and Society</h1>
+
+        <p>
+            Learn about families, family members, responsibilities,
+            values, cooperation, and the importance of living together.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+
+            <h2>🎯 Learning Objectives</h2>
+
+            <p>By the end of this lesson, you should be able to:</p>
+
+            <ul class="objectives">
+                <li>Explain what a family is.</li>
+                <li>Identify different types of families.</li>
+                <li>Identify members of a family.</li>
+                <li>Explain responsibilities of family members.</li>
+                <li>Describe values that promote a happy family.</li>
+                <li>Explain the importance of families in society.</li>
+            </ul>
+
+        </section>
+
+
+        <!-- WHAT IS FAMILY -->
+        <section class="card">
+
+            <h2>👨‍👩‍👧‍👦 What Is a Family?</h2>
+
+            <div class="definition">
+
+                <strong>Definition:</strong>
+                A family is a group of people who are related to one
+                another by birth, marriage, adoption, or other family
+                relationships and who care for and support one another.
+
+            </div>
+
+            <p>
+                Families are important because they provide love,
+                care, protection, guidance, and support to their members.
+            </p>
+
+            <p>
+                Families may be small or large. Family members can live
+                together or in different places while still maintaining
+                relationships and supporting one another.
+            </p>
+
+        </section>
+
+
+        <!-- TYPES -->
+        <section class="card">
+
+            <h2>🏠 Types of Families</h2>
+
+            <div class="example-grid">
+
+                <div class="example">
+
+                    <strong>Nuclear Family</strong>
+
+                    <p>
+                        A family made up of parents and their children.
+                    </p>
+
+                </div>
+
+
+                <div class="example">
+
+                    <strong>Extended Family</strong>
+
+                    <p>
+                        A family that may include grandparents, uncles,
+                        aunts, cousins, and other relatives.
+                    </p>
+
+                </div>
+
+
+                <div class="example">
+
+                    <strong>Single-Parent Family</strong>
+
+                    <p>
+                        A family in which one parent takes the main
+                        responsibility for raising the children.
+                    </p>
+
+                </div>
+
+
+                <div class="example">
+
+                    <strong>Blended Family</strong>
+
+                    <p>
+                        A family formed when adults join families and
+                        children from previous relationships become part
+                        of one household.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FAMILY MEMBERS -->
+        <section class="card">
+
+            <h2>👨‍👩‍👧 Family Members</h2>
+
+            <p>
+                Different family members can have different roles and
+                responsibilities.
+            </p>
+
+            <ul class="list">
+
+                <li>
+                    <strong>Parents:</strong>
+                    Provide care, guidance, protection, and support.
+                </li>
+
+                <li>
+                    <strong>Children:</strong>
+                    Learn, respect others, help with suitable activities,
+                    and follow family rules.
+                </li>
+
+                <li>
+                    <strong>Grandparents:</strong>
+                    May provide guidance, care, stories, traditions,
+                    and support.
+                </li>
+
+                <li>
+                    <strong>Other relatives:</strong>
+                    May provide friendship, care, advice, and assistance.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- RESPONSIBILITIES -->
+        <section class="card">
+
+            <h2>🤝 Family Responsibilities</h2>
+
+            <p>
+                Family members should work together and help one another.
+                Responsibilities can be shared according to age,
+                ability, and family circumstances.
+            </p>
+
+            <div class="example-grid">
+
+                <div class="example">
+
+                    <strong>Respect</strong>
+
+                    <p>
+                        Family members should speak and behave respectfully
+                        toward one another.
+                    </p>
+
+                </div>
+
+
+                <div class="example">
+
+                    <strong>Helping</strong>
+
+                    <p>
+                        Members can help with appropriate household
+                        activities and support one another.
+                    </p>
+
+                </div>
+
+
+                <div class="example">
+
+                    <strong>Protection</strong>
+
+                    <p>
+                        Adults should help protect children and other
+                        vulnerable family members.
+                    </p>
+
+                </div>
+
+
+                <div class="example">
+
+                    <strong>Education</strong>
+
+                    <p>
+                        Families can encourage children to attend school
+                        and develop good learning habits.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- VALUES -->
+        <section class="card">
+
+            <h2>⭐ Family Values</h2>
+
+            <p>
+                Good values help family members live peacefully and
+                support one another.
+            </p>
+
+            <ul class="list">
+
+                <li>Love</li>
+                <li>Respect</li>
+                <li>Honesty</li>
+                <li>Kindness</li>
+                <li>Responsibility</li>
+                <li>Cooperation</li>
+                <li>Forgiveness</li>
+                <li>Care for others</li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- FAMILY AND SOCIETY -->
+        <section class="card">
+
+            <h2>🌍 Family and Society</h2>
+
+            <p>
+                Families are important parts of society. Children often
+                learn their first values, language, habits, and social
+                skills within their families.
+            </p>
+
+            <p>
+                Strong and supportive families can contribute to peaceful
+                communities by teaching respect, responsibility,
+                cooperation, and care for others.
+            </p>
+
+            <div class="definition">
+
+                <strong>Remember:</strong>
+                A family is one of the important places where children
+                learn how to interact with other people and become
+                responsible members of society.
+
+            </div>
+
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+
+            <h2>🎥 Lesson Video</h2>
+
+            <div class="video-box">
+
+                <div>
+
+                    <div class="video-icon">
+                        ▶️
+                    </div>
+
+                    <h3 style="color:white;">
+                        Family and Society
+                    </h3>
+
+                    <p>
+                        A Social Studies video lesson will be added here.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice-question">
+                <strong>1.</strong>
+                What is a family?
+            </div>
+
+            <div class="practice-question">
+                <strong>2.</strong>
+                Name two types of families.
+            </div>
+
+            <div class="practice-question">
+                <strong>3.</strong>
+                Give two responsibilities of family members.
+            </div>
+
+            <div class="practice-question">
+                <strong>4.</strong>
+                Mention three values that are important in a family.
+            </div>
+
+            <div class="practice-question">
+                <strong>5.</strong>
+                Why are families important in society?
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+
+            <h2>📝 Lesson Quiz</h2>
+
+            <p>
+                Choose the correct answer for each question.
+            </p>
+
+
+            <!-- Q1 -->
+            <div class="quiz-question">
+
+                <h3>1. What is a family?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="a">
+                    A. A group of unrelated buildings
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="b">
+                    B. People who are related and care for or support one another
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="c">
+                    C. A group of shops
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q1" value="d">
+                    D. A school club only
+                </label>
+
+            </div>
+
+
+            <!-- Q2 -->
+            <div class="quiz-question">
+
+                <h3>2. Which is an example of a family type?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="a">
+                    A. Nuclear family
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="b">
+                    B. Market family
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="c">
+                    C. Road family
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q2" value="d">
+                    D. River family
+                </label>
+
+            </div>
+
+
+            <!-- Q3 -->
+            <div class="quiz-question">
+
+                <h3>3. Which value helps family members live peacefully?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="a">
+                    A. Fighting
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="b">
+                    B. Dishonesty
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="c">
+                    C. Respect
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q3" value="d">
+                    D. Disobedience
+                </label>
+
+            </div>
+
+
+            <!-- Q4 -->
+            <div class="quiz-question">
+
+                <h3>4. What is one responsibility of children?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="a">
+                    A. Destroying family property
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="b">
+                    B. Helping with suitable activities and respecting family members
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="c">
+                    C. Ignoring all family rules
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q4" value="d">
+                    D. Refusing to learn
+                </label>
+
+            </div>
+
+
+            <!-- Q5 -->
+            <div class="quiz-question">
+
+                <h3>5. Why are families important in society?</h3>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="a">
+                    A. They teach children values and social skills
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="b">
+                    They prevent people from working
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="c">
+                    C. They stop communities from cooperating
+                </label>
+
+                <label class="option">
+                    <input type="radio" name="q5" value="d">
+                    D. They have no role in society
+                </label>
+
+            </div>
+
+
+            <button class="quiz-btn" onclick="checkQuiz()">
+                Check Quiz
+            </button>
+
+            <button class="reset-btn" onclick="resetQuiz()">
+                Reset Quiz
+            </button>
+
+            <div id="quizResult" class="result"></div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+
+            <h2>📊 Lesson Progress</h2>
+
+            <div class="progress-box">
+
+                <div class="progress-header">
+                    <span>Family and Society</span>
+                    <span id="progressText">0%</span>
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        id="progressFill">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="complete-btn"
+                onclick="markComplete()">
+
+                ✅ Mark Lesson Complete
+
+            </button>
+
+
+            <button
+                class="reset-btn"
+                onclick="resetLesson()">
+
+                🔄 Reset Lesson
+
+            </button>
+
+        </section>
+
+
+        <!-- NAVIGATION -->
+        <div class="navigation">
+
+            <a
+                href="social-studies-lesson-1.html"
+                class="nav-btn">
+
+                ← Previous Lesson
+
+            </a>
+
+
+            <a
+                href="social-studies.html"
+                class="nav-btn">
+
+                Social Studies
+
+            </a>
+
+
+            <a
+                href="social-studies-lesson-3.html"
+                class="nav-btn next">
+
+                Next Lesson →
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <p>
+            © 2026 City International Online School
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        const completedKey =
+            "cis_social_studies_lesson2_completed";
+
+        const scoreKey =
+            "cis_social_studies_lesson2_quiz_score";
+
+
+        function updateProgress() {
+
+            const completed =
+                localStorage.getItem(completedKey) === "true";
+
+            const progress =
+                completed ? 100 : 0;
+
+            document.getElementById("progressText").textContent =
+                progress + "%";
+
+            document.getElementById("progressFill").style.width =
+                progress + "%";
+        }
+
+
+        function checkQuiz() {
+
+            const answers = {
+
+                q1: "b",
+                q2: "a",
+                q3: "c",
+                q4: "b",
+                q5: "a"
+
+            };
+
+
+            let score = 0;
+            let answered = 0;
+
+
+            for (let question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' +
+                        question +
+                        '"]:checked'
+                    );
+
+
+                if (selected) {
+
+                    answered++;
+
+
+                    if (
+                        selected.value ===
+                        answers[question]
+                    ) {
+
+                        score++;
+
+                    }
+
+                }
+
+            }
+
+
+            const result =
+                document.getElementById("quizResult");
+
+
+            if (answered < 5) {
+
+                result.style.display = "block";
+                result.style.background = "#fef3c7";
+                result.style.color = "#92400e";
+
+                result.textContent =
+                    "Please answer all 5 questions before checking your quiz.";
+
+                return;
+            }
+
+
+            const percentage =
+                Math.round((score / 5) * 100);
+
+
+            localStorage.setItem(
+                scoreKey,
+                percentage
+            );
+
+
+            result.style.display = "block";
+
+
+            if (percentage >= 60) {
+
+                result.style.background = "#dcfce7";
+                result.style.color = "#166534";
+
+                result.innerHTML =
+                    "🎉 Excellent work! You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%).";
+
+            } else {
+
+                result.style.background = "#fee2e2";
+                result.style.color = "#991b1b";
+
+                result.innerHTML =
+                    "You scored " +
+                    score +
+                    "/5 (" +
+                    percentage +
+                    "%). Keep studying and try again!";
+
+            }
+
+        }
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                completedKey,
+                "true"
+            );
+
+
+            updateProgress();
+
+
+            alert(
+                "🎉 Lesson 2 completed! Your progress has been saved."
+            );
+
+        }
+
+
+        function resetLesson() {
+
+            localStorage.removeItem(
+                completedKey
+            );
+
+            localStorage.removeItem(
+                scoreKey
+            );
+
+
+            resetQuiz();
+            updateProgress();
+
+
+            alert(
+                "Lesson progress has been reset."
+            );
+
+        }
+
+
+        function resetQuiz() {
+
+            const options =
+                document.querySelectorAll(
+                    'input[type="radio"]'
+                );
+
+
+            options.forEach(function (option) {
+
+                option.checked = false;
+
+            });
+
+
+            const result =
+                document.getElementById("quizResult");
+
+
+            result.style.display = "none";
+            result.innerHTML = "";
+
+
+            localStorage.removeItem(scoreKey);
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                updateProgress();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lesson 4 - Geometry | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+            line-height: 1.7;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: #e8eef7;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: 30px auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #1d65a6);
+            color: white;
+            padding: 45px 35px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .lesson-number {
+            font-size: 15px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 28px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            color: #123c69;
+            margin-bottom: 18px;
+            font-size: 25px;
+        }
+
+        .card h3 {
+            color: #1d65a6;
+            margin-top: 22px;
+            margin-bottom: 8px;
+        }
+
+        .objectives li {
+            margin-bottom: 8px;
+            margin-left: 22px;
+        }
+
+        .definition {
+            background: #eef6ff;
+            border-left: 5px solid #1d65a6;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .shape-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .shape-card {
+            background: #f8fafc;
+            border: 1px solid #e1e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .shape {
+            font-size: 60px;
+            margin-bottom: 10px;
+        }
+
+        .shape-card h3 {
+            margin-top: 0;
+        }
+
+        .formula {
+            background: #fff8e6;
+            border-left: 5px solid #e0a800;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-weight: bold;
+        }
+
+        .example {
+            background: #f1f8f4;
+            border-left: 5px solid #2e8b57;
+            padding: 18px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .example strong {
+            color: #17633a;
+        }
+
+        .practice-question {
+            background: #f8fafc;
+            border: 1px solid #dce5ef;
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-question {
+            background: #f8fafc;
+            border: 1px solid #dce5ef;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 18px;
+        }
+
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            display: block;
+            padding: 9px;
+            margin: 6px 0;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background: #eaf2fb;
+        }
+
+        .option input {
+            margin-right: 8px;
+        }
+
+        .video-box {
+            background: #111827;
+            color: white;
+            min-height: 280px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+        }
+
+        .video-box div {
+            max-width: 600px;
+        }
+
+        .video-icon {
+            font-size: 55px;
+            margin-bottom: 10px;
+        }
+
+        .progress-container {
+            background: #dfe7ef;
+            border-radius: 20px;
+            height: 22px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #1d65a6;
+            transition: width 0.4s ease;
+        }
+
+        .progress-text {
+            font-weight: bold;
+            color: #123c69;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 12px 22px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .primary {
+            background: #123c69;
+            color: white;
+        }
+
+        .primary:hover {
+            background: #0d2e50;
+        }
+
+        .secondary {
+            background: #e8eef7;
+            color: #123c69;
+        }
+
+        .secondary:hover {
+            background: #d8e2ef;
+        }
+
+        .result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #eef6ff;
+            border-left: 5px solid #1d65a6;
+        }
+
+        .next-box {
+            text-align: center;
+        }
+
+        .next-box h2 {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 700px) {
+            .topbar {
+                padding: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 30px 22px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="mathematics.html" class="back-btn">
+            ← Back to Mathematics
+        </a>
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="lesson-number">
+                MATHEMATICS • LESSON 4
+            </div>
+
+            <h1>Geometry</h1>
+
+            <p>
+                Learn about shapes, lines, angles, perimeter and area.
+                You will also practise solving geometry problems.
+            </p>
+        </section>
+
+
+        <!-- OBJECTIVES -->
+        <section class="card">
+            <h2>🎯 Learning Objectives</h2>
+
+            <ul class="objectives">
+                <li>Understand the meaning of geometry.</li>
+                <li>Identify common geometric shapes.</li>
+                <li>Understand points, lines, line segments and rays.</li>
+                <li>Identify different types of angles.</li>
+                <li>Calculate the perimeter of simple shapes.</li>
+                <li>Calculate the area of rectangles, squares and triangles.</li>
+                <li>Solve basic geometry problems.</li>
+            </ul>
+        </section>
+
+
+        <!-- WHAT IS GEOMETRY -->
+        <section class="card">
+            <h2>📐 What is Geometry?</h2>
+
+            <div class="definition">
+                <strong>Geometry</strong> is the branch of mathematics that studies
+                shapes, sizes, positions, lines, angles and spaces.
+            </div>
+
+            <p>
+                Geometry is used in many areas of everyday life. Architects,
+                engineers, builders, designers and artists all use geometry.
+            </p>
+        </section>
+
+
+        <!-- SHAPES -->
+        <section class="card">
+            <h2>🔷 Basic Geometric Shapes</h2>
+
+            <div class="shape-grid">
+
+                <div class="shape-card">
+                    <div class="shape">○</div>
+                    <h3>Circle</h3>
+                    <p>A round shape with no corners.</p>
+                </div>
+
+                <div class="shape-card">
+                    <div class="shape">□</div>
+                    <h3>Square</h3>
+                    <p>Has four equal sides and four right angles.</p>
+                </div>
+
+                <div class="shape-card">
+                    <div class="shape">▭</div>
+                    <h3>Rectangle</h3>
+                    <p>Has four sides and four right angles.</p>
+                </div>
+
+                <div class="shape-card">
+                    <div class="shape">△</div>
+                    <h3>Triangle</h3>
+                    <p>Has three sides and three angles.</p>
+                </div>
+
+                <div class="shape-card">
+                    <div class="shape">⬟</div>
+                    <h3>Pentagon</h3>
+                    <p>A shape with five sides.</p>
+                </div>
+
+                <div class="shape-card">
+                    <div class="shape">⬢</div>
+                    <h3>Hexagon</h3>
+                    <p>A shape with six sides.</p>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- POINTS AND LINES -->
+        <section class="card">
+            <h2>📏 Points and Lines</h2>
+
+            <h3>1. Point</h3>
+
+            <p>
+                A point represents an exact position or location.
+            </p>
+
+            <div class="definition">
+                Example: <strong>• A</strong>
+            </div>
+
+
+            <h3>2. Line</h3>
+
+            <p>
+                A line is straight and continues infinitely in both directions.
+            </p>
+
+            <div class="definition">
+                Example: <strong>←────────────→</strong>
+            </div>
+
+
+            <h3>3. Line Segment</h3>
+
+            <p>
+                A line segment has two endpoints.
+            </p>
+
+            <div class="definition">
+                Example: <strong>A────────B</strong>
+            </div>
+
+
+            <h3>4. Ray</h3>
+
+            <p>
+                A ray has one endpoint and continues infinitely in one direction.
+            </p>
+
+            <div class="definition">
+                Example: <strong>A────────────→</strong>
+            </div>
+        </section>
+
+
+        <!-- ANGLES -->
+        <section class="card">
+            <h2>📐 Types of Angles</h2>
+
+            <h3>Acute Angle</h3>
+            <p>
+                An acute angle is less than 90°.
+            </p>
+
+            <div class="formula">
+                Acute angle &lt; 90°
+            </div>
+
+
+            <h3>Right Angle</h3>
+            <p>
+                A right angle is exactly 90°.
+            </p>
+
+            <div class="formula">
+                Right angle = 90°
+            </div>
+
+
+            <h3>Obtuse Angle</h3>
+            <p>
+                An obtuse angle is greater than 90° but less than 180°.
+            </p>
+
+            <div class="formula">
+                90° &lt; Obtuse angle &lt; 180°
+            </div>
+
+
+            <h3>Straight Angle</h3>
+            <p>
+                A straight angle is exactly 180°.
+            </p>
+
+            <div class="formula">
+                Straight angle = 180°
+            </div>
+        </section>
+
+
+        <!-- PERIMETER -->
+        <section class="card">
+            <h2>📏 Perimeter</h2>
+
+            <p>
+                The <strong>perimeter</strong> is the total distance around
+                the outside of a shape.
+            </p>
+
+            <div class="formula">
+                Rectangle Perimeter = 2 × (Length + Width)
+            </div>
+
+            <div class="formula">
+                Square Perimeter = 4 × Side
+            </div>
+
+
+            <div class="example">
+                <strong>Example:</strong>
+
+                <p>
+                    A rectangle has a length of 8 cm and a width of 3 cm.
+                </p>
+
+                <p>
+                    Perimeter = 2 × (8 + 3)
+                </p>
+
+                <p>
+                    Perimeter = 2 × 11
+                </p>
+
+                <p>
+                    <strong>Answer = 22 cm</strong>
+                </p>
+            </div>
+        </section>
+
+
+        <!-- AREA -->
+        <section class="card">
+            <h2>⬜ Area</h2>
+
+            <p>
+                The <strong>area</strong> is the amount of space inside
+                a two-dimensional shape.
+            </p>
+
+
+            <h3>Area of a Rectangle</h3>
+
+            <div class="formula">
+                Area = Length × Width
+            </div>
+
+
+            <h3>Area of a Square</h3>
+
+            <div class="formula">
+                Area = Side × Side
+            </div>
+
+
+            <h3>Area of a Triangle</h3>
+
+            <div class="formula">
+                Area = ½ × Base × Height
+            </div>
+
+
+            <div class="example">
+                <strong>Example:</strong>
+
+                <p>
+                    A rectangle has a length of 10 cm and a width of 4 cm.
+                </p>
+
+                <p>
+                    Area = 10 × 4
+                </p>
+
+                <p>
+                    <strong>Answer = 40 cm²</strong>
+                </p>
+            </div>
+
+
+            <div class="example">
+                <strong>Example:</strong>
+
+                <p>
+                    A triangle has a base of 8 cm and a height of 5 cm.
+                </p>
+
+                <p>
+                    Area = ½ × 8 × 5
+                </p>
+
+                <p>
+                    Area = 20 cm²
+                </p>
+
+                <p>
+                    <strong>Answer = 20 cm²</strong>
+                </p>
+            </div>
+        </section>
+
+
+        <!-- VIDEO -->
+        <section class="card">
+            <h2>🎥 Geometry Video Lesson</h2>
+
+            <div class="video-box">
+                <div>
+                    <div class="video-icon">▶️</div>
+
+                    <h3 style="color:white;">
+                        Geometry Video Lesson
+                    </h3>
+
+                    <p>
+                        Your teacher's Geometry video lesson can be added here.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- PRACTICE -->
+        <section class="card">
+            <h2>✏️ Practice Questions</h2>
+
+            <div class="practice-question">
+                <strong>1.</strong>
+                How many sides does a triangle have?
+            </div>
+
+            <div class="practice-question">
+                <strong>2.</strong>
+                What is the size of a right angle?
+            </div>
+
+            <div class="practice-question">
+                <strong>3.</strong>
+                Find the perimeter of a square with a side of 6 cm.
+            </div>
+
+            <div class="practice-question">
+                <strong>4.</strong>
+                Find the area of a rectangle with a length of 7 cm
+                and a width of 5 cm.
+            </div>
+
+            <div class="practice-question">
+                <strong>5.</strong>
+                Find the area of a triangle with a base of 10 cm
+                and a height of 4 cm.
+            </div>
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="card">
+            <h2>📝 Geometry Quiz</h2>
+
+            <form id="quizForm">
+
+                <!-- Q1 -->
+                <div class="quiz-question">
+                    <p>1. How many sides does a triangle have?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="a">
+                        2
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="b">
+                        3
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="c">
+                        4
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q1" value="d">
+                        5
+                    </label>
+                </div>
+
+
+                <!-- Q2 -->
+                <div class="quiz-question">
+                    <p>2. What is the size of a right angle?</p>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="a">
+                        45°
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="b">
+                        60°
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="c">
+                        90°
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q2" value="d">
+                        180°
+                    </label>
+                </div>
+
+
+                <!-- Q3 -->
+                <div class="quiz-question">
+                    <p>
+                        3. What is the perimeter of a square with a side
+                        of 5 cm?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="a">
+                        10 cm
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="b">
+                        15 cm
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="c">
+                        20 cm
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q3" value="d">
+                        25 cm
+                    </label>
+                </div>
+
+
+                <!-- Q4 -->
+                <div class="quiz-question">
+                    <p>
+                        4. What is the area of a rectangle with a length
+                        of 8 cm and width of 3 cm?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="a">
+                        11 cm²
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="b">
+                        24 cm²
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="c">
+                        16 cm²
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q4" value="d">
+                        32 cm²
+                    </label>
+                </div>
+
+
+                <!-- Q5 -->
+                <div class="quiz-question">
+                    <p>
+                        5. Which angle is greater than 90° but less than 180°?
+                    </p>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="a">
+                        Acute angle
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="b">
+                        Right angle
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="c">
+                        Obtuse angle
+                    </label>
+
+                    <label class="option">
+                        <input type="radio" name="q5" value="d">
+                        Straight angle
+                    </label>
+                </div>
+
+
+                <button type="button" class="primary" onclick="submitQuiz()">
+                    Submit Quiz
+                </button>
+
+            </form>
+
+
+            <div class="result" id="quizResult"></div>
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="card">
+            <h2>📊 Lesson Progress</h2>
+
+            <p class="progress-text" id="progressText">
+                0% Complete
+            </p>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="buttons">
+                <button class="primary" onclick="markComplete()">
+                    ✓ Mark Lesson Complete
+                </button>
+
+                <button class="secondary" onclick="resetLesson()">
+                    Reset Lesson
+                </button>
+            </div>
+        </section>
+
+
+        <!-- NEXT LESSON -->
+        <section class="card next-box">
+            <h2>➡️ Next Lesson</h2>
+
+            <p>
+                Lesson 5: <strong>Problem Solving</strong>
+            </p>
+
+            <br>
+
+            <button class="secondary" onclick="nextLesson()">
+                Continue to Lesson 5
+            </button>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            © <span id="year"></span>
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </p>
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            loadProgress();
+
+        });
+
+
+        function submitQuiz() {
+
+            const answers = {
+                q1: "b",
+                q2: "c",
+                q3: "c",
+                q4: "b",
+                q5: "c"
+            };
+
+            let score = 0;
+
+            for (let question in answers) {
+
+                const selected =
+                    document.querySelector(
+                        'input[name="' + question + '"]:checked'
+                    );
+
+                if (selected && selected.value === answers[question]) {
+                    score++;
+                }
+            }
+
+
+            const percentage = Math.round((score / 5) * 100);
+
+            localStorage.setItem(
+                "cis_math_lesson4_quiz_score",
+                score
+            );
+
+
+            const result =
+                document.getElementById("quizResult");
+
+            result.style.display = "block";
+
+            result.innerHTML =
+                "<h3>Quiz Result</h3>" +
+                "<p>You scored <strong>" +
+                score +
+                " out of 5</strong>.</p>" +
+                "<p>Your score is <strong>" +
+                percentage +
+                "%</strong>.</p>";
+
+            if (percentage === 100) {
+
+                result.innerHTML +=
+                    "<p>🎉 Excellent work! You got every question correct.</p>";
+
+            } else if (percentage >= 60) {
+
+                result.innerHTML +=
+                    "<p>👏 Good work! Keep practising Geometry.</p>";
+
+            } else {
+
+                result.innerHTML +=
+                    "<p>📚 Keep studying and try the quiz again.</p>";
+            }
+
+
+            updateProgress();
+        }
+
+
+        function markComplete() {
+
+            localStorage.setItem(
+                "cis_math_lesson4_completed",
+                "true"
+            );
+
+            updateProgress();
+
+            alert(
+                "Lesson 4 - Geometry has been marked as complete! ✓"
+            );
+        }
+
+
+        function updateProgress() {
+
+            const completed =
+                localStorage.getItem(
+                    "cis_math_lesson4_completed"
+                ) === "true";
+
+            const quizScore =
+                localStorage.getItem(
+                    "cis_math_lesson4_quiz_score"
+                );
+
+
+            let progress = 0;
+
+
+            if (quizScore !== null) {
+                progress = 50;
+            }
+
+
+            if (completed) {
+                progress = 100;
+            }
+
+
+            document.getElementById("progressBar").style.width =
+                progress + "%";
+
+            document.getElementById("progressText").textContent =
+                progress + "% Complete";
+        }
+
+
+        function loadProgress() {
+            updateProgress();
+        }
+
+
+        function resetLesson() {
+
+            localStorage.removeItem(
+                "cis_math_lesson4_completed"
+            );
+
+            localStorage.removeItem(
+                "cis_math_lesson4_quiz_score"
+            );
+
+            document.getElementById("quizForm").reset();
+
+            document.getElementById("quizResult").style.display =
+                "none";
+
+            updateProgress();
+
+            alert("Lesson 4 progress has been reset.");
+        }
+
+
+        function nextLesson() {
+
+            alert(
+                "Lesson 5 - Problem Solving will be added next."
+            );
+        }
+
+    </script>
+
+</body>
+</html>

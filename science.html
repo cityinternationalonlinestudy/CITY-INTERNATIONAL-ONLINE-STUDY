@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Science | City International Online School</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        .topbar {
+            background: #123c69;
+            color: white;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .school-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .back-btn {
+            background: white;
+            color: #123c69;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: 30px auto;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #123c69, #238636);
+            color: white;
+            padding: 45px 35px;
+            border-radius: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .stat {
+            background: white;
+            padding: 22px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: #123c69;
+        }
+
+        .stat-label {
+            margin-top: 5px;
+            color: #64748b;
+        }
+
+        .section {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+        }
+
+        .section h2 {
+            color: #123c69;
+            margin-bottom: 20px;
+        }
+
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .lesson-card {
+            border: 1px solid #dce5ef;
+            border-radius: 13px;
+            padding: 22px;
+            background: #f8fafc;
+            transition: 0.2s;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .lesson-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .lesson-card h3 {
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .lesson-card p {
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        button {
+            border: none;
+            background: #123c69;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #0d2e50;
+        }
+
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .material {
+            background: #eef6ff;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .material h3 {
+            color: #123c69;
+            margin-bottom: 8px;
+        }
+
+        .placeholder {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            padding: 30px;
+            text-align: center;
+            border-radius: 12px;
+        }
+
+        .progress-container {
+            background: #dfe7ef;
+            height: 22px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #238636;
+            transition: 0.4s;
+        }
+
+        footer {
+            background: #123c69;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 800px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 30px 22px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="topbar">
+
+        <div class="school-name">
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </div>
+
+        <a href="student-dashboard.html" class="back-btn">
+            ← Back to Dashboard
+        </a>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <h1>🔬 Science</h1>
+
+            <p>
+                Explore the world around you through observation,
+                experiments, discovery and scientific thinking.
+            </p>
+
+        </section>
+
+
+        <!-- STATS -->
+        <section class="stats">
+
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Lessons</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Assignments</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Quizzes Completed</div>
+            </div>
+
+            <div class="stat">
+                <div class="stat-number" id="progressNumber">0%</div>
+                <div class="stat-label">Progress</div>
+            </div>
+
+        </section>
+
+
+        <!-- LESSONS -->
+        <section class="section">
+
+            <h2>📚 Science Lessons</h2>
+
+            <div class="lesson-grid">
+
+                <!-- LESSON 1 -->
+                <div class="lesson-card">
+
+                    <div class="lesson-icon">🌱</div>
+
+                    <h3>Lesson 1</h3>
+
+                    <h3>Living and Non-Living Things</h3>
+
+                    <p>
+                        Learn how to identify living and non-living things
+                        and understand their characteristics.
+                    </p>
+
+                    <button onclick="openLesson('Living and Non-Living Things')">
+                        Open Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 2 -->
+                <div class="lesson-card">
+
+                    <div class="lesson-icon">🫀</div>
+
+                    <h3>Lesson 2</h3>
+
+                    <h3>The Human Body</h3>
+
+                    <p>
+                        Discover important body systems and learn how
+                        different parts of the human body work.
+                    </p>
+
+                    <button onclick="openLesson('The Human Body')">
+                        Open Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 3 -->
+                <div class="lesson-card">
+
+                    <div class="lesson-icon">🌍</div>
+
+                    <h3>Lesson 3</h3>
+
+                    <h3>Earth and Environment</h3>
+
+                    <p>
+                        Learn about Earth, natural resources,
+                        weather and our environment.
+                    </p>
+
+                    <button onclick="openLesson('Earth and Environment')">
+                        Open Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 4 -->
+                <div class="lesson-card">
+
+                    <div class="lesson-icon">⚡</div>
+
+                    <h3>Lesson 4</h3>
+
+                    <h3>Energy and Forces</h3>
+
+                    <p>
+                        Explore different forms of energy and learn
+                        how forces affect objects.
+                    </p>
+
+                    <button onclick="openLesson('Energy and Forces')">
+                        Open Lesson
+                    </button>
+
+                </div>
+
+
+                <!-- LESSON 5 -->
+                <div class="lesson-card">
+
+                    <div class="lesson-icon">🧪</div>
+
+                    <h3>Lesson 5</h3>
+
+                    <h3>Matter and Materials</h3>
+
+                    <p>
+                        Learn about solids, liquids, gases and
+                        the properties of different materials.
+                    </p>
+
+                    <button onclick="openLesson('Matter and Materials')">
+                        Open Lesson
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MATERIALS -->
+        <section class="section">
+
+            <h2>📖 Learning Materials</h2>
+
+            <div class="material-grid">
+
+                <div class="material">
+                    <h3>📄 Science Notes</h3>
+                    <p>
+                        Read notes prepared by your teacher.
+                    </p>
+                    <button onclick="showMessage('Science Notes')">
+                        Open
+                    </button>
+                </div>
+
+
+                <div class="material">
+                    <h3>✏️ Practice Questions</h3>
+                    <p>
+                        Practise the science topics you have learned.
+                    </p>
+                    <button onclick="showMessage('Practice Questions')">
+                        Open
+                    </button>
+                </div>
+
+
+                <div class="material">
+                    <h3>🎥 Science Videos</h3>
+                    <p>
+                        Watch science explanations and demonstrations.
+                    </p>
+                    <button onclick="showMessage('Science Videos')">
+                        Open
+                    </button>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASSIGNMENTS -->
+        <section class="section">
+
+            <h2>📝 Science Assignments</h2>
+
+            <div class="placeholder">
+
+                <h3>No assignments yet</h3>
+
+                <p>
+                    Your teacher's Science assignments will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+        <section class="section">
+
+            <h2>🧠 Science Quiz</h2>
+
+            <div class="placeholder">
+
+                <h3>Quiz Area</h3>
+
+                <p>
+                    Science quizzes will appear here after the lessons
+                    are created.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- LIVE CLASS -->
+        <section class="section">
+
+            <h2>🎥 Science Live Class</h2>
+
+            <div class="placeholder">
+
+                <h3>No live class scheduled</h3>
+
+                <p>
+                    Your teacher's Science live class will appear here
+                    when scheduled.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROGRESS -->
+        <section class="section">
+
+            <h2>📊 Science Progress</h2>
+
+            <p>
+                Complete the five Science lessons to track your progress.
+            </p>
+
+            <div class="progress-container">
+
+                <div
+                    class="progress-bar"
+                    id="progressBar">
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © <span id="year"></span>
+            CITY INTERNATIONAL ONLINE SCHOOL
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.getElementById("year").textContent =
+                new Date().getFullYear();
+
+            updateProgress();
+
+        });
+
+
+        function openLesson(lessonName) {
+
+            if (lessonName === "Living and Non-Living Things") {
+
+                window.location.href =
+                    "science-lesson-1.html";
+
+                return;
+            }
+
+
+            if (lessonName === "The Human Body") {
+
+                window.location.href =
+                    "science-lesson-2.html";
+
+                return;
+            }
+
+
+            if (lessonName === "Earth and Environment") {
+
+                window.location.href =
+                    "science-lesson-3.html";
+
+                return;
+            }
+
+
+            if (lessonName === "Energy and Forces") {
+
+                window.location.href =
+                    "science-lesson-4.html";
+
+                return;
+            }
+
+
+            if (lessonName === "Matter and Materials") {
+
+                window.location.href =
+                    "science-lesson-5.html";
+
+                return;
+            }
+
+
+            alert(
+                lessonName +
+                " lesson will be added next."
+            );
+
+        }
+
+
+        function showMessage(item) {
+
+            alert(
+                item +
+                " will be available after the learning materials are added."
+            );
+
+        }
+
+
+        function updateProgress() {
+
+            let completed = 0;
+
+
+            for (let i = 1; i <= 5; i++) {
+
+                if (
+                    localStorage.getItem(
+                        "cis_science_lesson" +
+                        i +
+                        "_completed"
+                    ) === "true"
+                ) {
+
+                    completed++;
+
+                }
+
+            }
+
+
+            const progress =
+                Math.round((completed / 5) * 100);
+
+
+            document.getElementById(
+                "progressBar"
+            ).style.width =
+                progress + "%";
+
+
+            document.getElementById(
+                "progressNumber"
+            ).textContent =
+                progress + "%";
+
+        }
+
+    </script>
+
+</body>
+</html>
